@@ -23,15 +23,10 @@ class messageControl extends mobileMemberControl
         $condition = array();
         $condition['from_member_id'] = 0;
         $condition['message_type'] = 1;
-        $condition['to_member_id|to_member_id|to_member_id'] = array(
-            $this->member_info['member_id'],
-            'all',
-            array('LIKE',"%,{$this->member_info['member_id']},%"),
-            '_multi'=>true
-        );
+        $condition['to_member_id'] = $this->member_info['member_id'];
 
 
-        $message_array = $model_message->getMessageList($condition,20,'*','message_id desc');
+        $message_array = $model_message->getMessageList($condition,$this->page,'*','message_id desc');
         $page_count = 0;
         if (!empty($message_array) && is_array($message_array)) {
             foreach ($message_array as $k => $v) {
@@ -51,7 +46,7 @@ class messageControl extends mobileMemberControl
                 unset($message_array[$k]['message_type']);
                 $message_array[$k]['message_time'] = date('Y-m-d H:i:s',$v['message_time']);
             }
-            $page_count = $model_message->getTotalPage();
+            $page_count = $model_message->gettotalpage();
         }
 
         output_data(array('message_list' => $message_array), mobile_page($page_count));

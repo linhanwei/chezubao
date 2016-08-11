@@ -24,7 +24,7 @@ class mobileControl{
         Language::read('mobile');
 
         //分页数处理
-        $page = intval($_GET['page']);
+        $page = intval($_GET['pagesize']);
         if($page > 0) {
             $this->page = $page;
         }
@@ -43,7 +43,7 @@ class mobileControl{
                     }
                 }
                 if(md5(md5($t.$this->_appsecret)) != $token){
-                  // output_error('认证失败');
+                  //  output_error('认证失败');
                 }
             }else{
                 //output_error('非法客户端');
@@ -123,6 +123,7 @@ class mobileMemberControl extends mobileControl{
 
 	public function __construct() {
         parent::__construct();
+        if($_GET['act'] == 'fund' && $_GET['op'] == 'index') return;
 
         $model_mb_user_token = Model('mb_user_token');
         $key = $_POST['key'];

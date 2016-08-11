@@ -5,7 +5,7 @@
 <div class="page">
   <div class="fixed-bar">
     <div class="item-title">
-      <h3>房车电子券</h3>
+      <h3>电子消费券</h3>
       <ul class="tab-base">
           <li><a href="<?php echo urlAdmin('coupons', 'index'); ?>"><span>列表</span></a></li>
         <li><a href="<?php echo urlAdmin('coupons', 'use'); ?>"><span>使用</span></a></li>
@@ -25,7 +25,7 @@
           <ul>
             <li>平台发布电子券有3种方式：</li>
             <li>1. 输入总数，以及可选输入的卡号前缀，由系统自动生成指定总数、前缀的电子券（系统自动生成部分长度为32）；</li>
-            <li>2. 上传文本文件导入房车电子券号，文件中每行为一个卡号。</li>
+            <li>2. 上传文本文件导入电子消费券号，文件中每行为一个卡号。</li>
             <li>3. 在文本框中手动输入多个电子券号，每行为一个卡号；</li>
             <li>电子券为50位之内的字母数字组合；可以设置本批次添加卡号的批次标识，方便检索。</li>
             <li>如新增的电子券号与已有的号冲突，则系统自动忽略它们。</li>

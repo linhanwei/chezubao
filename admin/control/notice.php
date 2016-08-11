@@ -76,6 +76,7 @@ class noticeControl extends SystemControl{
 				$insert_arr['message_body'] = $content;
 				$insert_arr['message_type'] = 1;
 				$insert_arr['message_ismore'] = 1;
+                $insert_arr['message_time'] = TIMESTAMP;
 				$model_message->addMessage($insert_arr);
 				//跳转
 				$this->log(L('notice_index_send'),1);

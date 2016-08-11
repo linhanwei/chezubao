@@ -6,19 +6,17 @@
 defined('InSystem') or exit('Access Invalid!');
 $_limit =  array(
 	array('name'=>$lang['nc_config'], 'child'=>array(
-        array('name'=>$lang['nc_web_set'], 'op'=>null, 'act'=>'setting'),
-        array('name'=>$lang['nc_web_account_syn'], 'op'=>null, 'act'=>'account'),
         array('name'=>$lang['nc_upload_set'], 'op'=>null, 'act'=>'upload'),
-        array('name'=>$lang['nc_seo_set'], 'op'=>'seo', 'act'=>'setting'),
-        array('name'=>$lang['nc_pay_method'], 'op'=>null, 'act'=>'payment'),
-        array('name'=>$lang['nc_message_set'], 'op'=>null, 'act'=>'message'),
-        array('name'=>$lang['nc_admin_express_set'], 'op'=>null, 'act'=>'express'),
-        array('name'=>'运单模板', 'op'=>null, 'act'=>'waybill'),
-        array('name'=>$lang['nc_admin_offpay_area_set'], 'op'=>null, 'act'=>'offpay_area'),
-        array('name'=>$lang['nc_admin_clear_cache'], 'op'=>null, 'act'=>'cache'),
-        array('name'=>$lang['nc_admin_perform_opt'], 'op'=>null, 'act'=>'perform'),
-        array('name'=>$lang['nc_admin_search_set'], 'op'=>null, 'act'=>'search'),
-        array('name'=>$lang['nc_admin_log'], 'op'=>null, 'act'=>'admin_log'),
+        array('name'=>'协议帮助', 'op'=>'document', 'act'=>'document'),
+        array('name'=>'上传设置', 'op'=>'param', 'act'=>'upload'),
+        array('name'=>'消息通知', 'op'=>'mobile', 'act'=>'message'),
+        array('name'=>'支付方式', 'op'=>'system', 'act'=>'payment'),
+        array('name'=>'权限设置', 'op'=>'admin', 'act'=>'admin'),
+        array('name'=>'清理缓存', 'op'=>'cache', 'act'=>'cache'),
+        array('name'=>'数据备份', 'op'=>'db', 'act'=>'db'),
+        array('name'=>'操作日期', 'op'=>'list', 'act'=>'admin_log'),
+        array('name'=>'问题分类', 'op'=>null, 'act'=>'article_class'),
+        array('name'=>'问题管理', 'op'=>null, 'act'=>'article_class'),
 		)),
     array('name'=>$lang['nc_goods'], 'child'=>array(
         array('name'=>$lang['nc_goods_manage'], 'op'=>null, 'act'=>'goods'),
@@ -36,11 +34,9 @@ $_limit =  array(
 	    array('name'=>'会员级别', 'op'=>null, 'act'=>'member_grade'),
 		array('name'=>$lang['nc_member_notice'], 'op'=>null, 'act'=>'notice'),
 		array('name'=>$lang['nc_member_pointsmanage'], 'op'=>null, 'act'=>'points'),
+        array('name'=>'现金充值', 'op'=>'manual_add', 'act'=>'predeposit'),
         array('name'=>'奖励', 'op'=>null, 'act'=>'points_inviter'),
 		array('name'=>$lang['nc_member_predepositmanage'], 'op'=>null, 'act'=>'predeposit'),
-        array('name'=>'现金充值', 'op'=>'manual_add', 'act'=>'predeposit'),
-        array('name'=>'推荐人统计', 'op'=>null, 'act'=>'invite'),
-        array('name'=>'加盟申请', 'op'=>'feedback', 'act'=>'agent'),
         array('name'=>'油卡管理', 'op'=>null, 'act'=>'oil'),
         array('name'=>'油卡充值', 'op'=>null, 'act'=>'oil')
 		)),
@@ -57,7 +53,7 @@ $_limit =  array(
     )),
 	array('name'=>$lang['nc_operation'], 'child'=>array(
 		array('name'=>$lang['nc_operation_set'], 'op'=>null, 'act'=>'operation'),
-		array('name'=>'房车电子券', 'op'=>null, 'act'=>'coupons')
+        array('name'=>'电子消费券', 'op'=>null, 'act'=>'coupons')
 		))
 );
 $_limit[] = array('name'=>$lang['nc_mobile'], 'child'=>array(

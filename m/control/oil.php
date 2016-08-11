@@ -10,7 +10,7 @@ defined('InSystem') or exit('Access Invalid!');
 
 class oilControl extends mobileMemberControl {
     public function __construct(){
-        output_error('系统维护，我们会尽快处理');
+        //output_error('系统维护，我们会尽快处理');
         parent::__construct();
     }
 

@@ -29,7 +29,6 @@ $(function() {
                             vv.rectangle2_url = buildUrl(vv.rectangle2_type, vv.rectangle2_data);
                             break;
                     }
-                    console.log(kk,vv);
                     html += template.render(kk, vv);
                     return false;
                 });

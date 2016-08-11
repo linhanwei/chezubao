@@ -211,6 +211,59 @@ class oilControl extends SystemControl{
 		Tpl::showpage('oil_card.add');
 	}
 
+    /**
+     * 取消申请
+     */
+    public function cancelOp(){
+        $oc_id = intval($_GET['oc_id']);
+        if ($oc_id <= 0){
+            showMessage('非法操作','index.php?act=oil&op=card_list','','error');
+        }
+        $model_oil_card = Model('predeposit');
+        $condition['oc_id'] = intval($oc_id);
+        $oil_array = $model_oil_card->getOilCardInfo($condition);
+
+        if($oil_array['oc_state'] != 1){
+            showMessage('只有申请中的油卡才能取消','index.php?act=oil&op=card_list','','error');
+        }
+        //退回金额
+        $model_pd = Model('predeposit');
+        $model_pd->beginTransaction();
+
+        $data = array();
+        $data['member_id'] = $oil_array['oc_member_id'];
+        $data['member_name'] = $oil_array['oc_member_name'];
+        $data['amount'] = -1 * $oil_array['oc_amount'];
+        $data['oc_sn'] = $oil_array['oc_sn'];
+        $data['oc_desc'] = '驳回油卡申请，订单号: '.$oil_array['oc_sn'];
+
+        try{
+            if($model_pd->changePd('oil_card',$data)){
+                $update = array();
+                $update['oc_state'] = 3;
+                $update['remark'] = $_GET['remark'];
+                $update = $model_pd->editOilCard($update,array('oc_id'=>$oc_id));
+
+                if($update){
+                    $model_pd->commit();
+                }else{
+                    $model_pd->rollback();
+                }
+            }
+        }catch (Exception $ex){
+            $model_pd->rollback();
+        }
+
+        $url = array(
+            array(
+                'url'=>'index.php?act=oil&op=card_list',
+                'msg'=>'返回油卡列表',
+            ),
+        );
+        $this->log('取消油卡申请'.'[	'.$oil_array['oc_sn'].']',1);
+        showMessage('取消油卡成功',$url);
+    }
+
 
     /**
      * 充值列表

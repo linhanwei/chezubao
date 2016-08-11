@@ -17,7 +17,9 @@ class storeControl extends mobileMemberControl{
 
     public function joininOp(){
         if($this->member_info['grade_id']!=1){
-            //output_error('请先升级为VIP会员');
+            if(TIMESTAMP > strtotime('2016-07-15 23:59:59')){
+                output_error('请先升级为VIP会员');
+            }
         }
         if($this->member_info['is_store'] == 1){
             output_error('店铺申请成功');
@@ -71,9 +73,6 @@ class storeControl extends mobileMemberControl{
         $param['store_name'] = $_POST['store_name'] ? $_POST['store_name'] :  $param['member_name'] . '的店铺';
         $param['legal_name'] = $_POST['legal_name'];
         $param['idcard_no'] = $_POST['idcard_no'];
-        if(!checkIdCard($param['idcard_no'])){
-            output_error('请输入正确的身份证号');
-        }
         $param['idcard_front'] = $this->upload_image('idcard_front');
         $param['idcard_back'] = $this->upload_image('idcard_back');
         $param['joinin_state'] = 10;
@@ -97,7 +96,7 @@ class storeControl extends mobileMemberControl{
             array("input"=>$param['business_licence_number_electronic'], "require"=>"true","message"=>"营业执照电子版不能为空"),
             //array("input"=>$param['organization_code'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"20","message"=>"组织机构代码不能为空且必须小于20个字"),
             // array("input"=>$param['organization_code_electronic'], "require"=>"true","message"=>"组织机构代码电子版不能为空"),
-            array("input"=>$param['store_name'], "require"=>"true","message"=>"公司名称不能为空"),
+            array("input"=>$param['store_name'], "require"=>"true","message"=>"店铺名称不能为空"),
             array("input"=>$param['legal_name'], "require"=>"true","message"=>"法人不能为空"),
             //array("input"=>$param['idcard_no'], "require"=>"true","message"=>"身份证号码不能为空"),
             array("input"=>$param['idcard_front'], "require"=>"true","message"=>"请上传身份证正面"),
@@ -113,6 +112,52 @@ class storeControl extends mobileMemberControl{
         $param['member_id'] = $this->member_info['member_id'];
         $model_store_joinin->save($param);
         output_data(array('msg'=>'资料提交成功'));
+    }
+
+    /**
+     * 店铺列表
+     */
+    public function listOp(){
+        $company_province = $_POST['company_province'];
+        $company_city = $_POST['company_city'];
+        $company_region = $_POST['company_region'];
+
+        $keyword = $_POST['keyword'];
+
+        $condition = array();
+        if($company_province > 0){
+            $condition['province_id'] = $company_province;
+        }
+        if($company_city > 0){
+            $condition['city_id'] = $company_city;
+        }
+        if($company_region > 0){
+            $condition['region_id'] = $company_region;
+        }
+
+        if($keyword){
+            $condition['store_name'] = array('like','%' . $keyword . '%');
+        }
+
+        $model_store = Model('store');
+        //商户列表
+        $store_list = $model_store->getStoreList($condition, $this->page,'store_id desc');
+        if(empty($store_list)){
+            output_error('暂无联盟商户');
+        }
+        foreach($store_list as $key=>$val){
+            if($val['store_avatar']){
+                $store_list[$key]['store_avatar'] = UPLOAD_SITE_URL.'/'.ATTACH_STORE.'/'.$val['store_avatar'];
+            }else{
+                $store_list[$key]['store_avatar'] = UPLOAD_SITE_URL.'/'.ATTACH_COMMON.DS.'default_store_avatar.gif';
+            }
+            unset($store_list[$key]['legal_name']);
+            unset($store_list[$key]['idcard_no']);
+            unset($store_list[$key]['idcard_back']);
+            unset($store_list[$key]['idcard_front']);
+        }
+        $page_count = $model_store->gettotalpage();
+        output_data(array('store_list' => $store_list), mobile_page($page_count));
     }
 
     private function upload_image($file) {

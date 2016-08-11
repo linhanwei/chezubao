@@ -195,17 +195,17 @@ class couponsControl extends SystemControl
         $coupons_info = $model_coupons->getCouponsBySN($sn);
 
         if(!$coupons_info){
-            showMessage('房车电子券不存在', '', 'html', 'error');
+            showMessage('电子消费券不存在', '', 'html', 'error');
             exit;
         }
 
         if($coupons_info['state'] != '0'){
-            showMessage('房车电子券已使用', '', 'html', 'error');
+            showMessage('电子消费券已使用', '', 'html', 'error');
             exit;
         }
 
         if($coupons_info['to_date']<strtotime(date('Y-m-d',time()))){
-            showMessage('房车电子券已过有效期', '', 'html', 'error');
+            showMessage('电子消费券已过有效期', '', 'html', 'error');
             exit;
         }
 
@@ -357,8 +357,8 @@ class couponsControl extends SystemControl
         }
         $excel_data = $excel_obj->charset($excel_data,CHARSET);
         $excel_obj->addArray($excel_data);
-        $excel_obj->addWorksheet($excel_obj->charset('房车电子券',CHARSET));
-        $excel_obj->generateXML($excel_obj->charset('房车电子券',CHARSET).$_GET['curpage'].'-'.date('Y-m-d-H',time()));
+        $excel_obj->addWorksheet($excel_obj->charset('电子消费券',CHARSET));
+        $excel_obj->generateXML($excel_obj->charset('电子消费券',CHARSET).$_GET['curpage'].'-'.date('Y-m-d-H',time()));
     }
 
     /**

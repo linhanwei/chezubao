@@ -140,7 +140,6 @@ class storeControl extends SystemControl{
 		Tpl::output('store_array',$store_array);
 
 		$joinin_detail = Model('store_joinin')->getOne(array('member_id'=>$store_array['member_id']));
-
         Tpl::output('joinin_detail', $joinin_detail);
 		Tpl::showpage('store.edit');
 	}
@@ -156,7 +155,7 @@ class storeControl extends SystemControl{
             }
             $param = array();
             $param['company_name'] = $_POST['company_name'];
-            $param['company_province'] = intval($_POST['province_id']);
+            $param['company_province_id'] = intval($_POST['province_id']);
             $param['company_address'] = $_POST['company_address'];
             $param['company_address_detail'] = $_POST['company_address_detail'];
             $param['company_phone'] = $_POST['company_phone'];
@@ -354,9 +353,13 @@ class storeControl extends SystemControl{
 			$shop_array['store_name']	= $joinin_detail['store_name'] ? $joinin_detail['store_name'] : $joinin_detail['member_name'];
 			$shop_array['sc_id']		= $joinin_detail['sc_id'] > 0 ? $joinin_detail['sc_id'] : 0;
             $shop_array['store_company_name'] = $joinin_detail['company_name'];
-			$shop_array['province_id']	= $joinin_detail['company_province'] ? $joinin_detail['company_province'] : 0;
-			$shop_array['area_info']	= $joinin_detail['company_address'] ? $joinin_detail['company_address'] : '';
-			$shop_array['store_address']= $joinin_detail['company_address_detail'] ? $joinin_detail['company_address_detail'] : '';
+
+            $shop_array['province_id']	= $joinin_detail['company_province'] ? $joinin_detail['company_province'] : 0;
+            $shop_array['city_id']	= $joinin_detail['company_city'] ? $joinin_detail['company_city'] : 0;
+            $shop_array['region_id']	= $joinin_detail['	company_region'] ? $joinin_detail['	company_region'] : 0;
+
+            $shop_array['area_info']	= $joinin_detail['company_address'] ? $joinin_detail['company_address'] : '';
+			$shop_array['store_address']= $joinin_detail['company_address_detail'] ? $joinin_detail['company_address_detail'] :'';
 			$shop_array['store_zip']	= '';
 			$shop_array['store_zy']		= '';
 			$shop_array['store_state']	= 1;

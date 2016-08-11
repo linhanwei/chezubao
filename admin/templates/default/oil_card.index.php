@@ -31,14 +31,14 @@
                     <option value="0" <?php if($_GET['paystate_search'] == '0' ) { ?>selected="selected"<?php } ?>>未支付</option>
                     <option value="1" <?php if($_GET['paystate_search'] == '1' ) { ?>selected="selected"<?php } ?>>已支付</option>
                 </select></td><td><select name="search_state" >
-                    <option value='-1'>油卡状态</option>
+                    <option value=''>油卡状态</option>
                     <option value='1' <?php if($_GET['search_state'] == '1' ) { ?>selected="selected"<?php } ?>>待处理</option>
                     <option value='2' <?php if($_GET['search_state'] == '2' ) { ?>selected="selected"<?php } ?>>购买成功</option>
                     <option value='3' <?php if($_GET['search_state'] == '3' ) { ?>selected="selected"<?php } ?>>驳回</option>
                 </select></td>
           <td><a href="javascript:void(0);" id="ncsubmit" class="btn-search " title="<?php echo $lang['nc_query'];?>">&nbsp;</a>
             <?php if($output['search_field_value'] != '' or $output['search_sort'] != ''){?>
-            <a href="index.php?act=member&op=member" class="btns "><span><?php echo $lang['nc_cancel_search']?></span></a>
+            <a href="index.php?act=oil&op=card_list" class="btns "><span><?php echo $lang['nc_cancel_search']?></span></a>
             <?php }?></td>
         </tr>
       </tbody>
@@ -54,6 +54,7 @@
       <tr>
         <td><ul>
             <li>管理会员油卡信息</li>
+                <li>申请中可以进行驳回，驳回后金额退回会员帐户余额。</li>
           </ul></td>
       </tr>
     </tbody>
@@ -87,16 +88,19 @@
           <td class="align-center"><?php echo $v['oc_payment_state'] ? '已支付' : '未支付'; ?></td>
           <td class="align-center"><?php echo $v['oc_mobile'];?></td>
           <td class="align-center"><?php echo $v['oc_card_number'];?></td>
-        <td class="align-center"><?php if($v['oc_state']==1){
+        <td ><?php if($v['oc_state']==1){
                 echo '申请中';
             }elseif($v['oc_state']==2) {
                 echo '审核通过';
             }else{
-                echo '驳回,等待修改资料';
+                echo '驳回<br/>原因：' . $v['remark'];
             }?></td>
           <td class="align-center">
-              <a href="index.php?act=oil&op=card_edit&oc_id=<?php echo $v['oc_id']; ?>"><?php echo $v['oc_state'] == 2 ? '查看':$lang['nc_edit'];?></a>
+              <a href="index.php?act=oil&op=card_edit&oc_id=<?php echo $v['oc_id']; ?>"><?php echo $v['oc_state'] == 2 || $v['oc_state'] == 3 ? '查看':$lang['nc_edit'];?></a>
 
+            <?php if($v['oc_state'] == 1){?>
+              <a class="btn" href="javascript:if (p=prompt('请输入驳回申请原因?')){window.location.href='index.php?act=oil&op=cancel&oc_id=<?php echo $v['oc_id']; ?>&remark='+p;}else{}"><span>驳回申请</span></a>
+        <?php }?>
         </tr>
         <?php } ?>
         <?php }else { ?>

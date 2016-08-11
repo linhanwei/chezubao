@@ -240,14 +240,15 @@ class memberModel extends Model {
 		$member_info['inviter_id']		= $register_info['inviter_id'];
 
         //会员所在地区
-       /* $area_info = getMobileArea($register_info['username']);
+        $area_info = getMobileArea($register_info['username']);
         $member_info['member_provinceid'] = $area_info['prov'];
-        $member_info['member_cityid'] = $area_info['city'];*/
+        $member_info['member_cityid'] = $area_info['city'];
 
+        /*
         $member_info['member_provinceid'] = $register_info['member_provinceid'];
         $member_info['member_cityid'] = $register_info['member_cityid'];
         $member_info['member_areaid'] = $register_info['member_areaid'];
-
+*/
 		$insert_id	= $this->addMember($member_info);
 		if($insert_id) {
 		    //添加会员会员积分
@@ -330,6 +331,18 @@ class memberModel extends Model {
             if($member_info['member_paypwd']){
                 $member_info['is_new'] = 0;
             }
+
+            //店铺是否审核中
+            $member_info['store_audit'] = 0;
+            if($member_info['is_store'] == 0){
+                $check_condition = array();
+                $check_condition['member_id'] = $member_info['member_id'];
+                $check_condition['joinin_state'] = 10;
+                if(Model('store_joinin')->isExist($check_condition)){
+                    $member_info['store_audit'] = 1;
+                }
+            }
+
         }
 
         return $member_info;

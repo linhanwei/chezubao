@@ -107,7 +107,7 @@ $(function(){
             },
             pointsnum   : {
                 required : true,
-                min : 1
+                min : 0.01
             },
             pl_sn :{
                 required : true

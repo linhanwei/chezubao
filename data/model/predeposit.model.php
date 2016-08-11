@@ -335,9 +335,21 @@ class predepositModel extends Model {
         $data_msg['time'] = date('Y-m-d H:i:s');
         //$data_msg['pd_url'] = urlShop('predeposit', 'pd_log_list');
         switch ($change_type){
+            //公益捐赠
+            case 'fund':
+                $data_log['lg_av_amount'] = -$data['amount'];
+                $data_log['lg_desc'] = '公益捐赠，捐赠号: '.$data['fl_sn'];
+                $data_log['lg_admin_name'] = 'system';
+                $data_log['lg_sn'] = $data['fl_sn'];
+                $data_pd['available_predeposit'] = array('exp','available_predeposit-'.$data['amount']);
+
+                $data_msg['av_amount'] = -$data['amount'];
+                $data_msg['freeze_amount'] = 0;
+                $data_msg['desc'] = $data_log['lg_desc'];
+                break;
             case 'oil_card':
                 $data_log['lg_av_amount'] = -$data['amount'];
-                $data_log['lg_desc'] = '购买油卡，订单号: '.$data['oc_sn'];
+                $data_log['lg_desc'] = $data['oc_desc'] ? $data['oc_desc'] : '购买油卡，订单号: '.$data['oc_sn'];
                 $data_log['lg_admin_name'] = $data['admin_name'];
                 $data_log['lg_sn'] = $data['oc_sn'];
                 $data_pd['available_predeposit'] = array('exp','available_predeposit-'.$data['amount']);
@@ -477,7 +489,7 @@ class predepositModel extends Model {
                 $data_msg['desc'] = $data_log['lg_desc'];
                 break;
             case 'cash_apply':
-                $data_log['lg_av_amount'] = $data['amount'];
+                $data_log['lg_av_amount'] = -1 * $data['amount'];
                 $data_log['lg_freeze_amount'] = $data['amount'];
                 $data_log['lg_desc'] = '申请提现，冻结帐户余额，提现单号: '.$data['order_sn'];
                 $data_log['lg_sn'] = $data['order_sn'];
@@ -489,7 +501,7 @@ class predepositModel extends Model {
                 $data_msg['desc'] = $data_log['lg_desc'];
                 break;
             case 'cash_pay':
-                $data_log['lg_freeze_amount'] = $data['amount'];
+                $data_log['lg_freeze_amount'] = -1 * $data['amount'];
                 $data_log['lg_desc'] = '提现成功，提现单号: '.$data['order_sn'];
                 $data_log['lg_sn'] = $data['order_sn'];
                 $data_log['lg_admin_name'] = $data['admin_name'];
@@ -536,9 +548,6 @@ class predepositModel extends Model {
         if (!$update) {
             throw new Exception('操作失败');
         }
-
-        $member_info = Model('member')->getMemberInfoByID($data['member_id']);
-        $data_log['lg_predeposit'] = $member_info['available_predeposit'];
         $insert = $this->table('pd_log')->insert($data_log);
         if (!$insert) {
             throw new Exception('操作失败');
@@ -550,21 +559,16 @@ class predepositModel extends Model {
         $param['member_id'] = $data['member_id'];
         $data_msg['av_amount'] = ncPriceFormat($data_msg['av_amount']);
         $data_msg['freeze_amount'] = ncPriceFormat($data_msg['freeze_amount']);
-        $data_msg['available_predeposit'] = ncPriceFormat($member_info['available_predeposit']);
         $param['param'] = $data_msg;
         QueueClient::push('sendMemberMsg', $param);
         return $insert;
     }
 
     /**
-     * 删除充值记录,已充值不能删除
-     * @param $condition
-     * @return bool
+     * 删除充值记录
+     * @param unknown $condition
      */
     public function delPdRecharge($condition) {
-        if($condition['pdr_payment_state'] !=0){
-            return false;
-        }
         return $this->table('pd_recharge')->where($condition)->delete();
     }
 
@@ -604,6 +608,7 @@ class predepositModel extends Model {
     public function editPd_log($data,$condition = array()) {
         return $this->table('pd_log')->where($condition)->update($data);
     }
+
     /**
      * 取得单条提现信息
      * @param unknown $condition

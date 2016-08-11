@@ -95,6 +95,7 @@
           </td>
           <td class="vatop tips"></td>
         </tr>
+        <?php if($output['oil_array']['oc_state'] == 1 || $output['oil_array']['oc_state'] == 2){?>
         <tr>
             <td colspan="2">------------油卡信息------------</td>
         </tr>
@@ -162,6 +163,7 @@
             </td>
             <td class="vatop tips"></td>
         </tr>
+        <?php }?>
         <tr >
             <td colspan="2" class="required"><label>备注:</label></td>
         </tr>

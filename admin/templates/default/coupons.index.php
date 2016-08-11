@@ -2,7 +2,7 @@
 <div class="page">
   <div class="fixed-bar">
     <div class="item-title">
-      <h3>房车电子券</h3>
+      <h3>电子消费券</h3>
       <ul class="tab-base">
         <li><a href="JavaScript:void(0);" class="current"><span>列表</span></a></li>
           <li><a href="<?php echo urlAdmin('coupons', 'use'); ?>"><span>使用</span></a></li>

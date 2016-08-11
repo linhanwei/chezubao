@@ -1,6 +1,6 @@
 <?php
 /**
- * 房车电子券
+ * 电子消费券
  */
 
 defined('InSystem') or exit('Access Invalid!');
@@ -58,10 +58,11 @@ class couponsModel extends Model
      * @param int $id 表字增ID
      * @param int $memberId 会员ID
      * @param string $memberName 会员名称
+     * @param int $store_id 所在店铺
      *
      * @return boolean
      */
-    public function setCouponsUsedById($id, $memberId, $memberName)
+    public function setCouponsUsedById($id, $memberId, $memberName,$store_id)
     {
         return $this->where(array(
             'id' => (string) $id,
@@ -70,6 +71,7 @@ class couponsModel extends Model
             'state' => 1,
             'member_id' => $memberId,
             'member_name' => $memberName,
+            'store_id' =>$store_id
         ));
     }
 

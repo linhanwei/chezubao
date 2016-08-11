@@ -32,12 +32,26 @@
         <tr class="noborder">
           <td class="vatop rowform"><?php echo $output['info']['pdc_amount']; ?>&nbsp;<?php echo $lang['currency_zh'];?></td>
           <td class="vatop tips"></td>
+        </tr> <tr>
+            <td colspan="2" class="required"><label>手续费:</label></td>
         </tr>
+        <tr class="noborder">
+            <td class="vatop rowform"><?php echo $output['info']['pdc_amount'] . '&nbsp;X&nbsp;' . $output['info']['pdc_amount_rate'] * 100; ?>%&nbsp;=&nbsp;<?php echo $output['info']['pdc_amount'] * $output['info']['pdc_amount_rate'];?>&nbsp;<?php echo $lang['currency_zh'];?></td>
+            <td class="vatop tips"></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="required"><label>实际所得:</label></td>
+        </tr>
+        <tr class="noborder">
+            <td class="vatop rowform"><?php echo $output['info']['pdc_amount_get']; ?>&nbsp;<?php echo $lang['currency_zh'];?></td>
+            <td class="vatop tips"></td>
+        </tr>
+
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['admin_predeposit_cash_shoukuanbank']; ?>:</label></td>
         </tr>
         <tr class="noborder">
-          <td class="vatop rowform"><?php echo $output['info']['pdc_bank_name']; ?></td>
+          <td class="vatop rowform"><?php echo $output['info']['pdc_bank_name'] . '<br/>支行：' . $output['info']['bank_info']['province_name'] . '&nbsp&nbsp' . $output['info']['bank_info']['city_name'] . '&nbsp&nbsp' . $output['info']['bank_info']['branch_name']; ?></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>

@@ -50,7 +50,7 @@ $arr = array(
 				'text' => $lang['nc_config'],
 				'list' => array(
 					/*array('args'=>'base,setting,setting',			'text'=>$lang['nc_web_set']),*/
-                    array('args'=>'help_store,help_store,setting',			'text'=>'帮助说明'),
+                    array('args'=>'document,document,setting',			'text'=>'协议帮助'),
 					array('args'=>'param,upload,setting',			'text'=>$lang['nc_upload_set']),
 					array('args'=>'mobile,message,setting',			'text'=>$lang['nc_message_set']),
 					array('args'=>'system,payment,setting',			'text'=>$lang['nc_pay_method']),
@@ -58,6 +58,8 @@ $arr = array(
 					array('args'=>'clear,cache,setting',			'text'=>$lang['nc_admin_clear_cache']),
 					array('args'=>'db,db,setting',			'text'=>'数据备份'),
 					array('args'=>'list,admin_log,setting',			'text'=>$lang['nc_admin_log']),
+                    array('args'=>'article_class,question_class,setting',			'text'=>'问题分类'),
+                    array('args'=>'article,question,setting',			'text'=>'问题管理')
 				)
 			),
             2 => array(
@@ -88,10 +90,9 @@ $arr = array(
                     array('args'=>'index,member_grade,member',				'text'=>'会员级别'),
                     array('args'=>'notice,notice,member',					'text'=>$lang['nc_member_notice']),
                     array('args'=>'addpoints,points,member',				'text'=>$lang['nc_member_pointsmanage']),
+                    array('args'=>'manual_add,predeposit,member',				'text'=>'现金充值'),
                     array('args'=>'points_inviter_log,points_inviter,member',				'text'=>'奖励'),
                     array('args'=>'predeposit,predeposit,member',			'text'=>$lang['nc_member_predepositmanage']),
-                    array('args'=>'manual_add,predeposit,member','text'=>'现金充值'),
-                    array('args'=>'index,invite,member',			'text'=>'推荐人统计'),
                     array('args'=>'feedback,agent,member',			'text'=>'加盟申请'),
                     array('args'=>'card_list,oil,member',			'text'=>'油卡管理'),
                     array('args'=>'recharge,oil,member',			'text'=>'油卡充值')
@@ -117,8 +118,9 @@ $arr = array(
 				'text' => $lang['nc_operation'],
 				'list' => array(
 					array('args'=>'setting,operation,operation',			    'text'=>$lang['nc_operation_set']),
-                    array('args'=>'setting,coupons,operation',			    'text'=>'房车电子券')
-				)
+				    array('args'=>'setting,coupons,operation',			    'text'=>'电子消费券'),
+                    array('args'=>'index,fund,operation',			    'text'=>'公益慈善')
+                )
 			)
 		),
 );

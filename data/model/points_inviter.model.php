@@ -65,12 +65,12 @@ class points_inviterModel {
 		}
 		$value_array['pl_points'] = $insertarr['pl_points'];
 		$value_array['pl_addtime'] = time();
-        $value_array['pl_sn'] = $insertarr['pl_sn'];
 		$value_array['pl_desc'] = $insertarr['pl_desc'];
 		$value_array['pl_stage'] = $stage;
 		$result = false;
 		if($value_array['pl_points'] != 0){
 			$result = self::addPointsLog($value_array);
+
             if ($result){
                 //更新member内容
                 $obj_member = Model('member');
@@ -86,6 +86,8 @@ class points_inviterModel {
                 throw new Exception('积分添加失败');
             }
 		}
+
+
 	}
 
 	/**
