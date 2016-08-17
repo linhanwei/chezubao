@@ -1,3 +1,3 @@
-<?php
-defined('InSystem') or exit('Access Invalid!');
-
+<?php
+defined('InSystem') or exit('Access Invalid!');
+

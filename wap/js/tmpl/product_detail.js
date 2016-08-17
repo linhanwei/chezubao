@@ -215,7 +215,7 @@ $(function (){
             });
 
             //立即购买
-            console.log(data);
+
             if (data.goods_info.is_virtual == '1') {
                 $(".buy-now").click(function() {
                     var key = getcookie('key');//登录标记

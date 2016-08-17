@@ -1,4 +1,4 @@
-var SiteUrl = "http://"+window.location.host;
+var SiteUrl = "http://"+window.location.host+'/czb';
 var ApiUrl =  SiteUrl+"/mall_m";
 var pagesize = 10;
 var WapSiteUrl =SiteUrl+"/wap";
