@@ -14,9 +14,12 @@
                 var html = template.render('home_detail', data);
                 $(".goods_detail").append(html);
 
+                //初始化轮播图
                 $('.am-slider').flexslider();
                 if (data.goods_detail.goods_detail) {
                     $('#detail_content').html(data.goods_detail.goods_detail);
+
+                    //初始折叠面板
                     $.AMUI.accordion.init();
                 }
             }
