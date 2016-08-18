@@ -1,3 +1,24 @@
+.am-modal.am-modal-active{
+    overflow: visible;
+}
+.am-modal-dialog{
+    width: 96%;
+}
+.am-form select{
+    font-size: 1.2rem;
+}
+[class*=am-u-] {
+    padding: 0;
+}
+.am-modal-footer .am-radius{
+    width: 33%;
+    display: block;
+    margin: 0 auto;
+}
+#my-address #goods_number{
+    width: 75px;
+    display: inline-block;
+}
 .header {
   height: 44px;
   background: #f60;

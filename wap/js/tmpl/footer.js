@@ -16,7 +16,7 @@ $(function() {
     var html = render();
 
     var url = location.href;
-    console.log(url);
+    // console.log(url);
     if(url.indexOf('zero/list.html') > 0){
         var tmpl2 = '<div id="bottom"><div style=" height:40px;">' + '<div id="nav-tab" style="bottom:-40px;">' + '<div id="nav-tab-btn"><i class="fa fa-chevron-down"></i></div>' + '<div class="clearfix tab-line nav">' + 
                     '<div class="tab-line-item" style="width:25%;" ><a href="' + WapSiteUrl + '"><i class="fa fa-home"></i><br>首页</a></div>' + 

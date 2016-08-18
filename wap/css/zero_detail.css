@@ -28,6 +28,10 @@
     display: block;
     margin: 0 auto;
 }
+#my-address #goods_number{
+    width: 75px;
+    display: inline-block;
+}
 .goods-title span{
     color: #E80000;
 }
