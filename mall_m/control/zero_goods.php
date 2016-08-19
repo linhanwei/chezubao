@@ -17,24 +17,24 @@ class zero_goodsControl extends mobileHomeControl {
      * 商品列表
      */
     public function goods_listOp() {
-        
+
         $model_zero_goods = Model('zero_goods');
        
         //查询条件
         $condition = array();
        
         //所需字段
-        $fieldstr = "goods_id,goods_name,goods_freight,goods_image_index,goods_progress,goods_join_num,goods_surplus_num,goods_total_num";
+        $fieldstr = "goods_id,goods_name,goods_weight,goods_freight,goods_image_index,goods_progress,goods_join_num,goods_surplus_num,goods_total_num";
 
         //排序方式
         $order = $this->_goods_list_order($_GET['key'], $_GET['order']);
 
         $goods_list = $model_zero_goods->getGoodsOnlineList($condition, $fieldstr, $this->page, $order, 0, '',false, 0);
         $page_count = $model_zero_goods->gettotalpage();
-        
-        for($i=0;$i<=15;$i++){
-            $goods_list[] = $goods_list[0];
-        }
+
+//        for($i=0;$i<=15;$i++){
+//            $goods_list[] = $goods_list[0];
+//        }
         $out_data['goods_list'] = $goods_list;
         $out_data['base_site_url'] = UPLOAD_SITE_URL.DS;
         $out_data['wap_site_url'] = $config['wap_site_url'].DS;

@@ -254,9 +254,13 @@ class predepositControl extends mobileMemberControl {
         //$this->checkTimes('transfer'.$this->member_info['member_name'] . $_POST['pdt_amount']);
         $cache_key = $_POST['cache_key'];
         $identifying_code = $_POST['identifying_code'];
+        $gaojihuo = $_POST['gaojihuo'] ? $_POST['gaojihuo'] : 0;
 
-        if(rkcache($cache_key) == '' || $identifying_code != rkcache($cache_key)){
-            output_error('验证码不正确');
+
+        if($gaojihuo==0){
+            if(rkcache($cache_key) == '' || $identifying_code != rkcache($cache_key)){
+                output_error('验证码不正确');
+            }
         }
 
         $pdt_amount = round(abs(floatval($_POST['pdt_amount'])),2);
@@ -299,8 +303,10 @@ class predepositControl extends mobileMemberControl {
         }
 
         $member_pass_info = $model_member->getMemberInfoByID($this->member_info['member_id']);
-        if($member_pass_info['member_paypwd'] != md5($password)){
-            output_error('支付密码不正确');
+        if($gaojihuo==0) {
+            if ($member_pass_info['member_paypwd'] != md5($password)) {
+                output_error('支付密码不正确');
+            }
         }
 
         $model_pd = Model('predeposit');
@@ -352,6 +358,9 @@ class predepositControl extends mobileMemberControl {
                 if($member['is_store'] == '1'){
                     //消费者上级佣金
                     Logic('inviter')->buyerCommis($transfer_info['pdt_from_member_id'],$transfer_info['pdt_from_member_name'],$pdt_amount,$transfer_info['pdt_sn']);
+
+                    //商户收入代理佣金
+                    Logic('inviter')->sellerCommis($transfer_info['pdt_to_member_id'],$transfer_info['pdt_to_member_name'],$pdt_amount,$transfer_info['pdt_sn']);
 
                     //变更家商帐户余额
                     //收款85%

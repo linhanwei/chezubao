@@ -45,7 +45,12 @@ class oilControl extends mobileMemberControl {
             output_data(array('step'=>4,'msg'=>'资料有误，请修改','card'=>$oil_card));
         }
 
+
+
         if($return){
+            if($oil_card['oc_type'] == '2'){
+                output_data(array('step'=>3,'msg'=>'ＢＰ油卡不能充值','card'=>$oil_card));
+            }
             return;
         }
         output_data(array('step'=>5,'msg'=>'油卡可充值','card'=>$oil_card));
@@ -142,6 +147,11 @@ class oilControl extends mobileMemberControl {
         $idcard_number = $_POST['idcard_number'];
         $idcard_name    =$_POST['idcard_name'];
         $address = $_POST['address'];
+        $oc_type = $_POST['oc_type'] ? $_POST['oc_type'] : 1;
+        $oil_price = OIL_PRICE;
+        if($oc_type == 2){
+            $oil_price = OIL_BP_PRICE;
+        }
 
         if(!in_array($payment_code,array('wxpay','alipay','predeposit'))){
             output_error('请输入正确的支付方式');
@@ -163,7 +173,7 @@ class oilControl extends mobileMemberControl {
             output_error('请输入收货地址');
         }
 
-        if(OIL_PRICE > $this->member_info['available_predeposit']){
+        if($oil_price > $this->member_info['available_predeposit']){
             output_error('您的账户余额不够,请先充值!');
         }
 
@@ -180,7 +190,8 @@ class oilControl extends mobileMemberControl {
             }
             $pay_sn = $oil_card_info['oc_sn'];
             $new_data = array();
-            $new_data['oc_amount'] = OIL_PRICE;
+            $new_data['oc_type'] = $oc_type;
+            $new_data['oc_amount'] = $oil_price;
             $new_data['oc_mobile'] = $mobile;
             $new_data['oc_idcard_front'] = $this->upload_image('idcard_front');
             if(empty($new_data['oc_idcard_front'])){
@@ -197,9 +208,10 @@ class oilControl extends mobileMemberControl {
             $model_oc->editOilCard($new_data,$condition);
         }else{
             $data['oc_sn'] = $model_oc->makeSn($this->member_info['member_id']);
+            $data['oc_type'] = $oc_type;
             $data['oc_member_id'] = $this->member_info['member_id'];
             $data['oc_member_name'] = $this->member_info['member_name'];
-            $data['oc_amount'] = OIL_PRICE;
+            $data['oc_amount'] = $oil_price;
             $data['oc_add_time'] = TIMESTAMP;
 
             $data['oc_mobile'] = $mobile;
@@ -231,7 +243,7 @@ class oilControl extends mobileMemberControl {
                 $data = array();
                 $data['member_id'] = $this->member_info['member_id'];
                 $data['member_name'] = $this->member_info['member_name'];
-                $data['amount'] = OIL_PRICE;
+                $data['amount'] = $oil_price;
                 $data['oc_sn'] = $oc_sn;
 
                 try{
