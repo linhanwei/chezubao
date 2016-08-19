@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="../../../data/resource/amazeui/css/app.css">
     <link rel="stylesheet" type="text/css" href="../../css/main.css">
     <link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../css/zero_list.css">
+    <link rel="stylesheet" href="../../css/zero_order_list.css">
     
     <!--[if lt IE 9]>
     <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
@@ -51,12 +51,14 @@
     </div> -->
     <!-- 头部结束 -->
     <!-- 导航开始 -->
-      <!-- <div class="main_nav">
-        <div class="am-btn-group-justify">
-          <a class="am-btn am-btn-default" role="button" href="" >分类</a>
-          <a class="am-btn am-btn-default am-text-center active" role="button" href="" >我的0元淘</a>
-        </div>
-      </div> -->
+      <div class="main_nav">
+        <ul class="am-avg-sm-4">
+          <li><button type="button" class="am-btn am-btn-default active">全部</button></li>
+          <li><button type="button" class="am-btn am-btn-default">待发货</button></li>
+          <li><button type="button" class="am-btn am-btn-default">已发货</button></li>
+          <li><button type="button" class="am-btn am-btn-default">已完成</button></li>
+        </ul>
+      </div>
     <!-- 导航结束 -->
     <!-- 分页开始 -->
     <!-- <div class="main_page am-margin-top-xs">
@@ -161,7 +163,7 @@
       </div>
     <!-- 商品列表结束 -->
     <!-- 底部导航开始 -->
-    <footer id="footer">
+   <!--  <footer id="footer">
           <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default "
       id="">
               <ul class="am-navbar-nav am-cf am-avg-sm-4">
@@ -177,7 +179,7 @@
                           <span class="am-navbar-label">分享</span>
                       </a>
                   </li>
-                  <!-- <li data-am-navbar-qrcode>
+                  <li data-am-navbar-qrcode>
                       <a href="###" class="">
                           <span class="am-icon-qrcode"></span>
                           <span class="am-navbar-label">二维码</span>
@@ -188,86 +190,11 @@
                           <span class="am-icon-github"></span>
                           <span class="am-navbar-label">GitHub</span>
                       </a>
-                  </li> -->
+                  </li>
               </ul>
           </div>
-    </footer>
+    </footer> -->
     <!-- 底部导航结束 -->
-    <!-- 地址弹窗开始 -->
-    <div class="am-popup"  id="my-address">
-        <input type="hidden" name="goods_id" id="goods_id">
-        <div class="am-popup-inner">
-            <div class="am-popup-hd">
-                <h5 class="am-popup-title">填写收货地址</h5>
-                <span data-am-modal-close class="am-close">&times;</span>
-            </div>
-            <div class="am-popup-bd">
-                <form class="am-form am-form-horizontal">
-                    <div class="am-form-group">
-                       <label for="prov_select" class="am-u-sm-3 am-form-label">省份：</label>
-                       <div class="am-u-sm-9">
-                            <select class="select-30" id="prov_select" name="prov">
-                                <option value="">请选择...</option>
-                            </select>
-                       </div>
-                    </div>
-                    <div class="am-form-group">
-                        <label for="city_select" class="am-u-sm-3 am-form-label">城市：</label>
-                        <div class="am-u-sm-9">
-                            <select class="select-30" id="city_select" name="city">
-                                <option value="">请选择...</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="am-form-group">
-                        <label for="region_select" class="am-u-sm-3 am-form-label">区县：</label>
-                        <div class="am-u-sm-9">
-                            <select class="select-30" id="region_select" name="region">
-                                <option value="">请选择...</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="am-form-group">
-                        <label for="address" class="am-u-sm-3 am-form-label">详细地址:</label>
-                        <div class="am-u-sm-9">
-                            <input type="text" class="input-30" id="address" name="address">
-                        </div>
-                    </div>
-                    <div class="am-form-group">
-                        <label for="true_name" class="am-u-sm-3 am-form-label">收货人姓名:</label>
-                        <div class="am-u-sm-9">
-                            <input type="text" class="input-30" id="true_name" name="true_name">
-                        </div>
-                    </div>
-                    <div class="am-form-group">
-                        <label for="mob_phone" class="am-u-sm-3 am-form-label">手机号码:</label>
-                        <div class="am-u-sm-9">
-                            <input type="text" class="input-30" id="mob_phone" name="mob_phone">
-                        </div>
-                    </div>
-                    <div class="am-form-group">
-                        <label for="goods_freight" class="am-u-sm-3 am-form-label">运费:</label>
-                        <div class="am-u-sm-9">
-                            <input type="text" class="input-30" id="goods_freight" name="goods_freight" value="" disabled>
-                        </div>
-                    </div>
-                    <div class="am-form-group">
-                        <label for="goods_freight" class="am-u-sm-3 am-form-label">购买数量:</label>
-                        <div class="am-u-sm-9">
-                            <button type="button" class="am-btn am-btn-default red_goods_num">-</button>
-                            <input type="text" class="input-10" id="goods_number" name="goods_number" value="1">
-                            <button type="button" class="am-btn am-btn-default inc_goods_num">+</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="error-tips"></div>
-            <div class="am-modal-footer">
-                <button type="button" class="am-btn am-btn-primary am-radius add_address">确定</button>
-            </div>
-        </div>
-    </div>
-    <!-- 地址弹窗结束 -->
     <input type="hidden" name="key" value="4">
     <input type="hidden" name="order" value="1">
     <input type="hidden" name="page" value="10">
@@ -289,6 +216,8 @@
                     <div class="goods_title am-text-truncate">
                         <%=goods_list[i].goods_name;%>
                     </div>
+                    <div class="order_number" style="margin-top:5px;">订单号:201608190513240000</div>
+                    <div class="order_number" style="margin-top:5px;">发货单号:201608190513240000</div>
                     <div class="process_cart">
                         <div class="goods_process_detail">
                             <div class="process">
@@ -309,7 +238,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="add_cart" onclick="add_cart(<%=goods_list[i].goods_id;%>,<%=goods_list[i].goods_freight;%>)" data-am-modal="{target: '#my-address',a:1132132132132132}"><i class="am-icon-cart-plus"></i></div>
+                        <div class="add_cart" onclick="add_cart(<%=goods_list[i].goods_id;%>,<%=goods_list[i].goods_freight;%>)" ><i class="am-icon-cart-plus"></i></div>
                     </div>
                 </div>
             </div>
@@ -328,6 +257,6 @@
 <script type="text/javascript" src="../../js/config.js"></script>
 <script type="text/javascript" src="../../js/common.js"></script>
 <script type="text/javascript" src="../../js/template.js"></script>
-<script type="text/javascript" src="../../js/tmpl/zero_goods_list.js"></script>
+<script type="text/javascript" src="../../js/tmpl/zero_order_list.js"></script>
 <!-- <script type="text/javascript" src="../../js/tmpl/footer.js"></script> -->
 </html>

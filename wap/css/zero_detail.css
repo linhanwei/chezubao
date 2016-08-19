@@ -6,6 +6,10 @@
     clear: both;
     height: 0;
 }
+img{
+    display: block;
+    width: 100%;
+}
 .am-modal.am-modal-active{
     overflow: visible;
 }
