@@ -7,28 +7,123 @@
  */
 defined('InSystem') or exit('Access Invalid!');
 
-class zero_goodsControl extends mobileHomeControl {
+class zero_orderControl extends mobileMemberControl {
 
     public function __construct() {
         parent::__construct();
     }
 
     /**
-     * 商品列表
+     * 订单列表
      */
-    public function goods_listOp() {
-        $model_zero_goods = Model('zero_goods');
-        $model_zero_goods = Model('zero_order');
+    public function order_listOp() {
+        //status: 0:全部,1:待发货,2:已发货,3:已完成
+        $status = $_GET['status'];
+        $member_id = $this->member_info['member_id'];
+
+        $model_zero_order = Model('zero_order');
+
+        //查询条件
+        $condition = array();
+
+        $condition['buyer_id'] = $member_id;
+        switch ($status){
+            case 0:
+
+                break;
+            case 1:
+                $condition['order_state'] = 20;
+                break;
+            case 2:
+                $condition['order_state'] = 30;
+                break;
+            case 3:
+                $condition['order_state'] = 40;
+                break;
+        }
+
+        //关联表
+        $list = $model_zero_order->getMemberOrderList($condition,$this->page);
+//        $page_count = $model_zero_order->gettotalpage();
+
+//        for($i=0;$i<=15;$i++){
+//            $list[] = $list[0];
+//        }
+        $out_data['status'] = $status;
+        $out_data['goods_list'] = $list;
+        $out_data['base_site_url'] = UPLOAD_SITE_URL.DS;
+        $out_data['wap_site_url'] = $config['wap_site_url'].DS;
 
         output_data($out_data, mobile_page($page_count));
     }
-    
+
+    /**
+     * 订单详情
+     */
+    public function order_detailOp(){
+        $order_id = $_GET['oid'];
+        $condition['order_id'] = $order_id;
+
+        $model_zero_order = Model('zero_order');
+        $info = $model_zero_order->getMemberOrderDetail($condition);
+
+        if (empty($info)) {
+            output_error('订单不存在');
+        }
+
+        $output_data['goods_detail'] = $info;
+        output_data($output_data);
+    }
+
+    /**
+     * 会员确认收货
+     *
+     */
+    public function edit_orderOp(){
+        $order_id = $_POST['oid'];
+
+        if(empty($order_id)){
+            output_error('请选择订单!');
+        }
+
+        $member_id = $this->member_info['member_id'];
+
+        if(empty($member_id)){
+            output_error('您还没登录,请先登录!');
+        }
+
+        $model_zero_order = Model('zero_order');
+
+        $condition['buyer_id'] = $member_id;
+        $condition['order_id'] = $order_id;
+        $condition['order_state'] = 30;
+
+        $count = $model_zero_order->getCount($condition);
+
+        if($count == 0){
+            output_error('非法操作!!');
+        }
+
+        $update['order_state'] = 40;
+        $result = $model_zero_order->editData($update, $condition);
+
+        if($result){
+            $out_data['status'] = 1;
+            $out_data['msg'] = '确认收货成功!';
+        }else{
+            $out_data['status'] = 0;
+            $out_data['msg'] = '确认收货失败!';
+        }
+
+        output_data($out_data);
+    }
+
     /*
      * 下订单
      */
     public function create_orderOp() {
         $goods_number = $_POST['goods_number'];
-        $payment_code = $_POST['payment_code'];
+        $payment_code = $_POST['payment_code'] ? $_POST['payment_code'] : 'predeposit';
         $goods_id = $_POST['goods_id'];
         $prov = $_POST['prov_id'];
         $city = $_POST['city_id'];
@@ -37,8 +132,8 @@ class zero_goodsControl extends mobileHomeControl {
         $address = $_POST['address'];
         $mob_phone = $_POST['mob_phone'];
         $buyer_name = $_POST['true_name'];
-              
-//        $this->checkOp(true);
+        $goods_freight = $_POST['goods_freight'];
+
         if($goods_number<= 0){
             output_error('购买数量最少1个!');
         }
@@ -94,10 +189,9 @@ class zero_goodsControl extends mobileHomeControl {
             output_error('该商品没有通过审核暂时不能销售,请选择其他的产品!');
         }
         
-        //获取运费
-        $goods_freight = $this->get_goods_freight($goods_info['goods_freight']);
-        
-        $goods_amount = $goods_number*$goods_freight;//总金额
+        //获取运费的总价
+        $goods_amount = $this->compute_amount($prov,$goods_info,$goods_number);
+
 
         if(!in_array($payment_code,array('predeposit'))){
             output_error('请输入正确的支付方式');
@@ -108,8 +202,6 @@ class zero_goodsControl extends mobileHomeControl {
         }
 
         $data = array();
-        $order_sn = '';
-        
         //添加订单信息
         $data['order_sn'] = $model_pd->makeSn($this->member_info['member_id']);//订单号
         $data['buyer_id'] = $this->member_info['member_id'];
@@ -128,21 +220,33 @@ class zero_goodsControl extends mobileHomeControl {
         $data['delete_state'] = 0;
         $data['order_from'] = 1;
         $data['add_time'] = TIMESTAMP;
-        
-        $insert = $model_zero_order->addData($data);
-        
-        if($insert){
-            $order_sn = $data['order_sn'];
-        }
 
-        if ($order_sn) {
+        $order_id = $model_zero_order->addData($data);
+        
+        if($order_id){
+            $order_sn = $data['order_sn'];
+            //添加订单商品信息
+            $data = array();
+            $data['order_id'] = $order_id;
+            $data['goods_id'] = $goods_id;
+            $data['goods_name'] = $goods_info['goods_name'];
+            $data['goods_price'] = $goods_info['goods_price'];
+            $data['goods_num'] = $goods_number;
+            $data['goods_image'] = $goods_info['goods_image_index'];
+            $data['goods_pay_price'] = $goods_freight;
+            $data['buyer_id'] = $this->member_info['member_id'];
+            $model_zero_order_goods->addData($data);
+
+            //修改商品信息
+            $model_zero_goods->editGoodsProcess($goods_id,$goods_number);
+
             //余额支付
             if($payment_code == 'predeposit'){
 
                 $model_pd->beginTransaction();
                 
                 $pay_sn = $model_pd->makeSn($this->member_info['member_id']);//支付单号
-                
+
                 //减余额
                 $data = array();
                 $data['member_id'] = $this->member_info['member_id'];
@@ -151,43 +255,20 @@ class zero_goodsControl extends mobileHomeControl {
                 $data['order_sn'] = $order_sn;
 
                 try{
+
                     if($model_pd->changePd('zero_order_pay',$data)){
-                        
                         $is_add_success = TRUE;
-                        
-                        //添加订单商品信息
-                        $data = array();
-                        $data['order_id'] = 1;
-                        $data['goods_id'] = $goods_id;
-                        $data['goods_name'] = $goods_info['goods_name'];
-                        $data['goods_price'] = $goods_info['goods_price'];
-                        $data['goods_num'] = $goods_number;
-                        $data['goods_image'] = $goods_info['goods_image_index'];
-                        $data['goods_pay_price'] = $goods_freight;
-                        $data['buyer_id'] = $this->member_info['member_id'];
-
-                        $order_goods_id = $model_zero_order_goods->addData($data);
-                        if(!$order_goods_id){
-                            $is_add_success = FALSE;
-                        }
-
-                        //修改商品信息
-                        $edit_goods_result = $model_zero_goods->editGoodsProcess($goods_id,$goods_number);
-                        if(!$edit_goods_result){
-                            $is_add_success = FALSE;
-                        }
                 
                         $update = array();
-                        $update['order_state'] = 30;
+                        $update['order_state'] = 20;
                         $update['payment_time'] = TIMESTAMP;
                         $update['payment_code'] = 'predeposit';
-                        $update['ol_payment_name'] = '余额支付';
                         $update['pay_sn'] = $pay_sn;
-                        
                         $update = $model_zero_order->editData($update,array('order_sn'=>$order_sn));
                         if(!$update){
                             $is_add_success = FALSE;
                         }
+
 
                         if($is_add_success){
                             $model_pd->commit();
@@ -207,23 +288,33 @@ class zero_goodsControl extends mobileHomeControl {
         
         return FALSE;
     }
-    
-     /*
-     * 下单限制条件
-     */
-    public function checkOp($return = false){
-        if($this->member_info['grade_id'] != 1){
-//            output_data(array('step'=>1,'msg'=>'VIP专属，请升级'));
-        }
 
-    }
     
     /**
      * 计算邮费
-     * @param type $goods_freight
+     * @param int $prov
+     * @param int $goods_info
+     * @param int $goods_num
+     * @return array
      */
-    private function get_goods_freight($goods_freight) {
-        return $goods_freight;
+    private function compute_amount($prov,$goods_info,$goods_num) {
+        $freight_1 = array(20,24,21,12,17,14,18,13,23,22,19,25,15,16,10,27,9,11,1,2,28,26,30);
+        $freight_2 = array(3,4,6,7,29,31,5,8);
+        $freight = 0;
+
+
+        $next_weight_times = ceil(($goods_num * $goods_info['goods_weight'] - 500) / 500);
+
+
+        if(in_array($prov,$freight_1)){
+            $freight = intval($goods_info['goods_freight'] + $next_weight_times * 10);
+        }else if(in_array($prov,$freight_2)){
+            $freight = intval($goods_info['goods_freight'] + $next_weight_times * 17);
+        }else{
+            $freight = intval($goods_info['goods_freight'] + $next_weight_times * 10);
+        }
+
+        return $freight * $goods_num;
     }
 
 }

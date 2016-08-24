@@ -335,6 +335,18 @@ class predepositModel extends Model {
         $data_msg['time'] = date('Y-m-d H:i:s');
         //$data_msg['pd_url'] = urlShop('predeposit', 'pd_log_list');
         switch ($change_type){
+            //0元淘
+            case 'zero_order_pay':
+                $data_log['lg_av_amount'] = -$data['amount'];
+                $data_log['lg_desc'] = '0元淘,单号: '.$data['order_sn'];
+                $data_log['lg_admin_name'] = 'system';
+                $data_log['lg_sn'] = $data['order_sn'];
+                $data_pd['available_predeposit'] = array('exp','available_predeposit-'.$data['amount']);
+
+                $data_msg['av_amount'] = -$data['amount'];
+                $data_msg['freeze_amount'] = 0;
+                $data_msg['desc'] = $data_log['lg_desc'];
+                break;
             //公益捐赠
             case 'fund':
                 $data_log['lg_av_amount'] = -$data['amount'];
@@ -539,17 +551,6 @@ class predepositModel extends Model {
                 $data_msg['freeze_amount'] = 0;
                 $data_msg['desc'] = $data_log['lg_desc'];
                 break;
-            case 'zero_order_pay':
-                $data_log['lg_av_amount'] = -$data['amount'];
-                $data_log['lg_desc'] = '下单，支付帐户余额，订单号: '.$data['order_sn'];
-                $data_log['lg_sn'] = $data['order_sn'];
-                $data_pd['available_predeposit'] = array('exp','available_predeposit-'.$data['amount']);
-
-                $data_msg['av_amount'] = -$data['amount'];
-                $data_msg['freeze_amount'] = 0;
-                $data_msg['desc'] = $data_log['lg_desc'];
-                break;
-           
             default:
                 throw new Exception('参数错误');
                 break;
@@ -569,8 +570,10 @@ class predepositModel extends Model {
         $param['code'] = 'predeposit_change';
         $param['member_id'] = $data['member_id'];
         $data_msg['av_amount'] = ncPriceFormat($data_msg['av_amount']);
-        $data_msg['available_predeposit'] = ncPriceFormat($data_msg['available_predeposit']);
         $data_msg['freeze_amount'] = ncPriceFormat($data_msg['freeze_amount']);
+        //当前余额
+        $member_info = Model('member')->getMemberInfoByID($data['member_id']);
+        $data_msg['available_predeposit'] = $member_info['available_predeposit'];
         $param['param'] = $data_msg;
         QueueClient::push('sendMemberMsg', $param);
         return $insert;

@@ -283,13 +283,12 @@ class memberModel extends Model {
             //默认头像
             if(!@fopen($member_info['member_avatar'],'r')){
                 $member_info['member_avatar'] =  UPLOAD_SITE_URL.'/'.ATTACH_COMMON.DS.'default_user_avatar.png';
+            }else{
+                $member_info['member_avatar'] .= '?r=' . time();
             }
             if($member_info['inviter_id'] > 0){
-                $inviter_member = rcache($member_info['inviter_id'], 'member', '*');
-                if (empty($inviter_member)) {
-                    $inviter_member = $this->table('member')->field('*')->where(array('member_id'=>$member_info['inviter_id']))->master(true)->find();
-                    wcache($member_info['inviter_id'], $inviter_member, 'member');
-                }
+                $inviter_member = $this->table('member')->field('*')->where(array('member_id'=>$member_info['inviter_id']))->master(true)->find();
+
                 unset($inviter_member['member_passwd']);
                 unset($inviter_member['member_paypwd']);
                 unset($inviter_member['inviter_id']);

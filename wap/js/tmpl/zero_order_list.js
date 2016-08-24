@@ -1,10 +1,18 @@
+var key = getcookie('key');
 $(function(){
   
     //顶部选项
     $('.main_nav .am-btn').on('click', function(event) {
         event.preventDefault();
+
         $(this).parent('li').siblings().find('.am-btn').removeClass('active');
         $(this).addClass('active');
+
+        //加载订单列表
+        $(".goods_list").html('');
+        var status = $(this).attr('status');
+        console.log(status);
+        get_order_list(status);
     });
 
     //开始加载订单列表
@@ -120,11 +128,12 @@ function get_order_list(status){
     //默认选择订单状态
     $('.main_nav .am-btn').parent('li').siblings().find('.am-btn').removeClass('active');
     $('.main_nav .am-btn').eq(status).addClass('active');
-   
+    console.log(ApiUrl+"/index.php?act=zero_order&op=order_list&curpage=1&status="+status+"&page="+pagesize,2222);
     $.ajax({
-        url:ApiUrl+"/index.php?act=zero_goods&op=goods_list&key=4&page="+pagesize+"&curpage=1"+"status=".status,
+        url:ApiUrl+"/index.php?act=zero_order&op=order_list&curpage=1&status="+status+"&page="+pagesize,
         type:'get',
         dataType:'json',
+        data:{key:key},
         success:function(result){
             $("input[name=hasmore]").val(result.hasmore);
             if(!result.hasmore){
@@ -140,4 +149,35 @@ function get_order_list(status){
         }
     });
    
+}
+
+function edit_order(oid){
+    if(oid == ''){
+        return false;
+    }
+
+    if(!confirm('您确定已经收到产品了吗?')){
+        return false;
+    }
+
+    $.ajax({
+        url:ApiUrl+"/index.php?act=zero_order&op=edit_order",
+        type:'post',
+        data:{key:key,oid:oid},
+        dataType:'json',
+        success:function(result){
+            var datas = result.datas;
+            if(datas.error){
+                alert(datas.error);
+            }else{
+                alert(datas.msg);
+                if(datas.status == 1){
+                    window.location.href  = window.location.href;
+                }
+
+            }
+
+        }
+    });
+
 }

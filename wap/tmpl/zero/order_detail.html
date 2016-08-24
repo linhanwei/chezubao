@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>0元购--商品详情</title>
+    <title>0元购--订单详情</title>
 
     <!-- Set render engine for 360 browser -->
     <meta name="renderer" content="webkit">
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="../../../data/resource/amazeui/css/app.css">
     <link rel="stylesheet" type="text/css" href="../../css/main.css">
     <link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../css/zero_detail.css">
+    <link rel="stylesheet" href="../../css/zero_order_detail.css">
     
     <!--[if lt IE 9]>
     <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
@@ -156,8 +156,8 @@
   </body>
   <script type="text/html" id="home_detail">
     <% if(!error){%>
-      <!-- 图片轮播 -->      
-      <div data-am-widget="slider" class="am-slider am-slider-a1" data-am-slider='{&quot;directionNav&quot;:false}' >
+      <!-- 图片轮播 -->
+    <div class="am-slider am-slider-default" data-am-flexslider>
         <ul class="am-slides">
           <%for(i=0;i<goods_detail.goods_image_list.length;i++){%>
             <li>
@@ -165,11 +165,35 @@
             </li>
           <%}%> 
         </ul>
-      </div>
+    </div>
       <!-- 商品标题 -->      
       <div class="am-container">
         <div class="goods-title">
           <%=goods_detail.goods_name;%>
+        </div>
+        <!--订单信息-->
+        <div class="goods_price clearfix">
+          <div class="price" style="color: #f60;">
+              支付金额:￥<%=goods_detail.shipping_amount;%>
+          </div>
+          <div class="limit_num">购买数量:<%=goods_detail.goods_num;%></div>
+        </div>
+        <div class="bug_log">
+            订单号:<%=goods_detail.order_sn;%>
+        </div>
+        <% if(goods_detail.shipping_code){%>
+            <div class="bug_log">
+                  物流单号:<%=goods_detail.shipping_code;%>
+            </div>
+        <% }%>
+        <div class="bug_log">
+          收货人:<%=goods_detail.buyer_name;%>
+        </div>
+        <div class="bug_log">
+          手机号码:<%=goods_detail.tel;%>
+      </div>
+        <div class="bug_log">
+              收货地址:<%=goods_detail.area_info;%><%=goods_detail.address;%>
         </div>
         <!-- 商品价格 -->      
         <div class="goods_price clearfix">
@@ -200,9 +224,8 @@
         </div>
         <!-- 购买按钮 -->      
         <div class="buy_button">
-          <button type="button" class="am-btn am-btn-warning am-radius" data-am-modal="{target: '#my-address'}" onclick="add_cart(<%=goods_detail.goods_id;%>,<%=goods_detail.goods_weight;%>,<%=goods_detail.goods_freight;%>)">立即购买</button>
-          <!-- <button type="button" class="am-btn am-btn-warning am-radius">加入购物车</button>
-        -->
+          <!--<button type="button" class="am-btn am-btn-warning am-radius" data-am-modal="{target: '#my-address'}" onclick="add_cart(<%=goods_detail.goods_id;%>,<%=goods_detail.goods_weight;%>,<%=goods_detail.goods_freight;%>)">立即购买</button>-->
+
         </div>
         <!-- 购买记录 -->      
         <!-- <div class="bug_log">      
@@ -239,7 +262,7 @@
     <script type="text/javascript" src="../../js/common.js"></script>
     <script type="text/javascript" src="../../js/template.js"></script>
     <!-- <script type="text/javascript" src="../../js/simple-plugin.js"></script> -->
-    <script type="text/javascript" src="../../js/tmpl/zero_detail.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/zero_order_detail.js"></script>
   <script type="text/javascript" src="../../js/tmpl/zero_order.js"></script>
    
 </html>
