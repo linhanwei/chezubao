@@ -155,8 +155,7 @@
                         <% }else if(goods_list[i].order_state == 40){%>
                             <!--<div class="add_cart" >已收货</div>-->
                         <% }else if(goods_list[i].order_state == 20){%>
-                            <!--<div class="edit_order add_cart" >待发货</div>-->
-
+                            <div class="edit_order add_cart" onclick="cancel_order('<%=goods_list[i].order_id;%>')" >取消</div>
                         <% } %>
                     </div>
                 </div>

@@ -158,6 +158,7 @@ function get_order_list(status){
    
 }
 
+//确认收货
 function edit_order(oid){
     if(oid == ''){
         return false;
@@ -169,6 +170,38 @@ function edit_order(oid){
 
     $.ajax({
         url:ApiUrl+"/index.php?act=zero_order&op=edit_order",
+        type:'post',
+        data:{key:key,oid:oid},
+        dataType:'json',
+        success:function(result){
+            var datas = result.datas;
+            if(datas.error){
+                alert(datas.error);
+            }else{
+                alert(datas.msg);
+                if(datas.status == 1){
+                    window.location.href  = window.location.href;
+                }
+
+            }
+
+        }
+    });
+
+}
+
+//取消哦订单
+function cancel_order(oid){
+    if(oid == ''){
+        return false;
+    }
+
+    if(!confirm('您确定要取消订单吗?')){
+        return false;
+    }
+
+    $.ajax({
+        url:ApiUrl+"/index.php?act=zero_order&op=cancel_order",
         type:'post',
         data:{key:key,oid:oid},
         dataType:'json',

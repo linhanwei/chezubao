@@ -43,7 +43,7 @@ class zero_orderControl extends mobileMemberControl {
         }
 
         //关联表
-        $list = $model_zero_order->getMemberOrderList($condition,$this->page);
+        $list = $model_zero_order->getMemberOrderList($condition,20);
 //        $page_count = $model_zero_order->gettotalpage();
 
 //        for($i=0;$i<=15;$i++){
@@ -128,6 +128,78 @@ class zero_orderControl extends mobileMemberControl {
         }
 
         output_data($out_data);
+    }
+
+    /*
+     * 取消订单(没发货可以取消)
+     */
+    public function cancel_orderOp() {
+        $order_id = $_POST['oid'];
+
+        if(empty($order_id)){
+            output_error('请选择订单!');
+        }
+
+        $member_id = $this->member_info['member_id'];
+
+        if(empty($member_id)){
+            output_error('您还没登录,请先登录!');
+        }
+
+        $model_zero_order = Model('zero_order');
+        $model_pd = Model('predeposit');
+
+        $order_where['order_id'] = $order_id;
+        $order_where['buyer_id'] = $member_id;
+        $info = $model_zero_order->getInfo($order_where,'*');
+
+        if(empty($info)){
+            output_error('订单不存在!');
+        }
+
+        if($info['order_state'] == 0){
+            output_error('该订单已经取消!');
+        }
+
+        if(in_array($info['order_state'],array(30,40))){
+            output_error('该订单已经发货,不能取消!');
+        }
+
+        $model_pd->beginTransaction();
+        $is_add_success = TRUE;
+
+        //更改订单信息
+        $data = array();
+        $data['refund_amount'] = $info['shipping_amount'];
+        $data['order_state'] = 0;
+
+        $edit_order_result = $model_zero_order->editData($data, $order_where);
+        if(!$edit_order_result){
+            $is_add_success = false;
+        }
+
+        //加余额
+        $data = array();
+        $data['member_id'] = $member_id;
+        $data['member_name'] = $info['buyer_name'];
+        $data['amount'] = $info['shipping_amount'];
+        $data['order_sn'] = $info['order_sn'];
+
+        $edit_money_result = $model_pd->changePd('zero_order_cancel',$data);
+        if(!$edit_money_result){
+            $is_add_success = false;
+        }
+
+        if($is_add_success){
+            $model_pd->commit();
+            $output_data = array('status'=>1,'msg'=>'取消订单成功');
+            output_data($output_data);
+        }else{
+            $model_pd->rollback();
+            output_error('取消订单失败');
+        }
+
+        return FALSE;
     }
 
     /*

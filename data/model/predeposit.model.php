@@ -335,7 +335,7 @@ class predepositModel extends Model {
         $data_msg['time'] = date('Y-m-d H:i:s');
         //$data_msg['pd_url'] = urlShop('predeposit', 'pd_log_list');
         switch ($change_type){
-            //0元淘
+            //0元淘订单支付
             case 'zero_order_pay':
                 $data_log['lg_av_amount'] = -$data['amount'];
                 $data_log['lg_desc'] = '0元淘,单号: '.$data['order_sn'];
@@ -344,6 +344,18 @@ class predepositModel extends Model {
                 $data_pd['available_predeposit'] = array('exp','available_predeposit-'.$data['amount']);
 
                 $data_msg['av_amount'] = -$data['amount'];
+                $data_msg['freeze_amount'] = 0;
+                $data_msg['desc'] = $data_log['lg_desc'];
+                break;
+            //0元淘订单取消
+            case 'zero_order_cancel':
+                $data_log['lg_av_amount'] = $data['amount'];
+                $data_log['lg_desc'] = '0元淘订单取消,单号: '.$data['order_sn'];
+                $data_log['lg_admin_name'] = 'system';
+                $data_log['lg_sn'] = $data['order_sn'];
+                $data_pd['available_predeposit'] = array('exp','available_predeposit+'.$data['amount']);
+
+                $data_msg['av_amount'] = $data['amount'];
                 $data_msg['freeze_amount'] = 0;
                 $data_msg['desc'] = $data_log['lg_desc'];
                 break;
