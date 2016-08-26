@@ -58,7 +58,7 @@ $_limit = array(
         )),
     array('name' => '0元淘', 'child' => array(
             array('name' => '商品列表', 'op' => null, 'act' => 'zero_goods'),
-            array('name' => '订单列表', 'op' => null, 'act' => 'zero_goods')
+            array('name' => '订单列表', 'op' => null, 'act' => 'zero_order')
         )),
 );
 $_limit[] = array('name' => $lang['nc_mobile'], 'child' => array(

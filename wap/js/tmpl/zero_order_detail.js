@@ -10,20 +10,25 @@ $(function(){
             data:{key:key,oid:oid},
             dataType:'json',
             success:function(result){
+                var is_login = result.login;
 
-                var data = result.datas;
-                var html = template.render('home_detail', data);
-                $(".goods_detail").append(html);
+                if(is_login == 0){
+                    window.location.href = WapSiteUrl+'/tmpl/member/login.html';
+                }else {
+                    var data = result.datas;
+                    var html = template.render('home_detail', data);
+                    $(".goods_detail").append(html);
 
-                //初始化轮播图
-                $('.am-slider').flexslider({
-                    // slideshowSpeed: 1000,
-                });
-                if (data.goods_detail.goods_detail) {
-                    $('#detail_content').html(data.goods_detail.goods_detail);
+                    //初始化轮播图
+                    $('.am-slider').flexslider({
+                        // slideshowSpeed: 1000,
+                    });
+                    if (!data.error && data.goods_detail.goods_detail) {
+                        $('#detail_content').html(data.goods_detail.goods_detail);
 
-                    //初始折叠面板
-                    $.AMUI.accordion.init();
+                        //初始折叠面板
+                        $.AMUI.accordion.init();
+                    }
                 }
             }
         });

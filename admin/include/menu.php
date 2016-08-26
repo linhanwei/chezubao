@@ -130,7 +130,7 @@ $arr = array(
             'text' => '0元淘',
             'list' => array(
                 array('args' => 'index,zero_goods,zero_buy', 'text' => '商品列表'),
-                array('args' => 'order_list,zero_goods,zero_buy', 'text' => '订单列表'),
+                array('args' => 'index,zero_order,zero_buy', 'text' => '订单列表'),
             )
         ),
         

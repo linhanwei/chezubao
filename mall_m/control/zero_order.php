@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 0元淘商品
+ * 0元淘订单
  *
  *
  */
@@ -69,6 +69,18 @@ class zero_orderControl extends mobileMemberControl {
 
         if (empty($info)) {
             output_error('订单不存在');
+        }
+
+        if(in_array($info['order_state'],array(30,40))){
+            $model_express = Model('express');
+            $shipping_list = $model_express->getAllList('','id,e_name');
+
+            foreach ($shipping_list as $sv){
+                if($sv['id'] == $info['shipping_express_id']){
+                    $shipping_name = $sv['e_name'];
+                }
+            }
+            $info['shipping_name'] = $shipping_name;
         }
 
         $output_data['goods_detail'] = $info;

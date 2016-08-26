@@ -135,17 +135,24 @@ function get_order_list(status){
         dataType:'json',
         data:{key:key},
         success:function(result){
-            $("input[name=hasmore]").val(result.hasmore);
-            if(!result.hasmore){
-                $('.next-page').addClass('disabled');
+            var is_login = result.login;
+
+            if(is_login == 0){
+                window.location.href = WapSiteUrl+'/tmpl/member/login.html';
+            }else{
+                $("input[name=hasmore]").val(result.hasmore);
+                if(!result.hasmore){
+                    $('.next-page').addClass('disabled');
+                }
+
+                var datas = result.datas;
+                datas.wap_site_url = WapSiteUrl;
+                var html = template.render('home_body', datas);
+                $(".goods_list").append(html);
+
+                $(window).scrollTop(0);
             }
 
-            var datas = result.datas;
-            datas.wap_site_url = WapSiteUrl;
-            var html = template.render('home_body', datas);
-            $(".goods_list").append(html);
-
-            $(window).scrollTop(0);
         }
     });
    
