@@ -28,9 +28,9 @@ class store_vr_bill_commisControl extends BaseSellerControl {
             $condition['ob_no'] = $_GET['ob_no'];
         }
         if (is_numeric($_GET['bill_state'])) {
-            $condition['oc_state'] = intval($_GET['bill_state']);
+            $condition['ob_state'] = intval($_GET['bill_state']);
         }
-        $bill_list = $model_bill->getOrderBillList($condition,'*',12,'oc_state asc,ob_no asc');
+        $bill_list = $model_bill->getOrderBillList($condition,'*',12,'ob_state asc,ob_no asc');
         
      	if($bill_list){
         	foreach($bill_list as $key=>$bill_info){
@@ -138,7 +138,7 @@ class store_vr_bill_commisControl extends BaseSellerControl {
 		$model_bill = Model('vr_bill');
 		$condition = array();
 		$condition['ob_no'] = $_GET['ob_no'];
-		$condition['oc_state'] = BILL_STATE_SUCCESS;
+		$condition['ob_state'] = BILL_STATE_SUCCESS;
 		$bill_info = $model_bill->getOrderBillInfo($condition);
 		if (!$bill_info){
 			showMessage('参数错误','','html','error');
@@ -160,8 +160,8 @@ class store_vr_bill_commisControl extends BaseSellerControl {
 		$condition = array();
 		$condition['ob_no'] = $_GET['ob_no'];
 		$condition['ob_store_id'] = $_SESSION['store_id'];
-		$condition['oc_state'] = BILL_STATE_CREATE;
-		$update = $model_bill->editOrderBill(array('oc_state'=>BILL_STATE_STORE_COFIRM),$condition);
+		$condition['ob_state'] = BILL_STATE_CREATE;
+		$update = $model_bill->editOrderBill(array('ob_state'=>BILL_STATE_STORE_COFIRM),$condition);
 		if ($update){
 			showDialog('确认成功，请等待系统审核','','succ');
 		}else{

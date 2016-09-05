@@ -47,7 +47,7 @@ class seller_centerControl extends BaseSellerControl {
         $condition['help_show'] = '1';//是否显示,0为否,1为是
         $help_list = $model_help->getStoreHelpTypeList($condition, '', 6);
         Tpl::output('help_list',$help_list);
-
+        
         // 销售情况统计
         $field = ' COUNT(*) as ordernum,SUM(order_amount) as orderamount ';
         $where = array();

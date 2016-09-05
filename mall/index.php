@@ -1,4 +1,5 @@
 <?php
+session_start();
 define('APP_ID','mall');
 define('BASE_PATH',str_replace('\\','/',dirname(__FILE__)));
 if (!@include(dirname(dirname(__FILE__)).'/global.php')) exit('global.php isn\'t exists!');

@@ -11,6 +11,7 @@ defined('InSystem') or exit('Access Invalid!');
 class seller_loginControl extends BaseSellerControl {
 
 	public function __construct() {
+        
 		parent::__construct();
         if (!empty($_SESSION['seller_id'])) {
             @header('location: index.php?act=seller_center');die;

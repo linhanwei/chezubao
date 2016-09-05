@@ -59,7 +59,8 @@ class groupbuyModel extends Model{
 	 *
 	 */
 	public function getGroupbuyList($condition, $page = null, $order = 'state asc', $field = '*', $limit = 0) {
-        return $this->field($field)->where($condition)->page($page)->order($order)->limit($limit)->select();
+            $result = $this->table('groupbuy')->field($field)->where($condition)->page($page)->order($order)->limit($limit)->select();
+            return $result;
 	}
 
 	/**

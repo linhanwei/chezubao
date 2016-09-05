@@ -9,6 +9,7 @@
     <input type="hidden" name="op" value="index" />
     <tr>
       <td>&nbsp;</td>
+      <!--
       <th><?php echo $lang['store_goods_index_store_goods_class'];?></th>
       <td class="w160"><select name="stc_id" class="w150">
           <option value="0"><?php echo $lang['nc_please_choose'];?></option>
@@ -23,6 +24,7 @@
           <?php }?>
           <?php }?>
         </select></td>
+        -->
       <th>
         <select name="search_type">
           <option value="0" <?php if ($_GET['type'] == 0) {?>selected="selected"<?php }?>><?php echo $lang['store_goods_index_goods_name'];?></option>
@@ -62,7 +64,11 @@
       <th colspan="20">平台货号：<?php echo $val['goods_commonid'];?></th>
     </tr>
     <tr>
-      <td class="trigger"><i class="tip icon-plus-sign" nctype="ajaxGoodsList" data-comminid="<?php echo $val['goods_commonid'];?>" title="点击展开查看此商品全部规格；规格值过多时请横向拖动区域内的滚动条进行浏览。"></i></td>
+      <td class="trigger"> 
+      <!--
+      <i class="tip icon-plus-sign" nctype="ajaxGoodsList" data-comminid="<?php echo $val['goods_commonid'];?>" title="点击展开查看此商品全部规格；规格值过多时请横向拖动区域内的滚动条进行浏览。"></i>
+      -->
+      </td>
       <td><div class="pic-thumb">
         <a href="<?php echo urlShop('goods', 'index', array('goods_id' => $output['storage_array'][$val['goods_commonid']]['goods_id']));?>" target="_blank"><img src="<?php echo thumb($val, 60);?>"/></a></div></td>
       <td class="tl"><dl class="goods-name">
@@ -81,11 +87,28 @@
             <?php }?>
             <a href="<?php echo urlShop('goods', 'index', array('goods_id' => $output['storage_array'][$val['goods_commonid']]['goods_id']));?>" target="_blank"><?php echo $val['goods_name']; ?></a></dt>
           <dd><?php echo $lang['store_goods_index_goods_no'].$lang['nc_colon'];?><?php echo $val['goods_serial'];?></dd>
-          <dd class="serve"> <span class="<?php if ($val['goods_commend'] == 1) { echo 'open';}?>" title="店铺推荐商品"><i class="commend">荐</i></span> <span class="<?php if ($val['mobile_body'] != '') { echo 'open';}?>" title="手机端商品详情"><i class="icon-tablet"></i></span> <span class="" title="商品页面二维码"><i class="icon-qrcode"></i>
-            <div class="QRcode"><a target="_blank" href="<?php echo goodsQRCode(array('goods_id' => $output['storage_array'][$val['goods_commonid']]['goods_id'], 'store_id' => $_SESSION['store_id']));?>">下载标签</a>
-              <p><img src="<?php echo goodsQRCode(array('goods_id' => $output['storage_array'][$val['goods_commonid']]['goods_id'], 'store_id' => $_SESSION['store_id']));?>"/></p>
-            </div>
-            </span> </dd>
+          <dd class="serve">
+            <span class="<?php if ($val['goods_commend'] == 1) { echo 'open';}?>
+              " title="店铺推荐商品"> <i class="commend">荐</i>
+            </span>
+            <!--
+            <span class="<?php if ($val['mobile_body'] != '') { echo 'open';}?>
+              " title="手机端商品详情"> <i class="icon-tablet"></i>
+            </span>
+            <span class="" title="商品页面二维码">
+              <i class="icon-qrcode"></i>
+              <div class="QRcode">
+                <a target="_blank" href="<?php echo goodsQRCode(array('goods_id' =>
+                  $output['storage_array'][$val['goods_commonid']]['goods_id'], 'store_id' => $_SESSION['store_id']));?>">下载标签
+                </a>
+                <p>
+                  <img src="<?php echo goodsQRCode(array('goods_id' =>          
+                  $output['storage_array'][$val['goods_commonid']]['goods_id'], 'store_id' => $_SESSION['store_id']));?>"/>
+                </p>
+              </div>
+            </span>
+            -->
+          </dd>
         </dl></td>
       <td><a href="javascript:void(0)" onclick="ajax_get_confirm('','<?php echo urlShop('store_goods_offline', 'goods_show', array('commonid' => $val['goods_commonid']));?>')" class="ncsc-btn"><?php echo $lang['store_goods_index_show'];?></a></td>
       <td><span><?php echo $lang['currency'].$val['goods_price']; ?></span></td>

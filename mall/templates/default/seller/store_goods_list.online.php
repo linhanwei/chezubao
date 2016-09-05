@@ -3,7 +3,7 @@
 <div class="tabmenu">
   <?php include template('layout/submenu');?>
  <!--好商城V3-B11-->
-  <a title="批量生成商品二维码" class="ncsc-btn ncsc-btn-green" href="index.php?act=store_goods_online&amp;op=maker_qrcode" target="_blank" style="right:100px" onclick="return confirm('您确定要执行批量生成二维码吗？');">批量生成商品二维码</a>
+ <!--  <a title="批量生成商品二维码" class="ncsc-btn ncsc-btn-green" href="index.php?act=store_goods_online&amp;op=maker_qrcode" target="_blank" style="right:100px" onclick="return confirm('您确定要执行批量生成二维码吗？');">批量生成商品二维码</a> -->
   <a href="<?php echo urlShop('store_goods_add');?>" class="ncsc-btn ncsc-btn-green" title="<?php echo $lang['store_goods_index_add_goods'];?>"> <?php echo $lang['store_goods_index_add_goods'];?></a></div>
 <form method="get" action="index.php">
   <table class="search-form">
@@ -11,7 +11,7 @@
     <input type="hidden" name="op" value="index" />
     <tr>
       <td>&nbsp;</td>
-      <th><?php echo $lang['store_goods_index_store_goods_class'];?></th>
+      <!-- <th><?php echo $lang['store_goods_index_store_goods_class'];?></th>
       <td class="w160"><select name="stc_id" class="w150">
           <option value="0"><?php echo $lang['nc_please_choose'];?></option>
           <?php if(is_array($output['store_goods_class']) && !empty($output['store_goods_class'])){?>
@@ -24,11 +24,11 @@
           <?php }?>
           <?php }?>
           <?php }?>
-        </select></td>
+        </select></td> -->
       <th> <select name="search_type">
-          <option value="0" <?php if ($_GET['type'] == 0) {?>selected="selected"<?php }?>><?php echo $lang['store_goods_index_goods_name'];?></option>
-          <option value="1" <?php if ($_GET['type'] == 1) {?>selected="selected"<?php }?>><?php echo $lang['store_goods_index_goods_no'];?></option>
-          <option value="2" <?php if ($_GET['type'] == 2) {?>selected="selected"<?php }?>>平台货号</option>
+          <option value="0" <?php if ($_GET['search_type'] == 0) {?>selected="selected"<?php }?>><?php echo $lang['store_goods_index_goods_name'];?></option>
+          <option value="1" <?php if ($_GET['search_type'] == 1) {?>selected="selected"<?php }?>><?php echo $lang['store_goods_index_goods_no'];?></option>
+          <option value="2" <?php if ($_GET['search_type'] == 2) {?>selected="selected"<?php }?>>平台货号</option>
         </select>
       </th>
       <td class="w160"><input type="text" class="text w150" name="keyword" value="<?php echo $_GET['keyword']; ?>"/></td>
@@ -53,7 +53,10 @@
     <tr>
       <td class="tc"><input type="checkbox" id="all" class="checkall"/></td>
       <td colspan="20"><label for="all" ><?php echo $lang['nc_select_all'];?></label>
-        <a href="javascript:void(0);" class="ncsc-btn-mini" nc_type="batchbutton" uri="<?php echo urlShop('store_goods_online', 'drop_goods');?>" name="commonid" confirm="<?php echo $lang['nc_ensure_del'];?>"><i class="icon-trash"></i><?php echo $lang['nc_del'];?></a> <a href="javascript:void(0);" class="ncsc-btn-mini" nc_type="batchbutton" uri="<?php echo urlShop('store_goods_online', 'goods_unshow');?>" name="commonid"><i class="icon-level-down"></i><?php echo $lang['store_goods_index_unshow'];?></a> <a href="javascript:void(0);" class="ncsc-btn-mini" nctype="batch" data-param="{url:'<?php echo urlShop('store_goods_online', 'edit_jingle');?>', sign:'jingle'}"><i></i>设置广告词</a> <a href="javascript:void(0);" class="ncsc-btn-mini" nctype="batch" data-param="{url:'<?php echo urlShop('store_goods_online', 'edit_plate');?>', sign:'plate'}"><i></i>设置关联版式</a></td>
+        <a href="javascript:void(0);" class="ncsc-btn-mini" nc_type="batchbutton" uri="<?php echo urlShop('store_goods_online', 'drop_goods');?>" name="commonid" confirm="<?php echo $lang['nc_ensure_del'];?>"><i class="icon-trash"></i><?php echo $lang['nc_del'];?></a> <a href="javascript:void(0);" class="ncsc-btn-mini" nc_type="batchbutton" uri="<?php echo urlShop('store_goods_online', 'goods_unshow');?>" name="commonid"><i class="icon-level-down"></i><?php echo $lang['store_goods_index_unshow'];?></a> 
+          <!-- <a href="javascript:void(0);" class="ncsc-btn-mini" nctype="batch" data-param="{url:'<?php echo urlShop('store_goods_online', 'edit_jingle');?>', sign:'jingle'}"><i></i>设置广告词</a> <a href="javascript:void(0);" class="ncsc-btn-mini" nctype="batch" data-param="{url:'<?php echo urlShop('store_goods_online', 'edit_plate');?>', sign:'plate'}"><i></i>设置关联版式</a>
+          -->
+      </td>
     </tr>
     <?php } ?>
   </thead>
@@ -65,7 +68,11 @@
       <th colspan="20">平台货号：<?php echo $val['goods_commonid'];?></th>
     </tr>
     <tr>
-      <td class="trigger"><i class="tip icon-plus-sign" nctype="ajaxGoodsList" data-comminid="<?php echo $val['goods_commonid'];?>" title="点击展开查看此商品全部规格；规格值过多时请横向拖动区域内的滚动条进行浏览。"></i></td>
+      <td class="trigger"> 
+        <!--
+        <i class="tip icon-plus-sign" nctype="ajaxGoodsList" data-comminid="<?php echo $val['goods_commonid'];?>" title="点击展开查看此商品全部规格；规格值过多时请横向拖动区域内的滚动条进行浏览。"></i>
+        -->
+      </td>
       <td><div class="pic-thumb"><a href="<?php echo urlShop('goods', 'index', array('goods_id' => $output['storage_array'][$val['goods_commonid']]['goods_id']));?>" target="_blank"><img src="<?php echo thumb($val, 60);?>"/></a></div></td>
       <td class="tl"><dl class="goods-name">
           <dt style="max-width: 450px !important;">
@@ -83,11 +90,27 @@
             <?php }?>
             <a href="<?php echo urlShop('goods', 'index', array('goods_id' => $output['storage_array'][$val['goods_commonid']]['goods_id']));?>" target="_blank"><?php echo $val['goods_name']; ?></a></dt>
           <dd><?php echo $lang['store_goods_index_goods_no'].$lang['nc_colon'];?><?php echo $val['goods_serial'];?></dd>
-          <dd class="serve"> <span class="<?php if ($val['goods_commend'] == 1) { echo 'open';}?>" title="店铺推荐商品"><i class="commend">荐</i></span> <span class="<?php if ($val['mobile_body'] != '') { echo 'open';}?>" title="手机端商品详情"><i class="icon-tablet"></i></span> <span class="" title="商品页面二维码"><i class="icon-qrcode"></i>
-            <div class="QRcode"><a target="_blank" href="<?php echo goodsQRCode(array('goods_id' => $output['storage_array'][$val['goods_commonid']]['goods_id'], 'store_id' => $_SESSION['store_id']));?>">下载标签</a>
-              <p><img src="<?php echo goodsQRCode(array('goods_id' => $output['storage_array'][$val['goods_commonid']]['goods_id'], 'store_id' => $_SESSION['store_id']));?>"/></p>
-            </div>
+          <dd class="serve">
+            <span class="<?php if ($val['goods_commend'] == 1) { echo 'open';}?>
+              " title="店铺推荐商品"> <i class="commend">荐</i>
             </span>
+            <!-- 
+            <span class="<?php if ($val['mobile_body'] != '') { echo 'open';}?>
+              " title="手机端商品详情"> <i class="icon-tablet"></i>
+            </span>
+            <span class="" title="商品页面二维码">
+              <i class="icon-qrcode"></i>
+              <div class="QRcode">
+                <a target="_blank" href="<?php echo goodsQRCode(array('goods_id' =>
+                  $output['storage_array'][$val['goods_commonid']]['goods_id'], 'store_id' => $_SESSION['store_id']));?>">下载标签
+                </a>
+                <p>
+                  <img src="<?php echo goodsQRCode(array('goods_id' =>          
+                  $output['storage_array'][$val['goods_commonid']]['goods_id'], 'store_id' => $_SESSION['store_id']));?>"/>
+                </p>
+              </div>
+            </span>
+            -->
             <?php if ($val['is_fcode'] ==1) {?>
             <span><a class="ncsc-btn-mini ncsc-btn-red" href="<?php echo urlShop('store_goods_online', 'download_f_code_excel', array('commonid' => $val['goods_commonid']));?>">下载F码</a></span>
             <?php }?>
@@ -122,8 +145,28 @@
     <?php  if (!empty($output['goods_list'])) { ?>
     <tr>
       <th class="tc"><input type="checkbox" id="all2" class="checkall"/></th>
-      <th colspan="10"><label for="all2"><?php echo $lang['nc_select_all'];?></label>
-        <a href="javascript:void(0);" nc_type="batchbutton" uri="<?php echo urlShop('store_goods_online', 'drop_goods');?>" name="commonid" confirm="<?php echo $lang['nc_ensure_del'];?>" class="ncsc-btn-mini"><i class="icon-trash"></i><?php echo $lang['nc_del'];?></a> <a href="javascript:void(0);" nc_type="batchbutton" uri="<?php echo urlShop('store_goods_online', 'goods_unshow');?>" name="commonid" class="ncsc-btn-mini"><i class="icon-level-down"></i><?php echo $lang['store_goods_index_unshow'];?></a> <a href="javascript:void(0);" class="ncsc-btn-mini" nctype="batch" data-param="{url:'<?php echo urlShop('store_goods_online', 'edit_jingle');?>', sign:'jingle'}"><i></i>设置广告词</a> <a href="javascript:void(0);" class="ncsc-btn-mini" nctype="batch" data-param="{url:'<?php echo urlShop('store_goods_online', 'edit_plate');?>', sign:'plate'}"><i></i>设置关联版式</a> </th>
+      <th colspan="10">
+        <label for="all2">
+          <?php echo $lang['nc_select_all'];?></label>
+        <a href="javascript:void(0);" nc_type="batchbutton" uri="<?php echo urlShop('store_goods_online', 'drop_goods');?>" name="commonid" confirm="
+          <?php echo $lang['nc_ensure_del'];?>      
+          " class="ncsc-btn-mini"> <i class="icon-trash"></i>
+          <?php echo $lang['nc_del'];?></a>
+        <a href="javascript:void(0);" nc_type="batchbutton" uri="<?php echo urlShop('store_goods_online', 'goods_unshow');?>" name="commonid" class="ncsc-btn-mini"> <i class="icon-level-down"></i>
+          <?php echo $lang['store_goods_index_unshow'];?></a>
+        <!--
+        <a href="javascript:void(0);" class="ncsc-btn-mini" nctype="batch" data-param="{url:'<?php echo urlShop('store_goods_online', 'edit_jingle');?>
+          ', sign:'jingle'}">
+          <i></i>
+          设置广告词
+        </a>
+        <a href="javascript:void(0);" class="ncsc-btn-mini" nctype="batch" data-param="{url:'<?php echo urlShop('store_goods_online', 'edit_plate');?>
+          ', sign:'plate'}">
+          <i></i>
+          设置关联版式
+        </a>
+        -->
+      </th>
     </tr>
     <tr>
       <td colspan="20"><div class="pagination"> <?php echo $output['show_page']; ?> </div></td>

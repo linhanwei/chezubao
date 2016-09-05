@@ -807,7 +807,7 @@ class store_goods_onlineControl extends BaseSellerControl {
         $where = array();
         $where['goods_commonid'] = array('in', $commonid_array);
         $where['store_id'] = $_SESSION['store_id'];
-        $return = Model('goods')->editProducesOffline($where);
+        $return = $model_goods->editProducesOffline($where);
         if ($return) {
             // 更新优惠套餐状态关闭
             $goods_list = $model_goods->getGoodsList($where, 'goods_id');

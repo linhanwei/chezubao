@@ -27,9 +27,9 @@
   <ul>
     <li><a id="demo1Btn" href="#demo1" class="demoBtn">基本信息</a></li>
     <li><a id="demo2Btn" href="#demo2" class="demoBtn">详情描述</a></li>
-    <li><a id="demo3Btn" href="#demo3" class="demoBtn">特殊商品</a></li>
+    <!-- <li><a id="demo3Btn" href="#demo3" class="demoBtn">特殊商品</a></li> -->
     <li><a id="demo4Btn" href="#demo4" class="demoBtn">物流运费</a></li>
-    <li><a id="demo5Btn" href="#demo5" class="demoBtn">发票信息</a></li>
+    <!-- <li><a id="demo5Btn" href="#demo5" class="demoBtn">发票信息</a></li> -->
     <li><a id="demo6Btn" href="#demo6" class="demoBtn">其他信息</a></li>
   </ul>
 </div>
@@ -332,11 +332,11 @@
         <dd id="ncProductDetails">
           <div class="tabs">
             <ul class="ui-tabs-nav" jquery1239647486215="2">
-              <li class="ui-tabs-selected"><a href="#panel-1" jquery1239647486215="8"><i class="icon-desktop"></i> 电脑端</a></li>
+              <!-- <li class="ui-tabs-selected"><a href="#panel-1" jquery1239647486215="8"><i class="icon-desktop"></i> 电脑端</a></li> -->
               <li class="selected"><a href="#panel-2" jquery1239647486215="9"><i class="icon-mobile-phone"></i>手机端</a></li>
             </ul>
             <div id="panel-1" class="ui-tabs-panel" jquery1239647486215="4">
-              <?php showEditor('g_body',$output['goods']['goods_body'],'100%','480px','visibility:hidden;',"false",$output['editor_multimedia']);?>
+             <!--  <?php showEditor('g_body',$output['goods']['goods_body'],'100%','480px','visibility:hidden;',"false",$output['editor_multimedia']);?> -->
               <div class="hr8">
                 <div class="ncsc-upload-btn"> <a href="javascript:void(0);"><span>
                   <input type="file" hidefocus="true" size="1" class="input-file" name="add_album" id="add_album" multiple="multiple">
@@ -416,7 +416,7 @@
           </div>
         </dd>
       </dl>
-      <dl>
+      <!-- <dl>
         <dt>关联版式：</dt>
         <dd> <span class="mr50">
           <label>顶部版式</label>
@@ -439,8 +439,8 @@
             <?php }?>
           </select>
           </span> </dd>
-      </dl>
-      <h3 id="demo3">特殊商品</h3>
+      </dl> -->
+      <!-- <h3 id="demo3">特殊商品</h3> -->
       <!-- 只有可发布虚拟商品才会显示 S -->
       <?php if ($output['goods_class']['gc_virtual'] == 1) {?>
       <dl class="special-01">
@@ -491,10 +491,10 @@
           <p class="hint">兑换码过期后是否可以申请退款。</p>
         </dd>
       </dl>
-      <?php }?>
+      <?php }?> 
       <!-- 只有可发布虚拟商品才会显示 E --> 
       <!-- F码商品专有项 S -->
-      <dl class="special-02" nctype="virtual_null" <?php if ($output['goods']['is_virtual'] == 1) {?>style="display:none;"<?php }?>>
+     <!--  <dl class="special-02" nctype="virtual_null" <?php if ($output['goods']['is_virtual'] == 1) {?>style="display:none;"<?php }?>>
         <dt>F码商品<?php echo $lang['nc_colon'];?></dt>
         <dd>
           <ul class="ncsc-form-radio-list">
@@ -554,10 +554,10 @@
           </ul>
         </dd>
       </dl>
-      <?php }?>
+      <?php }?> -->
       <!-- F码商品专有项 E --> 
       <!-- 预售商品 S -->
-      <dl class="special-03" nctype="virtual_null" <?php if ($output['goods']['is_virtual'] == 1) {?>style="display:none;"<?php }?>>
+      <!-- <dl class="special-03" nctype="virtual_null" <?php if ($output['goods']['is_virtual'] == 1) {?>style="display:none;"<?php }?>>
         <dt>预售<?php echo $lang['nc_colon'];?></dt>
         <dd>
           <ul class="ncsc-form-radio-list">
@@ -580,11 +580,11 @@
           <span></span>
           <p class="hint">商家发货时间。</p>
         </dd>
-      </dl>
+      </dl> -->
       <!-- 预售商品 E --> 
       <!-- 商品物流信息 S -->
       <h3 id="demo4"><?php echo $lang['store_goods_index_goods_transport']?></h3>
-      <dl>
+      <!-- <dl>
         <dt><?php echo $lang['store_goods_index_goods_szd'].$lang['nc_colon']?></dt>
         <dd>
           <p id="region">
@@ -592,7 +592,7 @@
             </select>
           </p>
         </dd>
-      </dl>
+      </dl> -->
       <dl nctype="virtual_null" <?php if ($output['goods']['is_virtual'] == 1) {?>style="display:none;"<?php }?>>
         <dt><?php echo $lang['store_goods_index_goods_transfee_charge'].$lang['nc_colon']; ?></dt>
         <dd>
@@ -603,20 +603,38 @@
               <div nctype="div_freight" <?php if (intval($output['goods']['transport_id']) != 0) {?>style="display: none;"<?php }?>>
                 <input id="g_freight" class="w50 text" nc_type='transport' type="text" value="<?php printf('%.2f', floatval($output['goods']['goods_freight']));?>" name="g_freight"><em class="add-on"><i class="icon-renminbi"></i></em> </div>
             </li>
+            <!--
             <li>
-              <input id="freight_1" nctype="freight" name="freight" class="radio" type="radio" <?php if (intval($output['goods']['transport_id']) != 0) {?>checked="checked"<?php }?> value="1">
-              <label for="freight_1"><?php echo $lang['store_goods_index_use_tpl'];?></label>
-              <div nctype="div_freight" <?php if (intval($output['goods']['transport_id']) == 0) {?>style="display: none;"<?php }?>>
-                <input id="transport_id" type="hidden" value="<?php echo $output['goods']['transport_id'];?>" name="transport_id">
-                <input id="transport_title" type="hidden" value="<?php echo $output['goods']['transport_title'];?>" name="transport_title">
-                <span id="postageName" class="transport-name" <?php if ($output['goods']['transport_title'] != '') {?>style="display: inline-block;"<?php }?>><?php echo $output['goods']['transport_title'];?></span><a href="JavaScript:void(0);" onclick="window.open('index.php?act=store_transport&type=select')" class="ncsc-btn" id="postageButton"><i class="icon-truck"></i><?php echo $lang['store_goods_index_select_tpl'];?></a> </div>
+              <input id="freight_1" nctype="freight" name="freight" class="radio" type="radio" <?php if (intval($output['goods']['transport_id']) != 0) {?>            
+              checked="checked"
+              <?php }?>            
+              value="1">
+              <label for="freight_1">
+                <?php echo $lang['store_goods_index_use_tpl'];?></label>
+              <div nctype="div_freight" <?php if (intval($output['goods']['transport_id']) == 0) {?>
+                style="display: none;"
+                <?php }?>            
+                >
+                <input id="transport_id" type="hidden" value="<?php echo $output['goods']['transport_id'];?>            
+                " name="transport_id">
+                <input id="transport_title" type="hidden" value="<?php echo $output['goods']['transport_title'];?>            
+                " name="transport_title">
+                <span id="postageName" class="transport-name" <?php if ($output['goods']['transport_title'] != '') {?>
+                  style="display: inline-block;"
+                  <?php }?>            
+                  >
+                  <?php echo $output['goods']['transport_title'];?></span>
+                <a href="JavaScript:void(0);" onclick="window.open('index.php?act=store_transport&type=select')" class="ncsc-btn" id="postageButton"> <i class="icon-truck"></i>
+                  <?php echo $lang['store_goods_index_select_tpl'];?></a>
+              </div>
             </li>
+            -->
           </ul>
           <p class="hint">运费设置为 0 元，前台商品将显示为免运费。</p>
         </dd>
       </dl>
       <!-- 商品物流信息 E -->
-      <h3 id="demo5" nctype="virtual_null" <?php if ($output['goods']['is_virtual'] == 1) {?>style="display:none;"<?php }?>>发票信息</h3>
+      <!-- <h3 id="demo5" nctype="virtual_null" <?php if ($output['goods']['is_virtual'] == 1) {?>style="display:none;"<?php }?>>发票信息</h3>
       <dl nctype="virtual_null" <?php if ($output['goods']['is_virtual'] == 1) {?>style="display:none;"<?php }?>>
         <dt>是否开增值税发票：</dt>
         <dd>
@@ -634,9 +652,9 @@
           </ul>
           <p class="hint"></p>
         </dd>
-      </dl>
+      </dl> -->
       <h3 id="demo6"><?php echo $lang['store_goods_index_goods_other_info']?></h3>
-      <dl>
+    <!--   <dl>
         <dt><?php echo $lang['store_goods_index_store_goods_class'].$lang['nc_colon'];?></dt>
         <dd><span class="new_add"><a href="javascript:void(0)" id="add_sgcategory" class="ncsc-btn"><?php echo $lang['store_goods_index_new_class'];?></a> </span>
           <?php if (!empty($output['store_class_goods'])) { ?>
@@ -670,7 +688,7 @@
           <?php } ?>
           <p class="hint"><?php echo $lang['store_goods_index_belong_multiple_store_class'];?></p>
         </dd>
-      </dl>
+      </dl> -->
       <dl>
         <dt><?php echo $lang['store_goods_index_goods_show'].$lang['nc_colon'];?></dt>
         <dd>
@@ -697,15 +715,15 @@
                 <?php }?>
               </select>
               <?php echo $lang['store_goods_step2_minute'];?> </li>
-            <li>
+            <!-- <li>
               <label>
                 <input name="g_state" value="0" type="radio" <?php if (!empty($output['goods']) && $output['goods']['goods_state'] == 0) {?>checked="checked"<?php }?> />
                 <?php echo $lang['store_goods_index_in_warehouse'];?> </label>
-            </li>
+            </li> -->
           </ul>
         </dd>
       </dl>
-      <dl>
+     <!--  <dl>
         <dt>预约<?php echo $lang['nc_colon'];?></dt>
         <dd>
           <ul class="ncsc-form-radio-list">
@@ -720,7 +738,7 @@
           </ul>
           <p class="hint">只有库存为零的商品才可以设为预约商品。商家补货后，平台自动发布消息通知已经预约的会员。</p>
         </dd>
-      </dl>
+      </dl> -->
       <dl nctype="is_appoint"  <?php if ($output['goods']['is_appoint'] == 0) {?>style="display:none;"<?php }?>>
         <dt><i class="required">*</i>发售日期<?php echo $lang['nc_colon'];?></dt>
         <dd>

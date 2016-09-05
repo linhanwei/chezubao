@@ -10,20 +10,34 @@
     <input type="hidden" name="type" value="wait_verify" />
     <tr>
       <td>&nbsp;</td>
-      <th><?php echo $lang['store_goods_index_store_goods_class'];?></th>
-      <td class="w160"><select name="stc_id" class="w150">
-          <option value="0"><?php echo $lang['nc_please_choose'];?></option>
-          <?php if(is_array($output['store_goods_class']) && !empty($output['store_goods_class'])){?>
-          <?php foreach ($output['store_goods_class'] as $val) {?>
-          <option value="<?php echo $val['stc_id']; ?>" <?php if ($_GET['stc_id'] == $val['stc_id']){ echo 'selected=selected';}?>><?php echo $val['stc_name']; ?></option>
-          <?php if (is_array($val['child']) && count($val['child'])>0){?>
-          <?php foreach ($val['child'] as $child_val){?>
-          <option value="<?php echo $child_val['stc_id']; ?>" <?php if ($_GET['stc_id'] == $child_val['stc_id']){ echo 'selected=selected';}?>>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $child_val['stc_name']; ?></option>
-          <?php }?>
-          <?php }?>
-          <?php }?>
-          <?php }?>
-        </select></td>
+      <!--
+      <th>
+        <?php echo $lang['store_goods_index_store_goods_class'];?></th>
+      <td class="w160">
+        <select name="stc_id" class="w150">
+          <option value="0">
+            <?php echo $lang['nc_please_choose'];?></option>
+          <?php if(is_array($output['store_goods_class']) && !empty($output['store_goods_class'])){?>      
+          <?php foreach ($output['store_goods_class'] as $val) {?>      
+          <option value="<?php echo $val['stc_id']; ?>
+            "
+            <?php if ($_GET['stc_id'] == $val['stc_id']){ echo 'selected=selected';}?>      
+            >
+            <?php echo $val['stc_name']; ?></option>
+          <?php if (is_array($val['child']) && count($val['child'])>      
+          0){?>
+          <?php foreach ($val['child'] as $child_val){?>      
+          <option value="<?php echo $child_val['stc_id']; ?>
+            "
+            <?php if ($_GET['stc_id'] == $child_val['stc_id']){ echo 'selected=selected';}?>      
+            >&nbsp;&nbsp;&nbsp;&nbsp;
+            <?php echo $child_val['stc_name']; ?></option>
+          <?php }?>      
+          <?php }?>      
+          <?php }?>      
+          <?php }?></select>
+      </td>
+      -->
       <th>审核状态</th>
       <td class="w90">
         <select name="verify">
@@ -72,7 +86,11 @@
       <th colspan="20">平台货号：<?php echo $val['goods_commonid'];?></th>
     </tr>
     <tr>
-      <td class="trigger"><i class="icon-plus-sign" nctype="ajaxGoodsList" data-comminid="<?php echo $val['goods_commonid'];?>"></i></td>
+      <td class="trigger">
+        <!--
+        <i class="icon-plus-sign" nctype="ajaxGoodsList" data-comminid="<?php echo $val['goods_commonid'];?>"></i>
+        -->
+      </td>
       <td><div class="pic-thumb">
         <a href="<?php echo urlShop('goods', 'index', array('goods_id' => $output['storage_array'][$val['goods_commonid']]['goods_id']));?>" target="_blank"><img src="<?php echo thumb($val, 60);?>"/></a></div></td>
       <td class="tl"><dl class="goods-name">
@@ -91,11 +109,28 @@
             <?php }?>
             <a href="<?php echo urlShop('goods', 'index', array('goods_id' => $output['storage_array'][$val['goods_commonid']]['goods_id']));?>" target="_blank"><?php echo $val['goods_name']; ?></a></dt>
           <dd><?php echo $lang['store_goods_index_goods_no'].$lang['nc_colon'];?><?php echo $val['goods_serial'];?></dd>
-          <dd class="serve"> <span class="<?php if ($val['goods_commend'] == 1) { echo 'open';}?>" title="店铺推荐商品"><i class="commend">荐</i></span> <span class="<?php if ($val['mobile_body'] != '') { echo 'open';}?>" title="手机端商品详情"><i class="icon-tablet"></i></span> <span class="" title="商品页面二维码"><i class="icon-qrcode"></i>
-            <div class="QRcode"><a target="_blank" href="<?php echo goodsQRCode(array('goods_id' => $output['storage_array'][$val['goods_commonid']]['goods_id'], 'store_id' => $_SESSION['store_id']));?>">下载标签</a>
-              <p><img src="<?php echo goodsQRCode(array('goods_id' => $output['storage_array'][$val['goods_commonid']]['goods_id'], 'store_id' => $_SESSION['store_id']));?>"/></p>
-            </div>
-            </span> </dd>
+          <dd class="serve">
+            <span class="<?php if ($val['goods_commend'] == 1) { echo 'open';}?>
+              " title="店铺推荐商品"> <i class="commend">荐</i>
+            </span>
+            <!--
+            <span class="<?php if ($val['mobile_body'] != '') { echo 'open';}?>
+              " title="手机端商品详情"> <i class="icon-tablet"></i>
+            </span>
+            <span class="" title="商品页面二维码">
+              <i class="icon-qrcode"></i>
+              <div class="QRcode">
+                <a target="_blank" href="<?php echo goodsQRCode(array('goods_id' =>
+                  $output['storage_array'][$val['goods_commonid']]['goods_id'], 'store_id' => $_SESSION['store_id']));?>">下载标签
+                </a>
+                <p>
+                  <img src="<?php echo goodsQRCode(array('goods_id' =>          
+                  $output['storage_array'][$val['goods_commonid']]['goods_id'], 'store_id' => $_SESSION['store_id']));?>"/>
+                </p>
+              </div>
+            </span>
+            -->
+          </dd>
         </dl></td>
       <td>
         <p><?php echo $output['verify'][$val['goods_verify']];?></p>

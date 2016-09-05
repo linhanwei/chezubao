@@ -884,6 +884,7 @@ $(function() {
         }
 
         var available_predeposit = parseInt($('input[name=available_predeposit]').val());
+
         if(available_predeposit>0){
             if($('#usepdpy').prop('checked')){//使用预存款
             	var passwd_verify = parseInt($('input[name=passwd_verify]').val());
@@ -891,15 +892,29 @@ $(function() {
             		return false;
             	}
 
+        		//以后需要删除
+            	if(parseInt($('#total_price').html()) > available_predeposit){
+            		alert('您的账户余额不足,请先进行充值再购买!');
+        			return false;
+            	}
+
             	var pd_pay = 1;
             	data.pd_pay = pd_pay;
             	var passwd = $('input[name=loginpassword]').val();
             	data.password = passwd;
             }else{
+            	//以后需要删除
+            	alert('请选择使用预存款支付!');
+        		return false;
+
             	var pd_pay = 0;
             	data.pd_pay = pd_pay;
             }
         }else{
+        	//以后需要删除
+        	alert('您的账户余额不足,请先进行充值再购买!');
+        	return false;
+
         	var pd_pay = 0;
         	data.pd_pay = pd_pay;
         }

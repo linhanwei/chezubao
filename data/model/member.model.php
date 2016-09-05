@@ -295,7 +295,7 @@ class memberModel extends Model {
 
                 $member_info['inviter_member'] = $inviter_member;
             }else{
-                $member_info['inviter_member'] = array();
+                $member_info['inviter_member'] = null;
             }
 
             //读取卖家信息
@@ -311,7 +311,7 @@ class memberModel extends Model {
             if($oil_card){
                 $member_info['oil'] = $oil_card;
             }else{
-                $member_info['oil'] = array();
+                $member_info['oil'] = null;
             }
 
             $member_info['agent_area'] = '非代理';
