@@ -215,7 +215,7 @@ class store_goods_onlineControl extends BaseSellerControl {
      * 编辑商品保存
      */
     public function edit_save_goodsOp() {
-
+       
         $common_id = intval ( $_POST ['commonid'] );
         if (!chksubmit() || $common_id <= 0) {
             showDialog(L('store_goods_index_goods_edit_fail'), urlShop('store_goods_online', 'index'));
@@ -1214,12 +1214,12 @@ class store_goods_onlineControl extends BaseSellerControl {
                         array('menu_key' => 'edit_image',   'menu_name' => '编辑图片', 'menu_url' => urlShop('store_goods_online', 'edit_image', array('commonid' => $_GET['commonid'], 'ref_url' => ($_GET['ref_url'] ? $_GET['ref_url'] : getReferer())))),
                     );
                 }
-                if ($allow_promotion['gift']) {
-                    $menu_array[] = array('menu_key' => 'add_gift', 'menu_name' => '赠送赠品', 'menu_url' => urlShop('store_goods_online', 'add_gift', array('commonid' => $_GET['commonid'], 'ref_url' => ($_GET['ref_url'] ? $_GET['ref_url'] : getReferer()))));
-                }
-                if ($allow_promotion['combo']) {
-                    $menu_array[] = array('menu_key' => 'add_combo', 'menu_name' => '推荐组合', 'menu_url' => urlShop('store_goods_online', 'add_combo', array('commonid' => $_GET['commonid'], 'ref_url' => ($_GET['ref_url'] ? $_GET['ref_url'] : getReferer()))));
-                }
+//                if ($allow_promotion['gift']) {
+//                    $menu_array[] = array('menu_key' => 'add_gift', 'menu_name' => '赠送赠品', 'menu_url' => urlShop('store_goods_online', 'add_gift', array('commonid' => $_GET['commonid'], 'ref_url' => ($_GET['ref_url'] ? $_GET['ref_url'] : getReferer()))));
+//                }
+//                if ($allow_promotion['combo']) {
+//                    $menu_array[] = array('menu_key' => 'add_combo', 'menu_name' => '推荐组合', 'menu_url' => urlShop('store_goods_online', 'add_combo', array('commonid' => $_GET['commonid'], 'ref_url' => ($_GET['ref_url'] ? $_GET['ref_url'] : getReferer()))));
+//                }
                 break;
             case 'edit_class':
                 $menu_array = array(

@@ -216,6 +216,7 @@ class store_goods_addControl extends BaseSellerControl {
             $common_array['areaid_2']           = intval($_POST['city_id']);
             $common_array['transport_id']       = ($_POST['freight'] == '0') ? '0' : intval($_POST['transport_id']); // 运费模板
             $common_array['transport_title']    = $_POST['transport_title'];
+//                        dump($common_array['transport_title']);die;
             $common_array['goods_freight']      = floatval($_POST['g_freight']);
             //查询店铺商品分类
             $goods_stcids_arr = array();

@@ -15,6 +15,18 @@ class storeControl extends mobileMemberControl{
         parent::__construct();
     }
 
+    /**
+     * 商户详细
+     */
+    public function viewOp(){
+        $store_id = $_GET['store_id'];
+        $store_info = Model('store')->getStoreInfoByID($store_id);
+
+        Tpl::output('html_title',$store_info['store_name']);
+        Tpl::output('store_info',$store_info);
+        Tpl::showpage('store_info');
+    }
+
     public function joininOp(){
         if($this->member_info['grade_id']!=1){
             if(TIMESTAMP > strtotime('2016-07-15 23:59:59')){
@@ -147,7 +159,7 @@ class storeControl extends mobileMemberControl{
         }
         foreach($store_list as $key=>$val){
             if($val['store_avatar']){
-                $store_list[$key]['store_avatar'] = UPLOAD_SITE_URL.'/'.ATTACH_STORE.'/'.$val['store_avatar'];
+                $store_list[$key]['store_avatar'] = UPLOAD_SITE_URL.'/'.ATTACH_STORE_JOININ.'/'.$val['store_avatar'];
             }else{
                 $store_list[$key]['store_avatar'] = UPLOAD_SITE_URL.'/'.ATTACH_COMMON.DS.'default_store_avatar.gif';
             }
@@ -158,6 +170,72 @@ class storeControl extends mobileMemberControl{
         }
         $page_count = $model_store->gettotalpage();
         output_data(array('store_list' => $store_list), mobile_page($page_count));
+    }
+
+    /*
+     * 获得店铺资料
+     */
+    public function infoOp(){
+        $store_info = Model('store')->getStoreInfoByID($this->member_info['store_info']['store_id']);
+        output_data(array('store_info'=>$store_info));
+    }
+
+    /**
+     * 编辑店铺资料
+     */
+    public function editOp(){
+        $model_store = Model('store');
+        $update_array = array();
+        if($_POST['store_name']){
+            $update_array['store_name'] = $_POST['store_name'];
+        }
+        $store_phone = $_POST['store_phone'] ? $_POST['store_phone'] : '';
+
+        if(empty($_POST['region_id'])){
+            output_error('请选择地区');
+        }
+
+        $update_array['province_id'] = $_POST['province_id'];
+        $update_array['city_id'] = $_POST['city_id'];
+        $update_array['region_id'] = $_POST['region_id'];
+
+        $model_area = Model('area');
+        $area_info = $model_area->getAreaInfo(array('area_id'=>$update_array['province_id']));
+        $city_info = $model_area->getAreaInfo(array('area_id'=>$update_array['city_id']));
+        $province_info = $model_area->getAreaInfo(array('area_id'=>$update_array['region_id']));
+
+        $update_array['area_info'] = $province_info['area_name'] . '-' . $city_info['area_name'] .'-'. $area_info['area_name'];
+
+        if($_POST['store_address']) {
+            $update_array['store_address'] = $_POST['store_address'];
+        }else{
+            output_error('请输入店铺详细地址');
+        }
+
+        if($store_phone){
+            $update_array['store_phone'] = $store_phone;
+        }
+
+        $update_array['store_avatar'] = $this->upload_image('store_avatar');
+
+        $banner_1 = $this->upload_image('banner_1');
+        $banner_2 = $this->upload_image('banner_2');
+        $banner_3 = $this->upload_image('banner_3');
+        $banner_4 = $this->upload_image('banner_4');
+        $banner_5 = $this->upload_image('banner_5');
+
+        if($banner_1) $update_array['banner_1'] = $banner_1;
+        if($banner_2) $update_array['banner_2'] = $banner_2;
+        if($banner_3) $update_array['banner_3'] = $banner_3;
+        if($banner_4) $update_array['banner_4'] = $banner_4;
+        if($banner_5) $update_array['banner_5'] = $banner_5;
+        
+        $result = $model_store->editStore($update_array, array('store_id' => $this->member_info['store_info']['store_id']));
+        if ($result){
+            output_data(array('store_id'=>$this->member_info['store_info']['store_id'],'msg'=>'编辑成功')); 
+        }else {
+            output_error('编辑失败');
+        }
     }
 
     private function upload_image($file) {

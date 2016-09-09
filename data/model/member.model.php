@@ -89,7 +89,8 @@ class memberModel extends Model {
         }
         $update = $this->table('member')->where($condition)->update($data);
         if ($update && $condition['member_id']) {
-            dcache($condition['member_id'], 'member');
+            $key = md5('member' . $member_id );
+            dkcache($key);
         }
         return $update;
     }
@@ -302,7 +303,8 @@ class memberModel extends Model {
             $member_info['store_id'] = 0;
 
             if($member_info['is_store'] == '1'){
-                $member_info['store_id'] = Model('seller')->getSellerInfo(array('member_id'=>$member_info['member_id']));
+                $member_info['store_info'] = Model('seller')->getSellerInfo(array('member_id'=>$member_info['member_id']));
+                if($member_info['store_info']) $member_info['store_id'] = $member_info['store_info']['store_id'];
             }
 
             $member_info['available_predeposit'] = number_format($member_info['available_predeposit'], 2, '.', '');
@@ -324,7 +326,12 @@ class memberModel extends Model {
                     $member_info['agent_area'] = '省代理';
                 }
             }
-
+            /*
+            $member_info['is_agent'] = 0;
+            $member_info['agent_info'] = Model('agent_member')->getAgentInfo($member_info['member_id']);
+            if($member_info['agent_info']){
+                $member_info['is_agent'] = 1;
+            }*/
             //是否新用户
             $member_info['is_new'] = 1;
             if($member_info['member_paypwd']){
@@ -356,10 +363,28 @@ class memberModel extends Model {
      * @return array
      */
     public function getMemberInfoByID($member_id, $fields = '*',$cache = true) {
-        $member_info = rcache($member_id, 'member', $fields);
+        $key = md5('member' . $member_id);
+        $member_info = rkcache($key);
         if ($cache === false || empty($member_info)) {
             $member_info = $this->getMemberInfo(array('member_id'=>$member_id),'*',true);
-            wcache($member_id, $member_info, 'member');
+            wkcache($key, $member_info);
+        }
+        return $member_info;
+    }
+
+    /**
+     *
+     * 取得会员详细信息（优先查询缓存）
+     * @param $member_name
+     * @param string $fields
+     * @param bool $cache
+     * @return array
+     */
+    public function getMemberInfoByName($member_name, $fields = '*',$cache = true) {
+        $member_info = rcache($member_name, 'member', $fields);
+        if ($cache === false || empty($member_info)) {
+            $member_info = $this->getMemberInfo(array('member_name'=>$member_name),'*',true);
+            wcache($member_name, $member_info, 'member');
         }
         return $member_info;
     }

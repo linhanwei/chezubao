@@ -69,23 +69,35 @@
       <i class="tip icon-plus-sign" nctype="ajaxGoodsList" data-comminid="<?php echo $val['goods_commonid'];?>" title="点击展开查看此商品全部规格；规格值过多时请横向拖动区域内的滚动条进行浏览。"></i>
       -->
       </td>
-      <td><div class="pic-thumb">
-        <a href="<?php echo urlShop('goods', 'index', array('goods_id' => $output['storage_array'][$val['goods_commonid']]['goods_id']));?>" target="_blank"><img src="<?php echo thumb($val, 60);?>"/></a></div></td>
+      <td>
+        <div class="pic-thumb">
+          <!--
+          <a href="<?php echo urlShop('goods', 'index', array('goods_id' =>
+            $output['storage_array'][$val['goods_commonid']]['goods_id']));?>" target="_blank">
+          -->
+           <a> <img src="<?php echo thumb($val, 60);?>"/></a>
+        </div>
+      </td>
       <td class="tl"><dl class="goods-name">
           <dt style="max-width: 450px !important;">
-            <?php if ($val['is_virtual'] ==1) {?>
+            <?php if ($val['is_virtual'] ==1) {?>          
             <span class="type-virtual" title="虚拟兑换商品">虚拟</span>
-            <?php }?>
-            <?php if ($val['is_fcode'] ==1) {?>
+            <?php }?>          
+            <?php if ($val['is_fcode'] ==1) {?>          
             <span class="type-fcode" title="F码优先购买商品">F码</span>
-            <?php }?>
-            <?php if ($val['is_presell'] ==1) {?>
+            <?php }?>          
+            <?php if ($val['is_presell'] ==1) {?>          
             <span class="type-presell" title="预先发售商品">预售</span>
-            <?php }?>
-            <?php if ($val['is_appoint'] ==1) {?>
+            <?php }?>          
+            <?php if ($val['is_appoint'] ==1) {?>          
             <span class="type-appoint" title="预约销售提示商品">预约</span>
-            <?php }?>
-            <a href="<?php echo urlShop('goods', 'index', array('goods_id' => $output['storage_array'][$val['goods_commonid']]['goods_id']));?>" target="_blank"><?php echo $val['goods_name']; ?></a></dt>
+            <?php }?>  
+            <!--        
+            <a href="<?php echo urlShop('goods', 'index', array('goods_id' =>
+              $output['storage_array'][$val['goods_commonid']]['goods_id']));?>" target="_blank">
+            -->
+             <a> <?php echo $val['goods_name']; ?></a>
+          </dt>
           <dd><?php echo $lang['store_goods_index_goods_no'].$lang['nc_colon'];?><?php echo $val['goods_serial'];?></dd>
           <dd class="serve">
             <span class="<?php if ($val['goods_commend'] == 1) { echo 'open';}?>

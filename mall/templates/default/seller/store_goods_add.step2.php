@@ -603,7 +603,7 @@
               <div nctype="div_freight" <?php if (intval($output['goods']['transport_id']) != 0) {?>style="display: none;"<?php }?>>
                 <input id="g_freight" class="w50 text" nc_type='transport' type="text" value="<?php printf('%.2f', floatval($output['goods']['goods_freight']));?>" name="g_freight"><em class="add-on"><i class="icon-renminbi"></i></em> </div>
             </li>
-            <!--
+            <!-- 
             <li>
               <input id="freight_1" nctype="freight" name="freight" class="radio" type="radio" <?php if (intval($output['goods']['transport_id']) != 0) {?>            
               checked="checked"
@@ -628,7 +628,7 @@
                   <?php echo $lang['store_goods_index_select_tpl'];?></a>
               </div>
             </li>
-            -->
+             -->
           </ul>
           <p class="hint">运费设置为 0 元，前台商品将显示为免运费。</p>
         </dd>
@@ -796,11 +796,12 @@ $(function(){
 	},'<i class="icon-exclamation-sign"></i>请填写不多于5位的英文字母');  
     $('#goods_form').validate({
         errorPlacement: function(error, element){
+          console.log(error,111);
             $(element).nextAll('span').append(error);
         },
         <?php if ($output['edit_goods_sign']) {?>
         submitHandler:function(form){
-            ajaxpost('goods_form', '', '', 'onerror');
+          $('#goods_form').onsubmit();
         },
         <?php }?>
         rules : {

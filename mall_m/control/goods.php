@@ -286,14 +286,35 @@ class goodsControl extends mobileHomeControl{
 	/**
      * 手机商品详细页
      */
-	public function wap_goods_bodyOp() {
+    public function wap_goods_bodyOp() {
         $goods_id = intval($_GET ['goods_id']);
 
         $model_goods = Model('goods');
 
-        $goods_info =$model_goods->getGoodsInfoByID($goods_id, 'goods_id');
+        $goods_info =$model_goods->getGoodsInfoByID($goods_id, 'goods_commonid');
         $goods_common_info =$model_goods->getMobileBodyByCommonID($goods_info['goods_commonid']);
-        Tpl:output('goods_common_info',$goods_common_info);
-        Tpl::showpage('goods_body');
+        
+        $html = '<div class="goods_detail">';
+        if($goods_common_info['mobile_body']){
+            $mobile_body = unserialize($goods_common_info['mobile_body']);
+            
+//            foreach ($mobile_body as $k => $v) {
+//                if($v['type'] == 'image'){
+//                    $html .= '<img src="'.$v['value'].'">';
+//                }
+//                if($v['type'] == 'text'){
+//                    $html .= '<p>'.$v['value'].'</p>';
+//                }
+//            }
+            $html .= $goods_common_info['mobile_body'];
+            
+        }else{
+            $html .= '<div style="width:100%;text-align:center;">暂时没有商品详情</div>';
+        }
+        $html .= '</div>';
+        $goods_common_info['mobile_body'] = $html;
+      
+        Tpl::output('goods_common_info',$goods_common_info);
+        Tpl::showpage('mobile_body');
     }
 }

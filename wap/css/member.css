@@ -31,13 +31,17 @@
 .login-form span{display: block;margin-top: 15px;}
 .l-btn-login{height: 40px;line-height: 40px;color: #fff;background: #D9434E;width: 100%;display: block;text-align: center;}
 
-
+.member-body{background: #f5f5f5;}
+.member-body .content_main{width: 96%;margin: 0 auto;margin-top: 10px;}
+.mt10 {margin-top: 10px;padding-left: 10px;}
 .member-body .header-back{display: none;}
-.m-top,.m-center{padding: 10px;background: #f5f5f5;}
-.m-avatar{width: 100px;height: 100px;overflow: hidden;text-align: center;border:1px solid #999;background: #fff;}
-.m-avatar img{width: 100px;height: 100px;}
-.m-infor{margin-left: 10px;}
-.m-jifen,.m-yue{display:inline-block;padding: 5px 15px;background:#fff;float: left;text-align: center;}
+.m-top,.m-center{background: #f5f5f5;}
+.m-center{margin-top: 10px;}
+.m-top{background: #fff;}
+.m-avatar{margin-top: 12px;width: 20%;overflow: hidden;text-align: center;border:1px solid #999;background: #fff;}
+.m-avatar img{width: 100%;}
+.m-infor{margin-left: 0px;width: 79%;float: right;}
+.m-jifen,.m-yue{display:inline-block;padding: 5px 5px;background:#fff;float: left;text-align: center;}
 .m-jifen span,.m-yue span{display:block;}
 
 .mc-cnt{background: #fff;padding: 10px;}

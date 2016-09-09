@@ -2,7 +2,7 @@
 <div class="page">
     <div class="fixed-bar">
         <div class="item-title">
-            <h3>战区</h3>
+            <h3>区域</h3>
             <ul class="tab-base">
                 <li><a href="JavaScript:void(0);" class="current"><span>留言详细</span></a></li>
             </ul>
