@@ -14,14 +14,14 @@
 <div class="ncsc-form-default">
   <form method="post"  action="index.php?act=store_setting&op=store_setting" enctype="multipart/form-data" id="my_store_form">
     <input type="hidden" name="form_submit" value="ok" />
-    <dl>
+    <!-- <dl>
       <dt>
         <?php echo $lang['store_setting_grade'].$lang['nc_colon'];?></dt>
       <dd>
         <p>
           <?php echo $output['store_grade']['sg_name']; ?></p>
       </dd>
-    </dl>
+    </dl> -->
     <dl>
       <dt>店铺名称：</dt>
       <dd>

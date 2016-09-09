@@ -28,11 +28,11 @@
             $_SESSION['store_id']), $output['store_info']['store_domain']);?>" > -->
           <a><?php echo $output['store_info']['store_name'];?></a>
         </dd>
-        <dd class="store-grade">
+        <!-- <dd class="store-grade">
           <?php echo $lang['store_store_grade'].$lang['nc_colon'];?>        
           <strong>
             <?php echo $output['store_info']['grade_name']; ?></strong>
-        </dd>
+        </dd> -->
         <dd class="store-validity">
           <?php echo $lang['store_validity'].$lang['nc_colon'];?>        
           <strong>
