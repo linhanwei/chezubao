@@ -43,9 +43,11 @@ $(function(){
 </script>
 </head>
 <body>
-<?php require_once template('layout/layout_top');?>
-<div class="header-wrap"><header class="public-head-layout wrapper">
-  <h1 class="site-logo"><a href="<?php echo MALL_SITE_URL;?>"><img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_COMMON.DS.$output['setting_config']['site_logo']; ?>" class="pngFix"></a></h1></header></div>
+<?php //require_once template('layout/layout_top');?>
+<!--<div class="header-wrap">
+    <header class="public-head-layout wrapper">
+        <h1 class="site-logo"><a href="<?php echo MALL_SITE_URL;?>"><img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_COMMON.DS.$output['setting_config']['site_logo']; ?>" class="pngFix"></a></h1></header>
+</div>-->
 <div class="msg">
       <?php if($output['msg_type'] == 'error'){ ?>
       <i class="icon-info-sign" style="color: #39C;"></i>
@@ -65,8 +67,9 @@ $(function(){
 <?php
 }?>
 </script>
+
 <?php
-require_once template('footer');
+    //require_once template('footer');
 ?>
 </body>
 </html>
