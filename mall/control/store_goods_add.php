@@ -206,7 +206,12 @@ class store_goods_addControl extends BaseSellerControl {
             $common_array['goods_state']        = ($this->store_info['store_state'] != 1) ? 0 : intval($_POST['g_state']);            // 店铺关闭时，商品下架
             $common_array['goods_addtime']      = TIMESTAMP;
             $common_array['goods_selltime']     = strtotime($_POST['starttime']) + intval($_POST['starttime_H'])*3600 + intval($_POST['starttime_i'])*60;
-            $common_array['goods_verify']       = (C('goods_verify') == 1) ? 10 : 1;
+            
+            if($this->store_info['store_id'] != 1){
+                $common_array['goods_verify']       = (C('goods_verify') == 1) ? 10 : 1;
+            }else{
+                $common_array['goods_verify']       = 1;
+            }
             $common_array['store_id']           = $_SESSION['store_id'];
             $common_array['store_name']         = $_SESSION['store_name'];
             $common_array['spec_name']          = is_array($_POST['spec']) ? serialize($_POST['sp_name']) : serialize(null);

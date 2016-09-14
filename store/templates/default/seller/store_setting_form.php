@@ -129,7 +129,7 @@
         <dd>
           <p>
             <?php if($output['store_info']['banner_1']){ ?>      
-            <img src="<?php echo getStoreJoininImageUrl($output['store_info']['banner_1']);?>      
+            <img src="<?php echo getStoreBannerImageUrl($output['store_info']['banner_1']);?>      
             " alt="" style="width:100px;"/>
             <?php } ?></p>
           <p>
@@ -143,7 +143,7 @@
         <dd>
           <p>
             <?php if($output['store_info']['banner_2']){ ?>      
-            <img src="<?php echo getStoreJoininImageUrl($output['store_info']['banner_2']);?>      
+            <img src="<?php echo getStoreBannerImageUrl($output['store_info']['banner_2']);?>      
             " alt="" style="width:100px;"/>
             <?php } ?></p>
           <p>
@@ -157,7 +157,7 @@
         <dd>
           <p>
             <?php if($output['store_info']['banner_3']){ ?>      
-            <img src="<?php echo getStoreJoininImageUrl($output['store_info']['banner_3']);?>      
+            <img src="<?php echo getStoreBannerImageUrl($output['store_info']['banner_3']);?>      
             " alt="" style="width:100px;"/>
             <?php } ?></p>
           <p>
@@ -171,7 +171,7 @@
         <dd>
           <p>
             <?php if($output['store_info']['banner_4']){ ?>      
-            <img src="<?php echo getStoreJoininImageUrl($output['store_info']['banner_4']);?>      
+            <img src="<?php echo getStoreBannerImageUrl($output['store_info']['banner_4']);?>      
             " alt="" style="width:100px;"/>
             <?php } ?></p>
           <p>
@@ -185,7 +185,7 @@
         <dd>
           <p>
             <?php if($output['store_info']['banner_5']){ ?>      
-            <img src="<?php echo getStoreJoininImageUrl($output['store_info']['banner_5']);?>      
+            <img src="<?php echo getStoreBannerImageUrl($output['store_info']['banner_5']);?>      
             " alt="" style="width:100px;"/>
             <?php } ?></p>
           <p>

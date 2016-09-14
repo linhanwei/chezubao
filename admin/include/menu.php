@@ -24,15 +24,18 @@ $arr = array(
             'args' => 'store',
             'text' => $lang['nc_store']),
         4 => array(
+            'args' => 'agent',
+            'text' => '代理商'),
+        5 => array(
             'args' => 'member',
             'text' => $lang['nc_member']),
-        5 => array(
+        6 => array(
             'args' => 'trade',
             'text' => $lang['nc_trade']),
-        6 => array(
+        7 => array(
             'args' => 'operation',
             'text' => $lang['nc_operation']),
-        7 => array(
+        8 => array(
             'args' => 'zero_buy',
             'text' => '0元淘'),
     ),
@@ -86,6 +89,13 @@ $arr = array(
             )
         ),
         4 => array(
+            'nav' => 'agent',
+            'text' => '代理商',
+            'list' => array(
+                array('args' => 'agent,agent,agent', 'text' => '代理商管理'),
+            )
+        ),
+        5 => array(
             'nav' => 'member',
             'text' => $lang['nc_member'],
             'list' => array(
@@ -95,13 +105,14 @@ $arr = array(
                 array('args' => 'addpoints,points,member', 'text' => $lang['nc_member_pointsmanage']),
                 array('args' => 'manual_add,predeposit,member', 'text' => '现金充值'),
                 array('args' => 'points_inviter_log,points_inviter,member', 'text' => '奖励'),
+                array('args' => 'index,invite,member', 'text' => '推荐人统计'),
                 array('args' => 'predeposit,predeposit,member', 'text' => $lang['nc_member_predepositmanage']),
                 array('args' => 'feedback,agent,member', 'text' => '加盟申请'),
                 array('args' => 'card_list,oil,member', 'text' => '油卡管理'),
                 array('args' => 'recharge,oil,member', 'text' => '油卡充值')
             )
         ),
-        5 => array(
+        6 => array(
             'nav' => 'trade',
             'text' => $lang['nc_trade'],
             'list' => array(
@@ -116,7 +127,7 @@ $arr = array(
                 array('args' => 'complain_new_list,complain,trade', 'text' => $lang['nc_complain_config']),
             )
         ),
-        6 => array(
+        7 => array(
             'nav' => 'operation',
             'text' => $lang['nc_operation'],
             'list' => array(
@@ -125,12 +136,12 @@ $arr = array(
                 array('args' => 'index,fund,operation', 'text' => '公益慈善')
             )
         ),
-        7 => array(
+        8 => array(
             'nav' => 'zero_buy',
             'text' => '0元淘',
             'list' => array(
                 array('args' => 'index,zero_goods,zero_buy', 'text' => '商品列表'),
-                array('args' => 'index,zero_order,zero_buy', 'text' => '订单列表'),
+                array('args' => 'order_list,zero_goods,zero_buy', 'text' => '订单列表'),
             )
         ),
         
@@ -146,8 +157,9 @@ $arr['left'][] = array(
     'text' => $lang['nc_mobile'],
     'list' => array(
         array('args' => 'index_edit,mb_special,mobile', 'text' => '首页编辑'),
-    /* array('args'=>'special_list,mb_special,mobile',				'text'=>'专题设置'),
-      array('args'=>'mb_category_list,mb_category,mobile',	'text'=>$lang['nc_mobile_catepic']),
+        array('args' => 'index,banner,mobile', 'text' => 'banner管理'),
+     array('args'=>'special_list,mb_special,mobile',				'text'=>'专题设置'),
+      /*array('args'=>'mb_category_list,mb_category,mobile',	'text'=>$lang['nc_mobile_catepic']),
       array('args'=>'mb_app,mb_app,mobile',				'text'=>'下载设置'),
       array('args'=>'flist,mb_feedback,mobile',					'text'=>$lang['nc_mobile_feedback']),
       array('args'=>'mb_payment,mb_payment,mobile',				'text'=>'手机支付'), */

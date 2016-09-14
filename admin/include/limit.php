@@ -30,6 +30,9 @@ $_limit = array(
     array('name' => $lang['nc_store'], 'child' => array(
             array('name' => $lang['nc_store_manage'], 'op' => null, 'act' => 'store')
         )),
+    array('name' => '代理管理', 'child' => array(
+        array('name' => '代理管理', 'op' => null, 'act' => 'agent')
+    )),
     array('name' => $lang['nc_member'], 'child' => array(
             array('name' => $lang['nc_member_manage'], 'op' => null, 'act' => 'member'),
             array('name' => '会员级别', 'op' => null, 'act' => 'member_grade'),
@@ -37,6 +40,7 @@ $_limit = array(
             array('name' => $lang['nc_member_pointsmanage'], 'op' => null, 'act' => 'points'),
             array('name' => '现金充值', 'op' => 'manual_add', 'act' => 'predeposit'),
             array('name' => '奖励', 'op' => null, 'act' => 'points_inviter'),
+            array('name' => '奖励', 'op' => null, 'act' => 'invite'),
             array('name' => $lang['nc_member_predepositmanage'], 'op' => null, 'act' => 'predeposit'),
             array('name' => '油卡管理', 'op' => null, 'act' => 'oil'),
             array('name' => '油卡充值', 'op' => null, 'act' => 'oil')
@@ -62,7 +66,8 @@ $_limit = array(
         )),
 );
 $_limit[] = array('name' => $lang['nc_mobile'], 'child' => array(
-        array('name' => '首页设置', 'op' => NULL, 'act' => 'mb_special'),
+    array('name' => '首页设置', 'op' => NULL, 'act' => 'mb_special'),
+    array('name' => 'banner管理', 'op' => NULL, 'act' => 'banner'),
     /* array('name'=>'专题设置', 'op'=>NULL, 'act'=>'mb_special'),
       array('name'=>$lang['nc_mobile_catepic'], 'op'=>NULL, 'act'=>'mb_category'),
       array('name'=>'下载设置', 'op'=>NULL, 'act'=>'mb_app'),

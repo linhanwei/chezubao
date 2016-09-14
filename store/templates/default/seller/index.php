@@ -81,7 +81,7 @@
         </ul>
       </div>
     </div> -->
-    <div class="container type-b">
+  <!--   <div class="container type-b">
       <div class="hd">
         <h3>商家帮助</h3>
         <h5></h5>
@@ -113,7 +113,7 @@
           <dd><?php echo $lang['store_site_email'].$lang['nc_colon'];?><?php echo C('site_email');?></dd>
         </dl>
       </div>
-    </div>
+    </div> -->
     <!-- <div class="container type-a">
       <div class="hd">
         <h3><?php echo $lang['store_business'];?></h3>

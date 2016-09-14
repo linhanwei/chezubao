@@ -1195,7 +1195,7 @@ class BaseSellerControl extends Control {
             )),
             'order' => array('name' => '订单物流', 'child' => array(
                 array('name' => '实物交易订单', 'act'=>'store_order', 'op'=>'index'),
-				array('name' => '虚拟兑码订单', 'act'=>'store_vr_order', 'op'=>'index'),
+//				array('name' => '虚拟兑码订单', 'act'=>'store_vr_order', 'op'=>'index'),
                 array('name' => '发货', 'act'=>'store_deliver', 'op'=>'index'),
                 array('name' => '发货设置', 'act'=>'store_deliver_set', 'op'=>'daddress_list'),
 //                array('name' => '运单模板', 'act'=>'store_waybill', 'op'=>'waybill_manage'),
@@ -1213,13 +1213,13 @@ class BaseSellerControl extends Control {
 //            )),
             'store' => array('name' => '店铺', 'child' => array(
                 array('name' => '店铺设置', 'act'=>'store_setting', 'op'=>'store_setting'),
-                array('name' => '店铺装修', 'act'=>'store_decoration', 'op'=>'decoration_setting'),
-                array('name' => '店铺导航', 'act'=>'store_navigation', 'op'=>'navigation_list'),
-                array('name' => '店铺动态', 'act'=>'store_sns', 'op'=>'index'),
-                array('name' => '店铺信息', 'act'=>'store_info', 'op'=>'bind_class'),
-                array('name' => '店铺分类', 'act'=>'store_goods_class', 'op'=>'index'),
-                array('name' => '线下商铺', 'act'=>'store_live', 'op'=>'store_live'),
-                array('name' => '品牌申请', 'act'=>'store_brand', 'op'=>'brand_list'),
+//                array('name' => '店铺装修', 'act'=>'store_decoration', 'op'=>'decoration_setting'),
+//                array('name' => '店铺导航', 'act'=>'store_navigation', 'op'=>'navigation_list'),
+//                array('name' => '店铺动态', 'act'=>'store_sns', 'op'=>'index'),
+//                array('name' => '店铺信息', 'act'=>'store_info', 'op'=>'bind_class'),
+//                array('name' => '店铺分类', 'act'=>'store_goods_class', 'op'=>'index'),
+//                array('name' => '线下商铺', 'act'=>'store_live', 'op'=>'store_live'),
+//                array('name' => '品牌申请', 'act'=>'store_brand', 'op'=>'brand_list'),
             )),
             'consult' => array('name' => '售后服务', 'child' => array(
                 array('name' => '咨询管理', 'act'=>'store_consult', 'op'=>'consult_list'),
@@ -1247,7 +1247,7 @@ class BaseSellerControl extends Control {
                 array('name' => '账号列表', 'act'=>'store_account', 'op'=>'account_list'),
                 array('name' => '账号组', 'act'=>'store_account_group', 'op'=>'group_list'),
                 array('name' => '账号日志', 'act'=>'seller_log', 'op'=>'log_list'),
-                array('name' => '店铺消费', 'act'=>'store_cost', 'op'=>'cost_list'),
+//                array('name' => '店铺消费', 'act'=>'store_cost', 'op'=>'cost_list'),
             ))
         );
         return $menu_list;

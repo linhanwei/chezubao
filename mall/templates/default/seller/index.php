@@ -49,14 +49,42 @@
           <dd><em id="nc_imagecount">0</em>&nbsp;/&nbsp;<?php echo $output['store_info']['grade_albumlimit'] > 0 ? $output['store_info']['grade_albumlimit'] : '不限'; ?></dd>
         </dl>
         <ul>
-          <li><a href="index.php?act=store_goods_online&op=index"><?php echo $lang['store_goods_selling'];?> <strong id="nc_online"></strong></a></li>
-          <?php if (C('goods_verify')) {?>
-          <li><a href="index.php?act=store_goods_offline&op=index&type=wait_verify&verify=10" title="<?php echo $lang['store_inform30'];?>">发布待平台审核 <strong id="nc_waitverify"></strong></a></li>
-          <li><a href="index.php?act=store_goods_offline&op=index&type=wait_verify&verify=0" title="<?php echo $lang['store_inform30'];?>">平台审核失败 <strong id="nc_verifyfail"></strong></a></li>
-          <?php }?>
-          <li><a href="index.php?act=store_goods_offline&op=index"><?php echo $lang['store_goods_storage'];?> <strong id="nc_offline"></strong></a></li>
-          <li><a href="index.php?act=store_goods_offline&op=index&type=lock_up"><?php echo $lang['store_goods_show0'];?> <strong id="nc_lockup"></strong></a></li>
-          <li><a href="index.php?act=store_consult&op=consult_list&type=to_reply"><?php echo $lang['store_to_consult'];?> <strong id="nc_consult"></strong></a></li>
+          <li>
+            <a href="index.php?act=store_goods_online&op=index">
+              <?php echo $lang['store_goods_selling'];?> <strong id="nc_online"></strong>
+            </a>
+          </li>
+          <?php if (C('goods_verify')) {?>        
+          <li>
+            <a href="index.php?act=store_goods_offline&op=index&type=wait_verify&verify=10" title="<?php echo $lang['store_inform30'];?>
+              ">发布待平台审核 <strong id="nc_waitverify"></strong>
+            </a>
+          </li>
+          <li>
+            <a href="index.php?act=store_goods_offline&op=index&type=wait_verify&verify=0" title="<?php echo $lang['store_inform30'];?>
+              ">平台审核失败
+              <strong id="nc_verifyfail"></strong>
+            </a>
+          </li>
+          <?php }?>        
+          <li>
+            <a href="index.php?act=store_goods_offline&op=index">
+              <?php echo $lang['store_goods_storage'];?>        
+              <strong id="nc_offline"></strong>
+            </a>
+          </li>
+          <li>
+            <a href="index.php?act=store_goods_offline&op=index&type=lock_up">
+              <?php echo $lang['store_goods_show0'];?>        
+              <strong id="nc_lockup"></strong>
+            </a>
+          </li>
+          <li>
+            <a href="index.php?act=store_consult&op=consult_list&type=to_reply">
+              <?php echo $lang['store_to_consult'];?>        
+              <strong id="nc_consult"></strong>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -112,7 +140,7 @@
           <li><a href="index.php?act=store_refund&lock=1"> <?php echo '售后退款';?> <strong id="nc_refund"></strong></a></li>
           <li><a href="index.php?act=store_return&lock=2"> <?php echo '售前退货';?> <strong id="nc_return_lock"></strong></a></li>
           <li><a href="index.php?act=store_return&lock=1"> <?php echo '售后退货';?> <strong id="nc_return"></strong></a></li>
-          <li><a href="index.php?act=store_bill&op=index&bill_state=1"> <?php echo '待确认账单';?> <strong id="nc_bill_confirm"></strong></a></li>
+          <!-- <li><a href="index.php?act=store_bill&op=index&bill_state=1"> <?php echo '待确认账单';?> <strong id="nc_bill_confirm"></strong></a></li> -->
         </ul>
       </div>
     </div>
@@ -176,7 +204,7 @@
         </table>
       </div>
     </div>
-    <div class="container type-d h500">
+    <!-- <div class="container type-d h500">
       <div class="hd">
         <h3><?php echo $lang['store_market_info'];?></h3>
         <h5>合理参加促销活动可以有效提升商品销量</h5>
@@ -279,7 +307,7 @@
         </dl>
         <?php }?>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 <script>

@@ -882,7 +882,7 @@ class store_albumControl extends BaseSellerControl {
 			case 'album':
 				$menu_array	= array(
 				1=>array('menu_key'=>'album','menu_name'=>Language::get('nc_member_path_my_album'),'menu_url'=>'index.php?act=store_album'),
-				2=>array('menu_key'=>'watermark','menu_name'=>Language::get('nc_member_path_watermark'),'menu_url'=>'index.php?act=store_album&op=store_watermark')
+//				2=>array('menu_key'=>'watermark','menu_name'=>Language::get('nc_member_path_watermark'),'menu_url'=>'index.php?act=store_album&op=store_watermark')
 				);
 				break;
 			case 'album_pic':

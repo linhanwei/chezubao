@@ -104,20 +104,20 @@
             </td>
           <td class="vatop tips"><?php echo $lang['member_edit_support']?>gif,jpg,jpeg,png</td>
         </tr>
-        <tr>
+        <tr style="display: block;">
             <td colspan="2" class="required"><label>商户:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="noborder" style="display: block;">
             <td class="vatop rowform onoff"><label for="is_store1" class="cb-enable <?php if($output['member_array']['is_store'] == '1'){ ?>selected<?php } ?>" ><span>是</span></label>
                 <label for="is_store0" class="cb-disable <?php if($output['member_array']['is_store'] == '0'){ ?>selected<?php } ?>" ><span>否</span></label>
                 <input id="is_store0" name="is_store" <?php if($output['member_array']['is_store'] == '0'){ ?>checked="checked"<?php } ?>  value="0" type="radio">
                 <input id="is_store1" name="is_store" <?php if($output['member_array']['is_store'] == '1'){ ?>checked="checked"<?php } ?> value="1" type="radio"></td>
             <td class="vatop tips"></td>
         </tr>
-        <tr>
+        <tr style="display: none;">
             <td colspan="2" class="required"><label>代理商:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="noborder" style="display: none;">
             <td class="vatop rowform onoff"><label for="is_agent1" class="cb-enable <?php if($output['member_array']['is_agent'] == '1'){ ?>selected<?php } ?>" ><span>是</span></label>
                 <label for="is_agent0" class="cb-disable <?php if($output['member_array']['is_agent'] == '0'){ ?>selected<?php } ?>" ><span>否</span></label>
                 <input id="is_agent0" name="is_agent" <?php if($output['member_array']['is_agent'] == '0'){ ?>checked="checked"<?php } ?>  value="0" type="radio">
@@ -127,7 +127,7 @@
         <tr style="display: none;">
             <td colspan="2" class="required"><label class="member_areainfo">加盟区域:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="noborder" style="display: none;">
             <td class="vatop rowform"  colspan="2">
         <span id="region_agent" class="w400">
             <input type="hidden" value="<?php echo $output['member_array']['agent_provinceid'];?>" name="agent_province_id" id="agent_province_id">

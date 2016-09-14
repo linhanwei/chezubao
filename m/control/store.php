@@ -12,21 +12,36 @@ defined('InSystem') or exit('Access Invalid!');
 class storeControl extends mobileMemberControl{
 
     public function __construct() {
+        $this->need_login = false;
         parent::__construct();
     }
-
     /**
      * 商户详细
      */
     public function viewOp(){
         $store_id = $_GET['store_id'];
         $store_info = Model('store')->getStoreInfoByID($store_id);
-
+        
         Tpl::output('html_title',$store_info['store_name']);
         Tpl::output('store_info',$store_info);
         Tpl::showpage('store_info');
     }
-
+    
+    /**
+     * 商户资料
+     */
+    public function infoOp(){
+        $store_id = $this->member_info['store_id'];
+        if(empty($store_id)){
+            output_data(array('error'=>'没有店铺信息!'));
+        }
+        
+        $store_info = Model('store')->getStoreInfoByID($store_id);
+        
+        output_data(array('store_info'=>$store_info));
+        
+    }
+    
     public function joininOp(){
         if($this->member_info['grade_id']!=1){
             if(TIMESTAMP > strtotime('2016-07-15 23:59:59')){
@@ -159,10 +174,11 @@ class storeControl extends mobileMemberControl{
         }
         foreach($store_list as $key=>$val){
             if($val['store_avatar']){
-                $store_list[$key]['store_avatar'] = UPLOAD_SITE_URL.'/'.ATTACH_STORE_JOININ.'/'.$val['store_avatar'];
+                $store_list[$key]['store_avatar'] = UPLOAD_SITE_URL.'/'.ATTACH_STORE.'/'.$val['store_avatar'];
             }else{
                 $store_list[$key]['store_avatar'] = UPLOAD_SITE_URL.'/'.ATTACH_COMMON.DS.'default_store_avatar.gif';
             }
+            $store_list[$key]['store_phone'] = $val['store_phone'] ? $val['store_phone'] : $val['member_name'];
             unset($store_list[$key]['legal_name']);
             unset($store_list[$key]['idcard_no']);
             unset($store_list[$key]['idcard_back']);
@@ -170,14 +186,6 @@ class storeControl extends mobileMemberControl{
         }
         $page_count = $model_store->gettotalpage();
         output_data(array('store_list' => $store_list), mobile_page($page_count));
-    }
-
-    /*
-     * 获得店铺资料
-     */
-    public function infoOp(){
-        $store_info = Model('store')->getStoreInfoByID($this->member_info['store_info']['store_id']);
-        output_data(array('store_info'=>$store_info));
     }
 
     /**
@@ -216,7 +224,8 @@ class storeControl extends mobileMemberControl{
             $update_array['store_phone'] = $store_phone;
         }
 
-        $update_array['store_avatar'] = $this->upload_image('store_avatar');
+        $store_avatar = $this->upload_image('store_avatar');
+        if($store_avatar) $update_array['store_avatar'] = $store_avatar;
 
         $banner_1 = $this->upload_image('banner_1');
         $banner_2 = $this->upload_image('banner_2');
@@ -229,10 +238,10 @@ class storeControl extends mobileMemberControl{
         if($banner_3) $update_array['banner_3'] = $banner_3;
         if($banner_4) $update_array['banner_4'] = $banner_4;
         if($banner_5) $update_array['banner_5'] = $banner_5;
-        
+
         $result = $model_store->editStore($update_array, array('store_id' => $this->member_info['store_info']['store_id']));
         if ($result){
-            output_data(array('store_id'=>$this->member_info['store_info']['store_id'],'msg'=>'编辑成功')); 
+            output_data(array('store_id'=>$this->member_info['store_info']['store_id'],'msg'=>'编辑成功'));
         }else {
             output_error('编辑失败');
         }
@@ -253,4 +262,49 @@ class storeControl extends mobileMemberControl{
         }
         return $pic_name;
     }
+    
+    /**
+     * 删除图片
+     */
+    public function del_imageOp() {
+        $banner_num = $_GET['banner_num'];
+        
+        if(empty($banner_num)){
+            output_error('请选择删除的图片!');
+        }
+        
+        if(in_array($banner_num, array(1,2,3,4,5))){
+            output_error('参数错误!');
+        }
+        $store_id = $this->member_info['store_id'];
+        if(empty($store_id)){
+            output_data(array('error'=>'没有店铺信息!'));
+        }
+        
+        $Store = Model('store');
+        $store_info = $Store->getStoreInfoByID($store_id);
+        
+        $field_name = 'banner_'.$banner_num;
+        $image_path = BASE_UPLOAD_PATH.DS.ATTACH_PATH.DS.'store_joinin'.DS.$store_info[$field_name];
+        
+        $is_exists = file_exists($image_path);
+        
+        if(!$is_exists){
+            output_error('没有该图片!');
+        }
+        
+        $update_array[$field_name] = '';
+        $edit_result = $Store->editStore($update_array, array('store_id' => $this->member_info['store_info']['store_id']));
+        
+        if($edit_result){
+            $result = unlink($image_path);
+        }
+        if($result){
+            output_data(array('msg'=>'删除成功'));
+        }else{
+            output_error('删除失败!');
+        }
+        
+    }
+
 }

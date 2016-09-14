@@ -23,6 +23,7 @@
 </header>
 <div class="main" id="main-container"></div>
 <footer id="footer"></footer>
+
 <script type="text/html" id="adv_list">
     <div class="adv_list">
         <div class="swipe-wrap">
@@ -33,6 +34,25 @@
                 </a>
             </div>
             <% } %>
+        </div>
+    </div>
+    <div class="theme_class">
+        <div class="theme_tit">
+            <div class="tit_img">
+                <img src="<%= new_img_url %>" alt="">
+            </div>
+        </div>
+        <div class="theme_content">
+            <ul class="theme_item_list clearfix">
+                <% for (var na in new_arr) { %>
+                    <li class="item"><a href="<%= new_arr[na].url %>"><%= new_arr[na].name %></a></li>
+                <% } %>
+                <!-- <li class="item"><a href="">美车饰界</a></li>
+                <li class="item"><a href="">健康食品</a></li>
+                <li class="item"><a href="">潮流数码</a></li>
+                <li class="item"><a href="">房产</a></li>
+                <li class="item"><a href="">0元淘</a></li> -->
+            </ul>
         </div>
     </div>
 </script>
