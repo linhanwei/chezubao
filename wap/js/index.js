@@ -13,7 +13,7 @@ $(function() {
                     switch (kk) {
                         case 'adv_list':
                             vv.new_img_url = SiteUrl+'/data/upload/m/common/index/new_theme_icon.png';
-                            vv.new_arr = [
+                            vv.new_arr = [ //SiteUrl+'/mall_m/index.php?act=special_channel&op=index'
                                 {'name':'汽车频道','url':'javascript:void(0);'},
                                 {'name':'美车饰界','url':'javascript:void(0);'},
                                 {'name':'健康食品','url':'javascript:void(0);'},

@@ -267,13 +267,13 @@ class storeControl extends mobileMemberControl{
      * 删除图片
      */
     public function del_imageOp() {
-        $banner_num = $_GET['banner_num'];
+        $banner_num = $_POST['banner_num'];
         
         if(empty($banner_num)){
             output_error('请选择删除的图片!');
         }
         
-        if(in_array($banner_num, array(1,2,3,4,5))){
+        if(!in_array($banner_num, array(1,2,3,4,5))){
             output_error('参数错误!');
         }
         $store_id = $this->member_info['store_id'];

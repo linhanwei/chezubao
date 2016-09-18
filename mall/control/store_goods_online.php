@@ -324,7 +324,11 @@ class store_goods_onlineControl extends BaseSellerControl {
         $update_common['goods_commend']      = intval($_POST['g_commend']);
         $update_common['goods_state']        = ($this->store_info['store_state'] != 1) ? 0 : intval($_POST['g_state']);            // 店铺关闭时，商品下架
         $update_common['goods_selltime']     = strtotime($_POST['starttime']) + intval($_POST['starttime_H'])*3600 + intval($_POST['starttime_i'])*60;
-        $update_common['goods_verify']       = (C('goods_verify') == 1) ? 10 : 1;
+        if($this->store_info['store_id'] != 1){
+            $common_array['goods_verify']       = (C('goods_verify') == 1) ? 10 : 1;
+        }else{
+            $common_array['goods_verify']       = 1;
+        }
         $update_common['spec_name']          = is_array($_POST['spec']) ? serialize($_POST['sp_name']) : serialize(null);
         $update_common['spec_value']         = is_array($_POST['spec']) ? serialize($_POST['sp_val']) : serialize(null);
         $update_common['goods_vat']          = intval($_POST['g_vat']);

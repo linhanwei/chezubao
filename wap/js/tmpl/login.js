@@ -1,5 +1,5 @@
 $(function(){
-    var memberHtml = '<a class="btn mr5" href="'+SiteUrl+'/shop/api.php?act=toqq&mobile=mobile">QQ登陆</a><a class="btn mr5" href="'+WapSiteUrl+'/tmpl/member/register.html">注册</a>';
+    var memberHtml = '<!--<a class="btn mr5" href="'+SiteUrl+'/shop/api.php?act=toqq&mobile=mobile">QQ登陆</a>--><a class="btn mr5" href="'+WapSiteUrl+'/tmpl/member/register.html">注册</a>';
     var act = GetQueryString("act");
     if(act && act == "member"){
         memberHtml = '<a class="btn mr5" id="logoutbtn" href="javascript:void(0);">注销</a>';
@@ -14,9 +14,9 @@ $(function(){
         +'</div>'
          +'<div class="footer-content">'
             +'<p class="link">'
-			+'<a href="'+WapSiteUrl+'/shop.html" class="standard">所有店铺</a>'
-            +'<a href="'+WapSiteUrl+'/tmpl/article_list.html?ac_id=2" class="standard">帮助中心</a>'
-            +'<a href="'+WapSiteUrl+'/tmpl/article_list.html?ac_id=7">关于我们</a>'
+			// +'<a href="'+WapSiteUrl+'/shop.html" class="standard">所有店铺</a>'
+   //          +'<a href="'+WapSiteUrl+'/tmpl/article_list.html?ac_id=2" class="standard">帮助中心</a>'
+   //          +'<a href="'+WapSiteUrl+'/tmpl/article_list.html?ac_id=7">关于我们</a>'
             +'</p>'
             /*+'<p class="copyright">'
                 +'版权所有 2014-2015 © www.33hao.com'
@@ -48,7 +48,8 @@ $(function(){
 	+'</div>';
 	var render = template.compile(tmpl);
 	var html = render();
-	$("#footer").html(html+tmpl2);
+	$("#footer_nav").html(html);
+
     //回到顶部
     $(".gotop").click(function (){
         $(window).scrollTop(0);

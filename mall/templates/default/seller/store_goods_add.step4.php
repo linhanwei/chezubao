@@ -18,7 +18,7 @@
   </li>
 </ul>
 <div class="alert alert-block hr32">
-  <h2><i class="icon-ok-circle mr10"></i><?php echo $lang['store_goods_step3_goods_release_success'];?>&nbsp;&nbsp;<?php if (C('goods_verify')) {?>等待管理员审核商品！<?php }?></h2>
+  <h2><i class="icon-ok-circle mr10"></i><?php echo $lang['store_goods_step3_goods_release_success'];?>&nbsp;&nbsp;<!-- <?php if (C('goods_verify')) {?>等待管理员审核商品！<?php }?>--></h2>
   <div class="hr16"></div>
   <div>
     <!-- <?php if ($output['allow_gift']) {?>
