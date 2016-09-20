@@ -116,7 +116,6 @@ class documentControl extends SystemControl{
 			}
 		}
 
-		Tpl::output('PHPSESSID',session_id());
 		Tpl::output('file_upload',$file_upload);
 		Tpl::output('doc',$doc);
 		Tpl::showpage('document.edit');

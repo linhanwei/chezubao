@@ -63,7 +63,7 @@
           <form id="login_form" method="post" action="index.php?act=login&op=login" onsubmit="ajaxpost('login_form', '', '', 'onerror')">
             <?php Security::getToken();?>
             <input type="hidden" name="form_submit" value="ok" />
-            <input name="hash" type="hidden" value="<?php echo getNchash('login','index');?>
+            <input name="hash" type="hidden" value="<?php echo getUrlhash('login','index');?>
             " />
             <dl>
               <dt>
@@ -90,7 +90,7 @@
                 <strong>验证码</strong>
                 <a href="javascript:void(0)" class="ml5" onclick="javascript:document.getElementById('codeimage').src='<?php echo STORE_SITE_URL?>
                   /index.php?act=seccode&op=makecode&hash=
-                  <?php echo getNchash('login','index');?>&t=' + Math.random();">更换验证码</a>
+                  <?php echo getUrlhash('login','index');?>&t=' + Math.random();">更换验证码</a>
               </dt>
               <dd>
                 <input tabindex="3" type="text" name="captcha" autocomplete="off" class="text w130" id="captcha2" maxlength="4" size="10" />
@@ -225,7 +225,7 @@
         // 右侧bar登录
         $('div[nctype="a-barLoginBox"]').click(function(){
             $('div[nctype="barLoginBox"]').toggle();
-            document.getElementById('codeimage').src='<?php echo STORE_SITE_URL; ?>/index.php?act=seccode&op=makecode&hash=<?php echo getNchash('login','index');?>&t='+ Math.random();
+            document.getElementById('codeimage').src='<?php echo STORE_SITE_URL; ?>/index.php?act=seccode&op=makecode&hash=<?php echo getUrlhash('login','index');?>&t='+ Math.random();
         });
         $('a[nctype="close-barLoginBox"]').click(function(){
             $('div[nctype="barLoginBox"]').toggle();

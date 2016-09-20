@@ -8,7 +8,7 @@ defined('InSystem') or exit('Access Invalid!');
 $_limit = array(
     array('name' => $lang['nc_config'], 'child' => array(
             array('name' => $lang['nc_upload_set'], 'op' => null, 'act' => 'upload'),
-            array('name' => '协议帮助', 'op' => 'document', 'act' => 'document'),
+            array('name' => '协议帮助', 'op' => null, 'act' => 'document'),
             array('name' => '上传设置', 'op' => 'param', 'act' => 'upload'),
             array('name' => '消息通知', 'op' => 'mobile', 'act' => 'message'),
             array('name' => '支付方式', 'op' => 'system', 'act' => 'payment'),
@@ -28,7 +28,8 @@ $_limit = array(
             array('name' => $lang['nc_album_manage'], 'op' => null, 'act' => 'goods_album'),
         )),
     array('name' => $lang['nc_store'], 'child' => array(
-            array('name' => $lang['nc_store_manage'], 'op' => null, 'act' => 'store')
+            array('name' => $lang['nc_store_manage'], 'op' => null, 'act' => 'store'),
+        array('name' => '车主服务商', 'op' => null, 'act' => 'store')
         )),
     array('name' => '代理管理', 'child' => array(
         array('name' => '代理管理', 'op' => null, 'act' => 'agent')

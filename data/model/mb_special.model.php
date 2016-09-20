@@ -420,7 +420,7 @@ class mb_specialModel extends Model{
     	$module_list['goods1'] = array('name' => 'goods1' , 'desc' => '限时商品');
 		$module_list['goods2'] = array('name' => 'goods2' , 'desc' => '团购商品');
 	}
-		
+	
         return $module_list;
     }
 

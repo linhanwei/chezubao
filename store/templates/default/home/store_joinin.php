@@ -19,7 +19,7 @@
       <form id="login_form" action="index.php?act=login" method="post">
         <?php Security::getToken();?>
         <input type="hidden" name="form_submit" value="ok" />
-        <input name="hash" type="hidden" value="<?php echo getNchash();?>" />
+        <input name="hash" type="hidden" value="<?php echo getUrlhash();?>" />
         <dl>
           <dt><?php echo $lang['login_index_username'];?>：</dt>
           <dd>
@@ -39,8 +39,8 @@
           <dt><?php echo $lang['login_index_checkcode'];?>：</dt>
           <dd>
             <input type="text" name="captcha" class="text w50 fl" id="captcha" maxlength="4" size="10" />
-            <a href="JavaScript:void(0);" onclick="javascript:document.getElementById('codeimage').src='index.php?act=seccode&op=makecode&hash=<?php echo getNchash();?>&t=' + Math.random();" class="change" title="<?php echo $lang['login_index_change_checkcode'];?>">
-            <img src="index.php?act=seccode&op=makecode&hash=<?php echo getNchash();?>" class="fl ml5" name="codeimage" id="codeimage" border="0"/></a>
+            <a href="JavaScript:void(0);" onclick="javascript:document.getElementById('codeimage').src='index.php?act=seccode&op=makecode&hash=<?php echo getUrlhash();?>&t=' + Math.random();" class="change" title="<?php echo $lang['login_index_change_checkcode'];?>">
+            <img src="index.php?act=seccode&op=makecode&hash=<?php echo getUrlhash();?>" class="fl ml5" name="codeimage" id="codeimage" border="0"/></a>
             <label></label>
           </dd>
         </dl>
@@ -110,7 +110,7 @@ $(document).ready(function(){
                 required : true,
                 minlength: 4,
                 remote   : {
-                    url : '<?php echo STORE_SITE_URL?>/index.php?act=seccode&op=check&hash=<?php echo getNchash();?>',
+                    url : '<?php echo STORE_SITE_URL?>/index.php?act=seccode&op=check&hash=<?php echo getUrlhash();?>',
                     type: 'get',
                     data:{
                         captcha : function(){

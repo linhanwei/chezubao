@@ -86,6 +86,7 @@ $arr = array(
             'text' => $lang['nc_store'],
             'list' => array(
                 array('args' => 'store,store,store', 'text' => $lang['nc_store_manage']),
+                array('args' => 'store,store_lbs,store', 'text' => '车主服务商'),
             )
         ),
         4 => array(
@@ -158,8 +159,8 @@ $arr['left'][] = array(
     'list' => array(
         array('args' => 'index_edit,mb_special,mobile', 'text' => '首页编辑'),
         array('args' => 'index,banner,mobile', 'text' => 'banner管理'),
-     array('args'=>'special_list,mb_special,mobile',				'text'=>'专题设置'),
-      /*array('args'=>'mb_category_list,mb_category,mobile',	'text'=>$lang['nc_mobile_catepic']),
+    /* array('args'=>'special_list,mb_special,mobile',				'text'=>'专题设置'),
+      array('args'=>'mb_category_list,mb_category,mobile',	'text'=>$lang['nc_mobile_catepic']),
       array('args'=>'mb_app,mb_app,mobile',				'text'=>'下载设置'),
       array('args'=>'flist,mb_feedback,mobile',					'text'=>$lang['nc_mobile_feedback']),
       array('args'=>'mb_payment,mb_payment,mobile',				'text'=>'手机支付'), */

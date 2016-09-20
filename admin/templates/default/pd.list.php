@@ -23,7 +23,7 @@
           <th><?php echo $lang['admin_predeposit_addtime'];?> </th>
           <td><input type="text" id="query_start_date" name="query_start_date" class="txt date" value="<?php echo $_GET['query_start_date'];?>" >
             <label>~</label>
-            <input type="text" id="query_end_date" name="query_end_date" class="txt date" value="<?php echo $_GET['query_start_date'];?>" ></td>
+            <input type="text" id="query_end_date" name="query_end_date" class="txt date" value="<?php echo $_GET['query_end_date'];?>" ></td>
           <td>
             <select id="paystate_search" name="paystate_search">
               <option value=""><?php echo $lang['admin_predeposit_paystate']; ?></option>

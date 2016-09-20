@@ -17,7 +17,7 @@
     <form method="post" id="auth_form" action="index.php?act=member_security&op=auth">
       <input type="hidden" name="form_submit" value="ok" />
       <input type="hidden" name="type" value="<?php echo $_GET['type'];?>">
-      <input name="hash" type="hidden" value="<?php echo getNchash();?>" />
+      <input name="hash" type="hidden" value="<?php echo getUrlhash();?>" />
       <dl>
         <dt><i class="required">*</i>选择身份认证方式：</dt>
         <dd><p>
@@ -44,7 +44,7 @@
         <dt><i class="required">*</i>图形验证码：</dt>
         <dd>
           <input type="text" name="captcha" class="text" id="captcha" maxlength="4" size="10" autocomplete="off" />
-         <img src="<?php echo STORE_SITE_URL?>/index.php?act=seccode&op=makecode&hash=<?php echo getNchash();?>" name="codeimage" border="0" id="codeimage" class="ml5 vm"><a href="javascript:void(0)" class="ml5 blue" onclick="javascript:document.getElementById('codeimage').src='<?php echo STORE_SITE_URL?>/index.php?act=seccode&op=makecode&hash=<?php echo getNchash();?>&t=' + Math.random();">看不清？换张图</a>
+         <img src="<?php echo STORE_SITE_URL?>/index.php?act=seccode&op=makecode&hash=<?php echo getUrlhash();?>" name="codeimage" border="0" id="codeimage" class="ml5 vm"><a href="javascript:void(0)" class="ml5 blue" onclick="javascript:document.getElementById('codeimage').src='<?php echo STORE_SITE_URL?>/index.php?act=seccode&op=makecode&hash=<?php echo getUrlhash();?>&t=' + Math.random();">看不清？换张图</a>
           <label for="captcha" generated="true" class="error"></label>
         </dd>
       </dl>
@@ -65,7 +65,7 @@ var ALLOW_SEND = true;
 $(function(){
 	$('.submit').on('click',function(){
 		if (!$('#auth_form').valid()){
-			document.getElementById('codeimage').src='<?php echo STORE_SITE_URL?>/index.php?act=seccode&op=makecode&hash=<?php echo getNchash();?>&t=' + Math.random();
+			document.getElementById('codeimage').src='<?php echo STORE_SITE_URL?>/index.php?act=seccode&op=makecode&hash=<?php echo getUrlhash();?>&t=' + Math.random();
 		} else {
 			$('#auth_form').submit();
 		}
@@ -111,7 +111,7 @@ $(function(){
                 required : true,
                 minlength: 4,
                 remote   : {
-                    url : '<?php echo STORE_SITE_URL?>/index.php?act=seccode&op=check&hash=<?php echo getNchash();?>',
+                    url : '<?php echo STORE_SITE_URL?>/index.php?act=seccode&op=check&hash=<?php echo getUrlhash();?>',
                     type: 'get',
                     data:{
                         captcha : function(){

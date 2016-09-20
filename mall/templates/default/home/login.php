@@ -24,7 +24,7 @@
       <form id="login_form" method="post" action="index.php?act=login&op=login"  class="bg">
         <?php Security::getToken();?>
         <input type="hidden" name="form_submit" value="ok" />
-        <input name="hash" type="hidden" value="<?php echo getNchash();?>" />
+        <input name="hash" type="hidden" value="<?php echo getUrlhash();?>" />
         <dl>
           <dt><?php echo $lang['login_index_username'];?></dt>
           <dd style="min-height:54px;">
@@ -44,7 +44,7 @@
           <dt><?php echo $lang['login_index_checkcode'];?></dt>
           <dd style="min-height:54px;">
             <input type="text" name="captcha" autocomplete="off" class="text w50 fl" id="captcha" maxlength="4" size="10" />
-            <img src="<?php echo MALL_SITE_URL?>/index.php?act=seccode&op=makecode&hash=<?php echo getNchash();?>" name="codeimage" border="0" id="codeimage" class="fl ml5"> <a href="javascript:void(0)" class="ml5" onclick="javascript:document.getElementById('codeimage').src='<?php echo MALL_SITE_URL?>/index.php?act=seccode&op=makecode&hash=<?php echo getNchash();?>&t=' + Math.random();"><?php echo $lang['login_index_change_checkcode'];?></a>
+            <img src="<?php echo MALL_SITE_URL?>/index.php?act=seccode&op=makecode&hash=<?php echo getUrlhash();?>" name="codeimage" border="0" id="codeimage" class="fl ml5"> <a href="javascript:void(0)" class="ml5" onclick="javascript:document.getElementById('codeimage').src='<?php echo MALL_SITE_URL?>/index.php?act=seccode&op=makecode&hash=<?php echo getUrlhash();?>&t=' + Math.random();"><?php echo $lang['login_index_change_checkcode'];?></a>
             <label></label>
           </dd>
         </dl>
@@ -95,7 +95,7 @@ $(document).ready(function(){
             ,captcha : {
                 required : true,
                 remote   : {
-                    url : '<?php echo MALL_SITE_URL?>/index.php?act=seccode&op=check&hash=<?php echo getNchash();?>',
+                    url : '<?php echo MALL_SITE_URL?>/index.php?act=seccode&op=check&hash=<?php echo getUrlhash();?>',
                     type: 'get',
                     data:{
                         captcha : function(){
@@ -104,7 +104,7 @@ $(document).ready(function(){
                     },
                     complete: function(data) {
                         if(data.responseText == 'false') {
-                        	document.getElementById('codeimage').src='<?php echo MALL_SITE_URL?>/index.php?act=seccode&op=makecode&hash=<?php echo getNchash();?>&t=' + Math.random();
+                        	document.getElementById('codeimage').src='<?php echo MALL_SITE_URL?>/index.php?act=seccode&op=makecode&hash=<?php echo getUrlhash();?>&t=' + Math.random();
                         }
                     }
                 }

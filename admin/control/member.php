@@ -376,4 +376,122 @@ class memberControl extends SystemControl{
 		}
 	}
 
+    /**
+     * 导出帐户余额充值记录
+     *
+     */
+    public function export_step1Op(){
+        $condition = array();
+        //会员级别
+        $member_grade = unserialize(C('member_grade'));
+
+        if ($_GET['search_field_value'] != '') {
+            switch ($_GET['search_field_name']){
+                case 'member_name':
+                    $condition['member_name'] = array('like', '%' . trim($_GET['search_field_value']) . '%');
+                    break;
+                case 'member_email':
+                    $condition['member_email'] = array('like', '%' . trim($_GET['search_field_value']) . '%');
+                    break;
+                case 'member_truename':
+                    $condition['member_truename'] = array('like', '%' . trim($_GET['search_field_value']) . '%');
+                    break;
+            }
+        }
+        switch ($_GET['search_state']){
+            case 'no_informallow':
+                $condition['inform_allow'] = '2';
+                break;
+            case 'no_isbuy':
+                $condition['is_buy'] = '0';
+                break;
+            case 'no_isallowtalk':
+                $condition['is_allowtalk'] = '0';
+                break;
+            case 'no_memberstate':
+                $condition['member_state'] = '0';
+                break;
+        }
+        //会员等级
+        $search_grade = $_GET['search_grade'] ? intval($_GET['search_grade']) : -1  ;
+        if ($search_grade >= 0 && $member_grade){
+            //$condition['member_exppoints'] = array(array('egt',$member_grade[$search_grade]['exppoints']),array('lt',$member_grade[$search_grade+1]['exppoints']),'and');
+            $condition['grade_id'] = $search_grade;
+        }
+
+        $model_member = Model('member');
+        if (!is_numeric($_GET['curpage'])){
+            $count = $model_member->getMemberCount($condition);
+            $array = array();
+            if ($count > self::EXPORT_SIZE ){	//显示下载链接
+                $page = ceil($count/self::EXPORT_SIZE);
+                for ($i=1;$i<=$page;$i++){
+                    $limit1 = ($i-1)*self::EXPORT_SIZE + 1;
+                    $limit2 = $i*self::EXPORT_SIZE > $count ? $count : $i*self::EXPORT_SIZE;
+                    $array[$i] = $limit1.' ~ '.$limit2 ;
+                }
+                Tpl::output('list',$array);
+                Tpl::output('murl','index.php?act=member&op=member');
+                Tpl::showpage('export.excel');
+            }else{	//如果数量小，直接下载
+                $data = $model_member->getMemberList($condition,'*',self::EXPORT_SIZE,'member_id desc');
+
+                foreach ($data as $k=>$v) {
+                    $inviter_member = $model_member->getMemberInfoByID($v['inviter_id']);
+                    $data[$k]['inviter_name'] = $inviter_member['member_name'];
+                }
+
+                $this->createExcel($data);
+            }
+        }else{	//下载
+            $limit1 = ($_GET['curpage']-1) * self::EXPORT_SIZE;
+            $limit2 = self::EXPORT_SIZE;
+            $data = $model_member->getMemberList($condition,'*','','member_id desc',"{$limit1},{$limit2}");
+
+            foreach ($data as $k=>$v) {
+                $inviter_member = $model_member->getMemberInfoByID($v['inviter_id']);
+                $data[$k]['inviter_name'] = $inviter_member['member_name'];
+            }
+            $this->createExcel($data);
+        }
+    }
+
+    /**
+     * 生成导出帐户余额充值excel
+     *
+     * @param array $data
+     */
+    private function createExcel($data = array()){
+        Language::read('export');
+        import('libraries.excel');
+        $excel_obj = new Excel();
+        $excel_data = array();
+        //设置样式
+        $excel_obj->setStyle(array('id'=>'s_title','Font'=>array('FontName'=>'宋体','Size'=>'12','Bold'=>'1')));
+        //header
+        $excel_data[0][] = array('styleid'=>'s_title','data'=>'序号');
+        $excel_data[0][] = array('styleid'=>'s_title','data'=>'会员帐号');
+        $excel_data[0][] = array('styleid'=>'s_title','data'=>'姓名');
+        $excel_data[0][] = array('styleid'=>'s_title','data'=>'身份证');
+        $excel_data[0][] = array('styleid'=>'s_title','data'=>'所在区域');
+        $excel_data[0][] = array('styleid'=>'s_title','data'=>'会员等级');
+        $excel_data[0][] = array('styleid'=>'s_title','data'=>'推荐人');
+        $row = 1;
+        foreach ((array)$data as $k=>$v){
+            $tmp = array();
+            $tmp[] = array('data'=>$row++);
+            $tmp[] = array('data'=>$v['member_name']);
+            $tmp[] = array('data'=>$v['member_truename']);
+            $tmp[] = array('data'=>$v['member_idcard']);
+            $tmp[] = array('data'=>$v['member_areainfo']);
+            $tmp[] = array('data'=>$v['grade_name']);
+            $tmp[] = array('data'=>$v['inviter_name']);
+            $excel_data[] = $tmp;
+        }
+        $excel_data = $excel_obj->charset($excel_data,CHARSET);
+        $excel_obj->addArray($excel_data);
+        $excel_obj->addWorksheet($excel_obj->charset('会员信息',CHARSET));
+        $excel_obj->generateXML($excel_obj->charset('会员信息',CHARSET).$_GET['curpage'].'-'.date('Y-m-d-H',time()));
+    }
+
 }

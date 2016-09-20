@@ -397,14 +397,14 @@ function load_history_information(){
  *
  * 事件绑定调用范例
  * $("#btn_login").nc_login({
- *     hash:'<?php echo getNchash();?>',
+ *     hash:'<?php echo getUrlhash();?>',
  *     formhash:'<?php echo Security::getTokenValue();?>',
  *     anchor:'cms_comment_flag'
  * });
  *
  * 直接调用范例
  * $.show_nc_login({
- *     hash:'<?php echo getNchash();?>',
+ *     hash:'<?php echo getUrlhash();?>',
  *     formhash:'<?php echo Security::getTokenValue();?>',
  *     anchor:'cms_comment_flag'
  * });

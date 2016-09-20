@@ -52,7 +52,7 @@ $(document).ready(function(){
 <form method="post" id="message" action="index.php?act=goods&op=save_consult&id=<?php echo $_GET['id']; ?>">
 <?php Security::getToken();?>
 <input type="hidden" name="form_submit" value="ok" />
-<input name="hash" type="hidden" value="<?php echo getNchash();?>" />
+<input name="hash" type="hidden" value="<?php echo getUrlhash();?>" />
   <?php if($output['type_name']==''){?>
   <input type="hidden" name="goods_id" value="<?php echo $_GET['goods_id']; ?>"/>
   <?php }?>
@@ -70,7 +70,7 @@ $(document).ready(function(){
       <?php if($output['setting_config']['captcha_status_goodsqa'] == '1') { ?>
       <label for="captcha"><strong><?php echo $lang['goods_index_checkcode'];?></strong>
         <input name="captcha" class="text w60" type="text" id="captcha" size="4" autocomplete="off" maxlength="4"/><span></span>
-        <img src="index.php?act=seccode&op=makecode&hash=<?php echo getNchash();?>" name="codeimage" border="0" id="codeimage" onclick="this.src='index.php?act=seccode&op=makecode&hash=<?php echo $output['hash'];?>&t=' + Math.random()"/><span><?php echo $lang['goods_index_change_checkcode'];?></span></label>
+        <img src="index.php?act=seccode&op=makecode&hash=<?php echo getUrlhash();?>" name="codeimage" border="0" id="codeimage" onclick="this.src='index.php?act=seccode&op=makecode&hash=<?php echo $output['hash'];?>&t=' + Math.random()"/><span><?php echo $lang['goods_index_change_checkcode'];?></span></label>
       <?php } ?>
     </div>
     <div class="ask-content"> <strong>咨询内容：</strong>
@@ -94,19 +94,19 @@ $(function(){
 					<?php }?>
 					<?php if($output['setting_config']['captcha_status_goodsqa'] == '1') { ?>
 					,'captcha':$("#captcha").val()
-					,'hash':'<?php echo getNchash();?>'
+					,'hash':'<?php echo getUrlhash();?>'
 					<?php }?>
 					,'goods_content':$("#textfield3").val()
 				}, function(data){
 					if(data.done == 'true'){
 						$("#cosulting_demo").load('index.php?act=goods&op=cosulting&goods_id=<?php echo $_GET['goods_id']; ?>');
 					}else{
-						document.getElementById('codeimage').src='index.php?act=seccode&op=makecode&hash=<?php echo getNchash();?>&t=' + Math.random();
+						document.getElementById('codeimage').src='index.php?act=seccode&op=makecode&hash=<?php echo getUrlhash();?>&t=' + Math.random();
 						alert(data.msg);
 					}
 		    	});
 	   	}else{
-	   		document.getElementById('codeimage').src='index.php?act=seccode&op=makecode&hash=<?php echo getNchash();?>&t=' + Math.random();
+	   		document.getElementById('codeimage').src='index.php?act=seccode&op=makecode&hash=<?php echo getUrlhash();?>&t=' + Math.random();
 		}
 	});
 	$('#message').validate({
@@ -128,7 +128,7 @@ $(function(){
 	        		required : true,
 	        		minlength : 4,
 	        		remote   : {
-	                    url : 'index.php?act=seccode&op=check&hash=<?php echo getNchash();?>',
+	                    url : 'index.php?act=seccode&op=check&hash=<?php echo getUrlhash();?>',
 	                    type:'get',
 	                    data:{
 	                    	captcha : function(){

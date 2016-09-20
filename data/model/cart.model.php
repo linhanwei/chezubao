@@ -127,7 +127,7 @@ class cartModel extends Model {
             'goods_image' => $goods_info['goods_image'],
             'goods_num' => $quantity
         );
-        setNcCookie('cart', encrypt(base64_encode(serialize($cart_array))), 24 * 3600);
+        setMyCookie('cart', encrypt(base64_encode(serialize($cart_array))), 24 * 3600);
         return true;
     }
 
@@ -189,7 +189,7 @@ class cartModel extends Model {
             if (key_exists($condition['goods_id'], (array) $cart_array)) {
                 unset($cart_array[$condition['goods_id']]);
             }
-            setNcCookie('cart', encrypt(base64_encode(serialize($cart_array))), 24 * 3600);
+            setMyCookie('cart', encrypt(base64_encode(serialize($cart_array))), 24 * 3600);
             $result = true;
         }
         //重新计算购物车商品数和总金额
@@ -207,7 +207,7 @@ class cartModel extends Model {
      */
     public function clearCart($type, $condition = array()) {
         if ($type == 'cookie') {
-            setNcCookie('cart', '', -3600);
+            setMyCookie('cart', '', -3600);
         } else if ($type == 'db') {
             //数据库暂无浅清空操作
         }
@@ -241,7 +241,7 @@ class cartModel extends Model {
             }
             $this->cart_all_price = $cart_all_price;
         }
-        setNcCookie('cart_goods_num', $this->cart_goods_num, 2 * 3600);
+        setMyCookie('cart_goods_num', $this->cart_goods_num, 2 * 3600);
         return $this->cart_goods_num;
     }
 

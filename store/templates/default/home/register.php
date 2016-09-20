@@ -55,7 +55,7 @@
           <dt><?php echo $lang['login_register_code'];?></dt>
           <dd style="min-height:54px;">
             <input type="text" id="captcha" name="captcha" class="text w50 fl tip" maxlength="4" size="10" title="<?php echo $lang['login_register_input_code'];?>" />
-            <img src="index.php?act=seccode&op=makecode&hash=<?php echo getNchash();?>" title="" name="codeimage" border="0" id="codeimage" class="fl ml5"/> <a href="javascript:void(0)" class="ml5" onclick="javascript:document.getElementById('codeimage').src='index.php?act=seccode&op=makecode&hash=<?php echo getNchash();?>&t=' + Math.random();"><?php echo $lang['login_register_click_to_change_code'];?></a>
+            <img src="index.php?act=seccode&op=makecode&hash=<?php echo getUrlhash();?>" title="" name="codeimage" border="0" id="codeimage" class="fl ml5"/> <a href="javascript:void(0)" class="ml5" onclick="javascript:document.getElementById('codeimage').src='index.php?act=seccode&op=makecode&hash=<?php echo getUrlhash();?>&t=' + Math.random();"><?php echo $lang['login_register_click_to_change_code'];?></a>
             <label></label>
           </dd>
         </dl>
@@ -70,7 +70,7 @@
           </dd>
         </dl>
         <input type="hidden" value="<?php echo $_GET['ref_url']?>" name="ref_url">
-        <input name="hash" type="hidden" value="<?php echo getNchash();?>" />
+        <input name="hash" type="hidden" value="<?php echo getUrlhash();?>" />
         <input type="hidden" name="form_submit" value="ok" />
       </form>
       <div class="clear"></div>
@@ -166,7 +166,7 @@ $(function(){
             captcha : {
                 required : true,
                 remote   : {
-                    url : 'index.php?act=seccode&op=check&hash=<?php echo getNchash();?>',
+                    url : 'index.php?act=seccode&op=check&hash=<?php echo getUrlhash();?>',
                     type: 'get',
                     data:{
                         captcha : function(){
@@ -175,7 +175,7 @@ $(function(){
                     },
                     complete: function(data) {
                         if(data.responseText == 'false') {
-                        	document.getElementById('codeimage').src='<?php echo STORE_SITE_URL?>/index.php?act=seccode&op=makecode&hash=<?php echo getNchash();?>&t=' + Math.random();
+                        	document.getElementById('codeimage').src='<?php echo STORE_SITE_URL?>/index.php?act=seccode&op=makecode&hash=<?php echo getUrlhash();?>&t=' + Math.random();
                         }
                     }
                 }

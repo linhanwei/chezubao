@@ -35,10 +35,10 @@
               	<?php }?>
               <?php }?>
             </select></td>
-            <td>
+            <td style="display: none;">
                 <input type="checkbox" name="search_store" <?php if($output['search_store'] == '1'){ ?>checked='checked'<?php } ?> value="1">商户
             </td>
-            <td>
+            <td style="display: none;">
                 <input type="checkbox" name="search_agent" <?php if($output['search_agent'] == '1'){ ?>checked='checked'<?php } ?> value="1">代理商
             </td>
           <td><a href="javascript:void(0);" id="ncsubmit" class="btn-search " title="<?php echo $lang['nc_query'];?>">&nbsp;</a>
@@ -64,7 +64,9 @@
       </tr>
     </tbody>
   </table>
-  <form method="post" id="form_member">
+    <div style="text-align:right;"><a class="btns" target="_blank" href="index.php?<?php echo $_SERVER['QUERY_STRING'];?>&op=export_step1"><span><?php echo $lang['nc_export'];?>Excel</span></a></div>
+
+    <form method="post" id="form_member">
     <input type="hidden" name="form_submit" value="ok" />
     <table class="table tb-type2 nobdb">
       <thead>
@@ -90,19 +92,7 @@
             <p class="smallfont"><?php echo $lang['member_index_reg_time']?>:&nbsp;<?php echo $v['member_time']; ?></p>
               <p class="smallfont" style="color:#FF0000;"><?php if($v['is_store']) echo '商户&nbsp;&nbsp;';if($v['is_agent']) echo '代理商';?></p>
             
-              <div class="im"><span class="email" >
-                <?php if($v['member_email'] != ''){ ?>
-                <a href="mailto:<?php echo $v['member_email']; ?>" class=" yes" title="<?php echo $lang['member_index_email']?>:<?php echo $v['member_email']; ?>"><?php echo $v['member_email']; ?></a></span>
-                <?php }else { ?>
-                <a href="JavaScript:void(0);" class="" title="<?php echo $lang['member_index_null']?>" ><?php echo $v['member_email']; ?></a></span>
-                <?php } ?>
-                <?php if($v['member_ww'] != ''){ ?>
-                <a target="_blank" href="http://web.im.alisoft.com/msg.aw?v=2&uid=<?php echo $v['member_ww'];?>&site=cnalichn&s=11" class="" title="WangWang: <?php echo $v['member_ww'];?>"><img border="0" src="http://web.im.alisoft.com/online.aw?v=2&uid=<?php echo $v['member_ww'];?>&site=cntaobao&s=2&charset=<?php echo CHARSET;?>" /></a>
-                <?php } ?>
-                <?php if($v['member_qq'] != ''){ ?>                
-                <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=<?php echo $v['member_qq'];?>&site=qq&menu=yes" class=""  title="QQ: <?php echo $v['member_qq'];?>"><img border="0" src="http://wpa.qq.com/pa?p=2:<?php echo $v['member_qq'];?>:52"/></a>
-                <?php } ?>
-              </div></td>
+              </td>
           <td class="align-center"><?php echo $v['member_login_num']; ?></td>
           <td class="w150 align-center"><p><?php echo $v['member_login_time']; ?></p>
             <p><?php echo $v['member_login_ip']; ?></p></td>

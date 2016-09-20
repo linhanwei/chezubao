@@ -33,7 +33,7 @@ class agentControl extends SystemControl{
         $agent_list = $model_agent->getAgentList($condition,10,'*','agent_id desc');
 
         Tpl::output('agent_list',$agent_list);
-        Tpl::output('page',$model_agent->showpage('10'));
+        Tpl::output('page',$model_agent->showpage());
         Tpl::showpage('agent.index');
     }
 
@@ -90,7 +90,8 @@ class agentControl extends SystemControl{
      */
     public function agent_editOp(){
         $model_agent = Model('agent');
-        $agent = $model_agent->getAgentInfo(array('agent_id'=>$_GET['agent_id']>0?$_GET['agent_id']:$_POST['agent_id']));
+        $agent_id = $_GET['agent_id']>0?$_GET['agent_id']:$_POST['agent_id'];
+        $agent = $model_agent->getAgentInfo(array('agent_id'=>$agent_id));
         if (chksubmit()){
             if(empty($agent)){
                 showMessage('代理不存在');
@@ -119,7 +120,7 @@ class agentControl extends SystemControl{
                 $update_param['password'] = md5($_POST['password']);
             }
 
-            $rs = $model_agent->editAgent($update_param,$_POST['agent_id']);
+            $rs = $model_agent->editAgent($update_param,array('agent_id'=>$agent_id));
             if ($rs){
                 $this->log('编辑代理商'.'['.$agent['agent_name'].']',1);
                 showMessage(L('nc_common_save_succ'),'index.php?act=agent&op=agent');
@@ -138,14 +139,15 @@ class agentControl extends SystemControl{
     public function agent_memberOp(){
         $model_agent = Model('agent');
         $model_agent_member = Model('agent_member');
-        $condition = array('agent_id'=>$_GET['agent_id']>0?$_GET['agent_id']:$_POST['agent_id']);
-        $agent = $model_agent->getAgentInfo($model_agent);
+        $agent_id = $_GET['agent_id']>0?$_GET['agent_id']:$_POST['agent_id'];
+        $condition = array('agent_id'=>$agent_id);
+        $agent = $model_agent->getAgentInfo($condition);
         if (chksubmit()){
             if(empty($agent)){
                 showMessage('代理不存在');
             }
 
-            $agent_member_count = $model_agent_member->getAgentMemberCount(array('agent_id'=>$_POST['agent_id']));
+            $agent_member_count = $model_agent_member->getAgentMemberCount(array('agent_id'=>$agent_id));
 
             if($agent_member_count>=5){
                 showMessage('每个区域紧限关联5个帐号');
@@ -155,7 +157,7 @@ class agentControl extends SystemControl{
             if(empty($member_name)){
                 showMessage('请输入需要关联的帐号');
             }
-            $member_info = Model('member')->getMemberInfoByName($member_name);
+            $member_info = Model('member')->getMemberInfo(array('member_name'=>$member_name));
 
             if(empty($member_info)){
                 showMessage('用户不存在，请先注册');
@@ -175,7 +177,7 @@ class agentControl extends SystemControl{
             $rs = $model_agent_member->addAgentMember($param);
             if ($rs){
                 $this->log('编辑关系'.'['.$agent['agent_name'].']',1);
-                showMessage(L('nc_common_save_succ'),'index.php?act=agent&op=agent_member&agent_id='.$_POST['agent_id']);
+                showMessage(L('nc_common_save_succ'),'index.php?act=agent&op=agent_member&agent_id='.$agent_id);
             }else {
                 showMessage(L('nc_common_save_fail'));
             }

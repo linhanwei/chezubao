@@ -17,7 +17,7 @@ class bannerControl extends SystemControl {
      * 列表
      */
     public function indexOp() {
-        $lang = Language::getLangContent();
+       
         $model_banner = Model('banner');
 
         /**

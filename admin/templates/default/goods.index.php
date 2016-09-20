@@ -168,7 +168,7 @@
           <td class="align-center"><?php echo $output['storage_array'][$v['goods_commonid']]['sum']?></td>
           <td class="align-center"><?php echo $output['state'][$v['goods_state']];?></td>
           <td class="align-center"><?php echo $output['verify'][$v['goods_verify']];?></td>
-          <td class="align-center"><a href="<?php echo urlShop('goods', 'index', array('goods_id' => $output['storage_array'][$v['goods_commonid']]['goods_id']));?>" target="_blank"><?php echo $lang['nc_view'];?></a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="goods_lockup(<?php echo $v['goods_commonid'];?>);">违规下架</a></td>
+          <td class="align-center"><a href="../wap/tmpl/product_detail.html?goods_id=<?php echo $output['storage_array'][$v['goods_commonid']]['goods_id'];?>" target="_blank"><?php echo $lang['nc_view'];?></a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="goods_lockup(<?php echo $v['goods_commonid'];?>);">违规下架</a></td>
         </tr>
         <tr style="display:none;">
           <td colspan="20"><div class="ncsc-goods-sku ps-container"></div></td>
