@@ -61,10 +61,10 @@
       <h4 class="dialog-handle-title">操作类型：</h4>
       <div>
         <select id="dialog_item_image_type" name="" class="vatop">
-        <option value="">-请选择-</option>
+<!--        <option value="">-请选择-</option>
           <option value="keyword">关键字</option>
           <option value="special">专题编号</option>
-          <option value="goods">商品编号</option>
+          <option value="goods">商品编号</option>-->
           <option value="url">链接</option>
         </select>
         <input id="dialog_item_image_data" type="text" class="txt w200 marginright marginbot vatop"><br />

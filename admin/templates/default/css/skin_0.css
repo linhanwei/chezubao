@@ -1583,6 +1583,16 @@ td.trigger i:hover { color: #27A9E3;}
 .mb-item-box .home6 .item { width: 320px; height: 50px;}
 .mb-item-box .home6 img,
 .mb-item-box .adv_list img { max-width: 320px; max-height: 50px;}
+/* 模型版块布局H-显示 */
+.mb-item-box .home9 .content { font-size: 0; *word-spacing:-1px/*IE6、7*/; width: 640px;margin-top: 30px;}
+.mb-item-box .home9 .home2_1 { width: 160px;height: 200px;display: inline-block;}
+.mb-item-box .home9 .home2_2 { width: 160px;display: inline-block;}
+.mb-item-box .home9 .home2_2_1 { width: 100%;height: 100px;}
+.mb-item-box .home9 .home2_2_2{margin-top: 5px;height: 100px;}
+.mb-item-box .home9 .home2_2_2 .item{width: 75px;}
+.mb-item-box .home9 .home2_2_2 .item:first-child{margin-right: 3px;}
+.mb-item-box .home9 img{ width: 100%;}
+
 /* 商品块模型-编辑*/
 .mb-item-box .goods-list { font-size: 0; *word-spacing:-1px/*IE6、7*/; width: 320px;}
 .mb-item-box .goods-list .item { font-size: 12px; vertical-align: top; letter-spacing: normal; display: inline-block; *display: inline/*IE7*/; width: 70px; margin: 0 0 8px 8px; border: solid 1px #DDD; *zoom:1/*IE7*/;}
@@ -1690,6 +1700,18 @@ td.trigger i:hover { color: #27A9E3;}
 .mb-item-edit-content .home7 .home2_2_2 .item { width: 100px; height: 125px;display: inline-block;}
 .mb-item-edit-content .home7 .home2_2_1 img{ max-width: 210px; max-height: 125px;}
 .mb-item-edit-content .home7 .home2_2_2 img { max-width: 100px; max-height: 125px;}
+/* 块模型布局H-编辑 */
+.mb-item-edit-content .home9  { font-size: 0; *word-spacing:-1px/*IE6、7*/; width: 500px;}
+.mb-item-edit-content .home9 .home2_1{ font-size: 12px; vertical-align: top; letter-spacing: normal; display: inline-block; *display: inline/*IE7*/; width: 236px; height: 259px; *zoom:1/*IE7*/;}
+.mb-item-edit-content .home9 .home2_2 { font-size: 12px; vertical-align: top; letter-spacing: normal; display: inline-block; *display: inline/*IE7*/; width: 224px; height: 270px; *zoom:1/*IE7*/;}
+.mb-item-edit-content .home9 .home2_1 .item { width: 224px; height: 259px;}
+.mb-item-edit-content .home9 .home2_1 img { max-width: 224px; max-height: 259px;}
+.mb-item-edit-content .home9 .home2_2_1,
+.mb-item-edit-content .home9 .home2_2_2 { display: block; height: 135px;}
+.mb-item-edit-content .home9 .home2_2_1 .item{ width: 215px; height: 125px;}
+.mb-item-edit-content .home9 .home2_2_2 .item { width: 100px; height: 125px;display: inline-block;}
+.mb-item-edit-content .home9 .home2_2_1 img{ max-width: 210px; max-height: 125px;}
+.mb-item-edit-content .home9 .home2_2_2 img { max-width: 100px; max-height: 125px;}
 /* 商品块模型-编辑*/
 .mb-item-edit-content .goods-list,.goods-listnew,.goods-listnew1 { font-size: 0; *word-spacing: -1px/*IE6、7*/; display: inline-block; width: 500px;}
 .mb-item-edit-content .goods-list .item { font-size: 12px; vertical-align: top; letter-spacing: normal; display: inline-block; *display: inline/*IE7*/; width: 220px; margin: 0 0 14px 14px; *zoom:1/*IE7*/;}
