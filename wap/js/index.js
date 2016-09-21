@@ -1,5 +1,5 @@
 $(function() {
-
+/*
     $.ajax({
         url: ApiUrl + "/index.php?act=index",
         type: 'get',
@@ -64,7 +64,7 @@ $(function() {
             });
 
         }
-    });
+    });*/
 
     $('.search-btn').click(function(){
         var keyword = encodeURIComponent($('#keyword').val());

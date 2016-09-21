@@ -1560,9 +1560,29 @@ td.trigger i:hover { color: #27A9E3;}
 .mb-item-box .home3 img { max-width: 160px;}
 
 /* 模型版块布局E-显示 */
-.mb-item-box .home5 .content { font-size: 0; *word-spacing:-1px/*IE6、7*/; width: 320px;}
-.mb-item-box .home5 .item { font-size: 12px; vertical-align: top; letter-spacing: normal; display: inline-block; *display: inline/*IE7*/; width: 80px; *zoom:1/*IE7*/;}
-.mb-item-box .home5 img { max-width: 160px;}
+.mb-item-box .home5 .content { font-size: 0; *word-spacing:-1px/*IE6、7*/; width: 640px;margin-top: 30px;}
+.mb-item-box .home5 .home2_2 { width: 100px;display: inline-block;}
+.mb-item-box .home5 .home2_2_1 img{ width: 100px;}
+.mb-item-box .home5 .home2_2_2 img{ width: 100px;}
+.mb-item-box .home5 .home2_2_2{margin-top: 5px;}
+.mb-item-box .home5 .item { font-size: 12px; vertical-align: top; letter-spacing: normal; display: inline-block; *display: inline/*IE7*/; width: 120px; *zoom:1/*IE7*/;}
+.mb-item-box .home5 img { max-width: 120px;}
+/* 模型版块布局F-显示 */
+.mb-item-box .home7 .content { font-size: 0; *word-spacing:-1px/*IE6、7*/; width: 640px;margin-top: 30px;}
+.mb-item-box .home7 .home2_2 { width: 160px;display: inline-block;}
+.mb-item-box .home7 .home2_2_1 img{ width: 100%;}
+.mb-item-box .home7 .home2_2_2 img{ width: 100%;}
+.mb-item-box .home7 .home2_2_2{margin-top: 5px;}
+.mb-item-box .home7 .home2_2_2 .item{width: 75px;}
+.mb-item-box .home7 .home2_2_2 .item:first-child{margin-right: 3px;}
+.mb-item-box .home7 .item { font-size: 12px; vertical-align: top; letter-spacing: normal; display: inline-block; *display: inline/*IE7*/; width: 120px; *zoom:1/*IE7*/;}
+.mb-item-box .home7 img { max-width: 120px;}
+/*标题块布局-显示 */
+.mb-item-box .home6 .content{ margin-top:30px;}
+.mb-item-box .adv_list .item,
+.mb-item-box .home6 .item { width: 320px; height: 50px;}
+.mb-item-box .home6 img,
+.mb-item-box .adv_list img { max-width: 320px; max-height: 50px;}
 /* 商品块模型-编辑*/
 .mb-item-box .goods-list { font-size: 0; *word-spacing:-1px/*IE6、7*/; width: 320px;}
 .mb-item-box .goods-list .item { font-size: 12px; vertical-align: top; letter-spacing: normal; display: inline-block; *display: inline/*IE7*/; width: 70px; margin: 0 0 8px 8px; border: solid 1px #DDD; *zoom:1/*IE7*/;}
@@ -1596,7 +1616,10 @@ td.trigger i:hover { color: #27A9E3;}
 .mb-special-layout .module-list .module_home2 { background-position: -440px -200px; height: 115px;}
 .mb-special-layout .module-list .module_home3 { background-position: -440px -320px; height: 102px;}
 .mb-special-layout .module-list .module_home4 { background-position: -440px -430px; height: 115px;}
-.mb-special-layout .module-list .module_home5 { background-position: -440px -320px; height: 102px;}
+.mb-special-layout .module-list .module_home5 { background-position: -440px -783px; height: 80px;}
+.mb-special-layout .module-list .module_home6 { background-position: -440px -863px; height: 50px;}
+.mb-special-layout .module-list .module_home7 { background-position: -440px -918px; height: 153px;}
+.mb-special-layout .module-list .module_home8 { background-position: -440px -1070px; height: 153px;}
 .mb-special-layout .module-list .module_goods { background-position: -90px -734px; height: 62px;}
 .mb-special-layout .module-list .module_goodsnew { background-position: -440px -674px; height: 98px;}
 .mb-special-layout .module-list .module_goodsnew1 { background-position: -78px -671px; height: 65px;}
@@ -1618,7 +1641,7 @@ td.trigger i:hover { color: #27A9E3;}
 .mb-item-edit-content .item:hover a { display: block;}
 .mb-item-edit-content .btn-add { font-size: 12px; margin: 10px;}
 
-/* 广告条编辑、块模型布局A-编辑 */
+/* 广告条编辑、块模型布局A-标题块布局编辑 */
 .mb-item-edit-content .adv_list,
 .mb-item-edit-content .home1 { width: 490px;}
 .mb-item-edit-content .adv_list item,
@@ -1643,9 +1666,29 @@ td.trigger i:hover { color: #27A9E3;}
 .mb-item-edit-content .home3 img { max-width: 240px;}
 
 /* 块模型布局E-编辑 */
-.mb-item-edit-content .home5 { font-size: 0; *word-spacing:-1px/*IE6、7*/; width: 500px;}
-.mb-item-edit-content .home5 .item { font-size: 12px; vertical-align: top; letter-spacing: normal; display: inline-block; *display: inline/*IE7*/; width: 100px; *zoom:1/*IE7*/;}
-.mb-item-edit-content .home5 img { max-width: 240px;}
+.mb-item-edit-content .home5 { font-size: 0; *word-spacing:-1px/*IE6、7*/; width: 780px;}
+.mb-item-edit-content .home5 .home2_1,
+.mb-item-edit-content .home5 .home2_2 { font-size: 12px; vertical-align: top; letter-spacing: normal; display: inline-block; *display: inline/*IE7*/; width: 250px; height: 270px; *zoom:1/*IE7*/;}
+.mb-item-edit-content .home5 .home2_1 .item { width: 240px; height: 260px;}
+.mb-item-edit-content .home5 .home2_1 img { max-width: 240px; max-height: 260px;}
+.mb-item-edit-content .home5 .home2_2_1,
+.mb-item-edit-content .home5 .home2_2_2 { display: block; height: 135px;}
+.mb-item-edit-content .home5 .home2_2_1 .item,
+.mb-item-edit-content .home5 .home2_2_2 .item { width: 240px; height: 125px;}
+.mb-item-edit-content .home5 .home2_2_1 img,
+.mb-item-edit-content .home5 .home2_2_2 img { max-width: 240px; max-height: 125px;}
+/* 块模型布局F-编辑 */
+.mb-item-edit-content .home7  { font-size: 0; *word-spacing:-1px/*IE6、7*/; width: 500px;}
+.mb-item-edit-content .home7 .home2_1,
+.mb-item-edit-content .home7 .home2_2 { font-size: 12px; vertical-align: top; letter-spacing: normal; display: inline-block; *display: inline/*IE7*/; width: 224px; height: 270px; *zoom:1/*IE7*/;}
+.mb-item-edit-content .home7 .home2_1 .item { width: 240px; height: 260px;}
+.mb-item-edit-content .home7 .home2_1 img { max-width: 240px; max-height: 260px;}
+.mb-item-edit-content .home7 .home2_2_1,
+.mb-item-edit-content .home7 .home2_2_2 { display: block; height: 135px;}
+.mb-item-edit-content .home7 .home2_2_1 .item{ width: 215px; height: 125px;}
+.mb-item-edit-content .home7 .home2_2_2 .item { width: 100px; height: 125px;display: inline-block;}
+.mb-item-edit-content .home7 .home2_2_1 img{ max-width: 210px; max-height: 125px;}
+.mb-item-edit-content .home7 .home2_2_2 img { max-width: 100px; max-height: 125px;}
 /* 商品块模型-编辑*/
 .mb-item-edit-content .goods-list,.goods-listnew,.goods-listnew1 { font-size: 0; *word-spacing: -1px/*IE6、7*/; display: inline-block; width: 500px;}
 .mb-item-edit-content .goods-list .item { font-size: 12px; vertical-align: top; letter-spacing: normal; display: inline-block; *display: inline/*IE7*/; width: 220px; margin: 0 0 14px 14px; *zoom:1/*IE7*/;}

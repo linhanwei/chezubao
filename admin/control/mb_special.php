@@ -186,7 +186,7 @@ class mb_specialControl extends SystemControl{
 	$theitemid=$_GET['item_id'];
         $item_info = $model_mb_special->getMbSpecialItemInfoByID($theitemid);
         Tpl::output('item_info', $item_info);
-
+//        dump($item_info);die;
         if($item_info['special_id'] == 0) {
             $this->show_menu('index_edit');
         } else {

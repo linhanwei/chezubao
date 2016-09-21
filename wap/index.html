@@ -1,195 +1,281 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <title>车主商城</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" type="text/css" href="css/reset.css">
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link href="./new/css/swiper.min.css" rel="stylesheet">
+    <link href="./new/css/app.css" rel="stylesheet">
+    <script src="./new/js/jquery.js"></script>
+    <script src="./new/js/jquery.easing.1.3.js"></script>
+    <script src="./new/js/jquery.lazyload.js"></script>
+    <script src="./new/js/swiper.jquery.min.js"></script>
+    <script src="./new/js/main.js"></script>
+
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/template.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/tmpl/footer.js"></script>
 </head>
 <body>
-<header class="main">
-    <div class="header-wrap">
-        <div class="htsearch-wrap">
-            <input type="text" class="htsearch-input clr-999" value="" id="keyword" placeholder="搜索商品"/>
-            <a href="javascript:void(0);" class="search-btn"></a>
+    <section class="search-box">
+        <a class="category-btn">
+            <img src="./new/images/category-ico.png" />
+        </a>
+        <div class="search-input">
+            <input name="search-words" type="text" id="keyword" value="搜索商品">
+            <a href="javascript:void(0);" class="search-btn">
+                <img src="./new/images/search-ico.png" />
+            </a>
         </div>
-    </div>
-</header>
-<div class="main" id="main-container"></div>
-<footer id="footer"></footer>
+        <a class="tips-btn">
+            <img src="./new/images/tip-ico.png" />
+        </a>
+    </section>
+    <section class="banner-box">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
 
-<script type="text/html" id="adv_list">
-    <div class="adv_list">
-        <div class="swipe-wrap">
-            <% for (var i in item) { %>
-            <div class="item">
-                <a href="<%= item[i].url %>">
-                    <img src="<%= item[i].image %>" alt="">
-                </a>
+                <div class="swiper-slide">
+                    <img src="./new/images/banner.jpg" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="./new/images/banner.jpg" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="./new/images/banner.jpg" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="./new/images/banner.jpg" />
+                </div>
+
             </div>
-            <% } %>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Add Arrows 
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            -->
         </div>
-    </div>
-    <div class="theme_class">
-        <div class="theme_tit">
-            <div class="tit_img">
-                <img src="<%= new_img_url %>" alt="">
+    </section>
+
+    <section class="home-chanle-box">
+        <div class="title">
+            <img src="./new/images/home/home-chanle-box-title.jpg"></div>
+        <div class="home-chanle-list">
+            <a>汽车频道</a>
+            <a>美车饰界</a>
+            <a>健康食品</a>
+            <a>潮流数码</a>
+            <a>房产</a>
+            <a href="./tmpl/zero/list.html">0元淘</a>
+        </div>
+    </section>
+    <section class="lyt-box">
+        <div class="lyt-left">
+            <div class="tips">
+                <img src="./new/images/home/lingyuantao-ico.jpg"></div>
+            <div class="pro">
+                <a href="#">
+                    <img src="./new/images/home/lingyuantao-pro-default.jpg"></a>
             </div>
         </div>
-        <div class="theme_content">
-            <ul class="theme_item_list clearfix">
-                <% for (var na in new_arr) { %>
-                    <li class="item"><a href="<%= new_arr[na].url %>"><%= new_arr[na].name %></a></li>
-                <% } %>
-                <!-- <li class="item"><a href="">美车饰界</a></li>
-                <li class="item"><a href="">健康食品</a></li>
-                <li class="item"><a href="">潮流数码</a></li>
-                <li class="item"><a href="">房产</a></li>
-                <li class="item"><a href="">0元淘</a></li> -->
-            </ul>
-        </div>
-    </div>
-</script>
-<script type="text/html" id="home1">
-    <div class="index_block home1">
-        <% if (title) { %>
-        <div class="title"><%= title %></div>
-        <% } %>
-        <div class="content">
-            <div class="item">
-                <a href="<%= url %>">
-                    <img src="<%= image %>" alt="">
-                </a>
+        <div class="lyt-right">
+            <div class="top">
+                <div class="left">
+                    <a href="#">
+                        <img src="./new/images/home/youhaohuo-ico.jpg"></a>
+                </div>
+                <div class="right">
+                    <a href="#">
+                        <img src="./new/images/home/youhaohuo-pro-default.jpg"></a>
+                </div>
             </div>
-        </div>
-    </div>
-</script>
-<script type="text/html" id="home2">
-    <div class="index_block home2">
-        <% if (title) { %>
-        <div class="title"><%= title %></div>
-        <% } %>
-        <div class="content">
-            <div class="item home2_1">
-                <a href="<%= square_url %>"><img src="<%= square_image %>" alt=""></a>
-            </div>
-            <div class="item home2_2">
-                <div class="border-left">
-                    <div class="border-bottom">
-                        <a href="<%= rectangle1_url %>"><img src="<%= rectangle1_image %>" alt=""></a>
-                    </div>
-                    <div>
-                        <a href="<%= rectangle2_url %>"><img src="<%= rectangle2_image %>" alt=""></a>
-                    </div>
+            <div class="bottom">
+                <div class="left">
+                    <a href="#">
+                        <img src="./new/images/home/chaoshihui-default-ico.jpg"></a>
+                    <a href="#">
+                        <img src="./new/images/home/chaoshihui-pro-default.jpg"></a>
+                </div>
+                <div class="right">
+                    <a href="#">
+                        <img src="./new/images/home/bimai-ico.jpg"></a>
+                    <a href="#">
+                        <img src="./new/images/home/bimai-pro-default.jpg"></a>
+
                 </div>
             </div>
         </div>
+    </section>
+    <section class="home-mrjx-box">
+        <div class="title">
+            <img src="./new/images/home/meirijingxuan-title.jpg"></div>
+        <div class="home-mrjx-list">
+  <a class="item" href="http://app.czb99.com/wap/tmpl/product_list.html?gc_id=258">
+    <img src="./new/images/index-pro/mrjx-1.jpg">
+    <!--<div class="title">
+       <p class="cn">手机、配件</p>
+       <p class="en">PHONE</p>
+    </div>-->
+  </a>
+    <a class="item" href="http://app.czb99.com/wap/tmpl/product_second_categroy.html?gc_id=308">
+    <img src="./new/images/index-pro/mrjx-2.jpg">
+    <!--<div class="title">
+       <p class="cn">腕表</p>
+       <p class="en">WATCHES</p>
+    </div>-->
+  </a>
+    <a class="item" href="http://app.czb99.com/wap/tmpl/product_list.html?gc_id=663">
+    <img src="./new/images/index-pro/mrjx-3.jpg">
+    <!--<div class="title">
+       <p class="cn">家用电器</p>
+       <p class="en">APPLIANCES</p>
+    </div>-->
+  </a>
+    <a class="item" href="http://app.czb99.com/wap/tmpl/product_list.html?gc_id=5">
+    <img src="./new/images/index-pro/mrjx-4.jpg">
+    <!--<div class="title">
+       <p class="cn">运动户外</p>
+       <p class="en">SPORTS</p>
+    </div>-->
+  </a>
+    <a class="item" href="http://app.czb99.com/wap/tmpl/product_second_categroy.html?gc_id=3">
+    <img src="./new/images/index-pro/mrjx-5.jpg">
+    <!--<div class="title">
+       <p class="cn">男装</p>
+       <p class="en">MEN</p>
+    </div>-->
+  </a>
+    <a class="item" href="http://app.czb99.com/wap/tmpl/product_second_categroy.html?gc_id=730">
+    <img src="./new/images/index-pro/mrjx-6.jpg">
+    <!--<div class="title">
+       <p class="cn">笔记本、平板</p>
+       <p class="en">COMPUTERS</p>
     </div>
-</script>
-<script type="text/html" id="home3">
-    <div class="index_block home3">
-        <% if (title) { %>
-        <div class="title"><%= title %></div>
-        <% } %>
-        <div class="content">
-            <% for (var i in item) { %>
-            <div class="item">
-                <a href="<%= item[i].url %>"><img src="<%= item[i].image %>" alt=""></a>
+    -->
+  </a>
+</div>
+    </section>
+    <section class="car-chanle">
+        <img src="./new/images/home/car-chanle.jpg">
+    </section>
+    <section class="activity-box">
+        <div class="activity-main">
+            <div class="more-box">
+                <a href="#">更多></a>
             </div>
-            <% } %>
-        </div>
-    </div>
-</script>
-<script type="text/html" id="home4">
-    <div class="index_block home2">
-        <% if (title) { %>
-        <div class="title"><%= title %></div>
-        <% } %>
-        <div class="content">
-            <div class="item home2_2">
-                <div class="border-right">
-                    <div class="border-bottom">
-                        <a href="<%= rectangle1_url %>"><img src="<%= rectangle1_image %>" alt=""></a>
+            <div class="cybg">
+                <div class="title">
+                    <img src="./new/images/home/cybg.jpg"></div>
+                <div class="cybg-box">
+                    <div class="cybg-top">
+                        <div class="left">
+                            <a href="http://app.czb99.com/wap/tmpl/product_detail.html?goods_id=136">
+                                <img class="ico" src="./new/images/home/qqss.jpg">
+                                <img class="pro" src="./new/images/index-pro/cybg-1.png"></a>
+                        </div>
+                        <div class="right">
+                            <a href="http://app.czb99.com/wap/tmpl/product_detail.html?goods_id=79">
+                                <img class="ico" src="./new/images/home/pinpaijie.jpg">
+                                <img class="pro" src="./new/images/index-pro/cybg-2.png"></a>
+                        </div>
                     </div>
-                    <div>
-                        <a href="<%= rectangle2_url %>"><img src="<%= rectangle2_image %>" alt=""></a>
+                    <div class="cybg-bottom">
+                        <div class="item">
+                            <div class="pro">
+                                <a  href="http://app.czb99.com/wap/tmpl/product_detail.html?goods_id=121">
+                                    <img src="./new/images/index-pro/cybg-3.png"></a>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="pro">
+                                <a href="http://app.czb99.com/wap/tmpl/product_detail.html?goods_id=137">
+                                    <img src="./new/images/index-pro/cybg-4.png"></a>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="pro">
+                                <a href="http://app.czb99.com/wap/tmpl/product_detail.html?goods_id=139">
+                                    <img src="./new/images/index-pro/cybg-5.png"></a>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="pro">
+                                <a href="http://app.czb99.com/wap/tmpl/product_detail.html?goods_id=34">
+                                    <img src="./new/images/index-pro/cybg-6.png"></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="item home2_1">
-                <a href="<%= square_url %>"><img src="<%= square_image %>" alt=""></a>
+            <div class="tshh">
+                <div class="title">
+                    <img src="./new/images/home/tshh-title.jpg"></div>
+                <div class="tshh-box">
+                    <div class="tshh-item">
+                        <div class="item-one item">
+                            <div class="pro">
+                                <a href="http://app.czb99.com/wap/tmpl/product_detail.html?goods_id=75">
+                                    <img src="./new/images/index-pro/tshl-1.png"></a>
+                            </div>
+                        </div>
+                        <div class="item-two item">
+
+                            <div class="pro">
+                                <a href="http://app.czb99.com/wap/tmpl/product_detail.html?goods_id=62">
+                                    <img src="./new/images/index-pro/tshl-2.png"></a>
+                            </div>
+                        </div>
+                        <div class="item-three item">
+
+                            <div class="pro">
+                                <a href="http://app.czb99.com/wap/tmpl/product_detail.html?goods_id=64">
+                                    <img src="./new/images/index-pro/tshl-3.png"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tshh-item">
+                        <div class="item-one item">
+
+                            <div class="pro">
+                                <a href="http://app.czb99.com/wap/tmpl/product_detail.html?goods_id=41">
+                                    <img src="./new/images/index-pro/tshl-4.png"></a>
+                            </div>
+                        </div>
+                        <div class="item-two item">
+
+                            <div class="pro">
+                                <a href="http://app.czb99.com/wap/tmpl/product_detail.html?goods_id=114">
+                                    <img src="./new/images/index-pro/tshl-5.png"></a>
+                            </div>
+                        </div>
+                        <div class="item-three item">
+
+                            <div class="pro">
+                                <a href="http://app.czb99.com/wap/tmpl/product_detail.html?goods_id=105">
+                                    <img src="./new/images/index-pro/tshl-6.png"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </div>
-    </div>
-</script>
-<script type="text/html" id="goods">
-    <div class="index_block goods">
-        <% if (title) { %>
-        <div class="title"><%= title %></div>
-        <% } %>
-        <div class="content">
-            <% for (var i in item) { %>
-            <div class="goods-item">
-                <a href="tmpl/product_detail.html?goods_id=<%= item[i].goods_id %>">
-                    <div class="goods-item-pic"><img src="<%= item[i].goods_image %>" alt=""></div>
-                    <div class="goods-item-name"><%= item[i].goods_name %></div>
-                    <div class="goods-item-price">￥<%= item[i].goods_promotion_price %></div>
-                </a>
-            </div>
-            <% } %>
+    </section>
+    <section class="jingcai">
+        <div class="title">
+            <span class="font">车族宝中国精彩瞬间</span>
+            <span class="line"></span>
         </div>
-    </div>
-</script>
-<script type="text/html" id="goods1">
-    <div class="index_block goods">
-        <% if (title) { %>
-        <div class="title"><%= title %></div>
-        <% } %>
-        <div class="content">
-            <% for (var i in item) { %>
-            <div class="goods-item">
-                <a href="tmpl/product_detail.html?goods_id=<%= item[i].goods_id %>">
-                    <div class="goods-item-pic"><img src="<%= item[i].goods_image %>" alt=""></div>
-                    <div class="goods-item-name"><%= item[i].goods_name %></div>
-                    <div class="goods-item-price">限时价：￥<%= item[i].goods_promotion_price %></div>
-                </a>
-            </div>
-            <% } %>
-        </div>
-    </div>
-</script>
-<script type="text/html" id="goods2">
-    <div class="index_block goods">
-        <% if (title) { %>
-        <div class="title"><%= title %></div>
-        <% } %>
-        <div class="content">
-            <% for (var i in item) { %>
-            <div class="goods-item">
-                <a href="tmpl/product_detail.html?goods_id=<%= item[i].goods_id %>">
-                    <div class="goods-item-pic"><img src="<%= item[i].goods_image %>" alt=""></div>
-                    <div class="goods-item-name"><%= item[i].goods_name %></div>
-                    <div class="goods-item-price">团购价：￥<%= item[i].goods_promotion_price %><span></span></div>
-                </a>
-            </div>
-            <% } %>
-        </div>
-    </div>
-</script>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/config.js"></script>
-<script type="text/javascript" src="js/zepto.min.js"></script>
-<script type="text/javascript" src="js/template.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/swipe.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
-<script type="text/javascript" src="js/tmpl/footer.js"></script>
+        <div class="jcsj">
+            <img src="./new/images/home/jxsj.jpg"></div>
+    </section>
+    <footer id="footer"></footer>
 
 </body>
 </html>
