@@ -28,7 +28,7 @@ class cartControl extends BaseBuyControl {
 	 */
 	public function indexOp() {
         $model_cart	= Model('cart');
-        $logic_buy_1 = logic('buy_1');
+        $logic_buy_1 = Logic('buy_1');
 
         //购物车列表
         $cart_list	= $model_cart->listCart('db',array('buyer_id'=>$_SESSION['member_id']));
@@ -297,7 +297,7 @@ class cartControl extends BaseBuyControl {
 
 		$model_cart = Model('cart');
 		$model_goods= Model('goods');
-		$logic_buy_1 = logic('buy_1');
+		$logic_buy_1 = Logic('buy_1');
 
 		//存放返回信息
 		$return = array();

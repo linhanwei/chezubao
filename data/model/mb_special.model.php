@@ -418,6 +418,7 @@ class mb_specialModel extends Model{
         $module_list['home6'] = array('name' => 'home6' , 'desc' => '标题块布局');
         $module_list['home7'] = array('name' => 'home7' , 'desc' => '模型版块布局F');
         $module_list['home8'] = array('name' => 'home8' , 'desc' => '模型版块布局G');
+        $module_list['home9'] = array('name' => 'home9' , 'desc' => '模型版块布局H');
         $module_list['goods'] = array('name' => 'goods' , 'desc' => '商品版块');
 	
     if(!$_GET['special_id']) {

@@ -97,7 +97,7 @@ class buyControl extends BaseBuyControl {
      *
      */
     public function buy_step2Op() {
-        $logic_buy = logic('buy');
+        $logic_buy = Logic('buy');
 
         $result = $logic_buy->buyStep2($_POST, $_SESSION['member_id'], $_SESSION['member_name'], $_SESSION['member_email']);
         if(!$result['state']) {
@@ -438,7 +438,7 @@ class buyControl extends BaseBuyControl {
      * F码验证
      */
     public function check_fcodeOp() {
-        $result = logic('buy')->checkFcode($_GET['goods_commonid'], $_GET['fcode']);
+        $result = Logic('buy')->checkFcode($_GET['goods_commonid'], $_GET['fcode']);
         echo $result['state'] ? '1' : '0';
         exit;
     }

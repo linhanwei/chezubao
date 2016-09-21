@@ -22,7 +22,7 @@ class member_buyControl extends mobileMemberControl {
     public function buy_step1Op() {
         $cart_id = explode(',', $_POST['cart_id']);
 
-        $logic_buy = logic('buy');
+        $logic_buy = Logic('buy');
 
         //得到购买数据
         $result = $logic_buy->buyStep1($cart_id, $_POST['ifcart'], $this->member_info['member_id'], $this->member_info['store_id']);
@@ -98,7 +98,7 @@ class member_buyControl extends mobileMemberControl {
         $param['password'] = $_POST['password'];
         $param['fcode'] = $_POST['fcode'];
         $param['order_from'] = 2;
-        $logic_buy = logic('buy');
+        $logic_buy = Logic('buy');
 
         $result = $logic_buy->buyStep2($param, $this->member_info['member_id'], $this->member_info['member_name'], $this->member_info['member_email']);
         if(!$result['state']) {
