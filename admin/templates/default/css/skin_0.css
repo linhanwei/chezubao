@@ -1560,13 +1560,13 @@ td.trigger i:hover { color: #27A9E3;}
 .mb-item-box .home3 img { max-width: 160px;}
 
 /* 模型版块布局E-显示 */
-.mb-item-box .home5 .content { font-size: 0; *word-spacing:-1px/*IE6、7*/; width: 640px;margin-top: 30px;}
+.mb-item-box .home5 .content { font-size: 0; *word-spacing:-1px/*IE6、7*/; width: 367px;margin-top: 30px;}
 .mb-item-box .home5 .home2_2 { width: 100px;display: inline-block;}
 .mb-item-box .home5 .home2_2_1 img{ width: 100px;}
 .mb-item-box .home5 .home2_2_2 img{ width: 100px;}
 .mb-item-box .home5 .home2_2_2{margin-top: 5px;}
-.mb-item-box .home5 .item { font-size: 12px; vertical-align: top; letter-spacing: normal; display: inline-block; *display: inline/*IE7*/; width: 120px; *zoom:1/*IE7*/;}
-.mb-item-box .home5 img { max-width: 120px;}
+.mb-item-box .home5 .item {margin-top:5px; font-size: 12px; vertical-align: top; letter-spacing: normal; display: inline-block; *display: inline/*IE7*/; width: 29%; *zoom:1/*IE7*/;}
+.mb-item-box .home5 img { width: 100%;}
 /* 模型版块布局F-显示 */
 .mb-item-box .home7 .content { font-size: 0; *word-spacing:-1px/*IE6、7*/; width: 640px;margin-top: 30px;}
 .mb-item-box .home7 .home2_2 { width: 160px;display: inline-block;}
@@ -1579,8 +1579,7 @@ td.trigger i:hover { color: #27A9E3;}
 .mb-item-box .home7 img { max-width: 120px;}
 /*标题块布局-显示 */
 .mb-item-box .home6 .content{ margin-top:30px;}
-.mb-item-box .adv_list .item,
-.mb-item-box .home6 .item { width: 320px; height: 50px;}
+.mb-item-box .home6 .item { width: 320px; height: 25px;}
 .mb-item-box .home6 img,
 .mb-item-box .adv_list img { max-width: 320px; max-height: 50px;}
 /* 模型版块布局H-显示 */
@@ -1623,7 +1622,7 @@ td.trigger i:hover { color: #27A9E3;}
 .mb-special-layout .module-list span { font: 600 14px/20px "microsoft yahei"; color: #FFF; text-align: center; width: 45px; position: absolute; z-index: 1; top: 5px; left: 5px;}
 .mb-special-layout .module-list .module_adv_list { background-position: -440px 0; height: 98px;}
 .mb-special-layout .module-list .module_home1 { background-position: -440px -100px; height: 98px;}
-.mb-special-layout .module-list .module_home2 { background-position: -440px -200px; height: 115px;}
+.mb-special-layout .module-list .module_home2 { background-position: -440px -200px; height: 115px;display: none;}
 .mb-special-layout .module-list .module_home3 { background-position: -440px -320px; height: 102px;}
 .mb-special-layout .module-list .module_home4 { background-position: -440px -430px; height: 115px;}
 .mb-special-layout .module-list .module_home5 { background-position: -440px -783px; height: 80px;}
@@ -1677,17 +1676,21 @@ td.trigger i:hover { color: #27A9E3;}
 .mb-item-edit-content .home3 img { max-width: 240px;}
 
 /* 块模型布局E-编辑 */
-.mb-item-edit-content .home5 { font-size: 0; *word-spacing:-1px/*IE6、7*/; width: 780px;}
-.mb-item-edit-content .home5 .home2_1,
-.mb-item-edit-content .home5 .home2_2 { font-size: 12px; vertical-align: top; letter-spacing: normal; display: inline-block; *display: inline/*IE7*/; width: 250px; height: 270px; *zoom:1/*IE7*/;}
-.mb-item-edit-content .home5 .home2_1 .item { width: 240px; height: 260px;}
-.mb-item-edit-content .home5 .home2_1 img { max-width: 240px; max-height: 260px;}
-.mb-item-edit-content .home5 .home2_2_1,
-.mb-item-edit-content .home5 .home2_2_2 { display: block; height: 135px;}
-.mb-item-edit-content .home5 .home2_2_1 .item,
-.mb-item-edit-content .home5 .home2_2_2 .item { width: 240px; height: 125px;}
-.mb-item-edit-content .home5 .home2_2_1 img,
-.mb-item-edit-content .home5 .home2_2_2 img { max-width: 240px; max-height: 125px;}
+.mb-item-edit-content .home5 .content{
+    width: 360px;
+}
+.mb-item-edit-content .item {
+    background-color: #FFF;
+    text-align: center;
+    padding: 4px;
+    border: dashed 1px #DDD;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    width: 28%;
+}
+.mb-item-edit-content .item img{width: 100%;}
+
 /* 块模型布局F-编辑 */
 .mb-item-edit-content .home7  { font-size: 0; *word-spacing:-1px/*IE6、7*/; width: 500px;}
 .mb-item-edit-content .home7 .home2_1,
@@ -1700,6 +1703,15 @@ td.trigger i:hover { color: #27A9E3;}
 .mb-item-edit-content .home7 .home2_2_2 .item { width: 100px; height: 125px;display: inline-block;}
 .mb-item-edit-content .home7 .home2_2_1 img{ max-width: 210px; max-height: 125px;}
 .mb-item-edit-content .home7 .home2_2_2 img { max-width: 100px; max-height: 125px;}
+/* 模型版块布局G-显示 */
+.mb-item-box .home8 .content { font-size: 0; *word-spacing:-1px/*IE6、7*/; width: 640px;margin-top: 30px;}
+.mb-item-box .home8 .home2_2 { width: 100px;display: inline-block;}
+.mb-item-box .home8 .home2_2_1 img{ width: 100px;}
+.mb-item-box .home8 .home2_2_2 img{ width: 100px;}
+.mb-item-box .home8 .home2_2_2{margin-top: 5px;}
+.mb-item-box .home8 .item { font-size: 12px; vertical-align: top; letter-spacing: normal; display: inline-block; *display: inline/*IE7*/; width: 120px; *zoom:1/*IE7*/;}
+.mb-item-box .home8 img { max-width: 120px;}
+
 /* 块模型布局H-编辑 */
 .mb-item-edit-content .home9  { font-size: 0; *word-spacing:-1px/*IE6、7*/; width: 500px;}
 .mb-item-edit-content .home9 .home2_1{ font-size: 12px; vertical-align: top; letter-spacing: normal; display: inline-block; *display: inline/*IE7*/; width: 236px; height: 259px; *zoom:1/*IE7*/;}

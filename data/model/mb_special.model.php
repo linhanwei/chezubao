@@ -116,6 +116,7 @@ class mb_specialModel extends Model{
         $condition['special_id'] = $special_id;
         $condition['item_usable'] = self::SPECIAL_ITEM_USABLE;
         $item_list = $this->_getMbSpecialItemList($condition);
+
         if(!empty($item_list)) {
             $new_item_list = array();
             foreach ($item_list as $value) {
@@ -151,6 +152,31 @@ class mb_specialModel extends Model{
                 $item_data['rectangle1_image'] = getMbSpecialImageUrl($item_data['rectangle1_image']);
                 $item_data['rectangle2_image'] = getMbSpecialImageUrl($item_data['rectangle2_image']);
             break;
+            case 'home6':
+                $item_data['image'] = getMbSpecialImageUrl($item_data['image']);
+                break;
+            case 'home7':
+                $item_data['rectangle1_image'] = getMbSpecialImageUrl($item_data['rectangle1_image']);
+                $item_data['rectangle2_image'] = getMbSpecialImageUrl($item_data['rectangle2_image']);
+                $item_data['rectangle3_image'] = getMbSpecialImageUrl($item_data['rectangle3_image']);
+                $item_data['rectangle4_image'] = getMbSpecialImageUrl($item_data['rectangle4_image']);
+                $item_data['rectangle5_image'] = getMbSpecialImageUrl($item_data['rectangle5_image']);
+                $item_data['rectangle6_image'] = getMbSpecialImageUrl($item_data['rectangle6_image']);
+                break;
+            case 'home8':
+                $item_data['rectangle1_image'] = getMbSpecialImageUrl($item_data['rectangle1_image']);
+                $item_data['rectangle2_image'] = getMbSpecialImageUrl($item_data['rectangle2_image']);
+                $item_data['rectangle3_image'] = getMbSpecialImageUrl($item_data['rectangle3_image']);
+                $item_data['rectangle4_image'] = getMbSpecialImageUrl($item_data['rectangle4_image']);
+                $item_data['rectangle5_image'] = getMbSpecialImageUrl($item_data['rectangle5_image']);
+                $item_data['rectangle6_image'] = getMbSpecialImageUrl($item_data['rectangle6_image']);
+                break;
+            case 'home9':
+                $item_data['rectangle1_image'] = getMbSpecialImageUrl($item_data['rectangle1_image']);
+                $item_data['rectangle2_image'] = getMbSpecialImageUrl($item_data['rectangle2_image']);
+                $item_data['rectangle3_image'] = getMbSpecialImageUrl($item_data['rectangle3_image']);
+                $item_data['rectangle4_image'] = getMbSpecialImageUrl($item_data['rectangle4_image']);
+                break;
             case 'goods':
 	                 // 33hao.com v3-10
 			  case 'goods1':
