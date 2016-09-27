@@ -28,7 +28,9 @@ class member_cartControl extends mobileMemberControl {
         foreach ($cart_list as $key => $value) {
             $cart_list[$key]['goods_image_url'] = cthumb($value['goods_image'], $value['store_id']);
             $cart_list[$key]['goods_sum'] = ncPriceFormat($value['goods_price'] * $value['goods_num']);
-            $sum += $cart_list[$key]['goods_sum'];
+
+            $sum += $value['goods_price'] * $value['goods_num'];
+
         }
 
         output_data(array('cart_list' => $cart_list, 'sum' => ncPriceFormat($sum)));

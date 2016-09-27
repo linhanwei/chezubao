@@ -260,10 +260,14 @@ class buyLogic {
 
             //第5步 处理预存款
             $this->_createOrderStep5();
+
             $model->commit();
 
             //第6步 订单后续处理
             $this->_createOrderStep6();
+
+            //第七步, 清除会员缓存
+            dkcache(md5('member' . $member_id ));
 
             return callback(true,'',$this->_order_data);
 
@@ -542,7 +546,6 @@ class buyLogic {
         $store_final_order_total = $this->_logic_buy_1->reCalcGoodsTotal($store_final_goods_total,$store_freight_total,'freight');
 
         //计算店铺分类佣金[改由任务计划]
-	// 33hao 
          $store_gc_id_commis_rate_list = Model('store_bind_class')->getStoreGcidCommisRateList($goods_list);
 
         //将赠品追加到购买列表(如果库存0，则不送赠品)
@@ -580,6 +583,16 @@ class buyLogic {
         $member_id = $this->_member_info['member_id'];
         $member_name = $this->_member_info['member_name'];
         $member_email = $this->_member_info['member_email'];
+        $store_cart_list = $this->_order_data['store_cart_list'];
+        $input_address_info = $this->_order_data['input_address_info'];
+        $store_final_order_total = $this->_order_data['store_final_order_total'];
+        $store_freight_total = $this->_order_data['store_freight_total'];
+        $input_pay_message = $this->_order_data['input_pay_message'];
+        $store_mansong_rule_list = $this->_order_data['store_mansong_rule_list'];
+        $input_city_id = $this->_order_data['input_city_id'];
+        $input_invoice_info = $this->_order_data['input_invoice_info'];
+        $order_from = $this->_order_data['order_from'];
+        $store_gc_id_commis_rate_list = $this->_order_data['store_gc_id_commis_rate_list'];
 
         $model_order = Model('order');
 
@@ -589,7 +602,7 @@ class buyLogic {
         $notice_list = array();
 
         //每个店铺订单是货到付款还是线上支付,店铺ID=>付款方式[在线支付/货到付款]
-        $store_pay_type_list    = $this->_logic_buy_1->getStorePayTypeList(array_keys($store_cart_list), $input_if_offpay, $input_pay_name);
+        $store_pay_type_list    = $this->_logic_buy_1->getStorePayTypeList(array_keys($store_cart_list), $this->_order_data['input_if_offpay'], $this->_order_data['input_pay_name']);
 
         foreach ($store_pay_type_list as $k => & $v) {
             if (empty($input_if_offpay_batch[$k]))

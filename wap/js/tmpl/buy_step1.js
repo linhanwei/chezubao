@@ -225,6 +225,7 @@ $(function() {
 						}
 						htmldata+='</div>';
 						htmldata+='</li>';
+
 						total_price += sp_total;
 			});
 
@@ -919,6 +920,8 @@ $(function() {
         	data.pd_pay = pd_pay;
         }
 
+        //显示遮罩层
+		$('#notice_msg_bg,#notice_msg').css('display','block');
 
         $.ajax({
         	type:'post',
