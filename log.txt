@@ -5607,3 +5607,94 @@ request body = <TemplateSMS>
                   </TemplateSMS>
 request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a48b5515350d1e2015378ae037940a2/SMS/TemplateSMS?sig=D3B842F93DC6CC37FE96A82724B2924D
 response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Response><statusCode>160042</statusCode><statusMsg>号码格式有误</statusMsg></Response>
+request body = <TemplateSMS>
+                    <to>123456</to> 
+                    <appId>8a216da855d8c5050155d9686608016a</appId>
+                    <templateId>101767</templateId>
+                    <datas><data>2016-09-27 15:00:24</data><data>下单，支付帐户余额，订单号: 8000000000000701</data><data>-11.00</data><data>0.00</data><data>999999999989.00</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a48b5515350d1e2015378ae037940a2/SMS/TemplateSMS?sig=84CF472DE19562B3BF4F1691E3A83104
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>160042</statusCode>
+    <statusMsg>号码格式有误</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>123456</to> 
+                    <appId>8a216da855d8c5050155d9686608016a</appId>
+                    <templateId>101767</templateId>
+                    <datas><data>2016-09-27 15:32:02</data><data>下单，支付帐户余额，订单号: 8000000000001001</data><data>-21.00</data><data>0.00</data><data>999999999989.00</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a48b5515350d1e2015378ae037940a2/SMS/TemplateSMS?sig=1FD6477E9F8BE77B3B94EA931DAA2757
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>160042</statusCode>
+    <statusMsg>号码格式有误</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>123456</to> 
+                    <appId>8a216da855d8c5050155d9686608016a</appId>
+                    <templateId>101767</templateId>
+                    <datas><data>2016-09-27 16:00:42</data><data>下单，支付帐户余额，订单号: 8000000000001101</data><data>-1,274.00</data><data>0.00</data><data>999999999989.00</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a48b5515350d1e2015378ae037940a2/SMS/TemplateSMS?sig=940FF94AF07A6C9163BC8543EF52837B
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>160042</statusCode>
+    <statusMsg>号码格式有误</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>123456</to> 
+                    <appId>8a216da855d8c5050155d9686608016a</appId>
+                    <templateId>101767</templateId>
+                    <datas><data>2016-09-27 16:04:34</data><data>下单，支付帐户余额，订单号: 8000000000001201</data><data>-1,263.00</data><data>0.00</data><data>999999999989.00</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a48b5515350d1e2015378ae037940a2/SMS/TemplateSMS?sig=7E95C5907BC457C87103A7BF1B7948E2
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>160042</statusCode>
+    <statusMsg>号码格式有误</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>123456</to> 
+                    <appId>8a216da855d8c5050155d9686608016a</appId>
+                    <templateId>101767</templateId>
+                    <datas><data>2016-09-27 16:57:41</data><data>下单，支付帐户余额，订单号: 8000000000001301</data><data>-109.00</data><data>0.00</data><data>999999999989.00</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a48b5515350d1e2015378ae037940a2/SMS/TemplateSMS?sig=2A50D66FA8D52D7C0BD501EDB9453D9C
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>160042</statusCode>
+    <statusMsg>号码格式有误</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>123456</to> 
+                    <appId>8a216da855d8c5050155d9686608016a</appId>
+                    <templateId>101767</templateId>
+                    <datas><data>2016-09-27 17:00:50</data><data>下单，支付帐户余额，订单号: 8000000000001401</data><data>-109.00</data><data>0.00</data><data>999999997322.00</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a48b5515350d1e2015378ae037940a2/SMS/TemplateSMS?sig=8A000E16639D51A18D99963E43F76617
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>160042</statusCode>
+    <statusMsg>号码格式有误</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>123456</to> 
+                    <appId>8a216da855d8c5050155d9686608016a</appId>
+                    <templateId>101767</templateId>
+                    <datas><data>2016-09-27 17:01:20</data><data>下单，支付帐户余额，订单号: 8000000000001501</data><data>-109.00</data><data>0.00</data><data>999999997213.00</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a48b5515350d1e2015378ae037940a2/SMS/TemplateSMS?sig=062AD7085DDCD03E599A276F02668F0D
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>160042</statusCode>
+    <statusMsg>号码格式有误</statusMsg>
+</Response>
+

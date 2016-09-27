@@ -27,7 +27,7 @@
             <img src="./new/images/category-ico.png" />
         </a>
         <div class="search-input">
-            <input name="search-words" type="text" id="keyword" value="搜索商品">
+            <input name="search-words" type="text" id="keyword" placeholder="搜索商品">
             <a href="javascript:void(0);" class="search-btn">
                 <img src="./new/images/search-ico.png" />
             </a>
@@ -43,6 +43,9 @@
         <!--<img src="./new/images/home/car-chanle.jpg">-->
     <!--</section>-->
 
+    <div class="bottom-box">
+        <img src="./new/images/index/bottom-ico.jpg">
+    </div>
     <footer id="footer"></footer>
 
     <script type="text/html" id="adv_list">
@@ -63,19 +66,6 @@
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
                 -->
-            </div>
-        </section>
-    </script>
-    <script type="text/html" id="home6">
-        <section class="banner-box">
-            <div class="title">
-                <% if (url) { %>
-                    <a href="<%= url %>">
-                        <img src="<%= image %>" alt="">
-                    </a>
-                <% }else{ %>
-                    <img src="<%= image %>">
-                <% } %>
             </div>
         </section>
     </script>
@@ -150,6 +140,19 @@
             <div class="home-chanle-list">
                 <% for (var i in item) { %>
                     <a href="<%= item[i].url %>"><img src="<%= item[i].image %>" alt=""></a>
+                <% } %>
+            </div>
+        </section>
+    </script>
+    <script type="text/html" id="home6">
+        <section class="banner-box">
+            <div class="title">
+                <% if (url) { %>
+                <a href="<%= url %>">
+                    <img src="<%= image %>" alt="">
+                </a>
+                <% }else{ %>
+                <img src="<%= image %>">
                 <% } %>
             </div>
         </section>
@@ -265,34 +268,86 @@
         </section>
     </script>
     <script type="text/html" id="home9">
-        <section class="lyt-box">
-            <div class="lyt-left">
-                <div class="pro">
-                    <a href="<%= rectangle1_url %>">
-                        <img src="<%= rectangle1_image %>">
-                    </a>
+        <section class="lyt-content">
+            <div class="lyt-main">
+                <div class="left">
+                    <a href="<%= rectangle1_url %>"><img src="<%= rectangle1_image %>"></a>
+                </div>
+                <div class="right">
+                    <div class="top">
+                        <a href="<%= rectangle2_url %>"><img src="<%= rectangle2_image %>"></a>
+                    </div>
+                    <div class="bottom">
+                        <div class="bottom-left">
+                            <a href="<%= rectangle3_url %>"><img src="<%= rectangle3_image %>"></a>
+                        </div>
+                        <div class="bottom-right">
+                            <a href="<%= rectangle4_url %>"><img src="<%= rectangle4_image %>"></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="lyt-right">
-                <div class="top">
-                    <div class="right">
-                        <a href="<%= rectangle1_ur2 %>">
-                            <img src="<%= rectangle2_image %>">
-                        </a>
+        </section>
+    </script>
+    <script type="text/html" id="home10">
+        <section class="cuxiao">
+            <div class="cybg-box cuxiao-item">
+                <div class="cuxiao-list-box">
+                    <div class="item">
+                        <a href="<%= rectangle1_url %>"><img src="<%= rectangle1_image %>"></a>
+                    </div>
+                    <div class="item">
+                        <a href="<%= rectangle3_url %>"><img src="<%= rectangle3_image %>"></a>
+                    </div>
+                    <div class="item">
+                        <a href="<%= rectangle5_url %>"><img src="<%= rectangle5_image %>"></a>
+                    </div>
+                    <div class="item">
+                        <a href="<%= rectangle7_url %>"><img src="<%= rectangle7_image %>"></a>
+                    </div>
+                    <div class="item">
+                        <a href="<%= rectangle2_url %>"><img src="<%= rectangle2_image %>"></a>
+                    </div>
+                    <div class="item">
+                        <a href="<%= rectangle4_url %>"><img src="<%= rectangle4_image %>"></a>
+                    </div>
+                    <div class="item">
+                        <a href="<%= rectangle6_url %>"><img src="<%= rectangle6_image %>"></a>
+                    </div>
+                    <div class="item">
+                        <a href="<%= rectangle8_url %>"><img src="<%= rectangle8_image %>"></a>
                     </div>
                 </div>
-                <div class="bottom">
-                    <div class="left">
-                        <a href="<%= rectangle3_url %>">
-                            <img src="<%= rectangle3_image %>">
+            </div>
+        </section>
+    </script>
+    <script type="text/html" id="home11">
+        <section class="car-chanle">
+            <!--<div class="car-chanle-banner">
+                <img src="./images/index/qcpd.jpg">
+            </div>-->
+            <div class="car-chanle-child">
+                <div class="list">
+                    <% for (var i in item) { %>
+                        <a href="<%= item[i].url %>">
+                            <img src="<%= item[i].image %>" alt="">
                         </a>
-                    </div>
-                    <div class="right">
-                        <a href="<%= rectangle4_url %>">
-                            <img src="<%= rectangle4_image %>">
-                        </a>
-                    </div>
+                    <% } %>
                 </div>
+            </div>
+        </section>
+    </script>
+    <script type="text/html" id="recommend_goods">
+        <section class="tuijian">
+            <div class="title"><img src="./new/images/index/tuijian-title.jpg"></div>
+            <div class="tuijian-list">
+                <% for (var i in item) { %>
+                    <a href="<%= item[i].url %>" class="tuijian-item">
+                        <img src="<%= item[i].goods_image_url %>">
+                        <p class="title"><%= item[i].goods_name %></p>
+                        <p class="price">￥ <%= item[i].goods_promotion_price %></p>
+                    </a>
+                <% } %>
             </div>
         </section>
     </script>

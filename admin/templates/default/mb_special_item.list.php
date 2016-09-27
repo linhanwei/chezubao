@@ -56,7 +56,7 @@
     <div class="module-list">
       <?php if(!empty($output['module_list']) && is_array($output['module_list'])){ ?>
       <?php foreach($output['module_list'] as $key => $value){ ?>
-      <div class="module_<?php echo $key;?>"> <span><?php echo $value['desc'];?></span> <a nctype="btn_add_item" class="add" href="javascript:;" data-module-type="<?php echo $value['name'];?>">添加</a> </div>
+      <div class="module_<?php echo $key;?> module_item"> <span><?php echo $value['desc'];?></span> <a nctype="btn_add_item" class="add" href="javascript:;" data-module-type="<?php echo $value['name'];?>">添加</a> </div>
       <?php } ?>
       <?php } ?>
     </div>

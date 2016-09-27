@@ -1,18 +1,20 @@
 <?php defined('InSystem') or exit('Access Invalid!'); ?>
 
-<div class="index_block goods">
-    <?php if(!empty($vv['title'])) {?>
-    <div class="title"><?php echo $vv['title']; ?></div>
-    <?php } ?>
-    <div nctype="item_content" class="content">
-    <?php foreach ((array) $vv['item'] as $item) { ?>
-        <div nctype="item_image" class="goods-item">
-            <a nctype="btn_item" href="javascript:;" data-type="goods" data-data="<?php echo $item['goods_id']; ?>">
-                <div class="goods-item-pic"><img nctype="goods_image" src="<?php echo $item['goods_image']; ?>" alt=""></div>
-                <div class="goods-item-name"><?php echo $item['goods_name']; ?></div>
-                <div class="goods-item-price">￥<?php echo $item['goods_promotion_price']; ?></div>
+<?php if($v['goods']['item'] && is_array($v['goods']['item'])) { ?>
+    <section class="prolist-box">
+        <?php foreach ((array) $v['goods']['item'] as $item) { ?>
+            <a href="<?php echo $item['goods_id'] ? buildSpecialUrl($item['goods_id'], $item['goods_id']) : 'javascript:void(0);'; ?>" class="prolist-item">
+                <div class="prolist-item-inline">
+                    <div class="img">
+                        <img src="<?php echo $item['goods_image']; ?>">
+                    </div>
+                    <div class="info">
+                        <h2><?php echo $item['goods_name']; ?></h2>
+                        <p>￥<?php echo $item['goods_promotion_price']; ?></p>
+                    </div>
+                </div>
             </a>
-        </div>
-    <?php } ?>
-    </div>
-</div>
+        <?php } ?>
+    </section>
+<?php } ?>
+

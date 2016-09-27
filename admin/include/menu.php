@@ -38,6 +38,9 @@ $arr = array(
         8 => array(
             'args' => 'zero_buy',
             'text' => '0元淘'),
+        9 => array(
+            'args' => 'activity_project',
+            'text' => '活动'),
     ),
     'left' => array(
         0 => array(
@@ -145,7 +148,14 @@ $arr = array(
                 array('args' => 'index,zero_order,zero_buy', 'text' => '订单列表'),
             )
         ),
-        
+        9 => array(
+            'nav' => 'activity_project',
+            'text' => '活动',
+            'list' => array(
+                array('args' => 'fang,activity_project,activity_project', 'text' => '房商城'),
+                array('args' => 'che,activity_project,activity_project', 'text' => '车商城')
+            )
+        ),
     ),
 );
 
@@ -159,11 +169,11 @@ $arr['left'][] = array(
     'list' => array(
         array('args' => 'index_edit,mb_special,mobile', 'text' => '首页编辑'),
         array('args' => 'index,banner,mobile', 'text' => 'banner管理'),
-    /* array('args'=>'special_list,mb_special,mobile',				'text'=>'专题设置'),
-      array('args'=>'mb_category_list,mb_category,mobile',	'text'=>$lang['nc_mobile_catepic']),
-      array('args'=>'mb_app,mb_app,mobile',				'text'=>'下载设置'),
-      array('args'=>'flist,mb_feedback,mobile',					'text'=>$lang['nc_mobile_feedback']),
-      array('args'=>'mb_payment,mb_payment,mobile',				'text'=>'手机支付'), */
+     array('args'=>'special_list,mb_special,mobile',				'text'=>'专题设置'),
+        /* array('args'=>'mb_category_list,mb_category,mobile',	'text'=>$lang['nc_mobile_catepic']),
+         array('args'=>'mb_app,mb_app,mobile',				'text'=>'下载设置'),
+         array('args'=>'flist,mb_feedback,mobile',					'text'=>$lang['nc_mobile_feedback']),
+         array('args'=>'mb_payment,mb_payment,mobile',				'text'=>'手机支付'), */
     )
 );
 return $arr;

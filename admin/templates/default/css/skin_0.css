@@ -231,7 +231,7 @@ h6 { font-size:12px;}
 /* tb */
 .tb-type2{}
 .tb-type2 tr.hover:hover .tips2{ color:#333; }
-.tb-type2 td, tb-type2 th.td{ padding:5px 5px 3px 0; border-top: 1px dotted #CBE9F3; }
+.tb-type2 td,.tb-type2 th.td{ padding:5px 5px 3px 0; border-top: 1px dotted #CBE9F3; }
 .tb-type2 .tfoot td {padding:5px 5px 3px 0; border-top: 1px solid #CBE9F3;}
 .tb-type2 th{ padding:5px 5px 3px 0; line-height:21px; font-size: 12px; }
 .tb-type2 .txt, .tb-type2 .txtnobd{ width:100px; margin-right:10px; }
@@ -329,7 +329,7 @@ td.team a.weibo { background-position: 100% -40px;}
 .red_common {font-weight: bold; color: #ff5400;}
 .red_big {font-weight: bold; color: #ff5400; font-size: 16px;}
 form label.error { font-style:normal; font-weight: normal; color:#F00; background: url(../images/sky/bg_position.gif) no-repeat -625px -730px; padding-left: 20px; margin-left:5px;}
-form input.error , form textarea.error { background-color: #FFF0F0; background-repeat: repeat border: 1px dotted #FF3300;}
+form input.error , form textarea.error { background-color: #FFF0F0; background-repeat: repeat; border: 1px dotted #FF3300;}
 form label.valid { font-weight: normal; color:#390; background: transparent url(../images/sky/bg_position.gif) no-repeat -625px -690px; float:none; padding-left:18px; margin-left:5px;}
 .help { line-height: 24px; color: #666; background-color: #F6F6F6; padding: 6px; border: 1px dashed #CCC;}
 .checkinfo { padding: 8px 0px 0px 0px;}
@@ -1580,8 +1580,7 @@ td.trigger i:hover { color: #27A9E3;}
 /*标题块布局-显示 */
 .mb-item-box .home6 .content{ margin-top:30px;}
 .mb-item-box .home6 .item { width: 320px; height: 25px;}
-.mb-item-box .home6 img,
-.mb-item-box .adv_list img { max-width: 320px; max-height: 50px;}
+.mb-item-box .home6 img{ max-width: 320px; max-height: 50px;}
 /* 模型版块布局H-显示 */
 .mb-item-box .home9 .content { font-size: 0; *word-spacing:-1px/*IE6、7*/; width: 640px;margin-top: 30px;}
 .mb-item-box .home9 .home2_1 { width: 160px;height: 200px;display: inline-block;}
@@ -1592,12 +1591,26 @@ td.trigger i:hover { color: #27A9E3;}
 .mb-item-box .home9 .home2_2_2 .item:first-child{margin-right: 3px;}
 .mb-item-box .home9 img{ width: 100%;}
 
+/* 模型版块布局J-显示 */
+.mb-item-box .home10 .content { font-size: 0; *word-spacing:-1px/*IE6、7*/; width: 640px;margin-top: 30px;}
+.mb-item-box .home10 .home2_2 { width:160;display: inline-block;}
+.mb-item-box .home10 .home2_2_1,.mb-item-box .home10 .home2_2_2 { width:100%;}
+.mb-item-box .home10 .home2_2_2{margin-top: 5px;}
+.mb-item-box .home10 .home2_2_1 .item,
+.mb-item-box .home10 .home2_2_2 .item{width: 80px;}
+.mb-item-box .home10 .home2_2_2 .item:first-child{margin-right: 3px;}
+.mb-item-box .home10 img{ width: 100%;}
+
+/* 模型版块布局K-显示 */
+.mb-item-box .home11 .item { width: 320px; height: 133px;}
+.mb-item-box .home11 img{width: 100%;}
+
 /* 商品块模型-编辑*/
 .mb-item-box .goods-list { font-size: 0; *word-spacing:-1px/*IE6、7*/; width: 320px;}
-.mb-item-box .goods-list .item { font-size: 12px; vertical-align: top; letter-spacing: normal; display: inline-block; *display: inline/*IE7*/; width: 70px; margin: 0 0 8px 8px; border: solid 1px #DDD; *zoom:1/*IE7*/;}
-.mb-item-box .goods-list .goods-pic { line-height: 0; background-color: #FFF; text-align: center; vertical-align: middle; display: table-cell; *display: block;  width: 70px; height: 70px; overflow: hidden;}
-.mb-item-box .goods-list .goods-pic img { max-width: 70px; max-height: 70px; margin-top:expression(145-this.height/2);}
-.mb-item-box .goods-list .goods-name { line-height: 18px; color: #555; display: block; height: 16px; margin: 5px 5px 0 5px; border-bottom: dotted 1px #DDD;white-space:nowrap; text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow: hidden;}
+.mb-item-box .goods-list .item {font-size: 12px; vertical-align: top; letter-spacing: normal; display: inline-block; *display: inline/*IE7*/; width: 46%; margin: 0 0 8px 8px; border: solid 1px #DDD; *zoom:1/*IE7*/;}
+.mb-item-box .goods-list .goods-pic { line-height: 0; background-color: #FFF; text-align: center; vertical-align: middle; *display: block;  width: 70px; height: 70px; overflow: hidden;margin: 0 auto;}
+.mb-item-box .goods-list .goods-pic img { width: 100%; margin-top:expression(145-this.height/2);}
+.mb-item-box .goods-list .goods-name { text-align: left;line-height: 18px; color: #555; display: block; height: 16px; margin: 5px 5px 0 5px; border-bottom: dotted 1px #DDD;white-space:nowrap; text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow: hidden;}
 .mb-item-box .goods-list .goods-price { font-size: 14px; line-height: 20px; color: #F30; text-align: left; display: block; height: 20px; padding: 5px;}
 /* 商品块模型new-编辑*/
 .mb-item-box .goods-listnew { font-size: 0; *word-spacing:-1px/*IE6、7*/; width: 320px;}
@@ -1615,14 +1628,15 @@ td.trigger i:hover { color: #27A9E3;}
 .mb-item-box .goods-listnew1 .goods-name { line-height: 18px; color: #555; display: block; height: 20px; margin: 5px 5px 0 5px; border-bottom: dotted 1px #DDD;white-space:nowrap; text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow: hidden;}
 .mb-item-box .goods-listnew1 .goods-price { font-size: 14px; line-height: 20px; color: #F30; text-align: left; display: block; height: 20px; padding: 5px;}
 
-.mb-special-layout .module-list { margin: 20px auto 0 50px;}
+.mb-special-layout .module-list { margin: 10px auto 0 5px;width: 56%;}
 .mb-special-layout .module-list div { background: url(../images/mobile/mpat.png) no-repeat; display: block; width: 304px; margin: 0 0 12px 0; position: relative; z-index: 1; filter:alpha(opacity=50); /*IE滤镜，透明度50%*/ -moz-opacity:0.5; /*Firefox私有，透明度50%*/ opacity:0.5;/*其他，透明度50%*/}
 .mb-special-layout .module-list div:hover { filter:alpha(opacity=100); /*IE滤镜，透明度100%*/ -moz-opacity:1; /*Firefox私有，透明度100%*/ opacity:1;/*其他，透明度100%*/}
 .mb-special-layout .module-list a.add { color: #FFF; width: 12px; height: 40px; padding: 5px 6px; position: absolute; z-index: 1; top: 0; right: 0; }
 .mb-special-layout .module-list span { font: 600 14px/20px "microsoft yahei"; color: #FFF; text-align: center; width: 45px; position: absolute; z-index: 1; top: 5px; left: 5px;}
+.mb-special-layout .module-list .module_item{display: inline-block;margin-left: 5px;}
 .mb-special-layout .module-list .module_adv_list { background-position: -440px 0; height: 98px;}
 .mb-special-layout .module-list .module_home1 { background-position: -440px -100px; height: 98px;}
-.mb-special-layout .module-list .module_home2 { background-position: -440px -200px; height: 115px;display: none;}
+.mb-special-layout .module-list .module_home2 { background-position: -440px -200px; height: 115px;}
 .mb-special-layout .module-list .module_home3 { background-position: -440px -320px; height: 102px;}
 .mb-special-layout .module-list .module_home4 { background-position: -440px -430px; height: 115px;}
 .mb-special-layout .module-list .module_home5 { background-position: -440px -783px; height: 80px;}
@@ -1630,12 +1644,14 @@ td.trigger i:hover { color: #27A9E3;}
 .mb-special-layout .module-list .module_home7 { background-position: -440px -918px; height: 153px;}
 .mb-special-layout .module-list .module_home8 { background-position: -440px -1070px; height: 146px;}
 .mb-special-layout .module-list .module_home9 { background-position: -440px -1219px; height: 118px;}
-.mb-special-layout .module-list .module_goods { background-position: -90px -734px; height: 62px;}
+.mb-special-layout .module-list .module_home10 { background-position: -440px -1336px; height: 154px;}
+.mb-special-layout .module-list .module_home11 { background-position: -440px -1488px; height: 70px;}
+.mb-special-layout .module-list .module_goods { background-position: -440px -549px; height: 234px;}
 .mb-special-layout .module-list .module_goodsnew { background-position: -440px -674px; height: 98px;}
-.mb-special-layout .module-list .module_goodsnew1 { background-position: -78px -671px; height: 65px;}
+.mb-special-layout .module-list .module_goodsnew1 { background-position: -440px -671px; height: 65px;}
 .mb-special-layout .module-list .module_goodsnew2 { background-position: -440px -550px; height: 120px;}
-.mb-special-layout .module-list .module_goods1 { background-position: -90px -734px; height: 62px;}
-.mb-special-layout .module-list .module_goods2 { background-position: -90px -734px; height: 62px;}
+.mb-special-layout .module-list .module_goods1 { background-position: -440px -734px; height: 62px;}
+.mb-special-layout .module-list .module_goods2 { background-position: -440px -734px; height: 62px;}
 
 .mb-item-edit-content { vertical-align: top;}
 .mb-item-edit-content h3 { font: 700 14px/20px "microsoft yahei"; color: #333;}
@@ -1724,6 +1740,22 @@ td.trigger i:hover { color: #27A9E3;}
 .mb-item-edit-content .home9 .home2_2_2 .item { width: 100px; height: 125px;display: inline-block;}
 .mb-item-edit-content .home9 .home2_2_1 img{ max-width: 210px; max-height: 125px;}
 .mb-item-edit-content .home9 .home2_2_2 img { max-width: 100px; max-height: 125px;}
+
+/* 块模型布局J-编辑 */
+.mb-item-edit-content .home10 { font-size: 0; *word-spacing:-1px/*IE6、7*/; width: 500px;}
+.mb-item-edit-content .home10 .home2_2 { font-size: 12px; vertical-align: top; letter-spacing: normal; display: inline-block; *display: inline/*IE7*/; width: 125px; height: 280px; *zoom:1/*IE7*/;}
+.mb-item-edit-content .home10 .home2_2_1,
+.mb-item-edit-content .home10 .home2_2_2 { display: block; height: 135px;}
+.mb-item-edit-content .home10 .home2_2_1 .item,
+.mb-item-edit-content .home10 .home2_2_2 .item { width: 125px; height: 125px;}
+.mb-item-edit-content .home10 .home2_2_1 img,
+.mb-item-edit-content .home10 .home2_2_2 img {width: 100%;}
+
+/* 块模型布局K-编辑 */
+.mb-item-edit-content .home11{ width: 695px;}
+.mb-item-edit-content .home11 .item{width: 11%;}
+.mb-item-edit-content .home11 img {width: 100%;}
+
 /* 商品块模型-编辑*/
 .mb-item-edit-content .goods-list,.goods-listnew,.goods-listnew1 { font-size: 0; *word-spacing: -1px/*IE6、7*/; display: inline-block; width: 500px;}
 .mb-item-edit-content .goods-list .item { font-size: 12px; vertical-align: top; letter-spacing: normal; display: inline-block; *display: inline/*IE7*/; width: 220px; margin: 0 0 14px 14px; *zoom:1/*IE7*/;}
@@ -1741,4 +1773,4 @@ td.trigger i:hover { color: #27A9E3;}
 .mb-item-edit-content .search-goods-list .goods-price { color: #F30; text-align: left; width: 310px; float: right; clear: both;}
 .mb-item-edit-content .search-goods-list a { background-color: #F9F9F9; padding: 4px 12px; border: solid 1px #CCC; border-radius: 4px; position: absolute; z-index: 1; bottom: 10px; right: 10px;}
 .dialog-image-desc { color: #999;}
-#dialog_item_image { max-width: 480px; max-height: 300px;}
+#dialog_item_image { width: 150px}

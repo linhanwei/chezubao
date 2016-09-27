@@ -1,14 +1,14 @@
 <?php defined('InSystem') or exit('Access Invalid!'); ?>
 
-<div class="index_block home3">
-    <?php if(!empty($vv['title'])) {?>
-    <div class="title"><?php echo $vv['title']; ?></div>
-    <?php } ?>
-    <div class="content">
-    <?php foreach ((array) $vv['item'] as $item) { ?>
-        <div nctype="item_image" class="item">
-            <a nctype="btn_item" href="javascript:;" data-type="<?php echo $item['type']; ?>" data-data="<?php echo $item['data']; ?>"><img nctype="image" src="<?php echo $item['image']; ?>" alt=""></a>
+<?php if ($v['home3']['item'] && is_array($v['home3']['item'])) { ?>
+    <section class="daily-selection">
+        <div class="title"><img src="./templates/default/images/daily-selection.jpg"></div>
+        <div class="daily-selection-box">
+            <?php foreach ((array)$v['home3']['item'] as $item) { ?>
+                <a href="<?php echo $item['type'] ? buildSpecialUrl($item['type'], $item['data']) : 'javascript:void(0);'; ?>" class="item">
+                    <img src="<?php echo $item['image']; ?>">
+                </a>
+            <?php } ?>
         </div>
-    <?php } ?>
-    </div>
-</div>
+    </section>
+<?php } ?>

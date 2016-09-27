@@ -63,8 +63,8 @@
         <select id="dialog_item_image_type" name="" class="vatop">
         <option value="">-请选择-</option>
           <option value="keyword">关键字</option>
-<!--          <option value="special">专题编号</option>-->
-          <option value="goods">商品编号</option>
+          <option value="special">专题编号</option>
+          <option value="goods">平台货号</option>
           <option value="url">链接</option>
         </select>
         <input id="dialog_item_image_data" type="text" class="txt w200 marginright marginbot vatop"><br />
@@ -214,7 +214,7 @@
             if(type != '') {
                 desc_array['keyword'] = '关键字类型会根据搜索关键字跳转到商品搜索页面，输入框填写搜索关键字。';
                 desc_array['special'] = '专题编号会跳转到指定的专题，输入框填写专题编号。';
-                desc_array['goods'] = '商品编号会跳转到指定的商品详细页面，输入框填写商品编号。';
+                desc_array['goods'] = '平台货号会跳转到指定的商品详细页面，输入框填写平台货号。';
                 desc_array['url'] = '链接会跳转到指定链接，输入框填写完整的URL。';
                 desc = desc_array[type];
             }

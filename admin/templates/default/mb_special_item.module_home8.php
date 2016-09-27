@@ -19,7 +19,7 @@
   <?php } ?>
 <div class="index_block home8">
       <?php if($item_edit_flag) { ?>
-  <h3>模型版块布局E</h3>
+  <h3>模型版块布局G</h3>
   <?php } ?>
   <!-- <div class="title">
     <?php if($item_edit_flag) { ?>

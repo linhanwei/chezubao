@@ -20,6 +20,20 @@ class mb_specialModel extends Model{
         parent::__construct('mb_special');
     }
 
+    /**
+     * 读取单个专题
+     * @param array $condition
+     * @param string $field
+     *
+     */
+    public function getMbSpecialInfo($condition, $field='*') {
+        $info = $this->table('mb_special')->field($field)->where($condition)->find();
+        if($info['special_image']){
+            $info['special_image'] = getBannerImageUrl($info['special_image']);
+        }
+        return $info;
+    }
+
 	/**
 	 * 读取专题列表
 	 * @param array $condition
@@ -27,6 +41,7 @@ class mb_specialModel extends Model{
 	 */
 	public function getMbSpecialList($condition, $page='', $order='special_id desc', $field='*') {
         $list = $this->table('mb_special')->field($field)->where($condition)->page($page)->order($order)->select();
+
         return $list;
 	}
 
@@ -39,6 +54,8 @@ class mb_specialModel extends Model{
     public function addMbSpecial($param){
         return $this->table('mb_special')->insert($param);
     }
+
+
 
 	/*
 	 * 更新专题
@@ -105,7 +122,7 @@ class mb_specialModel extends Model{
     public function getMbSpecialItemUsableListByID($special_id) {
         $prefix = 'mb_special';
 
-        $item_list = rcache($special_id, $prefix);
+//        $item_list = rcache($special_id, $prefix);
         //缓存有效
         if(!empty($item_list)) {
             return unserialize($item_list['special']);
@@ -119,11 +136,13 @@ class mb_specialModel extends Model{
 
         if(!empty($item_list)) {
             $new_item_list = array();
-            foreach ($item_list as $value) {
+            foreach ($item_list as $k=>$value) {
                 //处理图片
                 $item_data = $this->_formatMbSpecialData($value['item_data'], $value['item_type']);
                 $new_item_list[] = array($value['item_type'] => $item_data);
+                $new_item_list[$k]['mb_type'] = $value['item_type'];
             }
+
             $item_list = $new_item_list;
         }
         $cache = array('special' => serialize($item_list));
@@ -177,6 +196,17 @@ class mb_specialModel extends Model{
                 $item_data['rectangle3_image'] = getMbSpecialImageUrl($item_data['rectangle3_image']);
                 $item_data['rectangle4_image'] = getMbSpecialImageUrl($item_data['rectangle4_image']);
                 break;
+            case 'home10':
+                $item_data['rectangle1_image'] = getMbSpecialImageUrl($item_data['rectangle1_image']);
+                $item_data['rectangle2_image'] = getMbSpecialImageUrl($item_data['rectangle2_image']);
+                $item_data['rectangle3_image'] = getMbSpecialImageUrl($item_data['rectangle3_image']);
+                $item_data['rectangle4_image'] = getMbSpecialImageUrl($item_data['rectangle4_image']);
+                $item_data['rectangle5_image'] = getMbSpecialImageUrl($item_data['rectangle5_image']);
+                $item_data['rectangle6_image'] = getMbSpecialImageUrl($item_data['rectangle6_image']);
+                $item_data['rectangle7_image'] = getMbSpecialImageUrl($item_data['rectangle7_image']);
+                $item_data['rectangle8_image'] = getMbSpecialImageUrl($item_data['rectangle8_image']);
+
+                break;
             case 'goods':
 	                 // 33hao.com v3-10
 			  case 'goods1':
@@ -196,6 +226,7 @@ class mb_specialModel extends Model{
                 }
                 $item_data['item'] = $new_item;
         }
+
         return $item_data;
     }
 
@@ -204,7 +235,9 @@ class mb_specialModel extends Model{
      */
     private function _getMbSpecialItemList($condition, $order = 'item_sort asc') {
         $item_list = $this->table('mb_special_item')->where($condition)->order($order)->select();
+
         foreach ($item_list as $key => $value) {
+
             $item_list[$key]['item_data'] = $this->_initMbSpecialItemData($value['item_data'], $value['item_type']);
             if($value['item_usable'] == self::SPECIAL_ITEM_USABLE) {
                 $item_list[$key]['usable_class'] = 'usable';
@@ -436,21 +469,25 @@ class mb_specialModel extends Model{
     public function getMbSpecialModuleList() {
         $module_list = array();
         $module_list['adv_list'] = array('name' => 'adv_list' , 'desc' => '广告条版块');
-        $module_list['home1'] = array('name' => 'home1' , 'desc' => '模型版块布局A');
-        $module_list['home2'] = array('name' => 'home2' , 'desc' => '模型版块布局B');
-        $module_list['home3'] = array('name' => 'home3' , 'desc' => '模型版块布局C');
-        $module_list['home4'] = array('name' => 'home4' , 'desc' => '模型版块布局D');
-        $module_list['home5'] = array('name' => 'home5' , 'desc' => '模型版块布局E');
-        $module_list['home6'] = array('name' => 'home6' , 'desc' => '标题块布局');
-        $module_list['home7'] = array('name' => 'home7' , 'desc' => '模型版块布局F');
-        $module_list['home8'] = array('name' => 'home8' , 'desc' => '模型版块布局G');
-        $module_list['home9'] = array('name' => 'home9' , 'desc' => '模型版块布局H');
-        $module_list['goods'] = array('name' => 'goods' , 'desc' => '商品版块');
-	
-    if(!$_GET['special_id']) {
-    	$module_list['goods1'] = array('name' => 'goods1' , 'desc' => '限时商品');
-		$module_list['goods2'] = array('name' => 'goods2' , 'desc' => '团购商品');
-	}
+
+        if(!$_GET['special_id']) {
+            $module_list['home1'] = array('name' => 'home1' , 'desc' => '模型版块布局A');
+//          $module_list['home2'] = array('name' => 'home2' , 'desc' => '模型版块布局B');
+            $module_list['home3'] = array('name' => 'home3' , 'desc' => '模型版块布局C');
+            $module_list['home4'] = array('name' => 'home4' , 'desc' => '模型版块布局D');
+            $module_list['home5'] = array('name' => 'home5' , 'desc' => '模型版块布局E');
+            $module_list['home6'] = array('name' => 'home6' , 'desc' => '标题块布局');
+            $module_list['home7'] = array('name' => 'home7' , 'desc' => '模型版块布局F');
+            $module_list['home8'] = array('name' => 'home8' , 'desc' => '模型版块布局G');
+            $module_list['home9'] = array('name' => 'home9' , 'desc' => '模型版块布局H');
+            $module_list['home10'] = array('name' => 'home10' , 'desc' => '模型版块布局J');
+            $module_list['home11'] = array('name' => 'home11' , 'desc' => '模型版块布局K');
+    //    	$module_list['goods1'] = array('name' => 'goods1' , 'desc' => '限时商品');
+    //		$module_list['goods2'] = array('name' => 'goods2' , 'desc' => '团购商品');
+        }else{
+            $module_list['home3'] = array('name' => 'home3' , 'desc' => '每日精选');
+            $module_list['goods'] = array('name' => 'goods' , 'desc' => '商品版块');
+        }
 	
         return $module_list;
     }

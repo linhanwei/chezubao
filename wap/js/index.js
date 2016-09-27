@@ -1,8 +1,9 @@
 $(function() {
-
+    var recommend_goods = getcookie('goods');
     $.ajax({
         url: ApiUrl + "/index.php?act=index",
         type: 'get',
+        data:{recommend_goods:recommend_goods},
         dataType: 'json',
         success: function(result) {
             var data = result.datas;
@@ -13,14 +14,7 @@ $(function() {
                     switch (kk) {
                         case 'adv_list':
                             vv.new_img_url = SiteUrl+'/data/upload/m/common/index/new_theme_icon.png';
-                            vv.new_arr = [ //SiteUrl+'/mall_m/index.php?act=special_channel&op=index'
-                                {'name':'汽车频道','url':'javascript:void(0);'},
-                                {'name':'美车饰界','url':'javascript:void(0);'},
-                                {'name':'健康食品','url':'javascript:void(0);'},
-                                {'name':'潮流数码','url':'javascript:void(0);'},
-                                {'name':'房产','url':'javascript:void(0);'},
-                                {'name':'0元淘','url':WapSiteUrl+'/tmpl/zero/list.html'},
-                            ];
+
                         case 'home1':
                             vv.url = buildUrl(vv.type, vv.data);
                             break;
@@ -37,6 +31,11 @@ $(function() {
                             break;
                         case 'home6'://标题
                             vv.url = buildUrl(vv.type, vv.data);
+                            break;
+                        case 'recommend_goods':
+                            $.each(vv.item, function(gck, gcv) {
+                                vv.item[gck].url = buildUrl('goods', gcv.goods_id);
+                            });
                             break;
                     }
                     console.log(kk,vv);

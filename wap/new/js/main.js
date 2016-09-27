@@ -1,6 +1,5 @@
 $(function(){
-
-   
+  
    $(".tab-nav").find('li').click(function(){
 	  if($(this).hasClass('action')){
 		  return false;
@@ -31,4 +30,11 @@ $(function(){
 		   cb.attr('data-index',index+1);
 	   }  
    })
+   
+   //返回顶部按钮
+   $("#go-top").click(function(){
+
+          $('body,html').animate({scrollTop:0},500);
+              return false;
+   });
 })
