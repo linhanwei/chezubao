@@ -57,7 +57,8 @@ function buildUrl(type, data) {
         case 'keyword':
             return WapSiteUrl + '/tmpl/product_list.html?keyword=' + encodeURIComponent(data);
         case 'special':
-            return WapSiteUrl + '/special.html?special_id=' + data;
+            return SiteUrl + '/mall_m/index.php?act=mb_special&op=index&sp_id=' + data;
+            //return WapSiteUrl + '/special.html?special_id=' + data;
         case 'goods':
             return WapSiteUrl + '/tmpl/product_detail.html?goods_id=' + data;
         case 'url':

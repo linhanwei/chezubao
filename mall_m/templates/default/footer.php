@@ -3,6 +3,7 @@
 
 </style>
 <footer>
+    <div class="footer-top-line"></div>
     <nav class="footer-nav">
         <ul>
             <li>
