@@ -41,13 +41,16 @@
             <input nctype="image_name" name="item_data[item][<?php echo $item_key;?>][image]" type="hidden" value="<?php echo $item_value['image'];?>">
             <input nctype="image_type" name="item_data[item][<?php echo $item_key;?>][type]" type="hidden" value="<?php echo $item_value['type'];?>">
             <input nctype="image_data" name="item_data[item][<?php echo $item_key;?>][data]" type="hidden" value="<?php echo $item_value['data'];?>">
-            <a nctype="btn_del_item_image" href="javascript:;"><i class="icon-trash"></i>删除</a>
+            <a nctype="btn_edit_item_image" data-desc="320*130" href="javascript:;"><i class="icon-edit"></i>编辑</a>
+<!--            <a nctype="btn_del_item_image" href="javascript:;"><i class="icon-trash"></i>删除</a>-->
           <?php } ?>
         </div>
       <?php } ?>
     <?php } ?>
   </div>
   <?php if($item_edit_flag) { ?>
-    <a nctype="btn_add_item_image" class="btn-add" data-desc="320*85" href="javascript:;">添加新的块内容</a>
+    <?php if(count($item_data['item']) < 6) { ?>
+      <a nctype="btn_add_item_image" class="btn-add" data-desc="320*85" href="javascript:;">添加新的块内容</a>
+    <?php } ?>
   <?php } ?>
 </div>

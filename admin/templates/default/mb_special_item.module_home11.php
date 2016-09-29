@@ -49,6 +49,8 @@
         <?php } ?>
     </div>
     <?php if ($item_edit_flag) { ?>
-        <a nctype="btn_add_item_image" class="btn-add" data-desc="640*240" href="javascript:;">添加新的广告条</a>
+        <?php if (count($item_data['item']) < 7) { ?>
+            <a nctype="btn_add_item_image" class="btn-add" data-desc="640*240" href="javascript:;">添加新的广告条</a>
+        <?php } ?>
     <?php } ?>
 </div>

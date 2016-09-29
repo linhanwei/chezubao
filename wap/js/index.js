@@ -8,7 +8,7 @@ $(function() {
         success: function(result) {
             var data = result.datas;
             var html = '';
-            console.log(data);
+            //console.log(data);
             $.each(data, function(k, v) {
                 $.each(v, function(kk, vv) {
                     switch (kk) {
@@ -29,8 +29,44 @@ $(function() {
                             vv.rectangle1_url = buildUrl(vv.rectangle1_type, vv.rectangle1_data);
                             vv.rectangle2_url = buildUrl(vv.rectangle2_type, vv.rectangle2_data);
                             break;
+                        case 'home5':
+                            $.each(vv.item, function(k5, v5) {
+                                vv.item[k5].url = buildUrl(v5.type, v5.data);
+                            });
+                            break;
                         case 'home6'://标题
                             vv.url = buildUrl(vv.type, vv.data);
+                            break;
+                        case 'home7':
+                            vv.rectangle1_url = buildUrl(vv.rectangle1_type, vv.rectangle1_data);
+                            vv.rectangle2_url = buildUrl(vv.rectangle2_type, vv.rectangle2_data);
+                            vv.rectangle3_url = buildUrl(vv.rectangle3_type, vv.rectangle3_data);
+                            vv.rectangle4_url = buildUrl(vv.rectangle4_type, vv.rectangle4_data);
+                            vv.rectangle5_url = buildUrl(vv.rectangle5_type, vv.rectangle5_data);
+                            vv.rectangle6_url = buildUrl(vv.rectangle6_type, vv.rectangle6_data);
+                            break;
+                        case 'home8':
+                            vv.rectangle1_url = buildUrl(vv.rectangle1_type, vv.rectangle1_data);
+                            vv.rectangle2_url = buildUrl(vv.rectangle2_type, vv.rectangle2_data);
+                            vv.rectangle3_url = buildUrl(vv.rectangle3_type, vv.rectangle3_data);
+                            vv.rectangle4_url = buildUrl(vv.rectangle4_type, vv.rectangle4_data);
+                            vv.rectangle5_url = buildUrl(vv.rectangle5_type, vv.rectangle5_data);
+                            vv.rectangle6_url = buildUrl(vv.rectangle6_type, vv.rectangle6_data);
+                            break;
+                        case 'home10':
+                            vv.rectangle1_url = buildUrl(vv.rectangle1_type, vv.rectangle1_data);
+                            vv.rectangle2_url = buildUrl(vv.rectangle2_type, vv.rectangle2_data);
+                            vv.rectangle3_url = buildUrl(vv.rectangle3_type, vv.rectangle3_data);
+                            vv.rectangle4_url = buildUrl(vv.rectangle4_type, vv.rectangle4_data);
+                            vv.rectangle5_url = buildUrl(vv.rectangle5_type, vv.rectangle5_data);
+                            vv.rectangle6_url = buildUrl(vv.rectangle6_type, vv.rectangle6_data);
+                            vv.rectangle7_url = buildUrl(vv.rectangle7_type, vv.rectangle7_data);
+                            vv.rectangle8_url = buildUrl(vv.rectangle8_type, vv.rectangle8_data);
+                            break;
+                        case 'home11':
+                            $.each(vv.item, function(k11, v11) {
+                                vv.item[k11].url = buildUrl(v11.type, v11.data);
+                            });
                             break;
                         case 'recommend_goods':
                             $.each(vv.item, function(gck, gcv) {
@@ -38,9 +74,9 @@ $(function() {
                             });
                             break;
                     }
-                    console.log(kk,vv);
+                    //console.log(kk,vv);
                     html += template.render(kk, vv);
-                    console.log('html',kk);
+                    //console.log('html',kk);
                     return false;
                 });
             });
