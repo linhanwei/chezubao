@@ -110,7 +110,21 @@ class storeControl extends SystemControl{
 				$update_array['store_close_info'] = '';
 				$update_array['store_recommend'] = intval($_POST['store_recommend']);
 			}
-
+            if ($_FILES['banner_1']['name'] != '') {
+                $update_array['banner_1'] = $this->upload_image('banner_1');
+            }
+            if ($_FILES['banner_2']['name'] != '') {
+                $update_array['banner_2'] = $this->upload_image('banner_2');
+            }
+            if ($_FILES['banner_3']['name'] != '') {
+                $update_array['banner_3'] = $this->upload_image('banner_3');
+            }
+            if ($_FILES['banner_4']['name'] != '') {
+                $update_array['banner_4'] = $this->upload_image('banner_4');
+            }
+            if ($_FILES['banner_5']['name'] != '') {
+                $update_array['banner_5'] = $this->upload_image('banner_5');
+            }
             $update_array['store_content'] = $_POST['store_content'];
             $result = $model_store->editStore($update_array, array('store_id' => $_POST['store_id']));
 			if ($result){

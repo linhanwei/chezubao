@@ -174,9 +174,10 @@ class storeControl extends mobileMemberControl{
         }
         foreach($store_list as $key=>$val){
             if($val['store_avatar']){
-                $store_list[$key]['store_avatar'] = UPLOAD_SITE_URL.'/'.ATTACH_STORE.'/'.$val['store_avatar'];
+
+                $store_list[$key]['store_avatar'] = UPLOAD_SITE_URL.DS.ATTACH_PATH.DS.'store_joinin'.DS.$val['store_avatar'];
             }else{
-                $store_list[$key]['store_avatar'] = UPLOAD_SITE_URL.'/'.ATTACH_COMMON.DS.'default_store_avatar.gif';
+                $store_list[$key]['store_avatar'] = UPLOAD_SITE_URL.DS.ATTACH_COMMON.DS.'default_store_avatar.gif';
             }
             $store_list[$key]['store_phone'] = $val['store_phone'] ? $val['store_phone'] : $val['member_name'];
             unset($store_list[$key]['legal_name']);
@@ -192,6 +193,7 @@ class storeControl extends mobileMemberControl{
      * 编辑店铺资料
      */
     public function editOp(){
+
         $model_store = Model('store');
         $update_array = array();
         if($_POST['store_name']){
