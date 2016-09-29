@@ -1,6 +1,6 @@
 <?php
 /**
- * 战区
+ * 区域
  *
  *
  */
@@ -12,7 +12,7 @@ class agent_areaModel extends Model
     }
 
     /**
-     * 获得可用的战区列表
+     * 获得可用的区域列表
      */
     public function getUsableAgentAreaList4Agent(){
         $list = $this->getAgentAreaList();
@@ -32,7 +32,7 @@ class agent_areaModel extends Model
     }
 
     /**
-     * 获取战区列表
+     * 获取区域列表
      *
      * @return mixed
      */
@@ -41,7 +41,7 @@ class agent_areaModel extends Model
     }
 
     /**
-     * 获取战区详情
+     * 获取区域详情
      *
      * @return mixed
      */
@@ -114,7 +114,7 @@ class agent_areaModel extends Model
 
     /**
      *
-     * 获得所在战区
+     * 获得所在区域
      * @param $province_id
      * @return array()
      */

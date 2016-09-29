@@ -9,6 +9,7 @@
  */
 defined('InSystem') or exit('Access Invalid!');
 class memberModel extends Model {
+    public $invite_list = array();
 
     public function __construct(){
         parent::__construct('member');
@@ -89,8 +90,12 @@ class memberModel extends Model {
         }
         $update = $this->table('member')->where($condition)->update($data);
         if ($update && $condition['member_id']) {
-            $key = md5('member' . $member_id );
+            $key = md5('member' . $condition['member_id'] );
             dkcache($key);
+            $member_info = $this->getMemberInfoByID($condition['member_id']);
+            $key_by_name = md5('member_by_name_'.$member_info['member_name']);
+            dkcache($key_by_name);
+            $this->getMemberInfoByName($member_info['member_name']);
         }
         return $update;
     }
@@ -241,15 +246,15 @@ class memberModel extends Model {
 		$member_info['inviter_id']		= $register_info['inviter_id'];
 
         //会员所在地区
+        /*
         $area_info = getMobileArea($register_info['username']);
         $member_info['member_provinceid'] = $area_info['prov'];
         $member_info['member_cityid'] = $area_info['city'];
+        */
 
-        /*
         $member_info['member_provinceid'] = $register_info['member_provinceid'];
         $member_info['member_cityid'] = $register_info['member_cityid'];
         $member_info['member_areaid'] = $register_info['member_areaid'];
-*/
 		$insert_id	= $this->addMember($member_info);
 		if($insert_id) {
 		    //添加会员会员积分
@@ -326,12 +331,11 @@ class memberModel extends Model {
                     $member_info['agent_area'] = '省代理';
                 }
             }
-            /*
             $member_info['is_agent'] = 0;
             $member_info['agent_info'] = Model('agent_member')->getAgentInfo($member_info['member_id']);
             if($member_info['agent_info']){
                 $member_info['is_agent'] = 1;
-            }*/
+            }
             //是否新用户
             $member_info['is_new'] = 1;
             if($member_info['member_paypwd']){
@@ -373,18 +377,17 @@ class memberModel extends Model {
     }
 
     /**
-     *
-     * 取得会员详细信息（优先查询缓存）
+     * 通过手机号获得用户信息
      * @param $member_name
-     * @param string $fields
-     * @param bool $cache
-     * @return array
+     * @return mixed
+     * @throws Exception
      */
-    public function getMemberInfoByName($member_name, $fields = '*',$cache = true) {
-        $member_info = rcache($member_name, 'member', $fields);
-        if ($cache === false || empty($member_info)) {
+    public function getMemberInfoByName($member_name){
+        $key = md5('member_by_name_' . $member_name);
+        $member_info = rkcache($key);
+        if (empty($member_info)) {
             $member_info = $this->getMemberInfo(array('member_name'=>$member_name),'*',true);
-            wcache($member_name, $member_info, 'member');
+            wkcache($key, $member_info);
         }
         return $member_info;
     }
@@ -729,5 +732,47 @@ class memberModel extends Model {
      */
     public function addSMS($data) {
         return $this->table('sms_record')->insert($data);
+    }
+
+    /**
+     * 获得上线列表
+     * @param $member_id
+     * @param $break_agent
+     *
+     */
+    public function getInviteList($member_id,$break_agent = false){
+        $member_info = $this->getMemberInfoByID($member_id);
+        unset($member_info['inviter_member']);
+        unset($member_info['oil']);
+        unset($member_info['oil']);
+
+        $this->invite_list[] = $member_info;
+        if($break_agent == true && $member_info['agent_info']){
+            if($member_info['agent_info']['area_id'] > 0){
+                return;
+            }
+        }
+        if($member_info['inviter_id']>0){
+            $this->getInviteList($member_info['inviter_id'],$break_agent);
+        }
+    }
+
+    /**
+     * 获得上线区代理
+     * @param $member_id
+     */
+    public function getInviteAgentInfo($member_id){
+        $member_info = $this->getMemberInfoByID($member_id);
+
+        unset($member_info['inviter_member']);
+        unset($member_info['oil']);
+        if($member_info['agent_info']){
+            if($member_info['agent_info']['area_id'] > 0){
+                return $member_info['agent_info'];
+            }
+        }
+        if($member_info['inviter_id']>0){
+            $this->getInviteList($member_info['inviter_id']);
+        }
     }
 }

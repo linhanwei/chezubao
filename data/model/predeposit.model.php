@@ -102,6 +102,26 @@ class predepositModel extends Model {
         return $this->table('pd_transfer')->insert($data);
     }
 
+
+    /**
+     * 取得转帐列表
+     * @param unknown $condition
+     * @param string $pagesize
+     * @param string $fields
+     * @param string $order
+     */
+    public function getPdTransferList($condition = array(), $pagesize = '', $fields = '*', $order = '', $limit = '') {
+        return $this->table('pd_transfer')->where($condition)->field($fields)->order($order)->limit($limit)->page($pagesize)->select();
+    }
+    /**
+     * 取得单条转帐信息
+     * @param unknown $condition
+     * @param string $fields
+     */
+    public function getPdTransferInfo($condition = array(), $fields = '*') {
+        return $this->table('pd_transfer')->where($condition)->field($fields)->find();
+    }
+
     /**
      *
      * 获得会员消费总额
@@ -335,7 +355,19 @@ class predepositModel extends Model {
         $data_msg['time'] = date('Y-m-d H:i:s');
         //$data_msg['pd_url'] = urlShop('predeposit', 'pd_log_list');
         switch ($change_type){
-            //0元淘订单支付
+            //活动费用
+            case 'activity':
+                $data_log['lg_av_amount'] = -$data['amount'];
+                $data_log['lg_desc'] = '活动报名,单号: '.$data['sn'];
+                $data_log['lg_admin_name'] = 'system';
+                $data_log['lg_sn'] = $data['sn'];
+                $data_pd['available_predeposit'] = array('exp','available_predeposit-'.$data['amount']);
+
+                $data_msg['av_amount'] = -$data['amount'];
+                $data_msg['freeze_amount'] = 0;
+                $data_msg['desc'] = $data_log['lg_desc'];
+                break;
+            //0元淘
             case 'zero_order_pay':
                 $data_log['lg_av_amount'] = -$data['amount'];
                 $data_log['lg_desc'] = '0元淘,单号: '.$data['order_sn'];
@@ -577,17 +609,20 @@ class predepositModel extends Model {
             throw new Exception('操作失败');
         }
 
-        // 支付成功发送买家消息
-        $param = array();
-        $param['code'] = 'predeposit_change';
-        $param['member_id'] = $data['member_id'];
-        $data_msg['av_amount'] = ncPriceFormat($data_msg['av_amount']);
-        $data_msg['freeze_amount'] = ncPriceFormat($data_msg['freeze_amount']);
-        //当前余额
-        $member_info = Model('member')->getMemberInfoByID($data['member_id']);
-        $data_msg['available_predeposit'] = $member_info['available_predeposit'];
-        $param['param'] = $data_msg;
-        QueueClient::push('sendMemberMsg', $param);
+        if(abs($data_msg['av_amount']) > 0.01){
+            // 支付成功发送买家消息
+            $param = array();
+            $param['code'] = 'predeposit_change';
+            $param['member_id'] = $data['member_id'];
+            $data_msg['av_amount'] = ncPriceFormat($data_msg['av_amount']);
+            $data_msg['freeze_amount'] = ncPriceFormat($data_msg['freeze_amount']);
+            //当前余额
+            $member_info = Model('member')->getMemberInfoByID($data['member_id']);
+            $data_msg['available_predeposit'] = $member_info['available_predeposit'];
+            $param['param'] = $data_msg;
+            QueueClient::push('sendMemberMsg', $param);
+        }
+
         return $insert;
     }
 

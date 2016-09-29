@@ -49,5 +49,4 @@ class upgradeModel extends Model {
         }
         return array();
     }
-
 }
