@@ -28,6 +28,20 @@ class mobileControl{
             $this->page = $page;
         }
     }
+
+    /***
+     *
+     * 提示消息
+     * @param $msg  提示信息
+     * @param string $url 跳转链接
+     * @param string $msg_type 消息类型
+     */
+    protected function show_msg($msg,$url='',$msg_type=''){
+        Tpl::output('msg',$msg);
+        Tpl::output('url',$url);
+        Tpl::output('msg_type',$msg_type);
+        Tpl::showpage('show_msg');
+    }
 }
 
 class mobileHomeControl extends mobileControl{

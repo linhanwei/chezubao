@@ -8,13 +8,8 @@
     <title>车主商城</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
-    <link href="./templates/default/css/swiper.min.css" rel="stylesheet">
-    <link href="./templates/default/css/app.css" rel="stylesheet">
-    <script src="./templates/default/js/jquery.js"></script>
-    <script src="./templates/default/js/jquery.easing.1.3.js"></script>
-    <script src="./templates/default/js/jquery.lazyload.js"></script>
+    <?php include template('common_js_css'); ?>
     <script src="./templates/default/js/swiper.jquery.min.js"></script>
-    <script src="./templates/default/js/main.js"></script>
 </head>
 <body>
 <!--头部-->

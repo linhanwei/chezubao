@@ -10,6 +10,7 @@ defined('InSystem') or exit('Access Invalid!');
 class goodsControl extends mobileHomeControl{
 
 	public function __construct() {
+
         parent::__construct();
     }
 
@@ -134,7 +135,26 @@ class goodsControl extends mobileHomeControl{
     }
 
     /**
-     * 商品详细页
+     * 商品详情页
+     */
+    public function detailOp(){
+        $goods_id = intval($_GET ['goods_id']);
+
+        // 商品详细信息
+        $model_goods = Model('goods');
+
+        $goods_detail = $model_goods->getGoodsDetail($goods_id);
+        if (empty($goods_detail)) {
+            $this->show_msg('商品不存在');
+        }
+//        dump($goods_detail);
+
+        Tpl::output('info',$goods_detail);
+        Tpl::showpage('goods.detail');
+    }
+
+    /**
+     * 商品详细页_手机接口
      */
     public function goods_detailOp() {
         $goods_id = intval($_GET ['goods_id']);

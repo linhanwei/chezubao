@@ -52,23 +52,6 @@ function contains(arr, str) {
     return false;
 }
 
-function buildUrl(type, data) {
-    switch (type) {
-        case 'keyword':
-            return WapSiteUrl + '/tmpl/product_list.html?keyword=' + encodeURIComponent(data);
-        case 'special':
-            return SiteUrl + '/mall_m/index.php?act=mb_special&op=index&sp_id=' + data;
-            //return WapSiteUrl + '/special.html?special_id=' + data;
-        case 'goods':
-            return SiteUrl + '/mall_m/index.php?act=goods&op=detail&goods_id=' + data;
-            //return WapSiteUrl + '/tmpl/product_detail.html?goods_id=' + data;
-        case 'url':
-            return data;
-    }
-    return WapSiteUrl;
-}
-
-
 var client = 'wap';
 var ua = navigator.userAgent.toLowerCase();
 if (/iphone|ipad|ipod/.test(ua)) {
