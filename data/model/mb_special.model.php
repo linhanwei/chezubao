@@ -469,24 +469,22 @@ class mb_specialModel extends Model{
     public function getMbSpecialModuleList() {
         $module_list = array();
         $module_list['adv_list'] = array('name' => 'adv_list' , 'desc' => '广告条版块');
+        $module_list['home1'] = array('name' => 'home1' , 'desc' => '模型版块布局A');
+//          $module_list['home2'] = array('name' => 'home2' , 'desc' => '模型版块布局B');
+        $module_list['home3'] = array('name' => 'home3' , 'desc' => '模型版块布局C');
+        $module_list['home4'] = array('name' => 'home4' , 'desc' => '模型版块布局D');
+        $module_list['home5'] = array('name' => 'home5' , 'desc' => '模型版块布局E');
+        $module_list['home6'] = array('name' => 'home6' , 'desc' => '标题块布局');
+        $module_list['home7'] = array('name' => 'home7' , 'desc' => '模型版块布局F');
+        $module_list['home8'] = array('name' => 'home8' , 'desc' => '模型版块布局G');
+        $module_list['home9'] = array('name' => 'home9' , 'desc' => '模型版块布局H');
+        $module_list['home10'] = array('name' => 'home10' , 'desc' => '模型版块布局J');
+        $module_list['home11'] = array('name' => 'home11' , 'desc' => '模型版块布局K');
+        $module_list['goods'] = array('name' => 'goods' , 'desc' => '商品版块');
 
         if(!$_GET['special_id']) {
-            $module_list['home1'] = array('name' => 'home1' , 'desc' => '模型版块布局A');
-//          $module_list['home2'] = array('name' => 'home2' , 'desc' => '模型版块布局B');
-            $module_list['home3'] = array('name' => 'home3' , 'desc' => '模型版块布局C');
-            $module_list['home4'] = array('name' => 'home4' , 'desc' => '模型版块布局D');
-            $module_list['home5'] = array('name' => 'home5' , 'desc' => '模型版块布局E');
-            $module_list['home6'] = array('name' => 'home6' , 'desc' => '标题块布局');
-            $module_list['home7'] = array('name' => 'home7' , 'desc' => '模型版块布局F');
-            $module_list['home8'] = array('name' => 'home8' , 'desc' => '模型版块布局G');
-            $module_list['home9'] = array('name' => 'home9' , 'desc' => '模型版块布局H');
-            $module_list['home10'] = array('name' => 'home10' , 'desc' => '模型版块布局J');
-            $module_list['home11'] = array('name' => 'home11' , 'desc' => '模型版块布局K');
     //    	$module_list['goods1'] = array('name' => 'goods1' , 'desc' => '限时商品');
     //		$module_list['goods2'] = array('name' => 'goods2' , 'desc' => '团购商品');
-        }else{
-            $module_list['home3'] = array('name' => 'home3' , 'desc' => '每日精选');
-            $module_list['goods'] = array('name' => 'goods' , 'desc' => '商品版块');
         }
 	
         return $module_list;
