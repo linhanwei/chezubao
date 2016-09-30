@@ -27,7 +27,7 @@
             <input type='button' name='button' id='button1' value='' class='type-file-button' />
             <input name="pic" type="file" class="type-file-file" id="pic" size="30" hidefocus="true" nc_type="change_pic">
             </span></td>
-          <td class="vatop tips">只有第一级分类可以上传图片，建议用16px * 16px，超出后自动隐藏</td>
+          <td class="vatop tips">建议用用宽高比为: 1:1，超出后自动隐藏</td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label>发布虚拟商品:</label></td>

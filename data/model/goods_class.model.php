@@ -48,16 +48,20 @@ class goods_classModel extends Model
         if ($this->cachedData) {
             return $this->cachedData;
         }
+
+        $condition = array();
         $data = rkcache('gc_class');
         if (!$data) {
             $data = array();
-            foreach ((array) $this->getGoodsClassList(array()) as $v) {
+            $condition['gc_show'] = 1;
+            foreach ((array) $this->getGoodsClassList($condition) as $v) {
                 $id = $v['gc_id'];
                 $pid = $v['gc_parent_id'];
                 $data['data'][$id] = $v;
                 $data['parent'][$id] = $pid;
                 $data['children'][$pid][] = $id;
             }
+
             foreach ((array) $data['children'][0] as $id) {
                 foreach ((array) $data['children'][$id] as $cid) {
                     foreach ((array) $data['children'][$cid] as $ccid) {
@@ -468,12 +472,16 @@ class goods_classModel extends Model
      * 取指定分类ID下的所有子类
      *
      * @param int/array $parent_id 父ID 可以单一可以为数组
+     * @param bool $is_need_parent 是否需要父类
+     * @param bool $is_need_all_child 是否需要所有的子分类
      * @return array $rs_row 返回数组形式的查询结果
      */
-    public function getChildClass($parent_id){
-        static $_cache;
-        if ($_cache !== null) return $_cache;
+    public function getChildClass($parent_id,$is_need_parent=true,$is_need_all_child=true){
+
+        /*static $_cache;
+        if ($_cache !== null) return $_cache;*/
         $all_class = $this->getGoodsClassListAll();
+
         if (is_array($all_class)){
             if (!is_array($parent_id)){
                 $parent_id = array($parent_id);
@@ -482,8 +490,10 @@ class goods_classModel extends Model
             foreach ($all_class as $k => $v){
                 $gc_id	= $v['gc_id'];//返回的结果包括父类
                 $gc_parent_id	= $v['gc_parent_id'];
-                if (in_array($gc_id,$parent_id) || in_array($gc_parent_id,$parent_id)){
-                    $parent_id[] = $v['gc_id'];
+                if ((in_array($gc_id,$parent_id) && $is_need_parent) || in_array($gc_parent_id,$parent_id)){
+                    if($is_need_all_child){
+                        $parent_id[] = $v['gc_id'];
+                    }
                     $result[] = $v;
                 }
             }
