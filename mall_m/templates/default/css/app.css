@@ -3,6 +3,7 @@ body,h1,h2,h3,p,dl,dd,ol,ul,th,td,fieldset,input,button,textarea,form,canvas,aud
 	margin: 0;
 	padding: 0;
 	font-family: "微软雅黑", "Microsoft yahei";
+	
 }
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary {
 	display: block
@@ -30,7 +31,7 @@ table {
 	font-size: inherit
 }
 img {
-	margin:0 auto;
+    margin:0 auto;
 	border: 0;
 	max-width:100%;
 	-ms-interpolation-mode: bicubic
@@ -97,11 +98,11 @@ button,html input[type=button],input[type=reset],input[type=submit] {
 body {
 	font-size: 20px;
 	background: #F3F4F5;
-	padding-bottom:50px;
+	padding-bottom:70px;
 }
 #viewport{min-height:40em;}
 .viewport {
-	max-width: 720px;
+	max-width: 720px;		
 	margin: auto;
 	overflow: hidden
 }
@@ -226,7 +227,7 @@ a{ color:#666}
 .mb20 {
 	margin-bottom: 1em
 }
-.viewport {
+.viewport {	
 	background:#FFF;
 }
 .ov{ overflow:hidden;}
@@ -238,26 +239,26 @@ a{ color:#666}
 .swipe #pagenavi a{width:10px;height:10px;opacity:.8;line-height:99em;background:#fff;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;margin:0 3px;overflow:hidden;cursor:pointer;display:inline-block;*display:inline;*zoom:1}
 .swipe #pagenavi a.active{background:#da251c}
 .swiper-container {
-	width: 100%;
-	height: 100%;
+        width: 100%;
+        height: 100%;
 }
 .swiper-slide {
-	text-align: center;
-	font-size: 18px;
-	background: #fff;
-	/* Center slide text vertically */
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: -webkit-flex;
-	display: flex;
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
-	-webkit-justify-content: center;
-	justify-content: center;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	-webkit-align-items: center;
-	align-items: center;
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
 }
 .search-box{ height:50px; line-height:50px; background:#000000; position:relative}
 .search-box .category-btn{ display:block;width:40px; height:40px;  float:left; margin-left:10px; margin-top:5px; margin-right:10px}
@@ -268,6 +269,23 @@ a{ color:#666}
 .search-box .search-input .search-btn img{  vertical-align:top}
 .search-box .tips-btn{ display:block; width:40px; height:40px; position:absolute; right:10px; top:5px}
 .search-box .tips-btn img{ width:40px; height:40px; vertical-align:top}
+
+.search-box-two{ height:50px; line-height:50px; background:#000000; position:relative; border-bottom:1px solid #FFF}
+.search-box-two .go-history{ display:block;width:40px; height:40px;  float:left; margin-left:10px; margin-top:5px; margin-right:10px}
+.search-box-two .go-history img{ width:40px; height:40px; vertical-align:top}
+.search-box-two .search-input{ width:calc(100% - 120px); height:36px; line-height:36px; top:7px;overflow:hidden; position:relative}
+.search-box-two .search-input input{width:calc(100% - 16px);height:36px; line-height:36px;border:none;  padding:0 8px; position:absolute; left:0; top:0px; background:#FFF; vertical-align:top}
+.search-box-two .search-input .search-btn{ display:block; width:27px; height:27px; position:absolute; right:10px; top:50%; margin-top:-13.5px;}
+.search-box-two .search-input .search-btn img{  vertical-align:top}
+.search-box-two .cate-btn{ display:block; width:40px; height:40px; position:absolute; right:10px; top:5px}
+.search-box-two .cate-btn img{ width:40px; height:40px; vertical-align:top}
+
+#cate-box{ width:100%; overflow:hidden; height:30px; line-height:30px; background:#FFF}
+#cate-box .swiper-slide { padding:0 0.25rem; width:auto}
+#cate-box .swiper-slide a{ padding:0 0.5rem; font-size:1rem}
+#cate-box .swiper-slide-on a{ height:28px; line-height:30px;border-bottom:2px solid #000; color:#000}
+
+
 .swiper-slide img{ width:100%;}
 .swiper-pagination span{ width:0.75rem; height:0.75rem; background:#C9CBCA}
 .swiper-pagination span.swiper-pagination-bullet-active{ color:rgba(44,165,35,1); background:#000}
@@ -281,7 +299,7 @@ a{ color:#666}
 .chanle-list a.more{ display:block; height:1.25rem; position:absolute; right:0; top:50%; margin-top:-0.625rem}
 .chanle-list a.more img{ height:100%; vertical-align:top}
 .prolist-box{ width:98%; overflow:hidden; clear:both; margin:0.25rem auto}
-.prolist-box .prolist-item{ display:block; width:48%; margin:1%; float:left; background:#FFF}
+.prolist-box .prolist-item{ display:block; width:48%; margin:1%; float:left; background:#FFF} 
 .prolist-item-inline{border:1px solid rgba(236,236,236,1); padding:0.25rem}
 .prolist-item-inline .img{width:calc(100%-0.5rem); padding-top:100%}
 .prolist-item-inline .img img{ width:100%; margin-top:-100%; vertical-align:top}
@@ -468,15 +486,15 @@ footer{ height:61px;background:#383838; position:fixed; left:0; bottom:0; width:
 .detail-content-box{ margin-top:0.5rem}
 /**@detail end**/
 /***2016-09-23***/
-.lyt-content{ width:100%; background:#FFF; overflow:hidden; clear:both}
-.lyt-main{ width:100%; margin:10px auto; border:1px solid #C4C4C4; border-left:none; border-right:none; height:1; overflow:hidden}
-.lyt-main .left{ width:40%; float:left; text-align:center; overflow:hidden}
-.lyt-main .left img{ width:94%;}
-.lyt-main .right{ width:calc(60% - 1px); border-left:1px solid #C4C4C4;float:right; overflow:hidden}
-.lyt-main .right .top{height:50%; overflow:hidden}
-.lyt-main .right .bottom{ width:100%; height:50%; border-top:1px solid #C4C4C4; overflow:hidden}
-.lyt-main .right .bottom .bottom-left{ width:calc(50% - 1px); height:100%; border-right:1px solid #C4C4C4; float:left}
-.lyt-main .right .bottom .bottom-right{ width:calc(50% - 1px); height:100%; border-right:1px solid #FFF; float:left}
+  .lyt-content{ width:100%; background:#FFF; overflow:hidden; clear:both}
+  .lyt-main{ width:100%; margin:10px auto; border:1px solid #C4C4C4; border-left:none; border-right:none; height:1; overflow:hidden}
+  .lyt-main .left{ width:40%; float:left; text-align:center; overflow:hidden}
+  .lyt-main .left img{ width:94%;}
+  .lyt-main .right{ width:calc(60% - 1px); border-left:1px solid #C4C4C4;float:right; overflow:hidden}
+  .lyt-main .right .top{height:50%; overflow:hidden}
+  .lyt-main .right .bottom{ width:100%; height:50%; border-top:1px solid #C4C4C4; overflow:hidden}
+  .lyt-main .right .bottom .bottom-left{ width:calc(50% - 1px); height:100%; border-right:1px solid #C4C4C4; float:left}
+  .lyt-main .right .bottom .bottom-right{ width:calc(50% - 1px); height:100%; border-right:1px solid #FFF; float:left}
 /***2016-09-23***/
 /**2016-09-26**/
 .car-chanle{ width:100%; overflow:hidden; background:#FFF}
@@ -485,7 +503,7 @@ footer{ height:61px;background:#383838; position:fixed; left:0; bottom:0; width:
 .car-chanle-child { width:100%}
 .car-chanle-child  .list{ width:94%; overflow:hidden; margin:0.5rem auto; clear:both}
 .car-chanle-child  .list a{ display:block; width:calc(100%/7); float:left}
-.car-chanle-child  .list a img{ width:100%}
+.car-chanle-child  .list a img{ width:100%} 
 .cuxiao-item{ width:100%; background:#FFF; overflow:hidden}
 .cuxiao-item .title{ width:100%; margin:0.5rem auto; overflow:hidden}
 .cuxiao-item .title img{ width:100%}
@@ -498,14 +516,13 @@ footer{ height:61px;background:#383838; position:fixed; left:0; bottom:0; width:
 .tuijian .title img{ width:100%}
 .tuijian-list{ width:99%; margin:auto; overflow:hidden; clear:both}
 .tuijian-list .tuijian-item{ display:block; width:calc(49% - 2px); border:1px solid #C4C4C4; float:left; margin:0.5%}
-.tuijian-list .tuijian-item .goods_img{height: 0;padding-top: 100%;overflow: hidden;}
-.tuijian-list .tuijian-item img {width: 100%;margin-top: -100%;vertical-align: top;}
+.tuijian-list .tuijian-item img{ width:100%} 
 .tuijian-list .tuijian-item p{width:90%;line-height:1.5rem; text-align:left;  margin:auto;}
 .tuijian-list .tuijian-item p.title{ height:3rem;color:#A5A5A5}
 .tuijian-list .tuijian-item p.price{ color:#3B3939}
 .bottom-box{ width:100%; background:#FFF; overflow:hidden; text-align:center; padding:2rem 0px}
 .bottom-box img{ width:25%}
-.go-top{ width:50px; height:50px; position:fixed; right:10px; bottom:60px; z-index:9998}
+.go-top{ width:50px; height:50px; position:fixed; right:10px; bottom:70px; z-index:9998}
 .go-top img{ width:50px; height:50px}
 /**2016-09-26**/
 @media only screen and (max-width:300px) {

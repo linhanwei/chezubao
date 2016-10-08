@@ -14,7 +14,7 @@ $(function() {
     
     var tmpl2 = '<div class="footer-top-line"></div><nav class="footer-nav"><ul>'+
                 '<li><a href="' + WapSiteUrl + '"><img src="'+SiteUrl+'/data/upload/m/common/nav-ico-1.png"><p>首页</p></a></li>'+
-                '<li><a href="' + WapSiteUrl + '/tmpl/product_first_categroy.html"><img src="'+SiteUrl+'/data/upload/m/common/nav-ico-2.png"><p>分类</p></a></li>'+
+                '<li><a href="' + SiteUrl + '/mall_m/index.php?act=goods_class&op=index"><img src="'+SiteUrl+'/data/upload/m/common/nav-ico-2.png"><p>分类</p></a></li>'+
                 '<li><a href="javascript:void(0);"><img src="'+SiteUrl+'/data/upload/m/common/nav-ico-3.png"><p>搜索</p></a></li>'+
                 '<li><a href="' + WapSiteUrl + '/tmpl/cart_list.html"><img src="'+SiteUrl+'/data/upload/m/common/nav-ico-4.png"><p>购物车</p></a></li>'+
                 '<li><a href="' + WapSiteUrl + '/tmpl/member/member.html?act=member"><img src="'+SiteUrl+'/data/upload/m/common/nav-ico-5.png"><p>用户中心</p></a></li>'+

@@ -58,7 +58,7 @@
 		<ul class="product-list">
 			<%for(i=0;i<goods_list.length;i++){%>
 			<li class="pdlist-item" goods_id="<%=goods_list[i].goods_id;%>">
-				<a href="product_detail.html?goods_id=<%=goods_list[i].goods_id;%>" class="pdlist-item-wrap clearfix">
+				<a href="<%= SiteUrl %>/mall_m/index.php?act=goods&op=detail&goods_id=<%=goods_list[i].goods_id;%>" class="pdlist-item-wrap clearfix">
 					<span class="pdlist-iw-imgwp">
 						<img src="<%=goods_list[i].goods_image_url;%>"/>
 					</span>

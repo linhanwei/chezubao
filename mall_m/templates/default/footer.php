@@ -13,7 +13,7 @@
                 </a>
             </li>
             <li>
-                <a href="<?php echo BASE_SITE_URL;?>/wap/tmpl/product_first_categroy.html">
+                <a href="<?php echo BASE_SITE_URL;?>/mall_m/index.php?act=goods_class&op=index">
                     <img src="./templates/default/images/nav-ico-2.png">
                     <p>分类</p>
                 </a>

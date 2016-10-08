@@ -15,12 +15,74 @@ class goods_classControl extends mobileHomeControl{
     }
 
 	public function indexOp() {
-        if(!empty($_GET['gc_id']) && intval($_GET['gc_id']) > 0) {
-            $this->_get_class_list($_GET['gc_id']);
-        } else {
-            $this->_get_root_class();
+
+        /* if(!empty($_GET['gc_id']) && intval($_GET['gc_id']) > 0) {
+             $this->_get_class_list($_GET['gc_id']);
+         } else {
+             $this->_get_root_class();
+         }*/
+
+        $gc_id = $_GET['gc_id'];
+        $is_ajax = $_GET['is_ajax'];
+
+        $model_goods_class = Model('goods_class');
+
+        //获取最顶级分类
+        $top_list = $model_goods_class->getChildClass(0,false,false);
+
+        //获取下级分类
+        if($gc_id){
+            if($is_ajax){
+                $child_list = $this->_get_all_child($gc_id,$model_goods_class);
+                output_data(array('child_list' => $child_list));
+            }
+
+            if($top_list){
+                foreach($top_list as $tk=>$tv){
+                    if($tv['gc_id'] == $gc_id){
+                        $info = $top_list[$tk];
+                        unset($top_list[$tk]);
+                    }
+                }
+            }
+        }else{
+            $key = 0;
+            $info = $top_list[$key];
+            $gc_id = $info['gc_id'];
+            unset($top_list[$key]);
         }
+
+        //获取顶级所有子分类
+        $child_list = $this->_get_all_child($gc_id,$model_goods_class);
+
+        Tpl::output('info',$info);
+        Tpl::output('top_list',$top_list);
+        Tpl::output('child_list',$child_list);
+        Tpl::showpage('goods_class.index');
+
 	}
+
+    /**
+     * 获取顶级所有子分类
+     * @param $parent_id
+     */
+    private function _get_all_child($parent_id,$model_goods_class){
+        $child_list = $model_goods_class->getChildClass($parent_id,false,false);
+
+        if($child_list){
+            foreach($child_list as $k=>$child){
+                $list = $model_goods_class->getChildClass($child['gc_id'],false,false);
+                if($list){
+                    foreach($list as $ck=>$cv){
+                        $list[$ck]['image'] = UPLOAD_SITE_URL.DS.ATTACH_COMMON.DS.'category-pic-'.intval($cv['gc_id']).'.jpg';
+                    }
+                }
+                $child_list[$k]['child'] = $list;
+            }
+        }
+
+        return $child_list;
+    }
 
     /**
      * 返回一级分类列表

@@ -1,14 +1,11 @@
 <?php defined('InSystem') or exit('Access Invalid!'); ?>
 
-<div class="index_block home1">
-    <?php if(!empty($vv['title'])) {?>
-    <div class="title"><?php echo $vv['title']; ?></div>
-    <?php } ?>
-    <div class="content">
-        <div nctype="item_image" class="item">
-            <a nctype="btn_item" href="javascript:;" data-type="<?php echo $vv['type']; ?>" data-data="<?php echo $vv['data']; ?>">
-                <img nctype="image" src="<?php echo $vv['image']; ?>" alt="">
+<?php if ($v['home1']['image']) { ?>
+    <section class="banner-box">
+        <div class="title">
+            <a href="<?php echo $v['home1']['type'] ? buildSpecialUrl($v['home1']['type'], $v['home1']['data']) : 'javascript:void(0);'; ?>">
+                <img src="<?php echo $v['home1']['image']; ?>" />
             </a>
         </div>
-    </div>
-</div>
+    </section>
+<?php } ?>

@@ -47,4 +47,11 @@ $(function(){
           $('body,html').animate({scrollTop:0},500);
               return false;
    });
+
+	//搜索
+	$('.search-btn').click(function(){
+		var keyword = encodeURIComponent($('#keyword').val());
+		location.href = WapSiteUrl+'/tmpl/product_list.html?keyword='+keyword;
+	});
 })
+
