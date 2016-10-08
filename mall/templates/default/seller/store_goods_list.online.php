@@ -107,7 +107,7 @@
             <span class="<?php if ($val['goods_commend'] == 1) { echo 'open';}?>
               " title="店铺推荐商品"> <i class="commend">荐</i>
             </span>
-            <a href="<?php echo BASE_SITE_URL.'/wap/tmpl/product_detail.html?goods_id='.$output['storage_array'][$val['goods_commonid']]['goods_id'] ?>" target="_blank">
+            <a href="<?php echo BASE_SITE_URL.'/mall_m/index.php?act=goods&op=detail&goods_id='.$output['storage_array'][$val['goods_commonid']]['goods_id'] ?>" target="_blank">
               <span class="<?php if ($val['mobile_body'] != '') { echo 'open';}?>
                 " title="手机端商品详情"> <i class="icon-tablet"></i>
               </span>
