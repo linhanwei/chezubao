@@ -126,11 +126,11 @@
             var parent_id = $(this).val();
             $.post('<?php echo urlAdmin('mb_special', 'get_goods_class');?>', {parent_id: parent_id}, function(data) {
                 if(data){
-                    var html = '';
+                    var html = '<option value="">--请选择--</option>';
                     for(var i in data){
                         html += '<option value="'+data[i].gc_id+'">'+data[i].gc_name+'</option>';
                     }
-                    $('#goods_class_2').append(html);
+                    $('#goods_class_2').html(html);
                 }
             },'json');
         });
@@ -139,11 +139,11 @@
             var parent_id = $(this).val();
             $.post('<?php echo urlAdmin('mb_special', 'get_goods_class');?>', {parent_id: parent_id}, function(data) {
                 if(data){
-                    var html = '';
+                    var html = '<option value="">--请选择--</option>';
                     for(var i in data){
                         html += '<option value="'+data[i].gc_id+'">'+data[i].gc_name+'</option>';
                     }
-                    $('#goods_class_3').append(html);
+                    $('#goods_class_3').html(html);
                 }
             },'json');
         });
