@@ -22,7 +22,7 @@ function AddViewGoods(goods_id){
 			if(!result.datas.error){
 				var pic = result.datas.goods_image.split(',');
 				var html = '<li>'
-							+'<a href="'+WapSiteUrl+'/tmpl/product_detail.html?goods_id='+result.datas.goods_info.goods_id+'" class="mf-item clearfix">'
+							+'<a href="'+SiteUrl+'/mall_m/index.php?act=goods&op=detail&goods_id='+result.datas.goods_info.goods_id+'" class="mf-item clearfix">'
 								+'<span class="mf-pic">'
 									+'<img src="'+pic[0]+'"/>'
 								+'</span>'

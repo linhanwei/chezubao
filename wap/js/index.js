@@ -13,8 +13,10 @@ $(function() {
                 $.each(v, function(kk, vv) {
                     switch (kk) {
                         case 'adv_list':
-                            vv.new_img_url = SiteUrl+'/data/upload/m/common/index/new_theme_icon.png';
-
+                            $.each(vv.item, function(ak, av) {
+                                vv.item[ak].url = buildUrl(av.type, av.data);
+                            });
+                            break;
                         case 'home1':
                             vv.url = buildUrl(vv.type, vv.data);
                             break;
@@ -80,6 +82,7 @@ $(function() {
                                 vv.item[gck].url = buildUrl('goods', gcv.goods_id);
                             });
                             break;
+
                     }
                     console.log(kk,vv);
                     html += template.render(kk, vv);
