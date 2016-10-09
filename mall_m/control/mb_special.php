@@ -24,6 +24,7 @@ class mb_specialControl extends mobileHomeControl {
 
         $condition = array();
         $page = 20;
+        $condition['special_type'] = $info['special_type'];
         $mb_list = $model_mb_special->getMbSpecialList($condition, $page, 'special_id desc','*');
 //        dump($mb_list);
         Tpl::output('info',$info);
