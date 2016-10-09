@@ -21,7 +21,7 @@
 		 <ul>
 			<%for(var i=0;i<favorites_list.length;i++){%>
             <li>
-                <a href="<%=WapSiteUrl%>/tmpl/product_detail.html?goods_id=<%=favorites_list[i].fav_id %>" class="mf-item clearfix">
+                <a href="<%=SiteUrl%>/mall_m/index.php?act=goods&op=detail&goods_id=<%=favorites_list[i].fav_id %>" class="mf-item clearfix">
                     <span class="mf-pic">
                         <img src="<%=favorites_list[i].goods_image_url %>"/>
                     </span>
