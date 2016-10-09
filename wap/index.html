@@ -40,14 +40,18 @@
     <script type="text/javascript" src="js/index.js"></script>
 
     <script type="text/javascript" src="js/tmpl/footer.js"></script>
-
+    <script>
+        $(function(){
+            $('.search-box .category-btn').attr('href',SiteUrl+'/mall_m/index.php?act=goods_class&op=index');
+        });
+    </script>
 </head>
 
 <body>
 
 <section class="search-box">
 
-    <a class="category-btn">
+    <a  class="category-btn">
 
         <img src="./new/images/category-ico.png"/>
 
