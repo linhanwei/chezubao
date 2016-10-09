@@ -107,7 +107,9 @@
                 gc_2 = $('#goods_class_2').val(),
                 gc_3 = $('#goods_class_3').val();
 
-            $('#mb_special_goods_list').load(url, {keyword: keyword,gc_1:gc_1,gc_2:gc_2,gc_3:gc_3});
+            url += '&keyword='+keyword+'&gc_1='+gc_1+'&gc_2='+gc_2+'&gc_3='+gc_3;
+
+            $('#mb_special_goods_list').load(url);
 
         });
 

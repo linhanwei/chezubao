@@ -331,7 +331,7 @@ class mb_specialControl extends SystemControl
 
     public function goods_listOp()
     {
-        $keyw = $_POST['keyword'];
+        $keyw = $_GET['keyword'];
         $condition = array();
         $model_true_goods = Model('goods');
         if ($keyw == '2015') {
@@ -354,19 +354,19 @@ class mb_specialControl extends SystemControl
             Tpl::output('show_page', $model_true_goods->showpage());
             Tpl::showpage('mb_special_widget.goods2', 'null_layout');
         } else {
-            if ($_POST['keyword']) {
-                $condition['goods_name'] = array('like', '%' . $_POST['keyword'] . '%');
+            if ($_GET['keyword']) {
+                $condition['goods_name'] = array('like', '%' . $_GET['keyword'] . '%');
             }
 
-            $gc_1= $_POST['gc_1'];
+            $gc_1= $_GET['gc_1'];
             if($gc_1){
                 $condition['gc_id_1'] = $gc_1;
             }
-            $gc_2= $_POST['gc_2'];
+            $gc_2= $_GET['gc_2'];
             if($gc_2){
                 $condition['gc_id_2'] = $gc_2;
             }
-            $gc_3= $_POST['gc_3'];
+            $gc_3= $_GET['gc_3'];
             if($gc_3){
                 $condition['gc_id_3'] = $gc_3;
             }
