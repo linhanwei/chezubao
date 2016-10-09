@@ -53,6 +53,13 @@ $(function() {
                             vv.rectangle5_url = buildUrl(vv.rectangle5_type, vv.rectangle5_data);
                             vv.rectangle6_url = buildUrl(vv.rectangle6_type, vv.rectangle6_data);
                             break;
+                        case 'home9':
+                            vv.rectangle1_url = buildUrl(vv.rectangle1_type, vv.rectangle1_data);
+                            vv.rectangle2_url = buildUrl(vv.rectangle2_type, vv.rectangle2_data);
+                            vv.rectangle3_url = buildUrl(vv.rectangle3_type, vv.rectangle3_data);
+                            vv.rectangle4_url = buildUrl(vv.rectangle4_type, vv.rectangle4_data);
+
+                            break;
                         case 'home10':
                             vv.rectangle1_url = buildUrl(vv.rectangle1_type, vv.rectangle1_data);
                             vv.rectangle2_url = buildUrl(vv.rectangle2_type, vv.rectangle2_data);
@@ -74,7 +81,7 @@ $(function() {
                             });
                             break;
                     }
-                    //console.log(kk,vv);
+                    console.log(kk,vv);
                     html += template.render(kk, vv);
                     //console.log('html',kk);
                     return false;
