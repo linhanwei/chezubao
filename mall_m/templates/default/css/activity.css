@@ -8,4 +8,8 @@
 .activity-header .cate-btn{right:10px; top:5px;}
 .activity-header .title{ height:50px; vertical-align:top}
 
-/**瀑布流代码**/
+.activity-tips{ height:2rem; line-height:2rem; text-align:center; background:#FAFAFA; text-align:center}
+.activity-content-box{ width:100%; overflow:hidden}
+.activity-item-box{ width:calc(49% - 2px); border:1px solid #F5F5F5; margin-right:2%; margin-bottom:2%; float:left; overflow:hidden}
+.activity-item-box:nth-child(2n){ margin-right:0}
+.activity-item-box p{ background:#FFF; height:2rem; line-height:2rem; text-align:center;  overflow:hidden}

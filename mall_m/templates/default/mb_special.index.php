@@ -13,19 +13,32 @@
 </head>
 <body>
 <!--头部-->
-<?php include template('header'); ?>
+<?php
+    $special_type = $output['info']['special_type'];
+    switch($special_type){
+        case 1:
+            include template('header');
+            break;
+        case 2:
+            include template('recommend_header');
+            break;
+    }
+
+?>
 
 <!--专题设置-->
 <?php
     if($output['mb_item_list'] && is_array($output['mb_item_list'])){
         foreach ((array) $output['mb_item_list'] as $k=>$v) {
             include template('mb_special_item.module_'.$v['mb_type']);
-            if($k == 0){
+            if($k == 0 && $special_type == 1){
                 include template('mb_special.chanle-list');
             }
         }
     }else{
-        include template('mb_special.chanle-list');
+        if($special_type == 1){
+            include template('mb_special.chanle-list');
+        }
         echo '<div style="width: 100%;height: 100px;line-height:100px;text-align: center;font-size: 16px;">暂时没有相关活动信息,敬请期待!</div>';
     }
 ?>

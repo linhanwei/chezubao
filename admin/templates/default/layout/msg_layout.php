@@ -33,7 +33,7 @@
           <?php }else { if ($output['url'] != ''){ ?>
           <a href="<?php echo $output['url'];?>" class="btns"><span><?php echo $lang['nc_back_to_pre_page'];?></span></a>
                 <?php $output['url'];?>
-          <script type="text/javascript"> window.setTimeout("javascript:location.href='<?php echo $url;?>'", <?php echo $time;?>); </script>
+          <script type="text/javascript"> window.setTimeout("javascript:location.href='<?php echo $output['url'];?>'", <?php echo $time;?>); </script>
           <?php }else { ?>
           <a href="javascript:history.back()" class="btns"><span><?php echo $lang['nc_back_to_pre_page'];?></span></a> 
           <script type="text/javascript"> window.setTimeout("javascript:history.back()", <?php echo $time;?>); </script>

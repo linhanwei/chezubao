@@ -25,9 +25,14 @@ class mb_specialControl extends SystemControl
     {
         $model_mb_special = Model('mb_special');
 
-        $mb_special_list = $model_mb_special->getMbSpecialList($array, 10);
+        $condition = array();
+        $mb_special_list = $model_mb_special->getMbSpecialList($condition, 10);
+
+        //获取全部的专题类型
+        $mb_special_type_list = $model_mb_special->getMbSpecialType();
 
         Tpl::output('list', $mb_special_list);
+        Tpl::output('type_list', $mb_special_type_list);
         Tpl::output('page', $model_mb_special->showpage(2));
 
         $this->show_menu('special_list');
@@ -41,10 +46,12 @@ class mb_specialControl extends SystemControl
     {
         $model_mb_special = Model('mb_special');
 
+        $log_msg = '添加手机专题';
         $param = array();
 
         $special_image = '';
         $param['special_id'] = $_POST['special_id'];
+        $param['special_type'] = $_POST['special_type'];
         $param['special_desc'] = $_POST['special_desc'];
 
         $upload = new UploadFile();
@@ -58,8 +65,11 @@ class mb_specialControl extends SystemControl
         }
 
         if($param['special_id']) {
+            $log_msg = '修改手机专题';
 
+            $update['special_type'] = $param['special_type'];
             $update['special_desc'] = $param['special_desc'];
+
             if($special_image){
                 $update['special_image'] = $special_image;
             }
@@ -74,10 +84,10 @@ class mb_specialControl extends SystemControl
         }
 
         if ($result) {
-            $this->log('添加手机专题' . '[ID:' . $result . ']', 1);
+            $this->log($log_msg. '[ID:' . $result . ']', 1);
             showMessage(L('nc_common_save_succ'), urlAdmin('mb_special', 'special_list'));
         } else {
-            $this->log('添加手机专题' . '[ID:' . $result . ']', 0);
+            $this->log($log_msg . '[ID:' . $result . ']', 0);
             showMessage(L('nc_common_save_fail'), urlAdmin('mb_special', 'special_list'));
         }
     }

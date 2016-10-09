@@ -56,6 +56,7 @@
                 <th class="w12">&nbsp;</th>
                 <th>专题编号</th>
                 <th>专题描述</th>
+                <th>专题类型</th>
                 <th>专题图片</th>
                 <th class="w200 align-center"><span><?php echo $lang['nc_handle']; ?></span></th>
             </tr>
@@ -68,15 +69,23 @@
                         <td><?php echo $value['special_id']; ?></td>
                         <td><span nc_type="edit_special_desc" column_id="<?php echo $value['special_id']; ?>"
                                   title="<?php echo $lang['nc_editable']; ?>"
-                                  class="editable tooltip w270"><?php echo $value['special_desc']; ?></span></td>
+                                  class="editable tooltip w270"><?php echo $value['special_desc']; ?></span>
+                        </td>
                         <td>
-                            <?php if($value['special_image']){ ?>
-                                <img src="<?php echo getBannerImageUrl($value['special_image']); ?>" style="width:50px;">
+                            <?php echo $output['type_list'][$value['special_type']]['type_name'] ?>
+                        </td>
+                        <td>
+                            <?php if ($value['special_image']) { ?>
+                                <img src="<?php echo getBannerImageUrl($value['special_image']); ?>"
+                                     style="width:50px;">
                             <?php } ?>
                         </td>
                         <td class="nowrap align-center">
-                            <a  href="javascript:;" class="btn_add_mb_special" special_id="<?php echo $value['special_id']; ?>" special_desc="<?php echo $value['special_desc']; ?>">编辑</a>&nbsp;|&nbsp;
-                            <a  href="<?php echo urlAdmin('mb_special', 'special_edit', array('special_id' => $value['special_id'])); ?>">编辑专题内容</a>&nbsp;|&nbsp;
+                            <a href="javascript:;" class="btn_add_mb_special"
+                               special_id="<?php echo $value['special_id']; ?>"
+                               special_type="<?php echo $value['special_type']; ?>"
+                               special_desc="<?php echo $value['special_desc']; ?>">编辑</a>&nbsp;|&nbsp;
+                            <a href="<?php echo urlAdmin('mb_special', 'special_edit', array('special_id' => $value['special_id'])); ?>">编辑专题内容</a>&nbsp;|&nbsp;
                             <a href="javascript:;" nctype="btn_del"
                                data-special-id="<?php echo $value['special_id']; ?>">删除</a></td>
                     </tr>
@@ -87,7 +96,8 @@
                 </tr>
             <?php } ?>
             <tr style="background: none repeat scroll 0% 0% rgb(255, 255, 255);">
-                <td colspan="20"><a id="btn_add_mb_special" href="javascript:;" class="btn-add marginleft btn_add_mb_special">添加专题</a></td>
+                <td colspan="20"><a id="btn_add_mb_special" href="javascript:;"
+                                    class="btn-add marginleft btn_add_mb_special">添加专题</a></td>
             </tr>
             </tbody>
             <?php if (!empty($output['list']) && is_array($output['list'])) { ?>
@@ -106,7 +116,8 @@
     <input type="hidden" id="del_special_id" name="special_id">
 </form>
 <div id="dialog_add_mb_special" style="display:none;">
-    <form id="add_form" method="post" enctype="multipart/form-data" action="<?php echo urlAdmin('mb_special', 'special_save'); ?>">
+    <form id="add_form" method="post" enctype="multipart/form-data"
+          action="<?php echo urlAdmin('mb_special', 'special_save'); ?>">
         <input type="hidden" name="special_id" id="special_id" value="">
         <table class="table tb-type2">
             <tbody>
@@ -114,7 +125,7 @@
                 <td colspan="2" class="required"><label class="validation" for="special_image">专题图片</label></td>
             </tr>
             <tr class="noborder">
-                <td class="vatop rowform"><input type="file" value="" name="special_image"  class="txt"></td>
+                <td class="vatop rowform"><input type="file" value="" name="special_image" class="txt"></td>
                 <td class="vatop tips">专题图片</td>
             </tr>
             <tr class="noborder">
@@ -123,8 +134,24 @@
                 </td>
             </tr>
             <tr class="noborder">
-                <td class="vatop rowform"><input type="text" value="" name="special_desc" id="special_desc" class="txt"></td>
+                <td class="vatop rowform"><input type="text" value="" name="special_desc" id="special_desc" class="txt">
+                </td>
                 <td class="vatop tips">专题描述，最多20个字</td>
+            </tr>
+            <tr class="noborder">
+                <td colspan="2" class="required"><label class="validation"
+                                                        for="special_type">专题类型<?php echo $lang['nc_colon']; ?></label>
+                </td>
+            </tr>
+            <tr class="noborder">
+                <td class="vatop rowform">
+                    <select name="special_type" id="special_type">
+                        <?php foreach($output['type_list'] as $type){ ?>
+                            <option value="<?php echo $type['type'];?>"><?php echo $type['type_name'];?></option>
+                        <?php } ?>
+                    </select>
+                </td>
+                <td class="vatop tips"></td>
             </tr>
             </tbody>
             <tfoot>
@@ -145,9 +172,17 @@
         //添加专题
         $('.btn_add_mb_special').on('click', function () {
             var special_id = $(this).attr('special_id'),
+                special_type = parseInt($(this).attr('special_type')),
                 special_desc = $(this).attr('special_desc');
-            if(special_desc){
+            if (special_desc) {
                 $('#special_id').val(special_id);
+
+                $('#special_type').children().each(function(key,val){
+                    var type = parseInt($(val).attr('value'));
+                    if(type == special_type){
+                        $(val).attr('selected','selected');
+                    }
+                });
                 $('.dialog_title').html('编辑专题');
                 $('#special_desc').val(special_desc);
             }

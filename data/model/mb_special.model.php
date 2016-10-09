@@ -207,6 +207,9 @@ class mb_specialModel extends Model{
                 $item_data['rectangle8_image'] = getMbSpecialImageUrl($item_data['rectangle8_image']);
 
                 break;
+            case 'home12':
+                $item_data['image'] = getMbSpecialImageUrl($item_data['image']);
+                break;
             case 'goods':
 	                 // 33hao.com v3-10
 			  case 'goods1':
@@ -467,7 +470,19 @@ class mb_specialModel extends Model{
      *
      */
     public function getMbSpecialModuleList() {
+        $special_id = $_GET['special_id'];
+        $special_type = 0;
+        if($special_id){
+            $special_info = $this->getMbSpecialInfo(array('special_id'=>$special_id),'special_type');
+            $special_type = $special_info['special_type'];
+        }
+
         $module_list = array();
+
+        if($special_type == 2){
+            $module_list['home12'] = array('name' => 'home12' , 'desc' => '顶部标题块布局');
+        }
+
         $module_list['adv_list'] = array('name' => 'adv_list' , 'desc' => '广告条版块');
         $module_list['home1'] = array('name' => 'home1' , 'desc' => '模型版块布局A');
 //          $module_list['home2'] = array('name' => 'home2' , 'desc' => '模型版块布局B');
@@ -480,13 +495,15 @@ class mb_specialModel extends Model{
         $module_list['home9'] = array('name' => 'home9' , 'desc' => '模型版块布局H');
         $module_list['home10'] = array('name' => 'home10' , 'desc' => '模型版块布局J');
         $module_list['home11'] = array('name' => 'home11' , 'desc' => '模型版块布局K');
+
         $module_list['goods'] = array('name' => 'goods' , 'desc' => '商品版块');
 
+/*
         if(!$_GET['special_id']) {
-    //    	$module_list['goods1'] = array('name' => 'goods1' , 'desc' => '限时商品');
-    //		$module_list['goods2'] = array('name' => 'goods2' , 'desc' => '团购商品');
+        	$module_list['goods1'] = array('name' => 'goods1' , 'desc' => '限时商品');
+    		$module_list['goods2'] = array('name' => 'goods2' , 'desc' => '团购商品');
         }
-	
+	*/
         return $module_list;
     }
 
@@ -502,5 +519,18 @@ class mb_specialModel extends Model{
         if(is_file($html_path)) {
             @unlink($html_path);
         }
+    }
+
+    /**
+     * 获取专题所有的类型
+     */
+    public function getMbSpecialType(){
+        $type_list = array(
+            1=>array('type'=>1,'type_name'=>'频道'),
+            2=>array('type'=>2,'type_name'=>'推荐'),
+            3=>array('type'=>3,'type_name'=>'特色'),
+        );
+
+        return $type_list;
     }
 }
