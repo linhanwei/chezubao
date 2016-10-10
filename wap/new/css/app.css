@@ -3,6 +3,7 @@ body,h1,h2,h3,p,dl,dd,ol,ul,th,td,fieldset,input,button,textarea,form,canvas,aud
 	margin: 0;
 	padding: 0;
 	font-family: "微软雅黑", "Microsoft yahei";
+	
 }
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary {
 	display: block
@@ -97,7 +98,7 @@ button,html input[type=button],input[type=reset],input[type=submit] {
 body {
 	font-size: 20px;
 	background: #F3F4F5;
-	padding-bottom:50px;
+	padding-bottom:70px;
 }
 #viewport{min-height:40em;}
 .viewport {
@@ -268,6 +269,23 @@ a{ color:#666}
 .search-box .search-input .search-btn img{  vertical-align:top}
 .search-box .tips-btn{ display:block; width:40px; height:40px; position:absolute; right:10px; top:5px}
 .search-box .tips-btn img{ width:40px; height:40px; vertical-align:top}
+
+.search-box-two{ height:50px; line-height:50px; background:#000000; position:relative; border-bottom:1px solid #FFF}
+.search-box-two .go-history{ display:block;width:40px; height:40px;  float:left; margin-left:10px; margin-top:5px; margin-right:10px}
+.search-box-two .go-history img{ width:40px; height:40px; vertical-align:top}
+.search-box-two .search-input{ width:calc(100% - 120px); height:36px; line-height:36px; top:7px;overflow:hidden; position:relative}
+.search-box-two .search-input input{width:calc(100% - 16px);height:36px; line-height:36px;border:none;  padding:0 8px; position:absolute; left:0; top:0px; background:#FFF; vertical-align:top}
+.search-box-two .search-input .search-btn{ display:block; width:27px; height:27px; position:absolute; right:10px; top:50%; margin-top:-13.5px;}
+.search-box-two .search-input .search-btn img{  vertical-align:top}
+.search-box-two .cate-btn{ display:block; width:40px; height:40px; position:absolute; right:10px; top:5px}
+.search-box-two .cate-btn img{ width:40px; height:40px; vertical-align:top}
+
+#cate-box{ width:100%; overflow:hidden; height:30px; line-height:30px; background:#FFF}
+#cate-box .swiper-slide { padding:0 0.25rem; width:auto}
+#cate-box .swiper-slide a{ padding:0 0.5rem; font-size:1rem}
+#cate-box .swiper-slide-on a{ height:28px; line-height:30px;border-bottom:2px solid #000; color:#000}
+
+
 .swiper-slide img{ width:100%;}
 .swiper-pagination span{ width:0.75rem; height:0.75rem; background:#C9CBCA}
 .swiper-pagination span.swiper-pagination-bullet-active{ color:rgba(44,165,35,1); background:#000}
@@ -330,7 +348,7 @@ footer{ height:61px;background:#383838; position:fixed; left:0; bottom:0; width:
 .home-mrjx-box{ width:100%; background:#E5E5E3; overflow:hidden; padding-bottom:0.75rem}
 .home-mrjx-box .title{ width:100%; margin:0.5rem auto; text-align:center}
 .home-mrjx-box .title img{ width:100%}
-.home-mrjx-list{ width:92%; margin:auto; background:url('../images/jingxuan-bg.jpg'); overflow:hidden}
+.home-mrjx-list{ width:92%; margin:auto; /*background:url('../images/jingxuan-bg.jpg');*/ overflow:hidden}
 .home-mrjx-list .item{ display:block; float:left; width:49%; margin-right:2%; margin-bottom:2%; overflow:hidden; position:relative}
 .home-mrjx-list .item:nth-child(2n){ margin-right:0px}
 .home-mrjx-list .item img{ width:100%;}
@@ -498,14 +516,16 @@ footer{ height:61px;background:#383838; position:fixed; left:0; bottom:0; width:
 .tuijian .title img{ width:100%}
 .tuijian-list{ width:99%; margin:auto; overflow:hidden; clear:both}
 .tuijian-list .tuijian-item{ display:block; width:calc(49% - 2px); border:1px solid #C4C4C4; float:left; margin:0.5%}
-.tuijian-list .tuijian-item .goods_img{height: 0;padding-top: 100%;overflow: hidden;}
-.tuijian-list .tuijian-item img {width: 100%;margin-top: -100%;vertical-align: top;}
+.tuijian-list .tuijian-item .img{ width:100%; height:0; padding-top:100%}
+.tuijian-list .tuijian-item img{ width:100%; margin-top:-100%; vertical-align:top} 
 .tuijian-list .tuijian-item p{width:90%;line-height:1.5rem; text-align:left;  margin:auto;}
-.tuijian-list .tuijian-item p.title{ height:3rem;color:#A5A5A5}
+.tuijian-list .tuijian-item p.title{ height:3rem; overflow:hidden;color:#A5A5A5}
 .tuijian-list .tuijian-item p.price{ color:#3B3939}
+
+
 .bottom-box{ width:100%; background:#FFF; overflow:hidden; text-align:center; padding:2rem 0px}
 .bottom-box img{ width:25%}
-.go-top{ width:50px; height:50px; position:fixed; right:10px; bottom:60px; z-index:9998}
+.go-top{ width:50px; height:50px; position:fixed; right:10px; bottom:70px; z-index:9998}
 .go-top img{ width:50px; height:50px}
 /**2016-09-26**/
 @media only screen and (max-width:300px) {

@@ -46,7 +46,7 @@
                                     html += '<h1><a>'+data[i].gc_name+'</a></h1>';
                                     html += '<div class="item-two">';
                                     for(var k in child){
-                                        html += '<a href="'+SiteUrl+'/wap/tmpl/product_list.html?gc_id='+child[k].gc_id+'" class="item">';
+                                        html += '<a href="'+SiteUrl+'/mall_m/index.php?act=goods&op=list&gc_id='+child[k].gc_id+'" class="item">';
                                         html += '<img src="'+child[k].image+'">';
                                         html += '<p>'+child[k].gc_name+'</p>';
                                         html += '</a>';
@@ -93,7 +93,7 @@
                         <h1><a><?php echo $cv['gc_name'];?></a></h1>
                         <div class="item-two">
                             <?php foreach($cv['child'] as $ncv){?>
-                                <a href="<?php echo BASE_SITE_URL;?>/wap/tmpl/product_list.html?gc_id=<?php echo $ncv['gc_id'];?>" class="item">
+                                <a href="<?php echo BASE_SITE_URL;?>/mall_m/index.php?act=goods&op=list&gc_id=<?php echo $ncv['gc_id'];?>" class="item">
                                     <img src="<?php echo $ncv['image'];?>">
                                     <p><?php echo $ncv['gc_name'];?></p>
                                 </a>

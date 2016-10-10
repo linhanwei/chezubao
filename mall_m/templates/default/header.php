@@ -10,7 +10,7 @@
     $(function(){
         $('.search-btn').click(function(){
             var keyword = encodeURIComponent($('#keyword').val());
-            location.href = '<?php BASE_SITE_URL;?>'+'/wap/tmpl/product_list.html?keyword='+keyword;
+            location.href = '<?php BASE_SITE_URL;?>'+'/mall_m/index.php?act=goods&op=list&keyword='+keyword;
         });
     });
 </script>

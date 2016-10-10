@@ -110,7 +110,7 @@ $(function() {
 
     $('.search-btn').click(function(){
         var keyword = encodeURIComponent($('#keyword').val());
-        location.href = WapSiteUrl+'/tmpl/product_list.html?keyword='+keyword;
+        location.href = SiteUrl+'/mall_m/index.php?act=goods&op=list&keyword='+keyword;
     });
 
 });

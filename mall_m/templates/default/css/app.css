@@ -348,7 +348,7 @@ footer{ height:61px;background:#383838; position:fixed; left:0; bottom:0; width:
 .home-mrjx-box{ width:100%; background:#E5E5E3; overflow:hidden; padding-bottom:0.75rem}
 .home-mrjx-box .title{ width:100%; margin:0.5rem auto; text-align:center}
 .home-mrjx-box .title img{ width:100%}
-.home-mrjx-list{ width:92%; margin:auto; background:url('../images/jingxuan-bg.jpg'); overflow:hidden}
+.home-mrjx-list{ width:92%; margin:auto; /*background:url('../images/jingxuan-bg.jpg');*/ overflow:hidden}
 .home-mrjx-list .item{ display:block; float:left; width:49%; margin-right:2%; margin-bottom:2%; overflow:hidden; position:relative}
 .home-mrjx-list .item:nth-child(2n){ margin-right:0px}
 .home-mrjx-list .item img{ width:100%;}
