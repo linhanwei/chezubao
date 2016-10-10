@@ -19,7 +19,7 @@
                 </a>
             </li>
             <li>
-                <a href="javascript:void(0);">
+                <a href="<?php echo BASE_SITE_URL;?>/mall_m/index.php?act=goods&op=list">
                     <img src="./templates/default/images/nav-ico-3.png">
                     <p>搜索</p>
                 </a>
