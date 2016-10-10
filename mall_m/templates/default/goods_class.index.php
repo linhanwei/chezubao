@@ -23,15 +23,21 @@
                 $(this).addClass('swiper-slide-on').siblings().removeClass('swiper-slide-on');
                 var gc_id = $(this).attr('gc_id');
 
+//                var layer_index = layer.load(0, {shade:[0.3, '#000']});
+                var layer_index = layer.load(0, {shade:false});
+
                 $.ajax({
                     url: SiteUrl + "/mall_m/index.php?act=goods_class&op=index",
                     type: 'get',
                     data:{gc_id:gc_id,is_ajax:1},
                     dataType: 'json',
+                    beforeSend:function(){
+
+                    },
                     success: function(result) {
                         var data = result.datas.child_list,
                             html = '';
-                        console.log(gc_id,data);
+                        //console.log(gc_id,data);
                         if(data){
                             for(var i in data){
                                 var child = data[i].child;
@@ -53,6 +59,7 @@
                             $('.category-list-box').html(html);
 
                         }
+                        layer.close(layer_index);
                     }
                 });
             });
