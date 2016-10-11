@@ -1,6 +1,5 @@
 /*固定顶部位置*/
 .search-box{position: fixed;width: 100%;top: 0;z-index: 1000;}
-.search-box-two{position: fixed;width: 100%;top: 0;z-index: 1000;}
 
 /*排序*/
 .content_header{position: fixed;top: 50px;width: 100%;z-index: 1000;}
@@ -29,7 +28,7 @@
 .prolist-box{ width:98%; overflow:hidden; clear:both; margin:0.25rem auto;margin-top: 100px;}
 .prolist-box .prolist-item{ display:block; width:48%; margin:1%; float:left; background:#FFF}
 .prolist-item-inline{border:1px solid rgba(236,236,236,1); padding:0.25rem}
-.prolist-item-inline .img{width:calc(100%-0.5rem); padding-top:100%}
+.prolist-item-inline .img{width:calc(100% - 0.5rem); padding-top:100%}
 .prolist-item-inline .img img{ width:100%; margin-top:-100%; vertical-align:top}
 .prolist-item-inline .info h2{ line-height:1.25rem; height:2.5rem; color:#666; font-weight:400; margin-top:0.5rem}
 .prolist-item-inline .info p{ line-height:1.5rem; font-size:1.25rem;margin-top:0.5rem}
