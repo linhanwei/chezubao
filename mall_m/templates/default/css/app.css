@@ -516,7 +516,7 @@ footer{ height:61px;background:#383838; position:fixed; left:0; bottom:0; width:
 .tuijian .title img{ width:100%}
 .tuijian-list{ width:99%; margin:auto; overflow:hidden; clear:both}
 .tuijian-list .tuijian-item{ display:block; width:calc(49% - 2px); border:1px solid #C4C4C4; float:left; margin:0.5%}
-.tuijian-list .tuijian-item .img{ width:100%; height:0; padding-top:100%}
+.tuijian-list .tuijian-item .goods_img{ width:100%; height:0; padding-top:100%}
 .tuijian-list .tuijian-item img{ width:100%; margin-top:-100%; vertical-align:top} 
 .tuijian-list .tuijian-item p{width:90%;line-height:1.5rem; text-align:left;  margin:auto;}
 .tuijian-list .tuijian-item p.title{ height:3rem; overflow:hidden;color:#A5A5A5}
