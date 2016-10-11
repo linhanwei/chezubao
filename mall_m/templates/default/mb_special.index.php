@@ -17,7 +17,7 @@
     $special_type = $output['info']['special_type'];
     switch($special_type){
         case 1:
-            include template('header');
+            include template('search_header');
             break;
         case 2:
             include template('recommend_header');

@@ -15,7 +15,7 @@
 <body>
 <header class="detail-head">
     <a href="javascript:history.go(-1);" class="go-history"><img src="./templates/default/images/detail/detail-ico-1234.png"/></a>
-<!--    <a href="#" class="go-link"><img src="./templates/default/images/detail/detail-ico-1236.png"/></a>-->
+    <a href="javascript:;" class="go-link"><img src="./templates/default/images/detail/detail-ico-1236.png"/></a>
     <a href="<?php echo BASE_SITE_URL;?>/wap/tmpl/cart_list.html" class="go-cart"><img src="./templates/default/images/detail/detail-ico-1235.png"/></a>
 </header>
 <section class="banner-box">
@@ -73,13 +73,13 @@
 </div>-->
 <div class="buy-box">
     <div class="shop-info">
-        <!--<a>
+        <a href="javascript:void(0);">
             <img src="./templates/default/images/detail/detail-ico-79.png">
             <p>客服</p>
         </a>
-        <a><img src="./templates/default/images/detail/detail-ico-146.png">
+        <a href="javascript:void(0);"><img src="./templates/default/images/detail/detail-ico-146.png">
             <p>店铺</p>
-        </a>-->
+        </a>
         <a class="goods_collect"><img src="./templates/default/images/detail/detail-ico-123.png">
             <p>收藏</p>
         </a>

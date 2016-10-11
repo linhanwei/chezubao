@@ -16,7 +16,7 @@
 </head>
 <body>
     <!--头部-->
-    <?php include template('header'); ?>
+    <?php include template('search_header'); ?>
 
     <section class="content_header">
         <div class="product-filter">

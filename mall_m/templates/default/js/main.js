@@ -1,6 +1,6 @@
 $(function(){
    var swiper = new Swiper('.swiper-container', {
-	pagination: '.swiper-pagination',
+	//pagination: '.swiper-pagination',
 	nextButton: '.swiper-button-next',
 	prevButton: '.swiper-button-prev',
 	paginationClickable: true,
@@ -51,7 +51,7 @@ $(function(){
 	//搜索
 	$('.search-btn').click(function(){
 		var keyword = encodeURIComponent($('#keyword').val());
-		location.href = WapSiteUrl+'/tmpl/product_list.html?keyword='+keyword;
+		location.href = SiteUrl+'/mall_m/index.php?act=goods&op=list&keyword='+keyword;
 	});
 })
 

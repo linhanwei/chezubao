@@ -1,5 +1,6 @@
 /*固定顶部位置*/
 .search-box{position: fixed;width: 100%;top: 0;z-index: 1000;}
+.search-box-two{position: fixed;width: 100%;top: 0;z-index: 1000;}
 
 /*排序*/
 .content_header{position: fixed;top: 50px;width: 100%;z-index: 1000;}

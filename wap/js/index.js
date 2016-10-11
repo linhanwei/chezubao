@@ -95,7 +95,7 @@ $(function() {
 
             //轮播图
             var swiper = new Swiper('.swiper-container', {
-                pagination: '.swiper-pagination',
+                //pagination: '.swiper-pagination',
                 nextButton: '.swiper-button-next',
                 prevButton: '.swiper-button-prev',
                 paginationClickable: true,
