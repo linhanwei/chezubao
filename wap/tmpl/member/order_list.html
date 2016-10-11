@@ -39,7 +39,7 @@
                                     </div>
                                     <div class="order-shop-pd">
                                         <%for (var k = 0;k<order_goods.length;k++){%>
-                                        <a class="order-ldetail clearfix <%if(k>0){%>bd-t-de<%}%>" href="<%=WapSiteUrl%>/tmpl/product_detail.html?goods_id=<%=order_goods[k].goods_id%>">
+                                        <a class="order-ldetail clearfix <%if(k>0){%>bd-t-de<%}%>" href="<%=SiteUrl%>/mall_m/index.php?act=goods&op=detail&goods_id=<%=order_goods[k].goods_id%>">
                                             <span class="order-pdpic">
                                                 <img src="<%=order_goods[k].goods_image_url%>"/>
                                             </span>
@@ -96,7 +96,7 @@
                         </li>
                     <%}%>
                 </ul>
-                <div class="pagination mt10">
+                <div class="pagination mt10" style="margin-bottom: 60px;">
                     <a href="javascript:void(0);" class="pre-page <%if(curpage <=1 ){%>disabled<%}%>">上一页</a>
                     <a href="javascript:void(0);" has_more="<%if (hasmore){%>true<%}else{%>false<%}%>"  class="next-page <%if (!hasmore){%>disabled<%}%>">下一页</a>
                 </div>

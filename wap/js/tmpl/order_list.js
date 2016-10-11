@@ -10,9 +10,13 @@ $(function(){
     var readytopay = false;
 
 	function initPage(page,curpage){
+        var state = GetQueryString('state');
+        var refund = GetQueryString('refund');
+        state = state ? state : '';
+        refund = refund ? refund : '';
 		$.ajax({
 			type:'post',
-            url:ApiUrl+"/index.php?act=member_order&op=order_list&page="+page+"&curpage="+curpage+"&getpayment=true",
+            url:ApiUrl+"/index.php?act=member_order&op=order_list&page="+page+"&curpage="+curpage+"&getpayment=true&refund="+refund+'&state='+state,
 			data:{key:key},
 			dataType:'json',
 			success:function(result){

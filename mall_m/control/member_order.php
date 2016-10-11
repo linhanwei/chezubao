@@ -20,10 +20,16 @@ class member_orderControl extends mobileMemberControl {
      * 订单列表
      */
     public function order_listOp() {
+
+        $order_state = $_GET['state'];
+        $refund_state = $_GET['refund'];
 		$model_order = Model('order');
 
         $condition = array();
         $condition['buyer_id'] = $this->member_info['member_id'];
+
+        if($order_state)    $condition['order_state'] = $order_state;
+        if($refund_state)   $condition['refund_state'] = array('in','1,2');
 
         $order_list_array = $model_order->getNormalOrderList($condition, $this->page, '*', 'order_id desc','', array('order_goods'));
 

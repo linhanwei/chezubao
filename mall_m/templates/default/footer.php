@@ -30,7 +30,7 @@
                     <p>购物车</p>
                 </a>
             </li>
-            <li><a href="<?php echo BASE_SITE_URL;?>/wap/tmpl/member/member.html">
+            <li><a href="<?php echo BASE_SITE_URL;?>/mall_m/index.php?act=member_index&op=index">
                     <img src="./templates/default/images/nav-ico-5.png">
                     <p>用户中心</p>
                 </a></li>

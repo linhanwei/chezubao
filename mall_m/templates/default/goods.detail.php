@@ -40,12 +40,12 @@
         <div class="title-txt">
             <?php echo $output['info']['goods_info']['goods_name']; ?>
         </div>
-        <!-- <div class="share-box">
+         <div class="share-box">
              <a>
                  <img src="./templates/default/images/detail/share-ico.png">
                  <p>分享</p>
              </a>
-         </div>-->
+         </div>
     </div>
     <div class="price">
         <span><small>￥</small><?php echo $output['info']['goods_info']['goods_promotion_price']; ?></span>

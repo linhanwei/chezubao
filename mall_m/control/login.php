@@ -43,8 +43,9 @@ class loginControl extends mobileHomeControl {
                     if($this->isQQLogin()){
                         setNc2Cookie('username',$member_info['member_name']);
                         setNc2Cookie('key',$token);
-                        header("location:".WAP_SITE_URL.'/tmpl/member/member.html?act=member');
+                        header("location:".BASE_SITE_URL.'/wap/tmpl/member/member.html?act=member');
                     }else{
+                        $model_member->createSession($member_info);
                         output_data(array('username' => $member_info['member_name'], 'key' => $token));
                     }
             } else {
