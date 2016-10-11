@@ -30,7 +30,7 @@ $(function(){
             +'<div class="clearfix tab-line nav">'
       +'<div class="tab-line-item" style="width:25%;" ><a href="'+WapSiteUrl+'"><i class="fa fa-home"></i><br>首页</a></div>'
       +'<div class="tab-line-item" style="width:25%;" ><a href="'+WapSiteUrl+'/tmpl/product_first_categroy.html"><i class="fa fa-th-list"></i><br>分类</a></div>'
-      <!--+'<div class="tab-line-item" style="width:22%;line-height:40px;padding-top:5px;" ><i style="font-size:30px;" class="fa fa-chevron-circle-down"></i><br></div>'-->
+      +'<!--<div class="tab-line-item" style="width:22%;line-height:40px;padding-top:5px;" ><i style="font-size:30px;" class="fa fa-chevron-circle-down"></i><br></div>-->'
       +'<div class="tab-line-item" style="width:25%;position: relative;" ><a href="'+WapSiteUrl+'/tmpl/cart_list.html"><i class="fa fa-shopping-cart"></i><br>购物车</a></div>'
       +'<div class="tab-line-item" style="width:25%;" ><a href="'+WapSiteUrl+'/tmpl/member/member.html?act=member"><i class="fa fa-user"></i><br>个人中心</a></div>'
     +'</div>'
