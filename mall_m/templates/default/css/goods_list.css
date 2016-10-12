@@ -1,8 +1,9 @@
 /*固定顶部位置*/
 .search-box{position: fixed;width: 100%;top: 0;z-index: 1000;}
+.search-box-two{position: fixed;width: 100%;top: 0;z-index: 1000;}
 
 /*排序*/
-.content_header{position: fixed;top: 50px;width: 100%;z-index: 1000;}
+.content_header{position: fixed;top: 50px;width: 100%;z-index: 1000;display: none;}
 .header-back span, .i-main-opera span, .main-op-warp .quarter span, .search-btn, .gotop-icon, .grayrightarrow, .home-nav a span, .graydownarrow, .grayuparrow, .whitedownarrow, .product-filter .f-icon, .pd-choice-icon, .i-go-right, .s-chk1, .i-del, .i-address, .i-add, .i-minus {
 	display: inline-block;
 	background: url(../images/icon.png) no-repeat;
@@ -25,7 +26,7 @@
 .pf-title {margin: 5px 0px 0px 5px;display: inline-block;font-size: 1rem;position: relative;top: -8px;}
 
 /*商品列表*/
-.prolist-box{ width:98%; overflow:hidden; clear:both; margin:0.25rem auto;margin-top: 100px;}
+.prolist-box{ width:98%; overflow:hidden; clear:both; margin:0.25rem auto;margin-top: 50px;}
 .prolist-box .prolist-item{ display:block; width:48%; margin:1%; float:left; background:#FFF}
 .prolist-item-inline{border:1px solid rgba(236,236,236,1); padding:0.25rem}
 .prolist-item-inline .img{width:calc(100% - 0.5rem); padding-top:100%}
