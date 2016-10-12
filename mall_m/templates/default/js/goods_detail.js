@@ -1,4 +1,15 @@
 $(function(){
+	//顶部导航
+	$(window).scroll(function(){
+		var dhtobj = $(".detail-head");
+		var dht = dhtobj.offset().top;
+		if(dht > 100){
+			dhtobj.addClass('action');
+		}else{
+			dhtobj.removeClass('action');
+		}
+	})
+
 	//商品收藏
 	$(".goods_collect").click(function (){
 		var key = getcookie('key');//登录标记

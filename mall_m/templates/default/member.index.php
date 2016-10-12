@@ -24,7 +24,7 @@
             <img src="<?php echo $output['member_info']['avator'];?>" id="avatar"/>
         </div>
         <div class="member-username">
-            <span id="username"></span>
+            <span id="username"><?php echo $output['member_info']['user_name'];?></span>
         </div>
     </div>
     <div class="member-info-box-bottom">

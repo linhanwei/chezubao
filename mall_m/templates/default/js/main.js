@@ -22,16 +22,6 @@ $(function(){
 	  }  
    })
 
-	$(window).scroll(function(){
-		var dhtobj = $(".detail-head");
-		var dht = dhtobj.offset().top;
-		if(dht > 100){
-			dhtobj.addClass('action');
-		}else{
-			dhtobj.removeClass('action');
-		}
-	})
-   
    $(".chanle-list .more").click(function(){ 
 	   var cb = $(".chanle-list .cate-child-box");
 	   var cv = $(".chanle-list .cate-child-v");
