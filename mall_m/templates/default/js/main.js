@@ -52,5 +52,6 @@ $(function(){
 		var keyword = encodeURIComponent($('#keyword').val());
 		location.href = SiteUrl+'/mall_m/index.php?act=goods&op=list&keyword='+keyword;
 	});
+
 })
 
