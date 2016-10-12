@@ -1,5 +1,5 @@
 $(function(){
-    var memberHtml = '<!--<a class="btn mr5" href="'+SiteUrl+'/shop/api.php?act=toqq&mobile=mobile">QQ登陆</a>--><a class="btn mr5" href="'+WapSiteUrl+'/tmpl/member/register.html">注册</a>';
+    var memberHtml = '<!--<a class="btn mr5" href="'+SiteUrl+'/shop/api.php?act=toqq&mobile=mobile">QQ登陆</a><a class="btn mr5" href="'+WapSiteUrl+'/tmpl/member/register.html">注册</a>-->';
     var act = GetQueryString("act");
     if(act && act == "member"){
         memberHtml = '<a class="btn mr5" id="logoutbtn" href="javascript:void(0);">注销</a>';

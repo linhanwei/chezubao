@@ -73,14 +73,14 @@ class mobileMemberControl extends mobileControl
         if ($key) {
             $model_mb_user_token = Model('mb_user_token');
             $mb_user_token_info = $model_mb_user_token->getMbUserTokenInfoByToken($key);
-            $member_id = $mb_user_token_info['member_id'];
+            $_SESSION['member_id'] = $member_id = $mb_user_token_info['member_id'];
             $client_type = $mb_user_token_info['client_type'];
 
             if (empty($mb_user_token_info)) {
                 output_error('请登录', array('login' => '0'));
             }
         }elseif (empty($member_id)) {
-            header("location:".BASE_SITE_URL.'/wap/tmpl/member/member.html?act=member');
+            header("location:".BASE_SITE_URL.'/wap/tmpl/member/login.html');
         }
 
         $model_member = Model('member');
