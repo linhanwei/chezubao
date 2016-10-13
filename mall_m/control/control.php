@@ -21,6 +21,17 @@ class mobileControl
 
     public function __construct()
     {
+        $key = $_POST['key'];
+        if (empty($key)) {
+            $key = $_GET['key'];
+        }
+
+        if($key){
+            $_SESSION['login_key'] = $key;
+        }
+        if($_GET['bug'])
+        dump($_SESSION['login_key']);
+
         Language::read('mobile');
 
         //分页数处理
@@ -63,24 +74,31 @@ class mobileMemberControl extends mobileControl
     {
         parent::__construct();
 
-        $member_id = $_SESSION['member_id'];
-
         $key = $_POST['key'];
         if (empty($key)) {
             $key = $_GET['key'];
         }
 
-        if ($key) {
-            $model_mb_user_token = Model('mb_user_token');
-            $mb_user_token_info = $model_mb_user_token->getMbUserTokenInfoByToken($key);
-            $_SESSION['member_id'] = $member_id = $mb_user_token_info['member_id'];
-            $client_type = $mb_user_token_info['client_type'];
+        if($key){
+            $_SESSION['login_key'] = $key;
+        }else{
+            $key = $_SESSION['login_key'];
+        }
 
-            if (empty($mb_user_token_info)) {
+        $model_mb_user_token = Model('mb_user_token');
+        $mb_user_token_info = $model_mb_user_token->getMbUserTokenInfoByToken($key);
+        $_SESSION['member_id'] = $member_id = $mb_user_token_info['member_id'];
+        $client_type = $mb_user_token_info['client_type'];
+
+        // php 判断是否为 ajax
+        if (empty($mb_user_token_info)) {
+            if(isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && strtolower($_SERVER["HTTP_X_REQUESTED_WITH"])=="xmlhttprequest"){
+                // ajax 请求的处理方式
                 output_error('请登录', array('login' => '0'));
-            }
-        }elseif (empty($member_id)) {
-            header("location:".BASE_SITE_URL.'/wap/tmpl/member/login.html');
+            }else{
+                // 正常请求的处理方式
+                header("location:".BASE_SITE_URL.'/wap/tmpl/member/login.html?key='.$key);
+            };
         }
 
         $model_member = Model('member');

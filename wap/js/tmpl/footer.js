@@ -68,6 +68,10 @@ $(function() {
             }
         });
     });
+
+    //修改a链接增加key值
+    add_key();
+
     /*var headTitle = document.title;
     //当前页面
     if(headTitle == "首页"){

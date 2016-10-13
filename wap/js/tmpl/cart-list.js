@@ -30,6 +30,9 @@ $(function () {
                             alert(result.datas.error);
                         }
                     }
+
+                    //修改a链接增加key值
+                    add_key();
                 }
             });
         }

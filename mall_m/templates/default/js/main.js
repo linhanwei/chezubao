@@ -53,5 +53,32 @@ $(function(){
 		location.href = SiteUrl+'/mall_m/index.php?act=goods&op=list&keyword='+keyword;
 	});
 
-})
+	//修改a链接增加key值
+	add_key();
+});
+
+//修改a链接增加key值
+function add_key(){
+	$('a').each(function(k,v){
+		var key = getcookie('key'),
+			a_href = $(v).attr('href'),
+			new_href = '';
+
+		if(a_href && a_href.indexOf("javascript") < 0){
+			var key_index = a_href.indexOf("?");
+			if(key_index >= 0){
+				if(a_href.indexOf("=") >= 0){
+					new_href = a_href+'&key='+key;
+				}else{
+					new_href = a_href+'key='+key;
+				}
+			}else{
+				new_href = a_href+'?key='+key;
+			}
+
+			$(v).attr('href',new_href);
+			//console.log(key,key_index,k,a_href,111);
+		}
+	});
+}
 
