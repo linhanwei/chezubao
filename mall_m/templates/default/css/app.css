@@ -1052,7 +1052,7 @@ footer{ height:61px;background:#383838; position:fixed; left:0; bottom:0; width:
 
 .bottom-box{ width:100%; background:#FFF; overflow:hidden; text-align:center; padding:1rem 0px}
 
-.bottom-box img{ width:70%}
+.bottom-box img{ width:30%}
 
 .go-top{ width:50px; height:50px; position:fixed; right:10px; bottom:70px; z-index:9998}
 
