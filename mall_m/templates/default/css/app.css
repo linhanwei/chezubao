@@ -1352,3 +1352,9 @@ footer{ height:61px;background:#383838; position:fixed; left:0; bottom:0; width:
 
 /**@购物车模块样式 结束**/
 
+/*提示弹窗的样式*/
+.layui-layer-btn .layui-layer-btn0 {
+	border-color: #A7A9A8;
+	background-color: #A7A9A8;
+	color: #6E6C6D;
+}
