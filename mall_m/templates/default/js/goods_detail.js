@@ -53,7 +53,7 @@ $(function(){
 							title:'提示信息',
 							btn: ['去购物车','再逛逛'] //按钮
 						}, function(){
-							window.location.href = WapSiteUrl+'/tmpl/cart_list.html';
+							window.location.href = SiteUrl+'/mall_m/index.php?act=member_cart&op=index&key='+key;
 						}, function(){
 
 						});

@@ -25,7 +25,7 @@
                 </a>
             </li>
             <li>
-                <a href="<?php echo BASE_SITE_URL;?>/wap/tmpl/cart_list.html">
+                <a href="<?php echo BASE_SITE_URL;?>/mall_m/index.php?act=member_cart&op=index">
                     <img src="./templates/default/images/nav-ico-4.png">
                     <p>购物车</p>
                 </a>
