@@ -172,7 +172,7 @@ function gcategoryChange()
     if (this.value > 0)
     {
         var _self = this;
-        var url = SITEURL + '/index.php?act=index&op=josn_class&callback=?';
+        var url = SITEURL + '/admin/index.php?act=goods_class&op=josn_class&callback=?';
         $.getJSON(url, {'gc_id':this.value}, function(data){
             if (data)
             {

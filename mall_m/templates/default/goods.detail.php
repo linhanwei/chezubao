@@ -96,15 +96,28 @@
 <div class="detail-content">
     <ul class="tab-nav">
         <li class="action"><a>详情页面</a></li>
-        <!-- <li><a>产品参数</a></li>
-         <li><a>店铺推荐</a></li>-->
+         <li><a>产品参数</a></li>
+<!--         <li><a>店铺推荐</a></li>-->
     </ul>
     <div class="detail-content-box">
         <div class="content-one content-item action">
             <?php echo $output['info']['goods_info']['mobile_body']; ?>
         </div>
         <div class="content-two content-item">
-
+            <ul class="spec_list">
+                <?php if($output['info']['goods_info']['spec_name']){ ?>
+                    <?php foreach($output['info']['goods_info']['spec_name'] as $spec_nk=>$spec_nv){ ?>
+                        <?php if($output['info']['goods_info']['spec_value'][$spec_nk]){ ?>
+                            <li class="spec_item">
+                                <span class="spec_name"><?php echo $spec_nv; ?>:</span>
+                                <span class="spec_value"><?php echo implode(';',$output['info']['goods_info']['spec_value'][$spec_nk]); ?></span>
+                            </li>
+                        <?php } ?>
+                    <?php } ?>
+                <?php }else{ ?>
+                    <li class="spec_item">没有参数</li>
+                <?php } ?>
+            </ul>
         </div>
         <div class="content-three content-item">
 

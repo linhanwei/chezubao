@@ -74,6 +74,7 @@ class store_goods_onlineControl extends BaseSellerControl {
         $where = array('goods_commonid' => $common_id, 'store_id' => $_SESSION['store_id']);
         $goodscommon_info['g_storage'] = $model_goods->getGoodsSum($where, 'goods_storage');
         $goodscommon_info['spec_name'] = unserialize($goodscommon_info['spec_name']);
+        $goodscommon_info['spec_value'] = unserialize($goodscommon_info['spec_value']);
         if ($goodscommon_info['mobile_body'] != '') {
             $goodscommon_info['mb_body'] = unserialize($goodscommon_info['mobile_body']);
             $goodscommon_info['mobile_body'] = json_encode($goodscommon_info['mb_body']);
@@ -90,6 +91,7 @@ class store_goods_onlineControl extends BaseSellerControl {
         // 获取类型相关数据
         $typeinfo = $model_type->getAttr($goods_class['type_id'], $_SESSION['store_id'], $goodscommon_info['gc_id']);
         list($spec_json, $spec_list, $attr_list, $brand_list) = $typeinfo;
+
         Tpl::output('spec_json', $spec_json);
         Tpl::output('sign_i', count($spec_list));
         Tpl::output('spec_list', $spec_list);

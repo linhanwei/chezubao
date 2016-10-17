@@ -970,7 +970,11 @@ footer{ height:61px;background:#383838; position:fixed; left:0; bottom:0; width:
 
 .detail-content .content-item.action{ display:block}
 
-.detail-content-box{ margin-top:0.5rem}
+.detail-content-box{ margin-top:0.5rem;}
+.content-two{background: #fff;}
+.content-two .spec_list{width: 80%;margin: 0 auto;padding:1rem 0;}
+.content-two .spec_item{font-size: 0.7rem;height: 1.3rem;line-height: 1.3rem;}
+
 
 /**@detail end**/
 
