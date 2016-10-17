@@ -17,6 +17,17 @@ $(function(){
                 $(this).find('.fleft').removeClass('asc').addClass('desc');
             }
         }
+		
+		if(key == 2){
+		  if( $(".prolist-box").hasClass('action')	){
+			   $(".prolist-box").removeClass('action');
+			   $(this).find('span').removeClass('action');
+		  }else{
+			   $(".prolist-box").addClass('action');
+			   $(this).find('span').addClass('action');
+		  }
+		  return false;
+		}
 
         var data = {gc_id:gc_id,key:key,order:order,keyword:keyword,is_ajax:1};
         ajax_data(data,true);
