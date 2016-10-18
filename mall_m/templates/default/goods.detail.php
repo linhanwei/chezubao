@@ -110,7 +110,11 @@
                         <?php if($output['info']['goods_info']['spec_value'][$spec_nk]){ ?>
                             <li class="spec_item">
                                 <span class="spec_name"><?php echo $spec_nv; ?>:</span>
-                                <span class="spec_value"><?php echo implode(';',$output['info']['goods_info']['spec_value'][$spec_nk]); ?></span>
+                                <?php foreach($output['info']['goods_info']['spec_value'][$spec_nk] as $spec_vk=>$spec_vv){ ?>
+                                    <?php if(in_array($spec_vv,$output['info']['goods_info']['goods_spec'])){ ?>
+                                        <span class="spec_value"><?php echo $spec_vv; ?></span>
+                                    <?php } ?>
+                                <?php } ?>
                             </li>
                         <?php } ?>
                     <?php } ?>
