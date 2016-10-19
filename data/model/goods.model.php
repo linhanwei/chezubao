@@ -1256,6 +1256,8 @@ class goodsModel extends Model{
             }
         }*/
 
+        $goods_info['goods_image_url'] = thumb($goods_info, 360);
+
         // 加入购物车按钮
         $goods_info['cart'] = true;
         //虚拟、F码、预售不显示加入购物车

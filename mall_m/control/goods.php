@@ -202,10 +202,64 @@ class goodsControl extends mobileHomeControl{
         if (empty($goods_detail)) {
             $this->show_msg('商品不存在');
         }
+
 //        dump($goods_detail);
 
         Tpl::output('info',$goods_detail);
         Tpl::showpage('goods.detail');
+    }
+
+    /**
+     * 判断是否是序列化数据
+     * @param $data
+     * @return bool
+     */
+    private function is_serialized( $data ) {
+        $data = trim( $data );
+        if ( 'N;' == $data )
+            return true;
+        if ( !preg_match( '/^([adObis]):/', $data, $badions ) )
+            return false;
+        switch ( $badions[1] ) {
+            case 'a' :
+            case 'O' :
+            case 's' :
+                if ( preg_match( "/^{$badions[1]}:[0-9]+:.*[;}]\$/s", $data ) )
+                    return true;
+                break;
+            case 'b' :
+            case 'i' :
+            case 'd' :
+                if ( preg_match( "/^{$badions[1]}:[0-9.E-]+;\$/", $data ) )
+                    return true;
+                break;
+        }
+        return false;
+    }
+
+    /**
+     * 异步获取商品信息
+     */
+    public function ajax_detailOp(){
+        $goods_id = intval($_GET ['goods_id']);
+
+        // 商品详细信息
+        $model_goods = Model('goods');
+
+        $goods_detail = $model_goods->getGoodsInfoByID($goods_id);
+        if (empty($goods_detail)) {
+            output_error('商品不存在');
+        }
+
+        //商品图片url
+        $new_detail['goods_image_url'] = cthumb($goods_detail['goods_image'], 360, $goods_detail['store_id']);
+        $new_detail['goods_id'] = $goods_detail['goods_id'];
+        $new_detail['goods_name'] = $goods_detail['goods_name'];
+        $new_detail['goods_promotion_price'] = $goods_detail['goods_promotion_price'];
+        $new_detail['goods_storage'] = $goods_detail['goods_storage'];
+        $new_detail['goods_storage'] = $goods_detail['goods_storage'];
+
+        output_data($new_detail);
     }
 
     /**
@@ -248,7 +302,7 @@ class goodsControl extends mobileHomeControl{
         //商品详细信息处理
         $goods_detail = $this->_goods_detail_extend($goods_detail);
 
-		
+
 		$goods_info=$goods_detail['goods_info'];
 		//print_r($goods_info);
 		$IsHaveBuy=0;
@@ -257,11 +311,11 @@ class goodsControl extends mobileHomeControl{
 		   $model_member = Model('member');
 		   $member_info= $model_member->getMemberInfo(array('member_name'=>$_COOKIE['username']));
 		   $buyer_id=$member_info['member_id'];
-		   
+
 		   $promotion_type=$goods_info["promotion_type"];
-		   
+
 		   if($promotion_type=='groupbuy')
-		   {   
+		   {
 		    //检测是否限购数量
 			$upper_limit=$goods_info["upper_limit"];
 			if($upper_limit>0)
@@ -271,7 +325,7 @@ class goodsControl extends mobileHomeControl{
 				 //取商品列表
                 $order_goods_list = $model_order->getOrderGoodsList(array('goods_id'=>$goods_id,'buyer_id'=>$buyer_id,'goods_type'=>2));
 				if($order_goods_list)
-				{   
+				{
 				    //取得上次购买的活动编号(防一个商品参加多次团购活动的问题)
 				    $promotions_id=$order_goods_list[0]["promotions_id"];
 					//用此编号取数据，检测是否这次活动的订单商品。
@@ -291,9 +345,9 @@ class goodsControl extends mobileHomeControl{
 		}
 		$goods_detail['IsHaveBuy']=$IsHaveBuy;
 		//v3-b11 end
-		
-		
-		
+
+
+
 
         output_data($goods_detail);
     }
