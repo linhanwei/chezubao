@@ -231,7 +231,7 @@
 
                                 <?php foreach($output['info']['goods_info']['spec_value'][$spec_nk] as $spec_vk=>$spec_vv){ ?>
 
-                                    <?php if(in_array($spec_vv,$output['info']['goods_info']['goods_spec'])){ ?>
+                                    <?php if (in_array($spec_vk, array_keys($output['info']['goods_info']['goods_spec']))) { ?>
 
                                         <span class="spec_value"><?php echo $spec_vv; ?></span>
 
@@ -305,7 +305,7 @@
                          <h2><?php echo $spec_nv; ?></h2>
                          <div class="items">
                              <?php foreach ($output['info']['goods_info']['spec_value'][$spec_nk] as $spec_vk => $spec_vv) { ?>
-                                 <?php if (in_array($spec_vv, $output['info']['goods_info']['goods_spec'])) { ?>
+                                 <?php if (in_array($spec_vk, array_keys($output['info']['goods_info']['goods_spec']))) { ?>
                                      <label class="checked spec_items_value" data-value="<?php echo $spec_vk; ?>"><?php echo $spec_vv; ?></label>
                                  <?php }else{ ?>
                                      <label class="spec_items_value" data-value="<?php echo $spec_vk; ?>"><?php echo $spec_vv; ?></label>
