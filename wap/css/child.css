@@ -38,7 +38,7 @@
 
 .main-op-warp .quarter p{color: #666666;font-size: 14px;}
 
-.main-op-warp .quarter.current p{color: #000;}
+.main-op-warp .quarter.current p{color: #383838;}
 
 /*categroy-cnt*/
 
@@ -98,7 +98,7 @@
 
 .pdlist-iw-cnt,.cart-litemw-cnt{margin-left: 110px;}
 
-.pdlist-iwc-pdprice{color: #000;padding: 8px 0px;}
+.pdlist-iwc-pdprice{color: #383838;padding: 8px 0px;}
 
 .pdlist-iwc-pdcomment{color: #909090;}
 
@@ -114,11 +114,11 @@
 
 .cart-list-del{position:absolute;bottom:0px;right:0px;display: inline-block;padding: 5px 10px;z-index: 10;cursor:pointer;}
 
-.cart-list-oitem{background: #f4eed7;border:1px solid #ddd4c7;padding: 15px 10px;color: #000;}
+.cart-list-oitem{background: #f4eed7;border:1px solid #ddd4c7;padding: 15px 10px;color: #383838;}
 
 .goto-shopping,.goto-settlement,.post-order{width: 100%;height: 38px;line-height: 38px;text-align: center;display: block;}
 
-.goto-settlement,.post-order{background: #000;color: #fff;border-color: #000;}
+.goto-settlement,.post-order{background: #383838;color: #fff;border-color: #383838;}
 
 .goto-shopping{background: #fff;color: #6d6d6d;border-color: #ccc;}
 
@@ -168,7 +168,7 @@
 
 .pddct-name-wp,.pddct-shadow{position: absolute;z-index:7;bottom: 0px;left: 0px;height: 45px;width: 100%;padding: 5px 0px;}
 
-.pddct-shadow{background: #000;opacity: 0.5;}
+.pddct-shadow{background: #383838;opacity: 0.5;}
 
 .pddctnw-name{margin: 0px 80px 0px 10px;line-height: 24px;}
 
@@ -180,7 +180,7 @@
 
 .pdpic-size{z-index:7;color: #fff;}
 
-.pdpic-size-bg{z-index: 6;background: #000;opacity: 0.3;}
+.pdpic-size-bg{z-index: 6;background: #383838;opacity: 0.3;}
 
 .swiper-container {margin:10px auto;position:relative;overflow:hidden;z-index:1;}
 
@@ -212,7 +212,7 @@
 
 .pddcp-one-hide{background: #fff;}
 
-.pddc-property-one .price{color: #000;}
+.pddc-property-one .price{color: #383838;}
 
 .pddcp-one-top {position:relative;}
 
@@ -242,11 +242,11 @@
 
 .pddc-gray-warp.pd6{padding-bottom: 6px;}
 
-.pddetail-go-title{display:block;border-left: 5px solid #000;color:#6d6d6d;position: relative;background: #fff;padding:10px;}
+.pddetail-go-title{display:block;border-left: 5px solid #383838;color:#6d6d6d;position: relative;background: #fff;padding:10px;}
 
 .pgt-title {display: inline-block;}
 
-.pgt-go{width: 39px;height: 39px;text-align:center;display: inline-block;background:#000;position: absolute;top: 0px;right: 0px;z-index: 6;}
+.pgt-go{width: 39px;height: 39px;text-align:center;display: inline-block;background:#383838;position: absolute;top: 0px;right: 0px;z-index: 6;}
 
 .pgt-go .i-go-right{margin-top: 7px;}
 
@@ -264,7 +264,7 @@
 
 .fixed-tab-wp .tab-item a,.product-infor li a{display: block;height: 40px;line-height: 40px;color: #6d6d6d;margin-top: 2px;}
 
-.fixed-tab-wp .tab-item.current a,.product-infor li.current a{background: #fff;border-top:2px solid #000;margin-top: 0px;}
+.fixed-tab-wp .tab-item.current a,.product-infor li.current a{background: #fff;border-top:2px solid #383838;margin-top: 0px;}
 
 .pddetail-cnt .fixed-tab-pannel img{margin: 0px;padding: 0px;border:none;vertical-align:top;}
 
@@ -292,7 +292,7 @@
 
 .pddc-commendl-title{padding: 4px 0px 10px 0px;}
 
-.pddc-commendw-price{color: #000;margin-top: 5px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
+.pddc-commendw-price{color: #383838;margin-top: 5px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
 
 .pddc-commend-wp a{color: #6d6d6d;display: block;margin-left:12px;padding: 10px 0px;float: left;}
 
@@ -312,7 +312,7 @@
 
 .opera-pd-item{margin-right: 10px;height: 40px;line-height:40px;text-align: center;color: #fff;cursor: pointer; padding:0 10px;}
 
-.buy-now{background:#000;}
+.buy-now{background:#383838;}
 
 .add-to-cart{background: #6cb248;}
 
@@ -340,7 +340,7 @@
 
 .invoice-addcnt p,.invoice-addcnt .iadd-item{padding: 5px 0px;}
 
-.invoice-addcnt div.iadd-title{border-left:3px solid #000;margin:15px 0px;padding-left: 10px;}
+.invoice-addcnt div.iadd-title{border-left:3px solid #383838;margin:15px 0px;padding-left: 10px;}
 
 .invoice-addcnt .iadd-cnt,.invoice-addcnt .iadd-item{padding: 10px;margin:3px 0px 3px 10px;background:#fffdf7;border:1px solid #ded6c9;}
 
@@ -388,7 +388,7 @@ div.iadd-item label .input-30{width: 58%;height:25px;line-height: 25px\9;}
 
 .shop-total{background:#fffdf7;border-top: 1px solid #dedede;text-align: right;}
 
-.buys-order-total{padding:15px 10px;background: #cdc2b0;text-align: right;font-size: 16px;color:#000;}
+.buys-order-total{padding:15px 10px;background: #cdc2b0;text-align: right;font-size: 16px;color:#383838;}
 
 .invoicetitle{position: relative;}
 
@@ -396,7 +396,7 @@ div.iadd-item label .input-30{width: 58%;height:25px;line-height: 25px\9;}
 
 
 
-.buys1-hide-list{border:2px solid #000}
+.buys1-hide-list{border:2px solid #383838}
 
 .buys1-hide-list li{padding-left:5px;}
 
@@ -408,7 +408,7 @@ div.iadd-item label .input-30{width: 58%;height:25px;line-height: 25px\9;}
 
 .buys1-hide-list li label .rdo-span{width:70%;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;display: inline-block;}
 
-.del-invoice,.del-address{position: absolute;right: 5px;top: 5px;color: #000;}
+.del-invoice,.del-address{position: absolute;right: 5px;top: 5px;color: #383838;}
 
 .invoice_opeara a{margin-right: 5px;}
 
