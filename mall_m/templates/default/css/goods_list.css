@@ -34,7 +34,7 @@
 .product-filter a:nth-child(3n) span{ display:block; width:40px; height:40px; background:url(../images/sort-ico-gg.png) no-repeat; margin:auto}
 .product-filter a:nth-child(3n) span.action{ background-position:-40px 0}
 
-.product-filter a:nth-child(4n) span.price-ico{ display:inline-block; width:20px; height:20px; background:url(../images/sort-ico-price.png) no-repeat; vertical-align:middle; margin-top:-2px}
+.product-filter a:nth-child(4n) span.price-ico{ display:inline-block; width:20px; height:20px; background:url(../images/sort-ico-price.png) no-repeat; vertical-align:middle; margin-top:-4px; margin-left:-4px}
 .product-filter a:nth-child(4n) span.desc{ background-position:-40px 0}
 .product-filter a:nth-child(4n) span.asc{ background-position:-20px 0}
 /*
