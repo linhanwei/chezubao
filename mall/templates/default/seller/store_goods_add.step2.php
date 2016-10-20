@@ -770,32 +770,32 @@
                            value="<?php printf('%.2f', floatval($output['goods']['goods_freight'])); ?>"
                            name="g_freight"><em class="add-on"><i class="icon-renminbi"></i></em></div>
             </li>
-            <!-- 
+<!--
             <li>
-              <input id="freight_1" nctype="freight" name="freight" class="radio" type="radio" <?php if (intval($output['goods']['transport_id']) != 0) { ?>
+              <input id="freight_1" nctype="freight" name="freight" class="radio" type="radio" <?php /*if (intval($output['goods']['transport_id']) != 0) { */?>
               checked="checked"
-              <?php } ?>
+              <?php /*} */?>
               value="1">
               <label for="freight_1">
-                <?php echo $lang['store_goods_index_use_tpl']; ?></label>
-              <div nctype="div_freight" <?php if (intval($output['goods']['transport_id']) == 0) { ?>
+                <?php /*echo $lang['store_goods_index_use_tpl']; */?></label>
+              <div nctype="div_freight" <?php /*if (intval($output['goods']['transport_id']) == 0) { */?>
                 style="display: none;"
-                <?php } ?>
+                <?php /*} */?>
                 >
-                <input id="transport_id" type="hidden" value="<?php echo $output['goods']['transport_id']; ?>
+                <input id="transport_id" type="hidden" value="<?php /*echo $output['goods']['transport_id']; */?>
                 " name="transport_id">
-                <input id="transport_title" type="hidden" value="<?php echo $output['goods']['transport_title']; ?>
+                <input id="transport_title" type="hidden" value="<?php /*echo $output['goods']['transport_title']; */?>
                 " name="transport_title">
-                <span id="postageName" class="transport-name" <?php if ($output['goods']['transport_title'] != '') { ?>
+                <span id="postageName" class="transport-name" <?php /*if ($output['goods']['transport_title'] != '') { */?>
                   style="display: inline-block;"
-                  <?php } ?>
+                  <?php /*} */?>
                   >
-                  <?php echo $output['goods']['transport_title']; ?></span>
+                  <?php /*echo $output['goods']['transport_title']; */?></span>
                 <a href="JavaScript:void(0);" onclick="window.open('index.php?act=store_transport&type=select')" class="ncsc-btn" id="postageButton"> <i class="icon-truck"></i>
-                  <?php echo $lang['store_goods_index_select_tpl']; ?></a>
+                  <?php /*echo $lang['store_goods_index_select_tpl']; */?></a>
               </div>
             </li>
-             -->
+-->
         </ul>
         <p class="hint">运费设置为 0 元，前台商品将显示为免运费。</p>
     </dd>

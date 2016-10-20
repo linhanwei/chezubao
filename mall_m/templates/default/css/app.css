@@ -906,7 +906,7 @@ footer{ height:61px;background:#383838; position:fixed; left:0; bottom:0; width:
 
 .detail-info-box .title{ height:4rem; line-height:2rem; padding:10px 0px;overflow:hidden}
 
-.detail-info-box .title .title-txt{ width:calc(85% - 21px); padding:0px 10px; border-right:1px solid #EFEFEF; float:left; font-size:1rem}
+.detail-info-box .title .title-txt{ width:calc(85% - 21px); padding:0px 10px; height:4rem; line-height:2rem; overflow:hidden; border-right:1px solid #EFEFEF; float:left; font-size:1rem}
 
 .detail-info-box .title .share-box{ width:15%; float:right; text-align:center}
 
@@ -1264,21 +1264,21 @@ footer{ height:61px;background:#383838; position:fixed; left:0; bottom:0; width:
 
 /**@购物车模块样式 开始**/
 
-.cart-head{ height:50px; line-height:50px; text-align:center; background:#F9F9F9; font-size:1.5rem; position:relative}
+.cart-head{ height:40px; line-height:40px; text-align:center; background:#F9F9F9; font-size:1rem; position:relative}
 
-.cart-head .info-btn{ position:absolute; display:block; width:30px; height:30px; overflow:hidden; right:10px; top:10px}
+.cart-head .info-btn{ position:absolute; display:block; width:20px; height:20px; overflow:hidden; right:10px; top:10px}
 
 .cart-head .info-btn img{ vertical-align:top}
 
 
 
-.cart-shop-item-head{ height:50px; line-height:50px; background:#FFF; position:relative}
+.cart-shop-item-head{ height:40px; line-height:40px; background:#FFF; position:relative}
 
-.cart-shop-item-head .select-btn{ display:block; width:20px; height:20px; position:absolute; top:15px; left:10px;}
+.cart-shop-item-head .select-btn{ display:block; width:20px; height:20px; position:absolute; top:10px; left:10px;}
 
 .cart-shop-item-head .select-btn img{ width:20px; height:20px; vertical-align:top}
 
-.cart-shop-item-head .shop-btn{display:block; height:30px; line-height:30px; font-size:14px;position:absolute; top:10px; left:50px;}
+.cart-shop-item-head .shop-btn{display:block; height:30px; line-height:30px; font-size:14px;position:absolute; top:5px; left:50px;}
 
 .cart-shop-item-head .shop-btn a{ color:#000}
 
@@ -1286,7 +1286,7 @@ footer{ height:61px;background:#383838; position:fixed; left:0; bottom:0; width:
 
 .cart-shop-item-head .shop-btn img{ width:20px; height:20px; vertical-align:middle; margin-left:5px; margin-right:5px}
 
-.cart-shop-item-head .edit-btn{display:block; width:30px; height:30px; line-height:30px; position:absolute; top:10px; right:20px}
+.cart-shop-item-head .edit-btn{display:block; width:30px; height:30px; line-height:30px; position:absolute; top:5px; right:20px}
 
 .cart-shop-item-head .edit-btn a{ color:#666; font-size:14px}
 
@@ -1336,7 +1336,7 @@ footer{ height:61px;background:#383838; position:fixed; left:0; bottom:0; width:
 
 
 
-.cart-statement-box{ width:100%; height:50px; line-height:50px; background:#EFEFEF; position:fixed; bottom:70px; left:0}
+.cart-statement-box{ width:100%; height:50px; line-height:50px; background:#EFEFEF; position:fixed; bottom:61px; left:0}
 
 .cart-statement-box .cart-statement-select-btn{ font-size:16px}
 
@@ -1358,7 +1358,7 @@ footer{ height:61px;background:#383838; position:fixed; left:0; bottom:0; width:
 
 .cart-statement-total-info  .freight{ height:20px; line-height:20px; margin-top:-5px}
 
-.cart-statement-box .cart-statement-info .cart-statement-btn{ width:100px; float:left; text-align:center; font-size:1rem; background:#000; color:#FFF}
+.cart-statement-box .cart-statement-info .cart-statement-btn{ width:100px; float:left; text-align:center; font-size:1rem; background:#383838; color:#FFF}
 
 /**@购物车模块样式 结束**/
 
@@ -1384,12 +1384,12 @@ footer{ height:61px;background:#383838; position:fixed; left:0; bottom:0; width:
    .spec-box .summary .main .sku-tips label{ font-size:1rem; vertical-align:middle;}
    .spec-box .summary .main .sku-tips span{ font-size:1rem; margin-left:0.5rem; vertical-align:middle; word-break:break-all}
    .spec-box .summary .close{ width:20px; height:20px; position:absolute; right:2.5rem; top:0.5rem; z-index:999999; background:url(../images/close.png) center center no-repeat}
-   .ok-btn{ height:48px; line-height:48px; text-align:center; font-size:15px; color:#FFF; background:#000; position:absolute; bottom:0; left:0; width:100%}
+   .ok-btn{ height:48px; line-height:48px; text-align:center; font-size:15px; color:#FFF; background:#383838; position:absolute; bottom:0; left:0; width:100%}
    .spec-box .body{ border-top:1px solid #DDD; position:absolute; top:100px; bottom:48px; left:0; right:0; z-index:99999; overflow-x:hidden; overflow:-y:scroll}
    .sku-control{ margin:0 1rem 1rem 1rem; border-bottom:1px solid #E5E5E5; padding-bottom:0.5rem}
    .sku-control ul li{ padding:1rem 0 0.5rem}
    .sku-control ul li h2{ height:1.5rem; line-height:1.5rem; font-size:1rem; font-weight:400; color:#666}
-   .sku-control ul li .items label{ display:inline-block; border:1px solid #e5e5e5; background:#FFF; padding:0.5rem 1rem; text-align:center; word-break:break-all; border-radius:3px; margin:0.5rem 0.5rem 0; font-size:1rem; color:#666}
+   .sku-control ul li .items label{ display:inline-block; border:1px solid #e5e5e5; background:#FFF; padding:0.25rem 0.5rem; text-align:center; word-break:break-all; border-radius:3px; margin:0.5rem 0.5rem 0; font-size:0.75rem; color:#666}
    .sku-control ul li .items label.checked{ color:#b10000; border:1px solid #b10000}
    
    .number-control { margin:0 1rem 1rem 1rem; border-bottom:1px solid #E5E5E5; padding-bottom:0.5rem}

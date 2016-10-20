@@ -280,16 +280,18 @@
           <span class="stock-container"><label class="label">库存：</label><small id="stock"><?php echo $output['info']['goods_info']['goods_storage'];?></small><small class="bz">件</small></span>
           <span class="limit-tips"></span>
         </div>
-        <div class="sku-tips">
-            <label>已选择：</label>
+          <?php if ($output['info']['goods_info']['goods_spec']) { ?>
+              <div class="sku-tips">
+                  <label>已选择：</label>
             <span id="goods_spec_value_list">
-                <?php if ($output['info']['goods_info']['goods_spec']) { ?>
+
                     <?php foreach ($output['info']['goods_info']['goods_spec'] as $spec_vkk => $spec_nvv) { ?>
-                        <span><?php echo $spec_nvv;?></span>
+                        <span><?php echo $spec_nvv; ?></span>
                     <?php } ?>
-                <?php } ?>
+
             </span>
-        </div>
+              </div>
+          <?php } ?>
       </div>
       <div class="close"></div>
    </div>
