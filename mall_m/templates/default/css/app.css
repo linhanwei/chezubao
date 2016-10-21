@@ -800,9 +800,9 @@ footer{ height:61px;background:#383838; position:fixed; left:0; bottom:0; width:
 
 .member-header{ height:50px; line-height:50px; background:#222224}
 
-.member-header a{ display:block; width:40px; height:40px; line-height:40px; text-align:center; color:#FFF; margin:5px}
+.member-header a{ display:block; width:30px; height:30px; line-height:30px; text-align:center; color:#FFF; margin:10px}
 
-.member-header a.set-btn{ float:left; font-size:1rem}
+.member-header a.set-btn{ float:left;width:40px; font-size:14px}
 
 .member-header a.member-head-comment{ float:right}
 
@@ -906,7 +906,7 @@ footer{ height:61px;background:#383838; position:fixed; left:0; bottom:0; width:
 
 .detail-info-box .title{ height:4rem; line-height:2rem; padding:10px 0px;overflow:hidden}
 
-.detail-info-box .title .title-txt{ width:calc(85% - 21px); padding:0px 10px; height:4rem; line-height:2rem; overflow:hidden; border-right:1px solid #EFEFEF; float:left; font-size:1rem}
+.detail-info-box .title .title-txt{ width:calc(85% - 21px); padding:0px 10px; height:4rem; line-height:2rem; overflow:hidden; border-right:1px solid #EFEFEF; float:left; font-size:1rem;word-break:break-all;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
 
 .detail-info-box .title .share-box{ width:15%; float:right; text-align:center}
 
