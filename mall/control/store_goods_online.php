@@ -75,10 +75,12 @@ class store_goods_onlineControl extends BaseSellerControl {
         $goodscommon_info['g_storage'] = $model_goods->getGoodsSum($where, 'goods_storage');
         $goodscommon_info['spec_name'] = unserialize($goodscommon_info['spec_name']);
         $goodscommon_info['spec_value'] = unserialize($goodscommon_info['spec_value']);
+
         if ($goodscommon_info['mobile_body'] != '') {
             $goodscommon_info['mb_body'] = unserialize($goodscommon_info['mobile_body']);
             $goodscommon_info['mobile_body'] = json_encode($goodscommon_info['mb_body']);
         }
+
         Tpl::output('goods', $goodscommon_info);
 
         if (intval($_GET['class_id']) > 0) {
@@ -312,16 +314,21 @@ class store_goods_onlineControl extends BaseSellerControl {
         $update_common['goods_storage_alarm']= intval($_POST['g_alarm']);
         $update_common['goods_attr']         = serialize($_POST['attr']);
         $update_common['goods_body']         = $_POST['g_body'];
+
         // 序列化保存手机端商品描述数据
         if ($_POST['m_body'] != '') {
             $_POST['m_body'] = str_replace('&quot;', '"', $_POST['m_body']);
+            $_POST['m_body'] = str_replace('\\', '', $_POST['m_body']);
             $_POST['m_body'] = json_decode($_POST['m_body'], true);
+
             if (!empty($_POST['m_body'])) {
                 $_POST['m_body'] = serialize($_POST['m_body']);
+
             } else {
                 $_POST['m_body'] = '';
             }
         }
+
         $update_common['mobile_body']        = $_POST['m_body'];
         $update_common['goods_commend']      = intval($_POST['g_commend']);
         $update_common['goods_state']        = ($this->store_info['store_state'] != 1) ? 0 : intval($_POST['g_state']);            // 店铺关闭时，商品下架
@@ -635,6 +642,7 @@ class store_goods_onlineControl extends BaseSellerControl {
         if ($update_common['is_fcode'] == 1) {
             QueueClient::push('createGoodsFCode', array('goods_commonid' => $common_id, 'fc_count' => intval($_POST['g_fccount']), 'fc_prefix' => $_POST['g_fcprefix']));
         }
+
         $return = $model_goods->editGoodsCommon($update_common, array('goods_commonid' => $common_id, 'store_id' => $_SESSION['store_id']));
         if ($return) {
             //提交事务
