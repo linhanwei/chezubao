@@ -153,7 +153,10 @@ $arr = array(
             'text' => '活动',
             'list' => array(
                 array('args' => 'fang,activity_project,activity_project', 'text' => '房商城'),
-                array('args' => 'che,activity_project,activity_project', 'text' => '车商城')
+                array('args' => 'che,activity_project,activity_project', 'text' => '车商城'),
+                array('args' => 'baoxian,activity_project,activity_project', 'text' => '汽车保险'),
+                array('args' => 'huodong,activity_project,activity_project', 'text' => '会员活动'),
+                array('args' => 'zongcou,activity_project,activity_project', 'text' => '车主众筹')
             )
         ),
     ),
@@ -170,6 +173,7 @@ $arr['left'][] = array(
         array('args' => 'index_edit,mb_special,mobile', 'text' => '首页编辑'),
         array('args' => 'index,banner,mobile', 'text' => 'banner管理'),
      array('args'=>'special_list,mb_special,mobile',				'text'=>'专题设置'),
+     array('args'=>'upload_apk,mb_index,mobile',				'text'=>'apk上传'),
         /* array('args'=>'mb_category_list,mb_category,mobile',	'text'=>$lang['nc_mobile_catepic']),
          array('args'=>'mb_app,mb_app,mobile',				'text'=>'下载设置'),
          array('args'=>'flist,mb_feedback,mobile',					'text'=>$lang['nc_mobile_feedback']),
