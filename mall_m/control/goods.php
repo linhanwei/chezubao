@@ -54,6 +54,7 @@ class goodsControl extends mobileHomeControl{
 
         } else {
             $goods_list = $model_goods->getGoodsListByColorDistinct($condition, $fieldstr, $order, $this->page);
+
         }
         $page_count = $model_goods->gettotalpage();
 
@@ -182,7 +183,7 @@ class goodsControl extends mobileHomeControl{
             $goods_list[$key]['goods_image_url'] = cthumb($value['goods_image'], 360, $value['store_id']);
 
             unset($goods_list[$key]['store_id']);
-            unset($goods_list[$key]['goods_commonid']);
+//            unset($goods_list[$key]['goods_commonid']);
             unset($goods_list[$key]['nc_distinct']);
         }
 

@@ -81,7 +81,7 @@
 
             <?php foreach ((array) $output['list'] as $item) { ?>
 
-                <a href="<?php echo $item['goods_id'] ? buildSpecialUrl('goods', $item['goods_id']) : 'javascript:void(0);'; ?>" class="prolist-item">
+                <a href="<?php echo $item['goods_commonid'] ? buildSpecialUrl('goods', $item['goods_commonid']) : 'javascript:void(0);'; ?>" class="prolist-item">
 
                     <div class="prolist-item-inline">
 
