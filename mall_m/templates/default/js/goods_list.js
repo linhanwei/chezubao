@@ -79,7 +79,7 @@ function ajax_data(data,is_add){
             //console.log(gc_id,data);
             if(data.length > 0){
                 for(var i in data){
-                    html += '<a href="'+SiteUrl+'/mall_m/index.php?act=goods&op=detail&goods_id='+data[i].goods_commonid+'" class="prolist-item">';
+                    html += '<a href="'+SiteUrl+'/mall_m/index.php?act=goods&op=detail&goods_id='+data[i].goods_id+'" class="prolist-item">';
                     html += '<div class="prolist-item-inline">';
                     html += '<div class="img">';
                     html += '<img src="'+data[i].goods_image_url+'">';
