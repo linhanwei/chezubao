@@ -71,6 +71,8 @@
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL; ?>/js/dialog/dialog.js" id="dialog_js"
         charset="utf-8"></script>
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL; ?>/js/jquery.edit.js"></script>
+
+<script src="<?php echo RESOURCE_SITE_URL; ?>/js/layer/layer.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $('#doc_form').validate({
@@ -95,6 +97,8 @@
 
         $("#submitBtn").click(function(){
             if($("#doc_form").valid()){
+                layer.alert('正在上传apk,请稍候...', {title: '信息提示'});
+
                 $("#doc_form").submit();
             }
         });
