@@ -1,4 +1,5 @@
 $(function(){
+
     //商品排序
     $('.product-filter .keyorder').click(function(e){
         var key = parseInt($(this).attr('key')),
@@ -82,7 +83,7 @@ function ajax_data(data,is_add){
                     html += '<a href="'+SiteUrl+'/mall_m/index.php?act=goods&op=detail&goods_id='+data[i].goods_id+'" class="prolist-item">';
                     html += '<div class="prolist-item-inline">';
                     html += '<div class="img">';
-                    html += '<img src="'+data[i].goods_image_url+'">';
+                    html += '<img class="lazy" src="'+SiteUrl+'/mall_m/templates/default/images/default_grey.png" data-original="'+data[i].goods_image_url+'">';
                     html += '</div>';
                     html += '<div class="info">';
                     html += '<h2>'+data[i].goods_name+'</h2>';
@@ -100,7 +101,7 @@ function ajax_data(data,is_add){
             }else{
                 $('.prolist-box').html('<div style="height: 100px;width: 100%;line-height: 100px;text-align: center;font-size: 1.5rem;">暂时没有相关商品</div>');
             }
-
+            $("img.lazy").lazyload({effect: "fadeIn",threshold:"400"});
             layer.close(layer_index);
             window.page_scrolling = false;
             window.page_hasmore = !result.hasmore;

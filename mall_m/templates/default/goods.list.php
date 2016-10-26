@@ -87,7 +87,7 @@
 
                         <div class="img">
 
-                            <img src="<?php echo $item['goods_image_url']; ?>">
+                            <img  class="lazy" src="<?php echo BASE_SITE_URL;?>/mall_m/templates/default/images/default_grey.png" data-original="<?php echo $item['goods_image_url']; ?>">
 
                         </div>
 

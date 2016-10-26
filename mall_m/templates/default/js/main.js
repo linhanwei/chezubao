@@ -10,6 +10,9 @@ $(function(){
 	autoplayDisableOnInteraction: false
    });	
    
+   //图片延迟加载
+   $("img.lazy").lazyload({effect: "fadeIn",threshold:"400"});
+   
    $(".tab-nav").find('li').click(function(){
 	  if($(this).hasClass('action')){
 		  return false;
