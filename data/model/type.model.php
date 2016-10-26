@@ -42,7 +42,7 @@ class typeModel extends Model {
      * @param int $store_id 店铺id
      * @return array 二位数组
      */
-    public function getAttr($type_id, $store_id, $gc_id) {
+    public function getAttr($type_id, $store_id, $gc_id,$spec_val_ids=array()) {
         $spec_list = $attr_list = $brand_list = array();
         if ($type_id > 0) {
             $spec_list = $this->typeRelatedJoinList(array('type_id' => $type_id), 'spec', 'spec.sp_id as sp_id, spec.sp_name as sp_name');
@@ -54,7 +54,25 @@ class typeModel extends Model {
             if (is_array($spec_list) && !empty($spec_list)) {
                 $array = array();
                 foreach ($spec_list as $val) {
-                    $spec_value_list = Model('spec')->getSpecValueList(array('sp_id'=>$val['sp_id'], 'gc_id'=>$gc_id, 'store_id' => $store_id));
+					$store_id = 0;  //只显示后台默认规格
+					$spec_where = '1=1';
+
+					//只显示后台默认规格
+					/*if($gc_id > 0){
+						$spec_where .= ' AND gc_id='.$gc_id;
+					}*/
+					if($store_id >=0){
+						$spec_where .= ' AND store_id='.$store_id;
+					}
+					if($val['sp_id'] >0){
+						$spec_where .= ' AND sp_id='.$val['sp_id'];
+					}
+
+					if(!empty($spec_val_ids[$val['sp_id']])){
+						$spec_where = '('.$spec_where.')'.' OR sp_value_id IN('.implode(',',$spec_val_ids[$val['sp_id']]).')';
+					}
+                    $spec_value_list = Model('spec')->getSpecValueList($spec_where);
+
                     $a = array();
                     foreach ($spec_value_list as $v) {
                         $b = array();

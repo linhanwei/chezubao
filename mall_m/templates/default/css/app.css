@@ -1374,15 +1374,15 @@ footer{ height:61px;background:#383838; position:fixed; left:0; bottom:0; width:
    .cover-bg.show{transform: translate3d(0,0,0);top: 0; transition:all ease-in-out 0.3s}
    .spec-box{ width:100%; background:#FFF;  position:fixed; top:100%; left:0; right:0; bottom:0;z-index:999999; display:none}
    .spec-box.show{transform: translate3d(0,0,0);top: 20%; transition:all ease-in-out 0.3s}
-   .spec-box .summary{ width:100%; height:78px; position:absolute; left:0; top:0; padding:1rem}
+   .spec-box .summary{ width:100%; min-height:78px; position:absolute; left:0; top:0; padding:1rem}
    .spec-box .summary .img{ width:100px; height:100px; position:relative; top:-32px; float:left; background:#FFF; border:1px solid #DDD; text-align:center; padding:2px; display:-webkit-box; border-radius:4px; margin-right:10px; overflow:hidden}
    .spec-box .summary .img img{ height:100%; width:100%;}
    .spec-box .summary .main .price-container{ height:1.5rem; font-size:1rem; color:#F00}
    .spec-box .summary .main .stock-control{ height:1.5rem; font-size:0.75rem}
    .spec-box .summary .main .stock-control span,.spec-box .summary .main .stock-control label,.spec-box .summary .main .stock-control small{ vertical-align:middle; font-size:0.75rem}
-   .spec-box .summary .main .sku-tips { height:1.5rem}
+   .spec-box .summary .main .sku-tips { line-height:1.5rem}
    .spec-box .summary .main .sku-tips label{ font-size:1rem; vertical-align:middle;}
-   .spec-box .summary .main .sku-tips span{ font-size:1rem; margin-left:0.5rem; vertical-align:middle; word-break:break-all}
+   .spec-box .summary .main .sku-tips span{ font-size:1rem; padding-right:0.5rem; vertical-align:middle; word-break:break-all}
    .spec-box .summary .close{ width:20px; height:20px; position:absolute; right:2.5rem; top:0.5rem; z-index:999999; background:url(../images/close.png) center center no-repeat}
    .ok-btn{ height:48px; line-height:48px; text-align:center; font-size:15px; color:#FFF; background:#383838; position:absolute; bottom:0; left:0; width:100%}
    .spec-box .body{ border-top:1px solid #DDD; position:absolute; top:100px; bottom:48px; left:0; right:0; z-index:99999; overflow-x:hidden; overflow:-y:scroll}

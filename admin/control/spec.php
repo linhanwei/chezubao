@@ -51,8 +51,26 @@ class specControl extends SystemControl {
 				$spec['sp_sort']		= intval($_POST['s_sort']);
 				$spec['class_id']		= $_POST['class_id'];
 				$spec['class_name']		= $_POST['class_name'];
+				$spec_value_list = $_POST['spec_value'];
 
 				$return = $model_spec->addSpec($spec);
+
+				if(!empty($spec_value_list) && $return){
+					$insert_spec_val_list = array();
+					$spec_key = 0;
+					foreach($spec_value_list as $spec_val){
+						$insert_spec_val_list[$spec_key]['sp_value_sort'] = $spec_val['sort'];
+						$insert_spec_val_list[$spec_key]['sp_value_name'] = $spec_val['name'];
+						$insert_spec_val_list[$spec_key]['sp_id'] = $return;
+						$insert_spec_val_list[$spec_key]['gc_id'] = $_POST['class_id'];
+						$insert_spec_val_list[$spec_key]['store_id'] = 0;
+						$spec_key++;
+					}
+
+					$return = $model_spec->addSpecValueALL($insert_spec_val_list);
+
+				}
+
 				if($return) {
 					$url = array(
 						array(
@@ -84,7 +102,8 @@ class specControl extends SystemControl {
 	 */
 	public function spec_editOp() {
 		$lang	= Language::getLangContent();
-		if(empty($_GET['sp_id'])) {
+		$sp_id = $_GET['sp_id'];
+		if(empty($sp_id)) {
 			showMessage($lang['param_error']);
 		}
 		/**
@@ -107,11 +126,50 @@ class specControl extends SystemControl {
 
 				//更新规格表
 				$param		= array();
+				$spec_id = $_POST['s_id'];
 				$param['sp_name']		= trim($_POST['s_name']);
 				$param['sp_sort']		= intval($_POST['s_sort']);
 				$param['class_id']		= $_POST['class_id'];
 				$param['class_name']	= $_POST['class_name'];
-				$return = $model_spec->specUpdate($param, array('sp_id'=>intval($_POST['s_id'])), 'spec');
+				$spec_value_list = $_POST['spec_value'];
+				$a_del_list = $_POST['a_del'];
+				$del_spec_val_list = array();
+
+				if(!empty($a_del_list)){
+					foreach($a_del_list as $del_spec_val){
+						$del_spec_val_list[] = $del_spec_val;
+						$model_spec->delSpecValue(array('sp_value_id'=>$del_spec_val));
+					}
+				}
+
+				if(!empty($spec_value_list) && $spec_id){
+					$insert_spec_val_list = array();
+					$spec_key = 0;
+					foreach($spec_value_list as $spec_val){
+						if($spec_val['a_id']){
+							if(!in_array($spec_val['a_id'],$del_spec_val_list)){
+								$update_spec_val['sp_value_sort'] = $spec_val['sort'];
+								$update_spec_val['sp_value_name'] = $spec_val['name'];
+								$update_spec_val['gc_id'] = $_POST['class_id'];
+								$model_spec->editSpecValue($update_spec_val,array('sp_value_id'=>$spec_val['a_id']));
+							}
+						}else{
+							$insert_spec_val_list[$spec_key]['sp_value_sort'] = $spec_val['sort'];
+							$insert_spec_val_list[$spec_key]['sp_value_name'] = $spec_val['name'];
+							$insert_spec_val_list[$spec_key]['sp_id'] = $spec_id;
+							$insert_spec_val_list[$spec_key]['gc_id'] = $_POST['class_id'];
+							$insert_spec_val_list[$spec_key]['store_id'] = 0;
+							$spec_key++;
+						}
+					}
+
+					if(!empty($insert_spec_val_list)){
+						$return = $model_spec->addSpecValueALL($insert_spec_val_list);
+					}
+
+				}
+
+				$return = $model_spec->specUpdate($param, array('sp_id'=>intval($spec_id)), 'spec');
 				if ($return) {
 					$url = array(
 						array(
@@ -129,7 +187,7 @@ class specControl extends SystemControl {
 		}
 
 		//规格列表
-		$spec_list	= $model_spec->getSpecInfo(intval($_GET['sp_id']));
+		$spec_list	= $model_spec->getSpecInfo(intval($sp_id));
 		if(!$spec_list){
 			showMessage($lang['param_error']);
 		}
@@ -138,7 +196,13 @@ class specControl extends SystemControl {
 		$gc_list = Model('goods_class')->getGoodsClassListByParentId(0);
 		Tpl::output('gc_list', $gc_list);
 
+		//规格值
+		$spec_val_where['store_id'] = 0;
+		$spec_val_where['sp_id'] = $sp_id;
+		$sp_val_list	= $model_spec->getSpecValueList($spec_val_where);
+
 		Tpl::output('sp_list',$spec_list);
+		Tpl::output('sp_val_list',$sp_val_list);
 		Tpl::showpage('spec.edit');
 	}
 

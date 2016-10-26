@@ -126,11 +126,7 @@ class specModel extends Model {
 		// 规格表插入数据
 		$sp_id = $this->insert($param);
 
-        if (!$sp_id) {
-        return false;
-        } else {
-            return true;
-		}
+		return $sp_id;
 	}
 	/**
 	 * 新增

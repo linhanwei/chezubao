@@ -1190,7 +1190,7 @@ class BaseSellerControl extends Control {
                 array('name' => '出售中的商品', 'act'=>'store_goods_online', 'op'=>'index'),
                 array('name' => '仓库中的商品', 'act'=>'store_goods_offline', 'op'=>'index'),
 //                array('name' => '关联版式', 'act'=>'store_plate', 'op'=>'index'),
-                array('name' => '商品规格', 'act' => 'store_spec', 'op' => 'index'),
+//                array('name' => '商品规格', 'act' => 'store_spec', 'op' => 'index'),
                 array('name' => '图片空间', 'act'=>'store_album', 'op'=>'album_cate'),
             )),
             'order' => array('name' => '订单物流', 'child' => array(
