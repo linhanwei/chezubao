@@ -90,8 +90,9 @@ class indexControl extends mobileHomeControl{
         }
 
         //获取商品
-        $goods_list = $model_goods->getGoodsOnlineList($condition, '*',50,$goods_order, 0,'',false,0);
+        $fieldstr = "goods_id,goods_commonid,store_id,goods_name,goods_price,goods_marketprice,goods_image,goods_salenum,evaluation_good_star,evaluation_count";
 
+        $goods_list = $model_goods->getGoodsListByColorDistinct($condition,$fieldstr, $goods_order, 50);
         //随机获取四个商品
         $new_goods_list = array();
         $goods_count = count($goods_list);
