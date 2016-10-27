@@ -24,9 +24,9 @@
     <script>
         var goods_spec_value = [];
         <?php if($output['info']['spec_list_mobile']){ ?>
-            <?php foreach($output['info']['spec_list_mobile'] as $gsk=>$gsv){ ?>
-                goods_spec_value['<?php echo $gsk;?>'] = <?php echo $gsv;?>;
-            <?php }?>
+        <?php foreach($output['info']['spec_list_mobile'] as $gsk=>$gsv){ ?>
+        goods_spec_value['<?php echo $gsk;?>'] = <?php echo $gsv;?>;
+        <?php }?>
         <?php }?>
     </script>
 
@@ -37,11 +37,13 @@
 
 <header class="detail-head">
 
-    <a href="javascript:history.go(-1);" class="go-history"><img src="./templates/default/images/detail/detail-ico-1234.png"/></a>
+    <a href="javascript:history.go(-1);" class="go-history"><img
+            src="./templates/default/images/detail/detail-ico-1234.png"/></a>
 
     <a href="javascript:;" class="go-link"><img src="./templates/default/images/detail/detail-ico-1236.png"/></a>
 
-    <a href="<?php echo BASE_SITE_URL;?>/mall_m/index.php?act=member_cart&op=index" class="go-cart"><img src="./templates/default/images/detail/detail-ico-1235.png"/></a>
+    <a href="<?php echo BASE_SITE_URL; ?>/mall_m/index.php?act=member_cart&op=index" class="go-cart"><img
+            src="./templates/default/images/detail/detail-ico-1235.png"/></a>
 
 </header>
 
@@ -78,7 +80,6 @@
 </section>
 
 
-
 <section class="detail-info-box">
 
     <div class="title">
@@ -89,17 +90,17 @@
 
         </div>
 
-         <div class="share-box">
+        <div class="share-box">
 
-             <a>
+            <a>
 
-                 <img src="./templates/default/images/detail/share-ico.png">
+                <img src="./templates/default/images/detail/share-ico.png">
 
-                 <p>分享</p>
+                <p>分享</p>
 
-             </a>
+            </a>
 
-         </div>
+        </div>
 
     </div>
 
@@ -134,7 +135,6 @@
 </section>
 
 
-
 <div class="spec">
 
     <div class="select" id="spec-select"><span>选择规格</span>
@@ -145,7 +145,6 @@
 
     <div class="spen-item">
 
-      
 
     </div>
 
@@ -201,9 +200,9 @@
 
         <li class="action"><a>详情页面</a></li>
 
-         <li><a>产品参数</a></li>
+        <li><a>产品参数</a></li>
 
-<!--         <li><a>店铺推荐</a></li>-->
+        <!--         <li><a>店铺推荐</a></li>-->
 
     </ul>
 
@@ -219,32 +218,18 @@
 
             <ul class="spec_list">
 
-                <?php if($output['info']['goods_info']['spec_name']){ ?>
-
-                    <?php foreach($output['info']['goods_info']['spec_name'] as $spec_nk=>$spec_nv){ ?>
-
-                        <?php if($output['info']['goods_info']['spec_value'][$spec_nk]){ ?>
-
+                <?php if ($output['info']['goods_info']['goods_attr']) { ?>
+                    <?php foreach ($output['info']['goods_info']['goods_attr'] as $attr_nv_list) { ?>
                             <li class="spec_item">
-
-                                <span class="spec_name"><?php echo $spec_nv; ?>:</span>
-
-                                <?php foreach($output['info']['goods_info']['spec_value'][$spec_nk] as $spec_vk=>$spec_vv){ ?>
-
-                                    <?php if (in_array($spec_vk, array_keys($output['info']['goods_info']['goods_spec']))) { ?>
-
-                                        <span class="spec_value"><?php echo $spec_vv; ?></span>
-
+                                <?php foreach ($attr_nv_list as $attr_nk => $attr_nv) { ?>
+                                    <?php if ($attr_nk == 'name') { ?>
+                                        <span class="spec_name"><?php echo $attr_nv; ?>:</span>
+                                    <?php }else{ ?>
+                                        <span class="spec_value"><?php echo $attr_nv; ?></span>
                                     <?php } ?>
-
                                 <?php } ?>
-
                             </li>
-
-                        <?php } ?>
-
                     <?php } ?>
-
                 <?php }else{ ?>
 
                     <li class="spec_item">没有参数</li>
@@ -258,7 +243,6 @@
         <div class="content-three content-item">
 
 
-
         </div>
 
     </div>
@@ -267,22 +251,26 @@
 
 <!--规格选择部分-->
 
-  <div class="spec-box" id="spec-box">
-   <div class="summary">
-      <div class="img">
-        <img id="goods_spec_img" src="<?php echo $output['info']['goods_info']['goods_image_url'];?>">
-      </div>
-      <div class="main">
-        <div class="price-container">
-          <span class="price" id="goods_spec_price">￥<?php echo $output['info']['goods_info']['goods_promotion_price'];?></span>
+<div class="spec-box" id="spec-box">
+    <div class="summary">
+        <div class="img">
+            <img id="goods_spec_img" src="<?php echo $output['info']['goods_info']['goods_image_url']; ?>">
         </div>
-        <div class="stock-control">
-          <span class="stock-container"><label class="label">库存：</label><small id="stock"><?php echo $output['info']['goods_info']['goods_storage'];?></small><small class="bz">件</small></span>
-          <span class="limit-tips"></span>
-        </div>
-          <?php if ($output['info']['goods_info']['goods_spec']) { ?>
-              <div class="sku-tips">
-                  <label>已选择：</label>
+        <div class="main">
+            <div class="price-container">
+                <span class="price"
+                      id="goods_spec_price">￥<?php echo $output['info']['goods_info']['goods_promotion_price']; ?></span>
+            </div>
+            <div class="stock-control">
+                <span class="stock-container"><label class="label">库存：</label><small
+                        id="stock"><?php echo $output['info']['goods_info']['goods_storage']; ?></small><small
+                        class="bz">件
+                    </small></span>
+                <span class="limit-tips"></span>
+            </div>
+            <?php if ($output['info']['goods_info']['goods_spec']) { ?>
+                <div class="sku-tips">
+                    <label>已选择：</label>
             <span id="goods_spec_value_list">
 
                     <?php foreach ($output['info']['goods_info']['goods_spec'] as $spec_vkk => $spec_nvv) { ?>
@@ -290,52 +278,54 @@
                     <?php } ?>
 
             </span>
-              </div>
-          <?php } ?>
-      </div>
-      <div class="close"></div>
-   </div>
-   <div class="body">
-    <div class="address-select">
+                </div>
+            <?php } ?>
+        </div>
+        <div class="close"></div>
     </div>
-    <div class="sku-control">
-     <ul>
-         <?php if ($output['info']['goods_info']['spec_name']) { ?>
-             <?php foreach ($output['info']['goods_info']['spec_name'] as $spec_nk => $spec_nv) { ?>
-                 <?php if ($output['info']['goods_info']['spec_value'][$spec_nk]) { ?>
-                     <li>
-                         <h2><?php echo $spec_nv; ?></h2>
-                         <div class="items">
-                             <?php foreach ($output['info']['goods_info']['spec_value'][$spec_nk] as $spec_vk => $spec_vv) { ?>
-                                 <?php if (in_array($spec_vk, array_keys($output['info']['goods_info']['goods_spec']))) { ?>
-                                     <label class="checked spec_items_value" data-value="<?php echo $spec_vk; ?>"><?php echo $spec_vv; ?></label>
-                                 <?php }else{ ?>
-                                     <label class="spec_items_value" data-value="<?php echo $spec_vk; ?>"><?php echo $spec_vv; ?></label>
-                                 <?php } ?>
-                             <?php } ?>
-                         </div>
-                     </li>
-                 <?php } ?>
-             <?php } ?>
-         <?php } ?>
-     </ul>
+    <div class="body">
+        <div class="address-select">
+        </div>
+        <div class="sku-control">
+            <ul>
+                <?php if ($output['info']['goods_info']['spec_name']) { ?>
+                    <?php foreach ($output['info']['goods_info']['spec_name'] as $spec_nk => $spec_nv) { ?>
+                        <?php if ($output['info']['goods_info']['spec_value'][$spec_nk]) { ?>
+                            <li>
+                                <h2><?php echo $spec_nv; ?></h2>
+                                <div class="items">
+                                    <?php foreach ($output['info']['goods_info']['spec_value'][$spec_nk] as $spec_vk => $spec_vv) { ?>
+                                        <?php if (in_array($spec_vk, array_keys($output['info']['goods_info']['goods_spec']))) { ?>
+                                            <label class="checked spec_items_value"
+                                                   data-value="<?php echo $spec_vk; ?>"><?php echo $spec_vv; ?></label>
+                                        <?php } else { ?>
+                                            <label class="spec_items_value"
+                                                   data-value="<?php echo $spec_vk; ?>"><?php echo $spec_vv; ?></label>
+                                        <?php } ?>
+                                    <?php } ?>
+                                </div>
+                            </li>
+                        <?php } ?>
+                    <?php } ?>
+                <?php } ?>
+            </ul>
+        </div>
+        <div class="number-control">
+            <h1>数量</h1>
+            <div class="mui-number">
+                <button type="button" class="dec">-</button>
+                <input type="text" class="num" id="goods_spec_num" value="1" min="1" max="987" name="num">
+                <button type="button" class="inc">+</button>
+            </div>
+        </div>
     </div>
-    <div class="number-control">
-     <h1>数量</h1>
-     <div class="mui-number">
-       <button type="button" class="dec">-</button>
-        <input type="text" class="num" id="goods_spec_num" value="1" min="1" max="987" name="num">
-       <button type="button" class="inc">+</button>
-     </div>
+    <div class="ok-btn">
+        确定
     </div>
-   </div>
-   <div class="ok-btn">
-     确定
-   </div>
-  </div>
-  <div class="cover-bg">
-  
-  </div>
+</div>
+<div class="cover-bg">
+
+</div>
 
 <!--规格选择部分-->
 
