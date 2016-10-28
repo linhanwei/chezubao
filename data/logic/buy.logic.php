@@ -235,7 +235,7 @@ class buyLogic {
      * @return array
      */
     public function buyStep2($post, $member_id, $member_name, $member_email) {
-
+       
         $this->_member_info['member_id'] = $member_id;
         $this->_member_info['member_name'] = $member_name;
         $this->_member_info['member_email'] = $member_email;
@@ -248,13 +248,13 @@ class buyLogic {
 
             //第1步 表单验证
             $this->_createOrderStep1();
-    
+
             //第2步 得到购买商品信息
             $this->_createOrderStep2();
     
             //第3步 得到购买相关金额计算等信息
             $this->_createOrderStep3();
-    
+
             //第4步 生成订单
             $this->_createOrderStep4();
 
@@ -398,7 +398,7 @@ class buyLogic {
         $input_if_vat = ($input_if_vat == 'allow_vat') ? true : false;
 
         //是否支持货到付款
-        $input_if_offpay = $this->buyDecrypt($post['offpay_hash'], $this->_member_info['member_id']);
+        /*$input_if_offpay = $this->buyDecrypt($post['offpay_hash'], $this->_member_info['member_id']);
         if (!in_array($input_if_offpay,array('allow_offpay','deny_offpay'))) {
             throw new Exception('订单保存出现异常[货到付款验证错误]，请重试');
         }
@@ -408,7 +408,9 @@ class buyLogic {
         $input_if_offpay_batch = $this->buyDecrypt($post['offpay_hash_batch'], $this->_member_info['member_id']);
         if (!is_array($input_if_offpay_batch)) {
             throw new Exception('订单保存出现异常[部分店铺付款方式出现异常]，请重试');
-        }
+        }*/
+        $input_if_offpay = false;
+        $input_if_offpay_batch = false;
 
         //付款方式:在线支付/货到付款(online/offline)
         if (!in_array($post['pay_name'],array('online','offline'))) {
@@ -617,12 +619,12 @@ class buyLogic {
         if (!$order_pay_id) {
             throw new Exception('订单保存失败[未生成支付单]');
         }
-    
+
         //收货人信息
         list($reciver_info,$reciver_name) = $this->_logic_buy_1->getReciverAddr($input_address_info);
 
         foreach ($store_cart_list as $store_id => $goods_list) {
-    
+
             //取得本店优惠额度(后面用来计算每件商品实际支付金额，结算需要)
             $promotion_total = !empty($store_promotion_total[$store_id]) ? $store_promotion_total[$store_id] : 0;
             //本店总的优惠比例,保留3位小数
@@ -640,14 +642,14 @@ class buyLogic {
             $order = array();
             $order_common = array();
             $order_goods = array();
-    
+
             $order['order_sn'] = $this->_logic_buy_1->makeOrderSn($order_pay_id);
             $order['pay_sn'] = $pay_sn;
             $order['store_id'] = $store_id;
             $order['store_name'] = $goods_list[0]['store_name'];
             $order['buyer_id'] = $member_id;
             $order['buyer_name'] = $member_name;
-            $order['buyer_email'] = $member_email;
+            $order['buyer_email'] = $member_email ? $member_email : '';
             $order['add_time'] = TIMESTAMP;
             $order['payment_code'] = $store_pay_type_list[$store_id];
             $order['order_state'] = $store_pay_type_list[$store_id] == 'online' ? ORDER_STATE_NEW : ORDER_STATE_PAY;
@@ -660,13 +662,15 @@ class buyLogic {
 			{
 				$order['payment_code']="offline";
 			}
+
             $order_id = $model_order->addOrder($order);
+
             if (!$order_id) {
                 throw new Exception('订单保存失败[未生成订单数据]');
             }
             $order['order_id'] = $order_id;
             $order_list[$order_id] = $order;
-    
+
             $order_common['order_id'] = $order_id;
             $order_common['store_id'] = $store_id;
             $order_common['order_message'] = $input_pay_message[$store_id];
@@ -693,7 +697,7 @@ class buyLogic {
             if (!$order_id) {
                 throw new Exception('订单保存失败[未生成订单扩展数据]');
             }
-    
+
             //生成order_goods订单商品数据
             $i = 0;
             foreach ($goods_list as $goods_info) {
