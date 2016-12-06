@@ -80,7 +80,8 @@ class member_pointsControl extends mobileMemberControl {
         //$level = $_POST['level'] > 0 ? $_POST['level'] : 1;
         $condition = array();
         $condition['inviter_id'] = $member_id;
-        $condition['is_store'] = $is_store;
+	if($is_store)
+        	$condition['is_store'] = $is_store;
 
         $model_member = Model('member');
         $member_list = $model_member->getMemberList($condition);
@@ -100,7 +101,7 @@ class member_pointsControl extends mobileMemberControl {
                 //$member_points = $points_model->getPointsInfo($condition_arr,'*');
 
                 //$recommend_list[$key]['pl_desc'] = $member_points['pl_desc'];
-                $recommend_list[$key]['member_id'] = strval($val['member_id'] + 600000);
+                $recommend_list[$key]['member_id'] = $val['member_id'];
                 $recommend_list[$key]['mobile_phone'] =  $val['member_name'];
                 $recommend_list[$key]['member_truename'] = $val['member_truename'];
                 $recommend_list[$key]['invite_time'] = date('Y-m-d H:i:s',$val['member_time']);

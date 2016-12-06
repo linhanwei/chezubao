@@ -535,13 +535,13 @@ eot;
         }
         $returnXml = $this->returnXml();
         //var_dump($returnXml);
-        //print_r($this->returnParameters);
+        //print_r($this->returnParameters);$this->data['out_trade_no']
 
         if($verify) {
             return array(
                 //商户订单号
-                'out_trade_no' => $this->data['out_trade_no'],
-                'order_type' => substr($this->data['attach'],0,1),
+                'out_trade_no' => substr($this->data['out_trade_no'],1),
+                'order_type' => substr($this->data['out_trade_no'],0,1),
                 'total_fee' => $this->data['total_fee'],
                 'trade_no' => $this->data['transaction_id'],
                 'returnXml'=>$returnXml

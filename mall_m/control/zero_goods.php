@@ -22,7 +22,8 @@ class zero_goodsControl extends mobileHomeControl {
 
         //查询条件
         $condition = array();
-       
+        $this->page = 50;
+
         //所需字段
         $fieldstr = "goods_id,goods_name,goods_weight,goods_freight,goods_image_index,goods_progress,goods_join_num,goods_surplus_num,goods_total_num";
 

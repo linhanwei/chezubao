@@ -168,16 +168,15 @@ class storeControl extends mobileMemberControl{
 
         $model_store = Model('store');
         //商户列表
-        $store_list = $model_store->getStoreList($condition, $this->page,'store_id desc');
+        $store_list = $model_store->getStoreList($condition, $this->page,'province_id,city_id,region_id asc');
         if(empty($store_list)){
             output_error('暂无联盟商户');
         }
         foreach($store_list as $key=>$val){
             if($val['store_avatar']){
-
-                $store_list[$key]['store_avatar'] = UPLOAD_SITE_URL.DS.ATTACH_PATH.DS.'store_joinin'.DS.$val['store_avatar'];
+                $store_list[$key]['store_avatar'] = UPLOAD_SITE_URL.'/'.ATTACH_PATH.DS.'store_joinin/'.$val['store_avatar'];
             }else{
-                $store_list[$key]['store_avatar'] = UPLOAD_SITE_URL.DS.ATTACH_COMMON.DS.'default_store_avatar.gif';
+                $store_list[$key]['store_avatar'] = UPLOAD_SITE_URL.'/'.ATTACH_COMMON.DS.'default_store_avatar.gif';
             }
             $store_list[$key]['store_phone'] = $val['store_phone'] ? $val['store_phone'] : $val['member_name'];
             unset($store_list[$key]['legal_name']);
@@ -193,7 +192,6 @@ class storeControl extends mobileMemberControl{
      * 编辑店铺资料
      */
     public function editOp(){
-
         $model_store = Model('store');
         $update_array = array();
         if($_POST['store_name']){
@@ -210,9 +208,9 @@ class storeControl extends mobileMemberControl{
         $update_array['region_id'] = $_POST['region_id'];
 
         $model_area = Model('area');
-        $area_info = $model_area->getAreaInfo(array('area_id'=>$update_array['province_id']));
+        $area_info = $model_area->getAreaInfo(array('area_id'=>$update_array['region_id']));
         $city_info = $model_area->getAreaInfo(array('area_id'=>$update_array['city_id']));
-        $province_info = $model_area->getAreaInfo(array('area_id'=>$update_array['region_id']));
+        $province_info = $model_area->getAreaInfo(array('area_id'=>$update_array['province_id']));
 
         $update_array['area_info'] = $province_info['area_name'] . '-' . $city_info['area_name'] .'-'. $area_info['area_name'];
 
@@ -269,13 +267,13 @@ class storeControl extends mobileMemberControl{
      * 删除图片
      */
     public function del_imageOp() {
-        $banner_num = $_POST['banner_num'];
+        $banner_num = $_GET['banner_num'];
         
         if(empty($banner_num)){
             output_error('请选择删除的图片!');
         }
         
-        if(!in_array($banner_num, array(1,2,3,4,5))){
+        if(in_array($banner_num, array(1,2,3,4,5))){
             output_error('参数错误!');
         }
         $store_id = $this->member_info['store_id'];
@@ -283,11 +281,9 @@ class storeControl extends mobileMemberControl{
             output_data(array('error'=>'没有店铺信息!'));
         }
         
-        $Store = Model('store');
-        $store_info = $Store->getStoreInfoByID($store_id);
+        $store_info = Model('store')->getStoreInfoByID($store_id);
         
-        $field_name = 'banner_'.$banner_num;
-        $image_path = BASE_UPLOAD_PATH.DS.ATTACH_PATH.DS.'store_joinin'.DS.$store_info[$field_name];
+        $image_path = BASE_UPLOAD_PATH.DS.ATTACH_PATH.DS.'store_joinin'.DS.$store_info['banner_'.$banner_num];
         
         $is_exists = file_exists($image_path);
         
@@ -295,12 +291,8 @@ class storeControl extends mobileMemberControl{
             output_error('没有该图片!');
         }
         
-        $update_array[$field_name] = '';
-        $edit_result = $Store->editStore($update_array, array('store_id' => $this->member_info['store_info']['store_id']));
+        $result = unlink($image_path);
         
-        if($edit_result){
-            $result = unlink($image_path);
-        }
         if($result){
             output_data(array('msg'=>'删除成功'));
         }else{

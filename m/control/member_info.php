@@ -89,7 +89,12 @@ class member_infoControl extends mobileMemberControl {
 
 
         if($_POST['name']){
-            $member_info['member_truename'] = $_POST['name'];
+            if($member_info['grade_id'] == 1){
+                $member_info['member_truename'] = $member_info['member_truename'] ? $member_info['member_truename'] : $_POST['name'];
+            }else{
+                $member_info['member_truename'] = $_POST['name'];
+            }
+
         }else{
             output_error('请输入姓名');
         }
@@ -97,7 +102,12 @@ class member_infoControl extends mobileMemberControl {
 
 
         if($_POST['nikename']){
-            $member_info['member_nickname'] = $_POST['nikename'];
+            if($member_info['grade_id'] == 1){
+                $member_info['member_nickname'] = $member_info['member_nickname'] ? $member_info['member_nickname'] : $_POST['nikename'];
+            }else{
+                $member_info['member_nickname'] = $_POST['nikename'];
+            }
+
         }
         if($_POST['sex']){
             $member_info['member_sex'] = $_POST['sex'];
@@ -105,7 +115,11 @@ class member_infoControl extends mobileMemberControl {
 
         if($_POST['idcard']){
             if(checkIdCard($_POST['idcard'])){
-                $member_info['member_idcard'] = $_POST['idcard'];
+                if($member_info['grade_id'] == 1) {
+                    $member_info['member_idcard'] = $member_info['member_idcard'] ? $member_info['member_idcard'] : $_POST['idcard'];
+                }else{
+                    $member_info['member_idcard'] = $_POST['idcard'];
+                }
             }else{
                 output_error('请输入正确的身份证号码');
             }
@@ -117,6 +131,20 @@ class member_infoControl extends mobileMemberControl {
             }
         }else{
             output_error('请输入身份证号码');
+        }
+
+        if(empty($_POST['member_region'])){
+            //output_error('请选择所在地');
+        }else{
+            if($member_info['grade_id'] == 1) {
+                $member_info['member_provinceid'] = $member_info['member_provinceid'] ? $member_info['member_provinceid'] : $_POST['member_province'];
+                $member_info['member_cityid'] = $member_info['member_cityid'] ? $member_info['member_cityid'] : $_POST['member_city'];
+                $member_info['member_areaid'] = $member_info['member_areaid'] ? $member_info['member_areaid'] : $_POST['member_region'];
+            }else{
+                $member_info['member_provinceid'] = $_POST['member_province'];
+                $member_info['member_cityid'] = $_POST['member_city'];
+                $member_info['member_areaid'] = $_POST['member_region'];
+            }
         }
 
         $model_member->editMember(array('member_id'=>$member_id),$member_info);
@@ -238,7 +266,7 @@ class member_infoControl extends mobileMemberControl {
      * 获得对应的QRCODE
      */
     public function getInviteUrlOp(){
-        $url = BASE_SITE_URL . DS . 'invite/?i='.$this->member_info['member_id'];
+        $url = BASE_SITE_URL . '/invite/?i='.$this->member_info['member_id'];
         $qrcode = UPLOAD_SITE_URL . DS . MyQRcode::buildMember($url);
 
 

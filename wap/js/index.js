@@ -86,13 +86,17 @@ $(function() {
                     }
                     console.log(kk,vv);
                     html += template.render(kk, vv);
+					
                     //console.log('html',kk);
                     return false;
                 });
+			
+				
             });
 
             $("#main-container").html(html);
-
+			$("img.lazy").lazyload({effect: "fadeIn",threshold:"400"});
+            
             //轮播图
             var swiper = new Swiper('.swiper-container', {
                 //pagination: '.swiper-pagination',

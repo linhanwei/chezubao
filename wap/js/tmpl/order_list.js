@@ -136,7 +136,7 @@ $(function(){
         var order_id = $(this).attr("order_id");
 
         $.sDialog({
-            content: '确定确认订单？',
+            content: '确定收货？',
             okFn: function() { sureOrderId(order_id); }
         });
     }

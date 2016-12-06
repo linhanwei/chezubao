@@ -68,6 +68,10 @@ class member_bankControl extends mobileMemberControl{
         $data['city_name'] = $_POST['city_name'];
         $data['branch_name'] = $_POST['branch_name'];
 
+        $info = Model('member_bank')->getBankInfo(array('account_no'=>$data['account_no'],'member_id'=>$this->member_info['member_id']));
+        if($info){
+            output_error('卡号已添加');
+        }
         try{
             $id = Model('member_bank')->addBank($data);
             output_data(array('id'=>$id));
@@ -81,6 +85,16 @@ class member_bankControl extends mobileMemberControl{
      */
     public function delBankOp(){
         $id = $_POST['id'];
+        $info = Model('member_bank')->getBankInfo(array('id'=>$id));
+        if($info) {
+            $model_pd = Model('predeposit');
+            $condition = array();
+            $condition['pdc_bank_no'] = $info['account_no'];
+            if($model_pd->getPdCashInfo($condition)){
+                outout_error('此帐号已使用过，不能删除');
+            }
+
+        }
         Model('member_bank')->delBank($id);
         output_data(array('id'=>$id));
     }

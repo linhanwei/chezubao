@@ -24,16 +24,22 @@ class oilControl extends mobileMemberControl {
             output_data(array('step'=>1,'msg'=>'VIP专属，请升级'));
         }
 
+        $oc_type = $_POST['oc_type'];
+
+        if(!in_array($oc_type,array(1,2,3))){
+            output_error('请选择油卡类型，请升级');
+        }
+
         $model_pd = Model('predeposit');
 
-        if($_POST["mobile"]){
-            $card_info = $model_pd->getOilCardInfo(array('oc_mobile'=>$_POST["mobile"]));
+        if($_POST["mobile"] && $oc_type){
+            $card_info = $model_pd->getOilCardInfo(array('oc_mobile'=>$_POST["mobile"],'oc_type'=>$oc_type));
             if($card_info){
-                showMessage('一个手机号码只能绑定一张油卡');
+                output_error('一个手机号码只能绑定一张油卡');
             }
         }
 
-        $oil_card = $model_pd->getOilCardInfo(array('oc_member_id'=>$this->member_info['member_id']));
+        $oil_card = $model_pd->getOilCardInfo(array('oc_member_id'=>$this->member_info['member_id'],'oc_type'=>$oc_type));
         if(empty($oil_card)){
             output_data(array('step'=>2,'msg'=>'请先购买油卡'));
         }
@@ -49,7 +55,7 @@ class oilControl extends mobileMemberControl {
 
         if($return){
             if($oil_card['oc_type'] == '2'){
-                output_data(array('step'=>3,'msg'=>'ＢＰ油卡不能充值','card'=>$oil_card));
+                output_data(array('step'=>6,'msg'=>'ＢＰ油卡不能充值','card'=>$oil_card));
             }
             return;
         }
@@ -74,9 +80,10 @@ class oilControl extends mobileMemberControl {
         if($ol_amount % OIL_PRICE !== 0){
             output_error('请输入' . OIL_PRICE . '的倍数');
         }
+        $ol_amount *= OIL_RATE;
 
         if($ol_amount > $this->member_info['available_predeposit']){
-            output_error('您的账户余额不够,请先充值!');
+           // output_error('您的账户余额不够,请先充值!');
         }
 
         $model_ol = Model('oil_log');
@@ -84,8 +91,6 @@ class oilControl extends mobileMemberControl {
 
         $data = array();
         $pay_sn = '';
-
-        $ol_amount *= OIL_RATE;
 
         $data['ol_sn'] = $model_pd->makeSn($this->member_info['member_id']);
         $data['ol_member_id'] = $this->member_info['member_id'];
@@ -147,7 +152,12 @@ class oilControl extends mobileMemberControl {
         $idcard_number = $_POST['idcard_number'];
         $idcard_name    =$_POST['idcard_name'];
         $address = $_POST['address'];
-        $oc_type = $_POST['oc_type'] ? $_POST['oc_type'] : 1;
+        $oc_type = $_POST['oc_type'];
+
+        if(!in_array($oc_type,array(1,2,3))){
+            output_error('请选择油卡类型，请升级');
+        }
+
         $oil_price = OIL_PRICE;
         if($oc_type == 2){
             $oil_price = OIL_BP_PRICE;
@@ -180,6 +190,7 @@ class oilControl extends mobileMemberControl {
         $model_oc = Model('predeposit');
         $condition = array();
         $condition['oc_member_id'] = $this->member_info['member_id'];
+        $condition['oc_type'] = $oc_type;
         $oil_card_info = $model_oc->getOilCardInfo($condition);
 
         $data = array();
@@ -195,11 +206,11 @@ class oilControl extends mobileMemberControl {
             $new_data['oc_mobile'] = $mobile;
             $new_data['oc_idcard_front'] = $this->upload_image('idcard_front');
             if(empty($new_data['oc_idcard_front'])){
-                output_error('请上传身份证正面');
+                //output_error('请上传身份证正面');
             }
             $new_data['oc_idcard_back'] = $this->upload_image('idcard_back');
             if(empty($new_data['oc_idcard_back'])){
-                output_error('请上传身份证反面');
+                //output_error('请上传身份证反面');
             }
             $new_data['oc_address'] = $address;
             $new_data['oc_state'] = 1;
@@ -217,11 +228,15 @@ class oilControl extends mobileMemberControl {
             $data['oc_mobile'] = $mobile;
             $data['oc_idcard_front'] = $this->upload_image('idcard_front');
             if(empty($data['oc_idcard_front'])){
-                    output_error('请上传身份证正面');
+                //output_error('请上传身份证正面');
             }
             $data['oc_idcard_back'] = $this->upload_image('idcard_back');
             if(empty($data['oc_idcard_back'])){
-                output_error('请上传身份证反面');
+                //output_error('请上传身份证反面');
+            }
+            $data['oc_driving_licence'] = $this->upload_image('driving_licence');
+            if(empty($data['oc_driving_licence'])){
+                if($oc_type == 2) output_error('请上传机动车行驶证');
             }
             $data['oc_address'] = $address;
             $data['oc_idcard_number'] = $idcard_number;
@@ -282,16 +297,21 @@ class oilControl extends mobileMemberControl {
         $idcard_front = $_POST['idcard_front'];
         $idcard_back = $_POST['idcard_back'];
         $address = $_POST['address'];
+        $oc_type = $_POST['oc_type'];
+
+        if(!in_array($oc_type,array(1,2,3))){
+            output_error('请选择油卡类型，请升级');
+        }
 
         if(empty($mobile)){
             output_error('请填写手机号');
         }
         if(empty($idcard_front)){
-            output_error('请上传身份证正面');
+        //    output_error('请上传身份证正面');
         }
 
         if(empty($idcard_back)){
-            output_error('请上传身份证反面');
+            //output_error('请上传身份证反面');
         }
 
         if(empty($address)){
@@ -300,19 +320,50 @@ class oilControl extends mobileMemberControl {
         $model_oc = Model('predeposit');
         $condition = array();
         $condition['oc_member_id'] = $this->member_info['member_id'];
-        $oil_card_info = $model_oc->getOilCardLogInfo($condition);
+        $condition['oc_type'] = $oc_type;
+
+        $oil_card_info = $model_oc->getOilCardInfo($condition);
 
         if($oil_card_info['oc_state'] == 3 && $oil_card_info['oc_payment_state'] == 1){
             $new_data = array();
             $new_data['oc_mobile'] = $mobile;
-            $new_data['oc_idcard_front'] = $this->upload_image('idcard_front');
-            $new_data['oc_idcard_back'] = $this->upload_image('idcard_back');
+           // $new_data['oc_idcard_front'] = $this->upload_image('idcard_front');
+           // $new_data['oc_idcard_back'] = $this->upload_image('idcard_back');
+            $new_data['oc_driving_licence'] = $this->upload_image('driving_licence');
             $new_data['oc_address'] = $address;
             $new_data['oc_state'] = 1;
-            $model_oc->editOilCardLog($new_data,$condition);
+            $model_oc->editOilCard($new_data,$condition);
             output_data(array('oc_sn'=>$oil_card_info['oc_sn']));
         }else{
             output_error('请先购买油卡');
+        }
+
+    }
+
+    /**
+     * 我的油卡列表
+     */
+    public function listOp(){
+        $model_oil_card = Model('predeposit');
+        $condition['oc_member_id'] = $this->member_info['member_id'];
+        $oil_card_list = $model_oil_card->getOilCardList($condition,10, '*');
+        //整理油卡信息
+        if (is_array($oil_card_list)){
+            foreach ($oil_card_list as $k=> $v){
+                $oil_card_list[$k]['oc_add_time'] = $v['oc_add_time']?date('Y-m-d H:i:s',$v['oc_add_time']):'';
+                $oil_card_list[$k]['oc_payment_time'] = $v['oc_payment_time']?date('Y-m-d H:i:s',$v['oc_payment_time']):'';
+
+                unset($oil_card_list[$k]['oc_member_id']);
+                unset($oil_card_list[$k]['oc_member_name']);
+                unset($oil_card_list[$k]['oc_payment_code']);
+                unset($oil_card_list[$k]['oc_payment_name']);
+            }
+        }
+
+        if($oil_card_list){
+            output_data(array('list'=>$oil_card_list));
+        }else{
+            output_error('还没购买油卡');
         }
 
     }

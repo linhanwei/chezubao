@@ -77,10 +77,14 @@ class paymentControl extends mobileHomeControl{
 
         $callback_info = $payment_api->getNotifyInfo($payment_config);
 
-        /*$callback_info['out_trade_no'] = $_POST['out_trade_no'];
+       /* $callback_info['out_trade_no'] = $_POST['out_trade_no'];
         $callback_info['order_type'] = 'p';
         $callback_info['total_fee'] = $_POST['total_fee'];
-        $callback_info['trade_no'] = '329832983283028320';*/
+        $callback_info['trade_no'] = '329832983283028320';
+*/
+        if($this->payment_code == 'wxpay'){
+            $callback_info['total_fee'] = $callback_info['total_fee'] / 100;
+        }
 
         //log::record(json_encode($callback_info));
         if($callback_info['out_trade_no'] && $callback_info['total_fee'] >= 0.01) {

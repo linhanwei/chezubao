@@ -1,5 +1,4 @@
 $(function(){
-
     //商品排序
     $('.product-filter .keyorder').click(function(e){
         var key = parseInt($(this).attr('key')),

@@ -46,9 +46,9 @@
         <li><span style="color:#a3a3a3;"><?php echo $output['store_info']['store_address'];?></span></li>
     </ul>
     <ul class="am-avg-sm-2 am-thumbnails" style="text-align: center;background-color:#FFFFFF;">
-        <li><i class="icon iconfont" style="font-size: 48px;" onclick="navigation('<?php echo $output['store_info']['store_address'];?>')">&#xe60d;</i>
+        <li><i class="am-icon-map-marker" style="font-size: 48px;" onclick="navigation('<?php echo $output['store_info']['store_address'];?>')"></i>
             </li>
-        <li><i class="icon iconfont" style="font-size: 48px;" onclick="phoneCall(<?php echo $output['store_info']['store_phone'] ? $output['store_info']['store_phone']:$output['store_info']['member_name'];?>)">&#xe665;</i>
+        <li><i class="am-icon-phone" style="font-size: 48px;" onclick="phoneCall(<?php echo $output['store_info']['store_phone'] ? $output['store_info']['store_phone']:$output['store_info']['member_name'];?>)"></i>
             </li>
     </ul>
     <div style="padding:10px;">

@@ -20,15 +20,15 @@
 
     <link href="../mall_m/templates/default/css/app.css" rel="stylesheet">
 
-    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="../mall_m/templates/default/js/jquery.js"></script>
 
     <script src="./new/js/jquery.easing.1.3.js"></script>
 
-    <script src="./new/js/jquery.lazyload.js"></script>
+    <script src="../mall_m/templates/default/js/jquery.lazyload.js"></script>
 
     <script src="./new/js/swiper.jquery.min.js"></script>
 
-    <script src="./new/js/main.js"></script>
+    <script src="../mall_m/templates/default/js/main.js"></script>
 
 
     <script type="text/javascript" src="js/config.js"></script>
@@ -43,6 +43,8 @@
     <script>
         $(function(){
             $('.search-box .category-btn').attr('href',SiteUrl+'/mall_m/index.php?act=goods_class&op=index');
+            $("img.lazy").lazyload({effect: "fadeIn",threshold:"400"});
+			
         });
     </script>
 </head>
@@ -218,7 +220,7 @@
 
             <a class="item" href="<%= item[i].url %>">
 
-                <img src="<%= item[i].image %>">
+                <img class="lazy" src="../mall_m/templates/default/images/default_grey.png" data-original="<%= item[i].image %>">
 
             </a>
 
@@ -588,49 +590,49 @@
 
                 <div class="item">
 
-                    <a href="<%= rectangle1_url %>"><img src="<%= rectangle1_image %>"></a>
+                    <a href="<%= rectangle1_url %>"><img class="lazy" src="../mall_m/templates/default/images/default_grey.png" data-original="<%= rectangle1_image %>"></a>
 
                 </div>
 
                 <div class="item">
 
-                    <a href="<%= rectangle3_url %>"><img src="<%= rectangle3_image %>"></a>
+                    <a href="<%= rectangle3_url %>"><img class="lazy" src="../mall_m/templates/default/images/default_grey.png" data-original="<%= rectangle3_image %>"></a>
 
                 </div>
 
                 <div class="item">
 
-                    <a href="<%= rectangle5_url %>"><img src="<%= rectangle5_image %>"></a>
+                    <a href="<%= rectangle5_url %>"><img class="lazy" src="../mall_m/templates/default/images/default_grey.png" data-original="<%= rectangle5_image %>"></a>
 
                 </div>
 
                 <div class="item">
 
-                    <a href="<%= rectangle7_url %>"><img src="<%= rectangle7_image %>"></a>
+                    <a href="<%= rectangle7_url %>"><img class="lazy" src="../mall_m/templates/default/images/default_grey.png" data-original="<%= rectangle7_image %>"></a>
 
                 </div>
 
                 <div class="item">
 
-                    <a href="<%= rectangle2_url %>"><img src="<%= rectangle2_image %>"></a>
+                    <a href="<%= rectangle2_url %>"><img class="lazy" src="../mall_m/templates/default/images/default_grey.png" data-original="<%= rectangle2_image %>"></a>
 
                 </div>
 
                 <div class="item">
 
-                    <a href="<%= rectangle4_url %>"><img src="<%= rectangle4_image %>"></a>
+                    <a href="<%= rectangle4_url %>"><img class="lazy" src="../mall_m/templates/default/images/default_grey.png" data-original="<%= rectangle4_image %>"></a>
 
                 </div>
 
                 <div class="item">
 
-                    <a href="<%= rectangle6_url %>"><img src="<%= rectangle6_image %>"></a>
+                    <a href="<%= rectangle6_url %>"><img class="lazy" src="../mall_m/templates/default/images/default_grey.png" data-original="<%= rectangle6_image %>"></a>
 
                 </div>
 
                 <div class="item">
 
-                    <a href="<%= rectangle8_url %>"><img src="<%= rectangle8_image %>"></a>
+                    <a href="<%= rectangle8_url %>"><img class="lazy" src="../mall_m/templates/default/images/default_grey.png" data-original="<%= rectangle8_image %>"></a>
 
                 </div>
 
@@ -660,7 +662,7 @@
 
                 <a href="<%= item[i].url %>">
 
-                    <img src="<%= item[i].image %>" alt="">
+                    <img class="lazy" src="../mall_m/templates/default/images/default_grey.png" data-original="<%= item[i].image %>" alt="">
 
                 </a>
 
@@ -685,7 +687,7 @@
 
             <a href="<%= item[i].url %>" class="tuijian-item">
                 <div class="goods_img">
-                    <img src="<%= item[i].goods_image_url %>">
+                    <img class="lazy" src="../mall_m/templates/default/images/default_grey.png" data-original="<%= item[i].goods_image_url %>">
                 </div>
                 <p class="title"><%= item[i].goods_name %></p>
 

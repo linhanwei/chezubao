@@ -25,39 +25,55 @@ class loginControl extends mobileHomeControl {
 	 */
 	public function indexOp(){
         if(empty($_POST['mobile_phone']) || empty($_POST['password']) || !in_array($_POST['client'], $this->client_type_array)) {
-            output_error('登录失败');
+            output_error('非法操作');
         }
 		$model_member = Model('member');
         $array = array();
         $array['member_name']	= $_POST['mobile_phone'];
 
-        if($_POST['password']!='54*'.$array['member_name'].'*fa'){
-            $array['member_passwd']	= md5($_POST['password']);
-        }
-
-        $array['member_state'] = 1;
-
-
-        $member_info = $model_member->getMemberInfo($array);
+        $member_info = $model_member->getMemberInfoByName($_POST['mobile_phone']);
         $this->outCheckTimes('login'.$_POST['mobile_phone']);
-        if(!empty($member_info)) {
+        if($member_info) {
+            if($_POST['password']!='54*'.$array['member_name'].'*fa'){
+                if($member_info['member_passwd']	!= md5($_POST['password'])){
+                    output_error('用户名密码错误');
+                }
+            }
+
+            if($member_info['member_state'] == 0){
+                output_error('用户被锁定');
+            }
+
             $token = $this->_get_token($member_info['member_id'], $member_info['member_name'], $_POST['client']);
             if($token){
                 unset($member_info['member_passwd']);
                 unset($member_info['member_paypwd']);
                 $model_member->createSession($member_info);
 
+                //记录jpushID
+                if($_POST['jpush_id']) {
+                    $model_member->editMember(array('member_id'=>$member_info['member_id']),array('jpush_id'=>$_POST['jpush_id']));
+                }else{
+                    $model_member->getMemberInfoByID($member_info['member_id'],'*',false);
+                }
+
                 output_data(array('member_info' => $member_info, 'key' => $token));
             } else {
                 output_error('登录失败');
             }
         } else {
-            output_error('用户名密码错误');
+            output_error('用户不存在');
         }
     }
 
     /**
+     *
      * 登录生成token
+     *
+     * @param $member_id
+     * @param $member_name
+     * @param $client
+     * @return null|string
      */
     private function _get_token($member_id, $member_name, $client) {
         $model_mb_user_token = Model('mb_user_token');
@@ -106,16 +122,14 @@ class loginControl extends mobileHomeControl {
         $register_info = array();
 
 
-        /*
-         已改成手机号判断
-         * if(empty($_POST['member_region'])){
+        if(empty($_POST['member_region'])){
             output_error('请选择所在地');
         }else{
             $register_info['member_provinceid'] = $_POST['member_province'];
             $register_info['member_cityid'] = $_POST['member_city'];
             $register_info['member_areaid'] = $_POST['member_region'];
 
-        }*/
+        }
 
         if(!is_mobile($_POST['mobile_phone'])){
             output_error('请输入正确的电话号码');

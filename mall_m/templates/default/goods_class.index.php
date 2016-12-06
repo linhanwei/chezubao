@@ -96,7 +96,7 @@
 
                                         html += '<a href="'+SiteUrl+'/mall_m/index.php?act=goods&op=list&gc_id='+child[k].gc_id+'" class="item">';
 
-                                        html += '<img class="lazy" src="'+SiteUrl+'/mall_m/templates/default/images/default_grey.png" data-original="'+child[k].image+'">';
+                                        html += '<img class="lazy" src="/czb/mall_m/templates/default/images/default_grey.png" data-original="'+child[k].image+'">';
 
                                         html += '<p>'+child[k].gc_name+'</p>';
 
@@ -190,7 +190,7 @@
 
                                 <a href="<?php echo BASE_SITE_URL;?>/mall_m/index.php?act=goods&op=list&gc_id=<?php echo $ncv['gc_id'];?>" class="item">
 
-                                    <img class="lazy" src="<?php echo BASE_SITE_URL;?>/mall_m/templates/default/images/default_grey.png" data-original="<?php echo $ncv['image'];?>">
+                                    <img class="lazy" src="/czb/mall_m/templates/default/images/default_grey.png" data-original="<?php echo $ncv['image'];?>">
 
                                     <p><?php echo $ncv['gc_name'];?></p>
 
